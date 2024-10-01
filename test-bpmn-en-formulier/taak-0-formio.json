@@ -1,0 +1,91 @@
+{
+  "name": "taak-0",
+  "title": "Taak 0",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "label": "Omschrijving",
+      "applyMaskOn": "change",
+      "tableView": true,
+      "validateWhenHidden": false,
+      "key": "omschrijving",
+      "type": "textfield",
+      "input": true
+    },
+    {
+      "label": "Gebruik Form.io",
+      "tableView": false,
+      "validateWhenHidden": false,
+      "key": "useFormio",
+      "type": "checkbox",
+      "input": true
+    },
+    {
+      "label": "Kies taak 1 of 2",
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "tableView": false,
+      "values": [
+        {
+          "label": "Taak 1",
+          "value": "taak1",
+          "shortcut": ""
+        },
+        {
+          "label": "Taak 2",
+          "value": "taak2",
+          "shortcut": ""
+        }
+      ],
+      "validate": {
+        "required": true
+      },
+      "validateWhenHidden": false,
+      "key": "taakkeuze12",
+      "type": "radio",
+      "input": true
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "action": "saveState",
+                  "state": "draft",
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

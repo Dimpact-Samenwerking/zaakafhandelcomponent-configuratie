@@ -5,7 +5,7 @@
     <extensionElements>
       <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
       <design:creationdate><![CDATA[2024-08-04T07:03:59.622Z]]></design:creationdate>
-      <design:modificationdate><![CDATA[2024-09-30T15:00:14.380Z]]></design:modificationdate>
+      <design:modificationdate><![CDATA[2024-10-01T07:42:26.020Z]]></design:modificationdate>
     </extensionElements>
     <userTask id="Taak2A" name="Taak 2" flowable:candidateGroups="groepb" flowable:formKey="taak-2" flowable:formFieldValidation="true">
       <extensionElements>
@@ -24,6 +24,14 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
+    <userTask id="bpmnTask_47" name="Taak 0" flowable:candidateGroups="groepa" flowable:formKey="taak-0" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[taak-0]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
     <serviceTask id="resultaat_2" name="Resultaat2" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
       <extensionElements>
         <flowable:field name="resultaattypeOmschrijving">
@@ -123,14 +131,6 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="bpmnTask_47" name="Taak 0" flowable:formKey="taak-0" flowable:formFieldValidation="false">
-      <extensionElements>
-        <flowable:static-form-key><![CDATA[taak-0]]></flowable:static-form-key>
-        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
-        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
-        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
-      </extensionElements>
-    </userTask>
     <exclusiveGateway id="sid-B487B91A-589E-494F-96D6-DCBC564BAF41" default="sid-D6F32408-78C9-49A7-81D7-D3BA77740D97">
       <extensionElements>
         <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
@@ -212,6 +212,11 @@
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
+    <sequenceFlow id="bpmnSequenceFlow_49" sourceRef="bpmnTask_47" targetRef="bpmnGateway_36">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
     <sequenceFlow id="bpmnSequenceFlow_42" sourceRef="resultaat_2" targetRef="bpmnGateway_17">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
@@ -268,11 +273,6 @@
       </extensionElements>
     </sequenceFlow>
     <sequenceFlow id="bpmnSequenceFlow_40" sourceRef="Taak5B" targetRef="bpmnGateway_34">
-      <extensionElements>
-        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
-      </extensionElements>
-    </sequenceFlow>
-    <sequenceFlow id="bpmnSequenceFlow_49" sourceRef="bpmnTask_47" targetRef="bpmnGateway_36">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -372,7 +372,7 @@
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!vars:exists(omschrijving) || !vars:exists(taakkeuze12) || !vars:exists(useFormio)}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!vars:exists(omschrijving)}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="bpmnSequenceFlow_46" sourceRef="bpmnGateway_36" targetRef="status_niew">
       <extensionElements>
@@ -392,6 +392,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="resultaat_1" id="BPMNShape_resultaat_1">
         <omgdc:Bounds height="80.00000000000003" width="100.0" x="1006.0000173286971" y="214.000004170158"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="bpmnTask_47" id="BPMNShape_bpmnTask_47">
+        <omgdc:Bounds height="80.00000000000003" width="100.0" x="-133.99999978867442" y="214.000004170158"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="resultaat_2" id="BPMNShape_resultaat_2">
         <omgdc:Bounds height="80.0" width="100.0" x="1002.0000173286971" y="472.0"></omgdc:Bounds>
@@ -428,9 +431,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="Taak5B" id="BPMNShape_Taak5B">
         <omgdc:Bounds height="80.0" width="100.0" x="612.0" y="668.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="bpmnTask_47" id="BPMNShape_bpmnTask_47">
-        <omgdc:Bounds height="80.00000000000003" width="100.0" x="-133.99999978867442" y="214.000004170158"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="sid-B487B91A-589E-494F-96D6-DCBC564BAF41" id="BPMNShape_sid-B487B91A-589E-494F-96D6-DCBC564BAF41">
         <omgdc:Bounds height="40.0" width="40.00000000000003" x="255.00000359253474" y="158.000004170158"></omgdc:Bounds>

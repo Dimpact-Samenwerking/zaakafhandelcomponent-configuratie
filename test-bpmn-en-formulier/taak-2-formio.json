@@ -24,6 +24,39 @@
           "defaultValue": ":omschrijving"
         },
         {
+          "label": "Groep / Medewerker",
+          "type": "groepMedewerkerFieldset",
+          "key": "groepMedewerker",
+          "input": false,
+          "components": [
+            {
+              "label": "Groep",
+              "type": "select",
+              "key": "groep",
+              "input": true,
+              "widget": "html5",
+              "validate": {
+                "required": true
+              },
+              "dataSrc": "custom",
+              "clearOnRefresh": true
+            },
+            {
+              "label": "Medewerker",
+              "type": "select",
+              "key": "medewerker",
+              "input": true,
+              "widget": "html5",
+              "validate": {
+                "required": true
+              },
+              "dataSrc": "custom",
+              "refreshOn": "groep",
+              "clearOnRefresh": true
+            }
+          ]
+        },
+        {
           "key": "kiesVervolgPagina",
           "type": "radio",
           "label": "Kies vervolg pagina",

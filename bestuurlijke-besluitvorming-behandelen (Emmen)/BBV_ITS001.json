@@ -2149,7 +2149,8 @@
               "html": "<p><em>Kies hieronder welke documenten gekoppeld moeten worden aan de agenda van het CMT.<br /><strong>LET OP: Wanneer je ook documenten uit de hoofdzaak wilt laten bespreken, zet dan een vinkje bij de optie ‘Inclusief gerelateerde documenten’ zodat je ze hieronder kunt koppelen</strong><br /></em></p>",
               "refreshOnChange": false,
               "input": false
-            },            {
+            },
+            {
               "label": "Te koppelen bestanden:",
               "type": "textarea",
               "key": "SD_DocumentenDirectie",
@@ -2159,7 +2160,8 @@
               "validate": {
                 "required": true
               }
-            },        {
+            },
+            {
               "label": "Toelichting:",
               "type": "textarea",
               "key": "TA_OpmerkingenDocumentenDirectie",
@@ -2223,6 +2225,221 @@
         }
       },
       "components": [
+        {
+          "legend": "Gegevens voorstel",
+          "type": "fieldset",
+          "key": "HF_GegevensVoorstel",
+          "input": false,
+          "validate": {
+            "required": true
+          },
+          "components": [
+            {
+              "label": "Naam portefeuillehouder(s):",
+              "type": "selectboxes",
+              "inputType": "checkbox",
+              "key": "CB_NaamPFH",
+              "input": true,
+              "optionsLabelPosition": "right",
+              "values": [
+                {
+                  "label": "Eric van Oosterhout",
+                  "value": "PFH0"
+                },
+                {
+                  "label": "Raymond Wanders",
+                  "value": "PFH2"
+                },
+                {
+                  "label": "Dewy Keen",
+                  "value": "PFH3"
+                },
+                {
+                  "label": "Guido Rink",
+                  "value": "PFH4"
+                },
+                {
+                  "label": "Pascal Schrik",
+                  "value": "PFH5"
+                },
+                {
+                  "label": "Jan Bos",
+                  "value": "PFH6"
+                },
+                {
+                  "label": "Albert-Jan Jakobs",
+                  "value": "PFH1"
+                }
+              ]
+            },
+            {
+              "label": "Het stuk is:",
+              "type": "radio",
+              "key": "RB_Openbaarheid",
+              "input": true,
+              "optionsLabelPosition": "right",
+              "inline": false,
+              "validate": {
+                "required": true
+              },
+              "values": [
+                {
+                  "label": "Openbaar",
+                  "value": "Openbaar"
+                },
+                {
+                  "label": "Openbaar later",
+                  "value": "OpenbaarBetrokkenen"
+                },
+                {
+                  "label": "Geheim",
+                  "value": "NietOpenbaar"
+                }
+              ]
+            },
+            {
+              "label": "Behandelwijze:",
+              "type": "select",
+              "key": "CO_Procedure",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Ter kennisname",
+                    "value": "Kennisname"
+                  },
+                  {
+                    "label": "Ter bespreking",
+                    "value": "Bespreken"
+                  },
+                  {
+                    "label": "Ter besluitvorming",
+                    "value": "Besluitvorming"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Het voorstel moet door een CMT-lid geaccordeerd worden:",
+              "type": "select",
+              "key": "CO_CMTLidNodig",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Ja",
+                    "value": "Ja"
+                  },
+                  {
+                    "label": "Nee",
+                    "value": "Nee"
+                  }
+                ]
+              },
+              "defaultValue": "Nee"
+            },
+            {
+              "label": "Naam CMT-lid:",
+              "key": "AM_NaamCMTLid",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_NaamCMTLid_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_NaamCMTLid_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_NaamCMTLid_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "legend": "Datum collegevergadering",
+          "type": "fieldset",
+          "key": "HF_DatumCollegevergadering",
+          "input": false,
+          "components": [
+            {
+              "label": "Ik wil het voorstel op de agenda zetten voor de vergadering op:",
+              "type": "select",
+              "key": "DF_DatumVergaderingCollege",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Selectielijst waarde 1",
+                    "value": "waarde1"
+                  },
+                  {
+                    "label": "Selectielijst waarde 2",
+                    "value": "waarde2"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Te koppelen bestanden aan agenda College",
+          "type": "fieldset",
+          "key": "HF_DocumentenCollege1",
+          "input": false,
+          "components": [
+            {
+              "key": "PA_InleidingSelecterenCollege",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><em>Kies hieronder welke documenten gekoppeld moeten worden aan de agenda van de collegevergadering.<br /></em><em><strong>LET OP: Wanneer je ook documenten uit de hoofdzaak wilt laten bespreken, zet dan een vinkje bij de optie ‘Inclusief gerelateerde documenten’ zodat je ze hieronder kunt koppelen</strong></em></p>",
+              "refreshOnChange": false,
+              "input": false
+            },
+            {
+              "label": "Te koppelen bestanden:",
+              "type": "textarea",
+              "key": "SD_DocumentenAgendaCollege",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true,
+              "validate": {
+                "required": true
+              }
+            },
+            {
+              "label": "Toelichting:",
+              "type": "textarea",
+              "key": "TA_ToelichtingKoppelenDocCollege",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        }
       ]
     },
     {

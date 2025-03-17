@@ -1,0 +1,2289 @@
+{
+  "naam": "BBV_ITS001",
+  "title": "Opstellen-Aanpassen voorstel",
+  "display": "wizard",
+  "components": [
+    {
+      "label": "Opstellen-Aanpassen voorstel",
+      "type": "panel",
+      "key": "BBV_ITS001_SN001",
+      "title": "Opstellen-Aanpassen voorstel",
+      "input": false,
+      "breadcrumbClickable": true,
+      "buttonSettings": {
+        "next": true,
+        "previous": false,
+        "cancel": false
+      },
+      "components": [
+        {
+          "key": "PA_VoorstelAangehouden",
+          "hideLabel": true,
+          "type": "content",
+          "html": "<p><strong>Het voorstel is aangehouden in het College, zie de hieronder getoonde toelichting </strong></p>",
+          "refreshOnChange": false,
+          "input": false,
+          "conditional": {
+            "show": true,
+            "when": "CO_BesluitCollege",
+            "eq": "Aanpassen"
+          }
+        },
+        {
+          "legend": "Gegevens voorstel",
+          "type": "fieldset",
+          "key": "HF_Gegevens_voorstel",
+          "input": false,
+          "components": [
+            {
+              "key": "PA_InleidingDocumentMaken",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><em><strong>Kies hieronder het gewenste sjabloon. Let op: SmartDocuments wordt pas opgestart nadat je hebt geklikt op de knop 'Aanmaken' die je rechts van de sjabloonnaam ziet staan</strong></em></p>",
+              "refreshOnChange": false,
+              "input": false
+            },
+            {
+              "label": "Document maken:",
+              "type": "select",
+              "key": "TD_Voorstel",
+              "widget": "html5",
+              "input": true,
+              "data": {
+                "values": [
+                  {
+                    "label": "Template 1",
+                    "value": "Template1"
+                  },
+                  {
+                    "label": "Template 2",
+                    "value": "Template2"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "E-mailadres steller: (tbv signaleringsmails)",
+              "type": "email",
+              "key": "EM_EmailadresSteller",
+              "input": true,
+              "applyMaskOn": "change",
+              "validate": {
+                "required": true
+              }
+            },
+            {
+              "legend": "Accordering door:",
+              "type": "groepMedewerkerFieldset",
+              "key": "AM_TeamBehandelaar",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_TeamBehandelaar_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "validate": {
+                    "required": true
+                  },
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_TeamBehandelaar_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "validate": {
+                    "required": true
+                  },
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_TeamBehandelaar_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            },
+            {
+              "label": "Volgorde behandeling:",
+              "type": "select",
+              "key": "CO_BehandelingDoor",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "CMT",
+                    "value": "Directie"
+                  },
+                  {
+                    "label": "CMT-College",
+                    "value": "DirectieCollege"
+                  },
+                  {
+                    "label": "CMT-College-Raad",
+                    "value": "DirectieRaad"
+                  },
+                  {
+                    "label": "College",
+                    "value": "College"
+                  },
+                  {
+                    "label": "College-Raad (inclusief brieven van College aan de Raad)",
+                    "value": "Raad"
+                  },
+                  {
+                    "label": "Griffie-Raad",
+                    "value": "GriffieRaad"
+                  },
+                  {
+                    "label": "Burgemeester",
+                    "value": "Burgemeestersbesluit"
+                  },
+                  {
+                    "label": "Mandaatbesluit",
+                    "value": "Mandaatbesluit"
+                  }
+                ]
+              }
+            },
+            {
+              "key": "PA_ToelichtingSpoedprocedure",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><strong style=\"color: red;\"><em>Geef hieronder aan of het voorstel na de aanpassingen het standaard proces moet volgen of dat het voorstel een aantal stappen kan overslaan.</em></strong></p>",
+              "refreshOnChange": false,
+              "input": false,
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgenda"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCollege"
+                        },
+                        "AangepastBesloten"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCollege"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCollege"
+                        },
+                        "Wijzigen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCommissieBME"
+                        },
+                        "AanpassenCommissie"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_ResultaatRaadsbehandeling"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.RB_BesluitPresidium"
+                        },
+                        "AanpassenGriffie"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgenaVolledigheid"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgenda"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgenda"
+                        },
+                        "Aanhouden"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "Afwijken van standaard proces:",
+              "type": "select",
+              "key": "CO_Spoedprocedure",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Ja, direct naar Agendacommssie",
+                    "value": "GEMSEC"
+                  },
+                  {
+                    "label": "Nee",
+                    "value": "Nee"
+                  }
+                ]
+              },
+              "defaultValue": "GEMSEC",
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgena"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCollege"
+                        },
+                        "Wijzigen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCollege"
+                        },
+                        "AangepastBesloten"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCollege"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaVolledigheid"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgena"
+                        },
+                        "Aanhouden"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "Afwijken van standaard proces:",
+              "type": "select",
+              "key": "CO_SpoedprocedureRaad",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Ja, direct naar Griffie",
+                    "value": "Raad"
+                  },
+                  {
+                    "label": "Nee",
+                    "value": "Nee"
+                  }
+                ]
+              },
+              "defaultValue": "Raad",
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitPresidium"
+                        },
+                        "AanpassenGriffie"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCommissieBME"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_ResultaatRaadsbehandeling"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "Zaakspecifieke autorisatie van toepassing:",
+              "type": "select",
+              "key": "CO_ZaakspecifiekeAutorisatie",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Ja",
+                    "value": "Ja"
+                  },
+                  {
+                    "label": "Nee",
+                    "value": "Nee"
+                  }
+                ]
+              },
+              "defaultValue": "Nee"
+            }
+          ]
+        },
+        {
+          "legend": "Benodigde tekstuele aanpassingen",
+          "type": "fieldset",
+          "key": "HF_TekstueleAanpassingen",
+          "input": false,
+          "components": [
+            {
+              "label": "College B&W:",
+              "type": "textarea",
+              "key": "TA_TekstCollege",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": false
+            }
+          ],
+          "conditional": {
+            "show": true,
+            "json": {
+              "or": [
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitCollege"
+                    },
+                    "WIjzigen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitCollege"
+                    },
+                    "AangepastBesloten"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "legend": "Redenen voorstel niet akkoord",
+          "type": "fieldset",
+          "key": "HF_Aanpassingen",
+          "input": false,
+          "components": [
+            {
+              "key": "TA_AanpassingenOpdrachtgever_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "when": "CO_DoorzettenEenheidsmanager",
+                "eq": "Aanpassen"
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenOpdrachtgever_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.AM_TeamBehandelaar.AGNaam"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenOpdrachtgever_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "var": "data.TA_ToelichtingBesluitTeamleider"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "TA_OpmerkingenCMTLid_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "when": "CO_DoorzettenCMTLid",
+                "eq": "Aanpassen"
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_OpmerkingenCMTLid_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.AM_NaamCMTLid.AGNaam"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_OpmerkingenCMTLid_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "var": "data.TA_ToelichtingBesluitCMTLid"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Agendacommissie CMT:",
+              "type": "textarea",
+              "key": "TA_OpmerkingenAgendacommissieCMT",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "disabled": true,
+              "input": false,
+              "customDefaultValue": {
+                "var": "data.TA_ToelichtingBesluitAgendacommissieCMT"
+              },
+              "conditional": {
+                "show": true,
+                "when": "CO_DoorzettenAgendacommissieCMT",
+                "eq": "Aanpassen"
+              }
+            },
+            {
+              "key": "TA_AanpassingenPHO0_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaPFH0"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_AccorderenBurgemeestersbesluit"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_AkkoordMandaathouder1"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO0_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.TF_NaamPFH0"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO0_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "cat": [
+                              {
+                                "var": "data.TA_ToelichtingBesluitPFH0"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBurgemeestersbesluit"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBesluitMandaathouder1"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "TA_AanpassingenPHO1_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaPFH1"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_AkkoordMandaathouder2"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO1_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.TF_NaamPFH1"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO1_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "cat": [
+                              {
+                                "var": "data.TA_ToelichtingBesluitPFH1"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBesluitMandaathouder2"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "TA_AanpassingenPHO2_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaPFH2"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_AkkoordMandaathouder3"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO2_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.TF_NaamPFH2"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO2_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "cat": [
+                              {
+                                "var": "data.TA_ToelichtingBesluitPFH2"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBesluitMandaathouder3"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "TA_AanpassingenPHO3_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaPFH3"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_AkkoordMandaathouder4"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO3_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.TF_NaamPFH3"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO3_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "cat": [
+                              {
+                                "var": "data.TA_ToelichtingBesluitPFH0"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBurgemeestersbesluit"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBesluitMandaathouder1"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "TA_AanpassingenPHO4_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaPFH4"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_AkkoordMandaathouder5"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO4_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.TF_NaamPFH4"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO4_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "cat": [
+                              {
+                                "var": "data.TA_ToelichtingBesluitPFH4"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBesluitMandaathouder5"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "TA_AanpassingenPHO5_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaPFH5"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_AkkoordMandaathouder6"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO5_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.TF_NaamPFH5"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO5_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "cat": [
+                              {
+                                "var": "data.TA_ToelichtingBesluitPFH5"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBesluitMandaathouder6"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "TA_AanpassingenPHO6_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaPFH6"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_AkkoordMandaathouder8"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO6_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.TF_NaamPFH6"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenPHO6_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "cat": [
+                              {
+                                "var": "data.TA_ToelichtingBesluitPFH6"
+                              },
+                              {
+                                "var": "data.TA_ToelichtingBesluitMandaathouder8"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "TA_AanpassingenGemsec_Container",
+              "hideLabel": true,
+              "type": "container",
+              "input": false,
+              "tableView": false,
+              "conditional": {
+                "show": true,
+                "when": "CO_AkkoordMandaathouder7",
+                "eq": "Aanpassen"
+              },
+              "components": [
+                {
+                  "type": "columns",
+                  "columns": [
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenGemsec_Label",
+                          "type": "textfield",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "customDefaultValue": {
+                            "var": "data.TF_NaamGemsec"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "width": "auto",
+                      "components": [
+                        {
+                          "key": "TA_AanpassingenGemsec_Value",
+                          "type": "textarea",
+                          "hideLabel": true,
+                          "input": false,
+                          "disabled": true,
+                          "tableView": false,
+                          "autoExpand": false,
+                          "customDefaultValue": {
+                            "var": "data.TA_ToelichtingBesluitMandaathouder7"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Agendacommissie:",
+              "type": "textarea",
+              "key": "TA_AanpassingenAgendacommissie",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "disabled": true,
+              "input": false,
+              "customDefaultValue": {
+                "cat": [
+                  {
+                    "var": "data.TA_ToelichtingBesluitAgendacommissie"
+                  },
+                  "\n",
+                  {
+                    "var": "data.TA_ToelichtingVolledigheidAgendacommissie"
+                  }
+                ]
+              },
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgenda"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgenda"
+                        },
+                        "Aanhouden"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaVolledigheid"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "CMT:",
+              "type": "textarea",
+              "key": "TA_AanpassingenDirectieoverleg",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "disabled": true,
+              "input": false,
+              "customDefaultValue": {
+                "cat": [
+                  {
+                    "var": "data.TA_ToelichtingBesluitAgendacommissie"
+                  },
+                  "\n",
+                  {
+                    "var": "data.TA_ToelichtingVolledigheidAgendacommissie"
+                  }
+                ]
+              },
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgenda"
+                        },
+                        "Aanpassen"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgenda"
+                        },
+                        "Aanhouden"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_DoorzettenAgendaVolledigheid"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "College B&W:",
+              "type": "textarea",
+              "key": "TA_AanpassingenCollege",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "disabled": true,
+              "input": false,
+              "customDefaultValue": {
+                "var": "data.TA_ToelichtingBesluitCollege"
+              },
+              "conditional": {
+                "show": true,
+                "when": "CO_BesluitCollege",
+                "eq": "Aanpassen"
+              }
+            },
+            {
+              "label": "Griffie:",
+              "type": "textarea",
+              "key": "TA_AanpassingenGriffie",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "disabled": true,
+              "input": false,
+              "customDefaultValue": {
+                "var": "data.TA_OpmerkingenAgendering"
+              },
+              "conditional": {
+                "show": true,
+                "when": "RB_BesluitPresidium",
+                "eq": "AanpassenGriffie"
+              }
+            },
+            {
+              "label": "Auditcommissie:",
+              "type": "textarea",
+              "key": "TA_AanpassingenAuditcommissie",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "disabled": true,
+              "input": false,
+              "customDefaultValue": {
+                "var": "data.TA_BerichtStellerAuditcommissie"
+              },
+              "conditional": {
+                "show": true,
+                "when": "CO_BesluitAuditcommissie",
+                "eq": "AanpassenAuditcommissie"
+              }
+            },
+            {
+              "label": "Raadscommissie:",
+              "type": "textarea",
+              "key": "TA_AanpassingenRaadscommissie",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "disabled": true,
+              "input": false,
+              "customDefaultValue": {
+                "var": "data.TA_BerichtStellerRaadscommissieBME"
+              },
+              "conditional": {
+                "show": true,
+                "json": {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCommissieBME"
+                        },
+                        "AanpassenCommissie"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "data.CO_BesluitCommissieBME"
+                        },
+                        "Aanpassen"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "Gemeenteraad:",
+              "type": "textarea",
+              "key": "TA_AanpassingenGemeenteraad",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "disabled": true,
+              "input": false,
+              "customDefaultValue": {
+                "var": "data.TA_OpmerkingenStellerRaad"
+              },
+              "conditional": {
+                "show": true,
+                "when": "CO_ResultaatRaadsbehandeling",
+                "eq": "Aanpassen"
+              }
+            }
+          ],
+          "conditional": {
+            "show": true,
+            "json": {
+              "or": [
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenEenheidsmanager"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgenda"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitCollege"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_ResultaatRaadsbehandeling"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitDO"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitCommissieBME"
+                    },
+                    "AanpassenCommissie"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitCommissieBME"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AccorderenBurgemeestersbesluit"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenCMTLid"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendaPFH0"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendaPFH1"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendaPFH2"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendaPFH3"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendaPFH4"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendaPFH5"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendaPFH6"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendacommissieCMT"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.RD_BesluitPresidium"
+                    },
+                    "AanpassenGriffie"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AkkoordMandaathouder1"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AkkoordMandaathouder2"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AkkoordMandaathouder3"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AkkoordMandaathouder4"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AkkoordMandaathouder5"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AkkoordMandaathouder6"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AkkoordMandaathouder7"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgendaVolledigheid"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgenda"
+                    },
+                    "Aanpassen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_DoorzettenAgenda"
+                    },
+                    "Aanhouden"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitDO"
+                    },
+                    "Wijzigen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitDO"
+                    },
+                    "VastgesteldTekstWijzigingen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitDO"
+                    },
+                    "VastgesteldInhoudWijzigingen"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_BesluitAuditcommissie"
+                    },
+                    "AanpassenAuditcommissie"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "data.CO_AkkoordMandaathouder8"
+                    },
+                    "Aanpassen"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "legend": "Advies",
+          "type": "fieldset",
+          "key": "HF_Adviezen",
+          "input": false,
+          "components": [
+            {
+              "label": "Er zijn adviseurs betrokken bij het voorstel:",
+              "type": "radio",
+              "key": "RB_AdviesNodig",
+              "input": true,
+              "optionsLabelPosition": "right",
+              "inline": false,
+              "validate": {
+                "required": true
+              },
+              "values": [
+                {
+                  "label": "Ja",
+                  "value": "Ja"
+                },
+                {
+                  "label": "Nee",
+                  "value": "Nee"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "legend": "Gekoppelde documenten",
+          "type": "fieldset",
+          "key": "HF_GekoppeldeDocumentenBBV001",
+          "input": false,
+          "components": [
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Keuze adviseur",
+      "type": "panel",
+      "key": "BBV_ITS001_SN002",
+      "title": "adviseur",
+      "input": false,
+      "breadcrumbClickable": true,
+      "buttonSettings": {
+        "next": true,
+        "previous": true,
+        "cancel": false
+      },
+      "conditional": {
+        "show": true,
+        "when": "RB_AdviesNodig",
+        "eq": "Ja"
+      },
+      "components": [
+        {
+          "key": "PA_InleidingAdviseurs",
+          "hideLabel": true,
+          "type": "content",
+          "html": "<p><em>Kies hieronder de adviseurs die betrokken zijn bij het voorstel en leg kort de inhoud van het ontvangen advies vast. De gekozen adviseurs krijgen een e-mail dat zij betrokken zijn geweest bij het opstellen van het voorstel.</em></p>",
+          "refreshOnChange": false,
+          "input": false
+        },
+        {
+          "legend": "Adviseur 1",
+          "type": "fieldset",
+          "key": "PA_Adviseur1",
+          "input": false,
+          "components": [
+            {
+              "key": "AM_Adviseur1",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_Adviseur1_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "validate": {
+                    "required": true
+                  },
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_Adviseur1_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "validate": {
+                    "required": true
+                  },
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_Adviseur1_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            },
+            {
+              "label": "Korte samenvatting van het advies:",
+              "type": "textarea",
+              "key": "TA_ToelichtingAdviseur1",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true,
+              "validate": {
+                "required": true
+              }
+            }
+          ]
+        },
+        {
+          "legend": "Adviseur 2",
+          "type": "fieldset",
+          "key": "PA_Adviseur2",
+          "input": false,
+          "components": [
+            {
+              "key": "AM_Adviseur2",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_Adviseur2_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_Adviseur2_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_Adviseur2_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            },
+            {
+              "label": "Korte samenvatting van het advies:",
+              "type": "textarea",
+              "key": "TA_ToelichtingAdviseur2",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        },
+        {
+          "legend": "Adviseur 3",
+          "key": "PA_Adviseur3",
+          "type": "fieldset",
+          "input": false,
+          "components": [
+            {
+              "key": "AM_Adviseur3",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_Adviseur3_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_Adviseur3_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_Adviseur3_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            },
+            {
+              "label": "Korte samenvatting van het advies:",
+              "type": "textarea",
+              "key": "TA_ToelichtingAdviseur3",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        },
+        {
+          "legend": "Adviseur 4",
+          "key": "PA_Adviseur4",
+          "type": "fieldset",
+          "input": false,
+          "components": [
+            {
+              "key": "AM_Adviseur4",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_Adviseur4_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_Adviseur4_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_Adviseur4_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            },
+            {
+              "label": "Korte samenvatting van het advies:",
+              "type": "textarea",
+              "key": "TA_ToelichtingAdviseur4",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        },
+        {
+          "legend": "Adviseur 5",
+          "key": "PA_Adviseur5",
+          "type": "fieldset",
+          "input": false,
+          "components": [
+            {
+              "key": "AM_Adviseur5",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_Adviseur5_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_Adviseur5_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_Adviseur5_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            },
+            {
+              "label": "Korte samenvatting van het advies:",
+              "type": "textarea",
+              "key": "TA_ToelichtingAdviseur5",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        },
+        {
+          "legend": "Adviseur 6",
+          "key": "PA_Adviseur6",
+          "type": "fieldset",
+          "input": false,
+          "components": [
+            {
+              "key": "AM_Adviseur6",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_Adviseur6_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_Adviseur6_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_Adviseur6_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            },
+            {
+              "label": "Korte samenvatting van het advies:",
+              "type": "textarea",
+              "key": "TA_ToelichtingAdviseur6",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        },
+        {
+          "legend": "Adviseur 7",
+          "key": "PA_Adviseur7",
+          "type": "fieldset",
+          "input": false,
+          "components": [
+            {
+              "key": "AM_Adviseur7",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_Adviseur7_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_Adviseur7_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_Adviseur7_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            },
+            {
+              "label": "Korte samenvatting van het advies:",
+              "type": "textarea",
+              "key": "TA_ToelichtingAdviseur7",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "CMT-vergadering",
+      "type": "panel",
+      "key": "BBV_ITS001_SN003",
+      "title": "CMT-vergadering",
+      "input": false,
+      "breadcrumbClickable": true,
+      "buttonSettings": {
+        "next": true,
+        "previous": true,
+        "cancel": false
+      },
+      "conditional": {
+        "show": true,
+        "json": {
+          "or": [
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "Directie"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "DirectieCollege"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "DirectieRaad"
+              ]
+            }
+          ]
+        }
+      },
+      "components": [
+        {
+          "legend": "Datum CMT-vergadering",
+          "type": "fieldset",
+          "key": "HF_DatumMTVergadering",
+          "input": false,
+          "components": [
+            {
+              "label": "Ik wil het voorstel op de agenda zetten voor de vergadering op:",
+              "type": "select",
+              "key": "DF_DatumVergaderingMT",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Selectielijst waarde 1",
+                    "value": "waarde1"
+                  },
+                  {
+                    "label": "Selectielijst waarde 2",
+                    "value": "waarde2"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "legend": "Betrokken CMT-lid",
+          "type": "fieldset",
+          "key": "LB_BetrokkenCMTlid",
+          "input": false,
+          "components": [
+            {
+              "key": "AM_NaamCMTLid",
+              "type": "groepMedewerkerFieldset",
+              "input": false,
+              "components": [
+                {
+                  "label": "Groep",
+                  "type": "select",
+                  "key": "AM_NaamCMTLid_Groep",
+                  "input": true,
+                  "widget": "html5",
+                  "validate": {
+                    "required": true
+                  },
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Medewerker",
+                  "type": "select",
+                  "key": "AM_NaamCMTLid_Medewerker",
+                  "widget": "html5",
+                  "input": true,
+                  "validate": {
+                    "required": true
+                  },
+                  "dataSrc": "custom",
+                  "refreshOn": "AM_NaamCMTLid_Groep",
+                  "clearOnRefresh": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Te koppelen bestanden aan agenda CMT",
+          "type": "fieldset",
+          "key": "HF_DocumentenDirectie",
+          "input": false,
+          "components": [
+            {
+              "key": "PA_InleidingDocumentenDirectie",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><em>Kies hieronder welke documenten gekoppeld moeten worden aan de agenda van het CMT.<br /><strong>LET OP: Wanneer je ook documenten uit de hoofdzaak wilt laten bespreken, zet dan een vinkje bij de optie ‘Inclusief gerelateerde documenten’ zodat je ze hieronder kunt koppelen</strong><br /></em></p>",
+              "refreshOnChange": false,
+              "input": false
+            },            {
+              "label": "Te koppelen bestanden:",
+              "type": "textarea",
+              "key": "SD_DocumentenDirectie",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true,
+              "validate": {
+                "required": true
+              }
+            },        {
+              "label": "Toelichting:",
+              "type": "textarea",
+              "key": "TA_OpmerkingenDocumentenDirectie",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Collegevergadering",
+      "type": "panel",
+      "key": "BBV_ITS001_SN004",
+      "title": "Collegevergadering",
+      "input": false,
+      "breadcrumbClickable": true,
+      "buttonSettings": {
+        "next": true,
+        "previous": true,
+        "cancel": false
+      },
+      "conditional": {
+        "show": true,
+        "json": {
+          "or": [
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "DirectieCollege"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "DirectieRaad"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "College"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "Raad"
+              ]
+            }
+          ]
+        }
+      },
+      "components": [
+      ]
+    },
+    {
+      "label": "Raadsvergadering",
+      "type": "panel",
+      "key": "BBV_ITS001_SN005",
+      "title": "Raadsvergadering",
+      "input": false,
+      "breadcrumbClickable": true,
+      "buttonSettings": {
+        "next": true,
+        "previous": true,
+        "cancel": false
+      },
+      "components": [
+      ]
+    },
+    {
+      "label": "Mandaatbesluit",
+      "type": "panel",
+      "key": "BBV_ITS001_SN006",
+      "title": "Mandaatbesluit",
+      "input": false,
+      "breadcrumbClickable": true,
+      "buttonSettings": {
+        "next": true,
+        "previous": true,
+        "cancel": false
+      },
+      "components": [
+      ]
+    },
+    {
+      "label": "Burgemeestersbesluit",
+      "type": "panel",
+      "key": "BBV_ITS001_SN007",
+      "title": "Burgemeestersbesluit",
+      "input": false,
+      "breadcrumbClickable": true,
+      "buttonSettings": {
+        "next": true,
+        "previous": true,
+        "cancel": false
+      },
+      "components": [
+      ]
+    },
+    {
+      "label": "Opmerkingen",
+      "type": "panel",
+      "key": "BBV_ITS001_SN008",
+      "title": "Opmerkingen",
+      "input": false,
+      "breadcrumbClickable": true,
+      "buttonSettings": {
+        "next": true,
+        "previous": true,
+        "cancel": false
+      },
+      "components": [
+      ]
+    }
+  ]
+}

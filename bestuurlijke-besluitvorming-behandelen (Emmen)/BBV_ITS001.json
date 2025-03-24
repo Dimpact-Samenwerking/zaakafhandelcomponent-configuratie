@@ -2230,9 +2230,6 @@
           "type": "fieldset",
           "key": "HF_GegevensVoorstel",
           "input": false,
-          "validate": {
-            "required": true
-          },
           "components": [
             {
               "label": "Naam portefeuillehouder(s):",
@@ -2454,7 +2451,111 @@
         "previous": true,
         "cancel": false
       },
+      "conditional": {
+        "show": true,
+        "json": {
+          "or": [
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "DirectieRaad"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "Raad"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "GriffieRaad"
+              ]
+            }
+          ]
+        }
+      },
       "components": [
+        {
+          "legend": "Datum raadsvergadering",
+          "type": "fieldset",
+          "key": "HF_DatumRaadsvergadering",
+          "input": false,
+          "components": [
+            {
+              "key": "PA_ContactGriffie",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><em><strong>Let op: Neem contact op met de Griffie voor de controle van het raadsvoorstel op de kwaliteitseisen vanuit de Gemeenteraad </strong></em></p>",
+              "refreshOnChange": false,
+              "input": false
+            },
+            {
+              "label": "Ik wil het voorstel op de agenda zetten voor de vergadering op:",
+              "type": "select",
+              "key": "DF_DatumVergaderingRaad",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Selectielijst waarde 1",
+                    "value": "waarde1"
+                  },
+                  {
+                    "label": "Selectielijst waarde 2",
+                    "value": "waarde2"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Te koppelen bestanden aan agenda Gemeenteraad",
+          "type": "fieldset",
+          "key": "HF_DocumentenKoppelenRaad",
+          "input": false,
+          "components": [
+            {
+              "key": "PA_InleidingKoppelenDocRaad",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><em>Kies hieronder welke documenten gekoppeld moeten worden aan de agenda van de raadsvergadering.<br /></em><em><strong>LET OP: Wanneer je ook documenten uit de hoofdzaak wilt laten bespreken, zet dan een vinkje bij de optie ‘Inclusief gerelateerde documenten’ zodat je ze hieronder kunt koppelen</strong></em></p>",
+              "refreshOnChange": false,
+              "input": false
+            },
+            {
+              "label": "Te koppelen bestanden:",
+              "type": "textarea",
+              "key": "SD_DocumentenAgendaRaad",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true,
+              "validate": {
+                "required": true
+              }
+            },
+            {
+              "label": "Toelichting:",
+              "type": "textarea",
+              "key": "TA_ToelichtingKoppelenDocRaad",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        }
       ]
     },
     {
@@ -2469,7 +2570,97 @@
         "previous": true,
         "cancel": false
       },
+      "conditional": {
+        "show": true,
+        "when": "CO_BehandelingDoor",
+        "eq": "Mandaatbesluit"
+      },
       "components": [
+        {
+          "legend": "Mandaathouder",
+          "type": "fieldset",
+          "key": "HF_Mandaathouder",
+          "input": false,
+          "components": [
+            {
+              "label": "Naam mandaathouder:",
+              "type": "selectboxes",
+              "inputType": "checkbox",
+              "key": "CB_NaamMandaathouder",
+              "input": true,
+              "optionsLabelPosition": "right",
+              "values": [
+                {
+                  "label": "Eric van Oosterhout",
+                  "value": "Mandaathouder01"
+                },
+                {
+                  "label": "Jan Bos",
+                  "value": "Mandaathouder07"
+                },
+                {
+                  "label": "Albert-Jan Jakobs",
+                  "value": "Mandaathouder02"
+                },
+                {
+                  "label": "Raymond Wanders",
+                  "value": "Mandaathouder03"
+                },
+                {
+                  "label": "Dewy Keen",
+                  "value": "Mandaathouder04"
+                },
+                {
+                  "label": "Guido Rink",
+                  "value": "Mandaathouder05"
+                },
+                {
+                  "label": "Pascal Schrik",
+                  "value": "Mandaathouder06"
+                },
+                {
+                  "label": "Marjolein Plantinga",
+                  "value": "Mandaathouder08"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Te accorderen documenten",
+          "type": "fieldset",
+          "key": "HF_TeAccorderenDocumenten",
+          "input": false,
+          "components": [
+            {
+              "key": "PA_InleidingDocumentenMandaatbesluit",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><em>Kies hieronder welke documenten geaccordeerd moeten worden.</em><br /><strong><em>LET OP: Wanneer je ook documenten uit de hoofdzaak wilt laten bespreken, zet dan een vinkje bij de optie ‘Inclusief gerelateerde documenten’ zodat je ze hieronder kunt koppelen</em></strong></p>",
+              "refreshOnChange": false,
+              "input": false
+            },
+            {
+              "label": "Te accorderen documenten:",
+              "type": "textarea",
+              "key": "SD_DocumentenMandaatbesluit",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true,
+              "validate": {
+                "required": true
+              }
+            },
+            {
+              "label": "Toelichting:",
+              "type": "textarea",
+              "key": "PA_ToelichtingDocumentenMandaatbesluit",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        }
       ]
     },
     {
@@ -2484,7 +2675,132 @@
         "previous": true,
         "cancel": false
       },
+      "conditional": {
+        "show": true,
+        "when": "CO_BehandelingDoor",
+        "eq": "Burgemeestersbesluit"
+      },
       "components": [
+        {
+          "legend": "Burgemeester",
+          "type": "fieldset",
+          "key": "HF_NaamBurgemeester",
+          "input": false,
+          "components": [
+            {
+              "label": "Naam burgemeester:",
+              "type": "select",
+              "key": "CO_NaamPortefeuillehouder",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Burgemeester1",
+                    "value": "burgemeester1"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "legend": "Gegevens voorstel",
+          "type": "fieldset",
+          "key": "HF_GegevensVoorstel",
+          "input": false,
+          "components": [
+            {
+              "label": "Het stuk is:",
+              "type": "radio",
+              "key": "RB_Openbaarheid",
+              "input": true,
+              "optionsLabelPosition": "right",
+              "inline": false,
+              "validate": {
+                "required": true
+              },
+              "values": [
+                {
+                  "label": "Openbaar",
+                  "value": "Openbaar"
+                },
+                {
+                  "label": "Openbaar later",
+                  "value": "OpenbaarBetrokkenen"
+                },
+                {
+                  "label": "Geheim",
+                  "value": "NietOpenbaar"
+                }
+              ]
+            },
+            {
+              "label": "Behandelwijze:",
+              "type": "select",
+              "key": "CO_Procedure",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Ter kennisname",
+                    "value": "Kennisname"
+                  },
+                  {
+                    "label": "Ter bespreking",
+                    "value": "Bespreken"
+                  },
+                  {
+                    "label": "Ter besluitvorming",
+                    "value": "Besluitvorming"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Te accorderen documenten",
+          "type": "fieldset",
+          "key": "HF_DocumentenBurgemeestersbesluit",
+          "input": false,
+          "components": [
+            {
+              "key": "PA_InleidingDocumentenBurgemeestersbesluit",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><em>Kies hieronder welke documenten geaccordeerd moete worden.<br /></em><strong><em>LET OP: Wanneer je ook documenten uit de hoofdzaak wilt laten accorderen, zet dan een vinkje bij de optie ‘Inclusief gerelateerde documenten’ zodat je ze hieronder kunt koppelen</em></strong></p>",
+              "refreshOnChange": false,
+              "input": false
+            },
+            {
+              "label": "Te accorderen documenten:",
+              "type": "textarea",
+              "key": "SD_DocumentenBurgemeestersbesluit",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true,
+              "validate": {
+                "required": true
+              }
+            },
+            {
+              "label": "Toelichting:",
+              "type": "textarea",
+              "key": "TA_ToelichtingDocumentenBurgemeestersbesluit",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        }
       ]
     },
     {
@@ -2500,6 +2816,72 @@
         "cancel": false
       },
       "components": [
+        {
+          "legend": "Afstemming met portefeuillehouders",
+          "type": "fieldset",
+          "key": "HF_AfstemmingPortefeuillehouder",
+          "input": false,
+          "components": [
+            {
+              "key": "PA_AfstemmingPortefeuillehouder",
+              "hideLabel": true,
+              "type": "content",
+              "html": "<p><em>Stem het voorstel op de reguliere wijze af met de portefuillehouders (mondeling, via de e-mail of via het portefeuillehoudersoverleg; afhankelijk van de afspraken die hierover zijn gemaakt) voordat je het voorstel bij je teamleider neerlegt. <br /></em></p>",
+              "refreshOnChange": false,
+              "input": false
+            },
+            {
+              "label": "Het voorstel is afgestemd:",
+              "type": "select",
+              "key": "CO_VoorstelAkkoordPortefeuillehouder",
+              "widget": "html5",
+              "input": true,
+              "validate": {
+                "required": true
+              },
+              "data": {
+                "values": [
+                  {
+                    "label": "Niet van toepassing",
+                    "value": "nvt"
+                  },
+                  {
+                    "label": "Nee",
+                    "value": "Nee"
+                  },
+                  {
+                    "label": "Ja",
+                    "value": "Ja"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Opmerkingen portefeuillehouders:",
+              "type": "textarea",
+              "key": "TA_OpmerkingenPortefeuillehouder",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        },
+        {
+          "legend": "Opmerkingen",
+          "type": "fieldset",
+          "key": "HF_Opmerkingen",
+          "input": false,
+          "components": [
+            {
+              "label": "Opmerkingen voor de teamleider: ",
+              "type": "textarea",
+              "key": "TA_ToelichtingOpdrachtgever",
+              "applyMaskOn": "change",
+              "autoExpand": false,
+              "input": true
+            }
+          ]
+        }
       ]
     }
   ]

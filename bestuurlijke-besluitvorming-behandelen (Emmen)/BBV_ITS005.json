@@ -1,0 +1,144 @@
+{
+  "naam": "BBV_ITS005",
+  "title": "Opvoeren voorstel in iBabs CMT",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "legend": "Gegevens voorstel",
+      "type": "fieldset",
+      "key": "HF_GegevensVoorstel",
+      "input": false,
+      "components": [
+        {
+          "label": "Opmerkingen van de Teamleider:",
+          "key": "LB_OpmerkingenSecretaris",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitTeamleider",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitTeamleider"
+          }
+        },
+        {
+          "label": "Opmerkingen CMT-lid:",
+          "key": "LB_OpmerkingenCMTlid",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitCMTLid",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitCMTLid"
+          }
+        },
+        {
+          "label": "Opmerkingen Agendacommissie:",
+          "key": "LB_OpmerkingenAgendacommissieCMT",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitAgendacommissieCMT",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitAgendacommissieCMT"
+          }
+        },
+        {
+          "key": "PA_ZaaknummeriBabs",
+          "hideLabel": true,
+          "type": "content",
+          "html": "<p><strong>LET OP: Voor het aanmaken van het dossier in iBabs moet je het onderstaande nummer gebruiken</strong></p>",
+          "refreshOnChange": false,
+          "input": false
+        },
+        {
+          "label": "Zaaknummer tbv dossier iBabs:",
+          "key": "LB_OpmerkingenPFH0",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "customDefaultValue": {
+            "var": "${zakenmagazijn.zaak.externID}"
+          }
+        }
+      ]
+    },
+    {
+      "legend": "Vervolg",
+      "type": "fieldset",
+      "key": "HF_VervolgBBV005",
+      "input": false,
+      "components": [
+        {
+          "key": "PA_InleidendeTekst",
+          "hideLabel": true,
+          "type": "content",
+          "html": "<p><strong>Voeg het voorstel in iBabs toe aan de gewenste agenda. Hierna kun je deze taak sluiten. Het proces gaat dan verder naar de taak waarin het besluit uit het overleg wordt vastgelegd.</strong></p>",
+          "refreshOnChange": false,
+          "input": false
+        },
+        {
+          "label": "Toelichting op documenten CMT:",
+          "type": "textarea",
+          "key": "TA_OpmerkingenDocumentenDirectie",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": true,
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "label": "Het voorstel is op de agenda gezet",
+          "type": "checkbox",
+          "tableView": false,
+          "key": "CB_Agenda",
+          "input": true
+        }
+      ]
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

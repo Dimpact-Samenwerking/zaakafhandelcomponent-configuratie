@@ -1,0 +1,566 @@
+{
+  "naam": "BBV_ITS004",
+  "title": "Accorderen voorstel Gemeentesecretaris",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "legend": "Gegevens voorstel",
+      "type": "fieldset",
+      "key": "HF_Gegevens_voorstel",
+      "input": false,
+      "components": [
+        {
+          "label": "Gewenste datum Collegevergadering:",
+          "key": "LB_DatumVergaderingCollege",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "DF_DatumVergaderingCollege",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.DF_DatumVergaderingCollege"
+          }
+        },
+        {
+          "label": "Gewenste datum Raadsvergadering:",
+          "key": "LB_DatumVergaderingRaad",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "DF_DatumVergaderingRaad",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.DF_DatumVergaderingRaad"
+          }
+        },
+        {
+          "label": "Opmerkingen van de Teamleider:",
+          "key": "LB_OpmerkingenClusterdirecteur",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitTeamleider",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitTeamleider"
+          }
+        },
+        {
+          "label": "Opmerkingen van ${zaakdata.AM_NaamCMTLid.VolledigeNaam}:",
+          "key": "LB_OpmerkingenCMTlid",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitCMTLid",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitCMTLid"
+          }
+        },
+        {
+          "label": "Opmerkingen van ${zaakdata.TF_NaamPFH0}:",
+          "key": "LB_OpmerkingenPFH0",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitPFH0",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitPFH0"
+          }
+        },
+        {
+          "label": "Opmerkingen van ${zaakdata.TF_NaamPFH1}:",
+          "key": "LB_OpmerkingenPFH1",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitPFH1",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitPFH1"
+          }
+        },
+        {
+          "label": "Opmerkingen van ${zaakdata.TF_NaamPFH2}:",
+          "key": "LB_OpmerkingenPFH2",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitPFH2",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitPFH2"
+          }
+        },
+        {
+          "label": "Opmerkingen van ${zaakdata.TF_NaamPFH3}:",
+          "key": "LB_OpmerkingenPFH3",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitPFH3",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitPFH3"
+          }
+        },
+        {
+          "label": "Opmerkingen van ${zaakdata.TF_NaamPFH4}:",
+          "key": "LB_OpmerkingenPFH4",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitPFH4",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitPFH4"
+          }
+        },
+        {
+          "label": "Opmerkingen van ${zaakdata.TF_NaamPFH5}:",
+          "key": "LB_OpmerkingenPFH5",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitPFH5",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitPFH5"
+          }
+        },
+        {
+          "label": "Opmerkingen van ${zaakdata.TF_NaamPFH6}:",
+          "key": "LB_OpmerkingenPFH6",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "TA_ToelichtingBesluitPFH6",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.TA_ToelichtingBesluitPFH6"
+          }
+        },
+        {
+          "label": "Het stuk is::",
+          "type": "select",
+          "key": "RB_Openbaarheid",
+          "widget": "html5",
+          "input": true,
+          "validate": {
+            "required": true
+          },
+          "data": {
+            "values": [
+              {
+                "label": "Openbaar",
+                "value": "Openbaar"
+              },
+              {
+                "label": "Openbaar later",
+                "value": "OpenbaarBetrokkenen"
+              },
+              {
+                "label": "Geheim",
+                "value": "NietOpenbaar"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Volgorde behandeling:",
+          "key": "LB_BehandelingDoor",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "customDefaultValue": {
+            "var": "data.CO_BehandelingDoor"
+          }
+        }
+      ]
+    },
+    {
+      "legend": "Adviezen",
+      "type": "fieldset",
+      "key": "HF_AdviezenBBV003",
+      "input": false,
+      "conditional": {
+        "show": false,
+        "when": "AM_Adviseur1",
+        "eq": null
+      },
+      "components": [
+        {
+          "label": "Advies gevraagd van:",
+          "key": "LB_Adviseur1",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "AM_Adviseur1",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.AM_Adviseur1"
+          }
+        },
+        {
+          "label": "Korte samenvatting van het advies:",
+          "type": "textarea",
+          "key": "TA_ToelichtingAdviseur1",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": false
+        },
+        {
+          "label": "Advies gevraagd van:",
+          "key": "LB_Adviseur2",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "AM_Adviseur2",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.AM_Adviseur2"
+          }
+        },
+        {
+          "label": "Korte samenvatting van het advies:",
+          "type": "textarea",
+          "key": "TA_ToelichtingAdviseur2",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": false
+        },
+        {
+          "label": "Advies gevraagd van:",
+          "key": "LB_Adviseur3",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "AM_Adviseur3",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.AM_Adviseur3"
+          }
+        },
+        {
+          "label": "Korte samenvatting van het advies:",
+          "type": "textarea",
+          "key": "TA_ToelichtingAdviseur3",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": false
+        },
+        {
+          "label": "Advies gevraagd van:",
+          "key": "LB_Adviseur4",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "AM_Adviseur4",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.AM_Adviseur4"
+          }
+        },
+        {
+          "label": "Korte samenvatting van het advies:",
+          "type": "textarea",
+          "key": "TA_ToelichtingAdviseur4",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": false
+        },
+        {
+          "label": "Advies gevraagd van:",
+          "key": "LB_Adviseur5",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "AM_Adviseur5",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.AM_Adviseur5"
+          }
+        },
+        {
+          "label": "Korte samenvatting van het advies:",
+          "type": "textarea",
+          "key": "TA_ToelichtingAdviseur5",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": false
+        },
+        {
+          "label": "Advies gevraagd van:",
+          "key": "LB_Adviseur6",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "AM_Adviseur6",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.AM_Adviseur6"
+          }
+        },
+        {
+          "label": "Korte samenvatting van het advies:",
+          "type": "textarea",
+          "key": "TA_ToelichtingAdviseur6",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": false
+        },
+        {
+          "label": "Advies gevraagd van:",
+          "key": "LB_Adviseur7",
+          "type": "textfield",
+          "input": false,
+          "disabled": true,
+          "tableView": false,
+          "conditional": {
+            "show": false,
+            "when": "AM_Adviseur7",
+            "eq": null
+          },
+          "customDefaultValue": {
+            "var": "data.AM_Adviseur7"
+          }
+        },
+        {
+          "label": "Korte samenvatting van het advies:",
+          "type": "textarea",
+          "key": "TA_ToelichtingAdviseur7",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": false
+        }
+      ]
+    },
+    {
+      "legend": "Vervolg",
+      "type": "fieldset",
+      "key": "LB_VervolgGEMSEC",
+      "input": false,
+      "components": [
+        {
+          "label": "Procedure:",
+          "type": "select",
+          "key": "CO_Procedure",
+          "widget": "html5",
+          "input": true,
+          "validate": {
+            "required": true
+          },
+          "data": {
+            "values": [
+              {
+                "label": "Ter kennisname",
+                "value": "Kennisname"
+              },
+              {
+                "label": "Ter bespreking",
+                "value": "Bespreken"
+              },
+              {
+                "label": "Ter besluitvorming",
+                "value": "Besluitvorming"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Vervolg:",
+          "type": "select",
+          "key": "CO_DoorzettenAgenda",
+          "widget": "html5",
+          "input": true,
+          "validate": {
+            "required": true
+          },
+          "data": {
+            "values": [
+              {
+                "label": "Het voorstel kan op de agenda gezet worden. Opmerkingen aan secretariaat:",
+                "value": "Agenda"
+              },
+              {
+                "label": "Het voorstel moet aangepast worden. Bericht aan de de steller:",
+                "value": "Aanpassen"
+              },
+              {
+                "label": "Het voorstel wordt aangehouden. Bericht aan de de steller:",
+                "value": "Aanhouden"
+              },
+              {
+                "label": "Het voorstel is ingetrokken. De reden is:",
+                "value": "Intrekken"
+              }
+            ]
+          }
+        },
+        {
+          "key": "TA_ToelichtingBesluitAgendacommissie",
+          "hideLabel": true,
+          "type": "textarea",
+          "applyMaskOn": "change",
+          "autoExpand": false,
+          "input": false
+        }
+      ]
+    },
+    {
+      "legend": "Documenten tbv College",
+      "type": "fieldset",
+      "key": "HF_DocumentenCollege",
+      "input": false,
+      "conditional": {
+        "show": true,
+        "when": "CO_BehandelingDoor",
+        "neq": "Burgemeestersbesluit"
+      },
+      "components": [
+      ]
+    },
+    {
+      "legend": "Documenten tbv Gemeenteraad",
+      "type": "fieldset",
+      "key": "HF_DocumentenRaad",
+      "input": false,
+      "conditional": {
+        "show": true,
+        "json": {
+          "or": [
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "Raad"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "data.CO_BehandelingDoor"
+                },
+                "DirectieRaad"
+              ]
+            }
+          ]
+        }
+      },
+      "components": [
+      ]
+    },
+    {
+      "legend": "Documenten tbv Burgemeestersbesluit",
+      "type": "fieldset",
+      "key": "HF_DocumentenBurgemeestersbesluit",
+      "input": false,
+      "conditional": {
+        "show": true,
+        "when": "CO_BehandelingDoor",
+        "eq": "Burgemeestersbesluit"
+      },
+      "components": [
+      ]
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

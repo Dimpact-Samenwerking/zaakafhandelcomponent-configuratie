@@ -5,22 +5,8 @@
     <extensionElements>
       <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
       <design:creationdate><![CDATA[2025-03-03T11:09:11.235Z]]></design:creationdate>
-      <design:modificationdate><![CDATA[2025-03-11T14:06:41.108Z]]></design:modificationdate>
+      <design:modificationdate><![CDATA[2025-04-07T05:49:34.876Z]]></design:modificationdate>
     </extensionElements>
-    <userTask id="BBV_ITS000" name="Start Bestuurlijke besluitvorming" flowable:candidateGroups="groepa" flowable:formKey="BBV_ITS000" flowable:formFieldValidation="false">
-      <extensionElements>
-        <flowable:static-form-key><![CDATA[BBV_ITS000]]></flowable:static-form-key>
-        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
-        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
-        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
-      </extensionElements>
-    </userTask>
-    <manualTask id="WIJZ000" name="Zaaktoewijzing wijzigen">
-      <extensionElements>
-        <design:stencilid><![CDATA[ManualTask]]></design:stencilid>
-        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
-      </extensionElements>
-    </manualTask>
     <userTask id="BBV_ITS001" name="Opstellen-Aanpassen voorstel" flowable:candidateGroups="groepa" flowable:formKey="BBV_ITS001" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS001]]></flowable:static-form-key>
@@ -978,16 +964,6 @@
       </extensionElements>
       <terminateEventDefinition></terminateEventDefinition>
     </endEvent>
-    <sequenceFlow id="SequenceFlow_3" sourceRef="BBV_ITS000" targetRef="WIJZ000">
-      <extensionElements>
-        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
-      </extensionElements>
-    </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_5" sourceRef="WIJZ000" targetRef="BBV_ITS001">
-      <extensionElements>
-        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
-      </extensionElements>
-    </sequenceFlow>
     <sequenceFlow id="SequenceFlow_31" sourceRef="BBV_ITS001" targetRef="BBVB003A">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
@@ -1779,7 +1755,7 @@
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:get(CO_DoorzettenAgenda) == 'Intrekken' && 
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:get(CO_DoorzettenAgenda) == 'Intrekken' &&
   var:get(RB_OordeelAfstemmenGemSec) == 'Nee'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_170" sourceRef="InclusiveGateway_165" targetRef="BBV_ITS004">
@@ -1877,8 +1853,8 @@
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:get(CO_BesluitCollege) == 'Aanpassen' || 
-((var:get(CO_BesluitCollege) == 'Wijzigen' || var:get(CO_BesluitCollege) == 'AangepastBesloten') && 
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:get(CO_BesluitCollege) == 'Aanpassen' ||
+((var:get(CO_BesluitCollege) == 'Wijzigen' || var:get(CO_BesluitCollege) == 'AangepastBesloten') &&
 (var:get(CO_BehandelingDoor) == 'DirectieRaad' || var:get(CO_BehandelingDoor) == 'Raad'))}
 
 ]]></conditionExpression>
@@ -2056,7 +2032,7 @@
       </extensionElements>
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[false]]></conditionExpression>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_2" sourceRef="STN001" targetRef="BBV_ITS000">
+    <sequenceFlow id="SequenceFlow_313" sourceRef="STN001" targetRef="BBV_ITS001">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -2193,12 +2169,6 @@
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_bestuurlijkeBesluitvormingBehandelen">
     <bpmndi:BPMNPlane bpmnElement="bestuurlijkeBesluitvormingBehandelen" id="BPMNPlane_bestuurlijkeBesluitvormingBehandelen">
-      <bpmndi:BPMNShape bpmnElement="BBV_ITS000" id="BPMNShape_BBV_ITS000">
-        <omgdc:Bounds height="80.0" width="100.0" x="282.0" y="353.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="WIJZ000" id="BPMNShape_WIJZ000">
-        <omgdc:Bounds height="80.0" width="100.0" x="282.0" y="500.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBV_ITS001" id="BPMNShape_BBV_ITS001">
         <omgdc:Bounds height="80.0" width="100.0" x="282.0" y="631.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
@@ -2587,9 +2557,9 @@
         <omgdc:Bounds height="40.0" width="40.0" x="7598.999999999999" y="651.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="STN001" id="BPMNShape_STN001">
-        <omgdc:Bounds height="30.0" width="30.0" x="317.0" y="261.0"></omgdc:Bounds>
+        <omgdc:Bounds height="30.0" width="30.0" x="317.0" y="438.38227688341726"></omgdc:Bounds>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="18.0" width="124.0" x="270.0" y="239.0"></omgdc:Bounds>
+          <omgdc:Bounds height="18.0" width="124.0" x="278.0" y="412.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBVE0041" id="BPMNShape_BBVE0041">
@@ -2836,6 +2806,10 @@
         <omgdi:waypoint x="1453.0" y="1680.0"></omgdi:waypoint>
         <omgdi:waypoint x="1545.0" y="1680.0"></omgdi:waypoint>
         <omgdi:waypoint x="1545.0" y="1101.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_313" id="BPMNEdge_SequenceFlow_313" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="332.0" y="468.38227688341726"></omgdi:waypoint>
+        <omgdi:waypoint x="332.0" y="631.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_72" id="BPMNEdge_SequenceFlow_72" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="1456.0" y="1781.0"></omgdi:waypoint>
@@ -3663,18 +3637,6 @@
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_32" id="BPMNEdge_SequenceFlow_32" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="495.99999999999994" y="671.0"></omgdi:waypoint>
         <omgdi:waypoint x="572.0" y="671.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_5" id="BPMNEdge_SequenceFlow_5" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
-        <omgdi:waypoint x="332.0" y="580.0"></omgdi:waypoint>
-        <omgdi:waypoint x="332.0" y="631.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_2" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
-        <omgdi:waypoint x="332.0" y="291.0"></omgdi:waypoint>
-        <omgdi:waypoint x="332.0" y="353.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" id="BPMNEdge_SequenceFlow_3" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
-        <omgdi:waypoint x="332.0" y="433.0"></omgdi:waypoint>
-        <omgdi:waypoint x="332.0" y="500.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_308" id="BPMNEdge_SequenceFlow_308" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="7356.999999999999" y="671.0"></omgdi:waypoint>

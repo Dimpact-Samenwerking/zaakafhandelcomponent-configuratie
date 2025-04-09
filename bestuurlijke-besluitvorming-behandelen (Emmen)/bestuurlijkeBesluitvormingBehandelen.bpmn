@@ -1414,7 +1414,7 @@
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:get(CO_Spoedprocedure) == 'GEMSEC' && (var:get(CO_BesluitCollege) == 'Wijzigen' || var:get() == 'AangepastBesloten')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:get(CO_Spoedprocedure) == 'GEMSEC' && (var:get(CO_BesluitCollege) == 'Wijzigen' || var:get(CO_BesluitCollege) == 'AangepastBesloten')}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_259" sourceRef="BBVB003A" targetRef="BBV_ITS012">
       <extensionElements>

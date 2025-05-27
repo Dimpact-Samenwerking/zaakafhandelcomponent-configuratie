@@ -36,31 +36,48 @@
           "input": false,
           "components": [
             {
-              "key": "PA_InleidingDocumentMaken",
-              "hideLabel": true,
-              "type": "content",
-              "html": "<p><em><strong>Kies hieronder het gewenste sjabloon. Let op: SmartDocuments wordt pas opgestart nadat je hebt geklikt op de knop 'Aanmaken' die je rechts van de sjabloonnaam ziet staan</strong></em></p>",
-              "refreshOnChange": false,
-              "input": false
-            },
-            {
-              "label": "Document maken:",
-              "type": "select",
-              "key": "TD_Voorstel",
-              "widget": "html5",
-              "input": true,
-              "data": {
-                "values": [
-                  {
-                    "label": "Template 1",
-                    "value": "Template1"
+              "legend": "SmartDocuments",
+              "type": "groepSmartDocumentsFieldset",
+              "key": "AM_SmartDocuments",
+              "input": false,
+              "components": [
+                {
+                  "key": "PA_InleidingDocumentMaken",
+                  "hideLabel": true,
+                  "type": "content",
+                  "html": "<p><em><strong>Kies hieronder het gewenste sjabloon. Let op: SmartDocuments wordt pas opgestart nadat je hebt geklikt op de knop 'Aanmaken' die je rechts van de sjabloonnaam ziet staan</strong></em></p>",
+                  "refreshOnChange": false,
+                  "input": false
+                },
+                {
+                  "label": "Document maken:",
+                  "type": "select",
+                  "key": "AM_SmartDocuments_Template",
+                  "input": true,
+                  "widget": "html5",
+                  "validate": {
+                    "required": true
                   },
-                  {
-                    "label": "Template 2",
-                    "value": "Template2"
+                  "dataSrc": "custom",
+                  "clearOnRefresh": true
+                },
+                {
+                  "label": "Document maken",
+                  "action": "event",
+                  "showValidations": false,
+                  "block": true,
+                  "tableView": false,
+                  "key": "AM_SmartDocuments_Create",
+                  "type": "button",
+                  "event": "createDocument",
+                  "input": true,
+                  "properties": {
+                    "SmartDocuments_Group": "Dimpact/OpenZaak",
+                    "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "3e84c231-7ff8-43c8-a2a0-7e2601f1477a",
+                    "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "3e84c231-7ff8-43c8-a2a0-7e2601f1477a"
                   }
-                ]
-              }
+                }
+              ]
             },
             {
               "label": "E-mailadres steller: (tbv signaleringsmails)",

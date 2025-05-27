@@ -52,7 +52,7 @@
                 {
                   "label": "Document maken:",
                   "type": "select",
-                  "key": "HF_Gegevens_voorstel_Template",
+                  "key": "AM_SmartDocuments_Template",
                   "input": true,
                   "widget": "html5",
                   "validate": {
@@ -67,7 +67,7 @@
                   "showValidations": false,
                   "block": true,
                   "tableView": false,
-                  "key": "HF_Gegevens_voorstel_Create",
+                  "key": "AM_SmartDocuments_Create",
                   "type": "button",
                   "event": "createDocument",
                   "input": true,

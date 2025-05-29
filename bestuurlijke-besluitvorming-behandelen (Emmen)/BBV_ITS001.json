@@ -2085,7 +2085,7 @@
       "components": [
         {
           "legend": "Datum CMT-vergadering",
-          "type": "fieldset",
+          "type": "groepReferenceTableFieldset",
           "key": "HF_DatumMTVergadering",
           "input": false,
           "components": [
@@ -2098,17 +2098,9 @@
               "validate": {
                 "required": true
               },
-              "data": {
-                "values": [
-                  {
-                    "label": "Selectielijst waarde 1",
-                    "value": "waarde1"
-                  },
-                  {
-                    "label": "Selectielijst waarde 2",
-                    "value": "waarde2"
-                  }
-                ]
+              "dataSrc": "custom",
+              "properties": {
+                "ReferenceTable_Code": "DATUMMTVERGADERING"
               }
             }
           ]
@@ -2391,7 +2383,7 @@
         },
         {
           "legend": "Datum collegevergadering",
-          "type": "fieldset",
+          "type": "groepReferenceTableFieldset",
           "key": "HF_DatumCollegevergadering",
           "input": false,
           "components": [
@@ -2404,17 +2396,9 @@
               "validate": {
                 "required": true
               },
-              "data": {
-                "values": [
-                  {
-                    "label": "Selectielijst waarde 1",
-                    "value": "waarde1"
-                  },
-                  {
-                    "label": "Selectielijst waarde 2",
-                    "value": "waarde2"
-                  }
-                ]
+              "dataSrc": "custom",
+              "properties": {
+                "ReferenceTable_Code": "DATUMCOLLEGEVERGADERING"
               }
             }
           ]

@@ -2486,7 +2486,7 @@
       "components": [
         {
           "legend": "Datum raadsvergadering",
-          "type": "fieldset",
+          "type": "groepReferenceTableFieldset",
           "key": "HF_DatumRaadsvergadering",
           "input": false,
           "components": [

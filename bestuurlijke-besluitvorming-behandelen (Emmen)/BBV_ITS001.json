@@ -37,7 +37,7 @@
           "components": [
             {
               "legend": "SmartDocuments",
-              "type": "groepSmartDocumentsFieldset",
+              "type": "smartDocumentsFieldset",
               "key": "AM_SmartDocuments",
               "input": false,
               "components": [
@@ -2085,7 +2085,7 @@
       "components": [
         {
           "legend": "Datum CMT-vergadering",
-          "type": "groepReferenceTableFieldset",
+          "type": "referenceTableFieldset",
           "key": "HF_DatumMTVergadering",
           "input": false,
           "components": [
@@ -2383,7 +2383,7 @@
         },
         {
           "legend": "Datum collegevergadering",
-          "type": "groepReferenceTableFieldset",
+          "type": "referenceTableFieldset",
           "key": "HF_DatumCollegevergadering",
           "input": false,
           "components": [
@@ -2486,7 +2486,7 @@
       "components": [
         {
           "legend": "Datum raadsvergadering",
-          "type": "groepReferenceTableFieldset",
+          "type": "referenceTableFieldset",
           "key": "HF_DatumRaadsvergadering",
           "input": false,
           "components": [

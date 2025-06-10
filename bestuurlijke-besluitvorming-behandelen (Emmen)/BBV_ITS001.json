@@ -2147,7 +2147,7 @@
         },
         {
           "label": "Te koppelen bestanden aan agenda CMT",
-          "type": "fieldset",
+          "type": "documentsFieldset",
           "key": "HF_DocumentenDirectie",
           "input": false,
           "components": [
@@ -2161,11 +2161,13 @@
             },
             {
               "label": "Te koppelen bestanden:",
-              "type": "textarea",
+              "type": "select",
               "key": "SD_DocumentenDirectie",
               "applyMaskOn": "change",
-              "autoExpand": false,
+              "widget": "html5",
               "input": true,
+              "dataSrc": "custom",
+              "multiple": true,
               "validate": {
                 "required": true
               }
@@ -2405,7 +2407,7 @@
         },
         {
           "label": "Te koppelen bestanden aan agenda College",
-          "type": "fieldset",
+          "type": "documentsFieldset",
           "key": "HF_DocumentenCollege1",
           "input": false,
           "components": [
@@ -2419,11 +2421,13 @@
             },
             {
               "label": "Te koppelen bestanden:",
-              "type": "textarea",
+              "type": "select",
               "key": "SD_DocumentenAgendaCollege",
               "applyMaskOn": "change",
-              "autoExpand": false,
+              "widget": "html5",
               "input": true,
+              "dataSrc": "custom",
+              "multiple": true,
               "validate": {
                 "required": true
               }
@@ -2516,7 +2520,7 @@
         },
         {
           "label": "Te koppelen bestanden aan agenda Gemeenteraad",
-          "type": "fieldset",
+          "type": "documentsFieldset",
           "key": "HF_DocumentenKoppelenRaad",
           "input": false,
           "components": [
@@ -2530,11 +2534,13 @@
             },
             {
               "label": "Te koppelen bestanden:",
-              "type": "textarea",
+              "type": "select",
               "key": "SD_DocumentenAgendaRaad",
               "applyMaskOn": "change",
-              "autoExpand": false,
+              "widget": "html5",
               "input": true,
+              "dataSrc": "custom",
+              "multiple": true,
               "validate": {
                 "required": true
               }

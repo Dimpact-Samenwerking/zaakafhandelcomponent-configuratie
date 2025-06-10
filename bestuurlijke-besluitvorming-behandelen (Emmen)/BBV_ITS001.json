@@ -37,7 +37,7 @@
           "components": [
             {
               "legend": "SmartDocuments",
-              "type": "groepSmartDocumentsFieldset",
+              "type": "smartDocumentsFieldset",
               "key": "AM_SmartDocuments",
               "input": false,
               "components": [
@@ -2085,7 +2085,7 @@
       "components": [
         {
           "legend": "Datum CMT-vergadering",
-          "type": "groepReferenceTableFieldset",
+          "type": "referenceTableFieldset",
           "key": "HF_DatumMTVergadering",
           "input": false,
           "components": [
@@ -2147,7 +2147,7 @@
         },
         {
           "label": "Te koppelen bestanden aan agenda CMT",
-          "type": "fieldset",
+          "type": "documentsFieldset",
           "key": "HF_DocumentenDirectie",
           "input": false,
           "components": [
@@ -2161,11 +2161,13 @@
             },
             {
               "label": "Te koppelen bestanden:",
-              "type": "textarea",
+              "type": "select",
               "key": "SD_DocumentenDirectie",
               "applyMaskOn": "change",
-              "autoExpand": false,
+              "widget": "html5",
               "input": true,
+              "dataSrc": "custom",
+              "multiple": true,
               "validate": {
                 "required": true
               }
@@ -2383,7 +2385,7 @@
         },
         {
           "legend": "Datum collegevergadering",
-          "type": "groepReferenceTableFieldset",
+          "type": "referenceTableFieldset",
           "key": "HF_DatumCollegevergadering",
           "input": false,
           "components": [
@@ -2405,7 +2407,7 @@
         },
         {
           "label": "Te koppelen bestanden aan agenda College",
-          "type": "fieldset",
+          "type": "documentsFieldset",
           "key": "HF_DocumentenCollege1",
           "input": false,
           "components": [
@@ -2419,11 +2421,13 @@
             },
             {
               "label": "Te koppelen bestanden:",
-              "type": "textarea",
+              "type": "select",
               "key": "SD_DocumentenAgendaCollege",
               "applyMaskOn": "change",
-              "autoExpand": false,
+              "widget": "html5",
               "input": true,
+              "dataSrc": "custom",
+              "multiple": true,
               "validate": {
                 "required": true
               }
@@ -2486,7 +2490,7 @@
       "components": [
         {
           "legend": "Datum raadsvergadering",
-          "type": "groepReferenceTableFieldset",
+          "type": "referenceTableFieldset",
           "key": "HF_DatumRaadsvergadering",
           "input": false,
           "components": [
@@ -2516,7 +2520,7 @@
         },
         {
           "label": "Te koppelen bestanden aan agenda Gemeenteraad",
-          "type": "fieldset",
+          "type": "documentsFieldset",
           "key": "HF_DocumentenKoppelenRaad",
           "input": false,
           "components": [
@@ -2530,11 +2534,13 @@
             },
             {
               "label": "Te koppelen bestanden:",
-              "type": "textarea",
+              "type": "select",
               "key": "SD_DocumentenAgendaRaad",
               "applyMaskOn": "change",
-              "autoExpand": false,
+              "widget": "html5",
               "input": true,
+              "dataSrc": "custom",
+              "multiple": true,
               "validate": {
                 "required": true
               }

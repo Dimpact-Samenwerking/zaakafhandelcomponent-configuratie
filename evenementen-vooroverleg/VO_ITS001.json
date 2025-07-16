@@ -1,0 +1,158 @@
+{
+  "name": "VO_ITS001",
+  "title": "Opstellen en verzenden ontvangstbevestiging",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "type": "smartDocumentsFieldset",
+      "key": "TD_Ontvangstbevestiging",
+      "input": false,
+      "components": [
+        {
+          "label": "Ontvangstbevestiging:",
+          "type": "select",
+          "key": "TD_Ontvangstbevestiging_Template",
+          "input": true,
+          "widget": "html5",
+          "dataSrc": "custom",
+          "clearOnRefresh": true
+        },
+        {
+          "label": "Maak document",
+          "action": "event",
+          "showValidations": false,
+          "tableView": false,
+          "key": "TD_Ontvangstbevestiging_Create",
+          "type": "button",
+          "event": "createDocument",
+          "input": true,
+          "properties": {
+            "SmartDocuments_Group": "Dimpact/OpenZaak",
+            "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "df964baf-d3fe-430a-b711-03e389041f20",
+            "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "efc332f2-be3b-4bad-9e3c-49a6219c92ad"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Verzenddatum",
+      "type": "datetime",
+      "key": "DF_VerzenddatumOntvangstbevestiging",
+      "tooltip": "Vul de verzenddatum in.",
+      "useLocaleSettings": true,
+      "format": "dd-MM-yyyy",
+      "datePicker": {
+        "disableWeekends": false,
+        "disableWeekdays": false,
+        "minDate": "moment()"
+      },
+      "enableTime": false,
+      "validate": {
+        "required": true
+      },
+      "enableMinDateInput": true,
+      "enableMaxDateInput": false,
+      "input": true,
+      "widget": {
+        "type": "calendar",
+        "displayInTimezone": "viewer",
+        "locale": "nl",
+        "useLocaleSettings": true,
+        "allowInput": true,
+        "mode": "single",
+        "enableTime": false,
+        "noCalendar": false,
+        "format": "dd-MM-yyyy",
+        "minDate": "moment()"
+      }
+    },
+    {
+      "type": "referenceTableFieldset",
+      "key": "CB_CategorieEvenement",
+      "input": false,
+      "components": [
+        {
+          "label": "Categorie evenement",
+          "type": "select",
+          "key": "RT_ReferenceTable_Values",
+          "input": true,
+          "widget": "html5",
+          "validate": {
+            "required": true
+          },
+          "dataSrc": "custom",
+          "properties": {
+            "ReferenceTable_Code": "COMMUNICATIEKANAAL"
+          }
+        }
+      ]
+    },
+    {
+      "label": "De aanvraag bevat de volgende activiteiten:",
+      "type": "radio",
+      "key": "CB_Activiteiten",
+      "input": true,
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "validate": {
+        "required": true
+      },
+      "values": [
+        {
+          "label": "Evenementenvergunning",
+          "value": "evenement"
+        },
+        {
+          "label": "Ontheffing artikel 35 Alcoholwet",
+          "value": "artikel35"
+        },
+        {
+          "label": "Ontheffing stadsvloer",
+          "value": "stadvloer"
+        }
+      ]
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "action": "saveState",
+                  "state": "draft",
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "naam": "VO_ITS012",
+  "title": "Opstellen eindbrief",
+  "display": "wizard",
+  "components": [
+    {
+      "label": "Opstellen eindbrief",
+      "type": "panel",
+      "key": "VO_ITS012_SN001",
+      "title": "Opstellen eindbrief",
+      "input": false,
+      "breadcrumbClickable": false,
+      "buttonSettings": {
+        "next": true,
+        "previous": false,
+        "cancel": false
+      },
+      "components": [
+      ]
+    },
+    {
+      "label": "Vastleggen leges",
+      "type": "panel",
+      "key": "VO_ITS012_SN002",
+      "title": "Vastleggen leges",
+      "input": false,
+      "breadcrumbClickable": false,
+      "buttonSettings": {
+        "next": true,
+        "previous": false,
+        "cancel": false
+      },
+      "components": [
+      ]
+    },
+    {
+      "label": "Vastleggen besluit",
+      "type": "panel",
+      "key": "VO_ITS012_SN004",
+      "title": "Vastleggen besluit",
+      "input": false,
+      "breadcrumbClickable": false,
+      "buttonSettings": {
+        "next": true,
+        "previous": false,
+        "cancel": false
+      },
+      "components": [
+      ]
+    }
+  ]
+}

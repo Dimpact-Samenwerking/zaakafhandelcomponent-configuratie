@@ -1,0 +1,141 @@
+{
+  "name": "VO_ITS070",
+  "title": "Voortgangsbewaking adviezen",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "label": "Groep adviseur 1:",
+      "type": "textfield",
+      "key": "AGM_Adviseur1_Groep",
+      "input": true,
+      "disabled": true
+    },
+    {
+      "label": "Adviseur 1:",
+      "type": "textfield",
+      "key": "AGM_Adviseur1_Medewerker",
+      "input": true,
+      "disabled": true
+    },
+    {
+      "label": "Adviseur 1 is akkoord:",
+      "type": "radio",
+      "key": "RB_AdviseurAkkoord1",
+      "input": true,
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "disabled": true,
+      "values": [
+        {
+          "label": "Ja",
+          "value": "ja"
+        },
+        {
+          "label": "Nee",
+          "value": "nee"
+        }
+      ]
+    },
+    {
+      "label": "Reden adviseur 1 niet akkoord:",
+      "type": "textarea",
+      "key": "TA_RedenNietAkkoordAdviseur1",
+      "autoExpand": false,
+      "input": true,
+      "disabled": true,
+      "conditional": {
+        "show": true,
+        "when": "RB_AdviseurAkkoord1",
+        "eq": "nee"
+      }
+    },
+    {
+      "label": "Groep adviseur 2:",
+      "type": "textfield",
+      "key": "AGM_Adviseur2_Groep",
+      "input": true,
+      "disabled": true
+    },
+    {
+      "label": "Adviseur 2:",
+      "type": "textfield",
+      "key": "AGM_Adviseur2_Medewerker",
+      "input": true,
+      "disabled": true
+    },
+    {
+      "label": "Adviseur 2 is akkoord:",
+      "type": "radio",
+      "key": "RB_AdviseurAkkoord2",
+      "input": true,
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "disabled": true,
+      "values": [
+        {
+          "label": "Ja",
+          "value": "ja"
+        },
+        {
+          "label": "Nee",
+          "value": "nee"
+        }
+      ]
+    },
+    {
+      "label": "Reden adviseur 2 niet akkoord:",
+      "type": "textarea",
+      "key": "TA_RedenNietAkkoordAdviseur2",
+      "autoExpand": false,
+      "input": true,
+      "disabled": true,
+      "conditional": {
+        "show": true,
+        "when": "RB_AdviseurAkkoord2",
+        "eq": "nee"
+      }
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "action": "saveState",
+                  "state": "draft",
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

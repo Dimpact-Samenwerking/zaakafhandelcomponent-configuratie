@@ -1,0 +1,165 @@
+{
+  "name": "VO_ITS006",
+  "title": "Keuze specialisten inhoudelijke beoordeling",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "label": "Advies van specialist is nodig:",
+      "type": "radio",
+      "key": "RB_AdviesSpecialistNodig",
+      "input": true,
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "validate": {
+        "required": true
+      },
+      "values": [
+        {
+          "label": "Nee",
+          "value": "nee"
+        },
+        {
+          "label": "Ja",
+          "value": "ja"
+        }
+      ]
+    },
+    {
+      "type": "groepMedewerkerFieldset",
+      "key": "AGM_Adviseur1",
+      "input": false,
+      "conditional": {
+        "show": true,
+        "when": "RB_AdviesSpecialistNodig",
+        "eq": "ja"
+      },
+      "components": [
+        {
+          "label": "Groep adviseur 1",
+          "type": "select",
+          "key": "AGM_Adviseur1_Groep",
+          "input": true,
+          "widget": "html5",
+          "validate": {
+            "required": true
+          },
+          "dataSrc": "custom",
+          "clearOnRefresh": true
+        },
+        {
+          "label": "Adviseur 1",
+          "type": "select",
+          "key": "AGM_Adviseur1_Medewerker",
+          "widget": "html5",
+          "input": true,
+          "validate": {
+            "required": true
+          },
+          "dataSrc": "custom",
+          "refreshOn": "AGM_Adviseur1_Groep",
+          "clearOnRefresh": true
+        }
+      ]
+    },
+    {
+      "label": "Adviesvraag adviseur 1:",
+      "type": "textarea",
+      "key": "TA_AdviesvraagAdviseur1",
+      "autoExpand": false,
+      "input": true,
+      "validate": {
+        "required": true
+      },
+      "conditional": {
+        "show": true,
+        "when": "RB_AdviesSpecialistNodig",
+        "eq": "ja"
+      }
+    },
+    {
+      "type": "groepMedewerkerFieldset",
+      "key": "AGM_Adviseur2",
+      "input": false,
+      "conditional": {
+        "show": true,
+        "when": "RB_AdviesSpecialistNodig",
+        "eq": "ja"
+      },
+      "components": [
+        {
+          "label": "Groep adviseur 2",
+          "type": "select",
+          "key": "AGM_Adviseur2_Groep",
+          "input": true,
+          "widget": "html5",
+          "dataSrc": "custom",
+          "clearOnRefresh": true
+        },
+        {
+          "label": "Adviseur 2",
+          "type": "select",
+          "key": "AGM_Adviseur2_Medewerker",
+          "widget": "html5",
+          "input": true,
+          "dataSrc": "custom",
+          "refreshOn": "AGM_Adviseur2_Groep",
+          "clearOnRefresh": true
+        }
+      ]
+    },
+    {
+      "label": "Adviesvraag adviseur 2:",
+      "type": "textarea",
+      "key": "TA_AdviesvraagAdviseur2",
+      "autoExpand": false,
+      "input": true,
+      "conditional": {
+        "show": true,
+        "when": "RB_AdviesSpecialistNodig",
+        "eq": "ja"
+      }
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "action": "saveState",
+                  "state": "draft",
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

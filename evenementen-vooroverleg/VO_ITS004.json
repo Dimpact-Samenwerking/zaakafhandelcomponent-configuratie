@@ -1,0 +1,110 @@
+{
+  "name": "VO_ITS004",
+  "title": "Afdrukken en verzenden brief aanvulling",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "label": "Verzendinstructie:",
+      "type": "textarea",
+      "key": "TA_Verzendinstructie",
+      "autoExpand": false,
+      "input": true
+    },
+    {
+      "label": "Verzenddatum",
+      "type": "datetime",
+      "key": "DF_VerzenddatumBriefAanvulling",
+      "useLocaleSettings": true,
+      "format": "dd-MM-yyyy",
+      "datePicker": {
+        "disableWeekends": false,
+        "disableWeekdays": false,
+        "minDate": "moment()"
+      },
+      "enableTime": false,
+      "validate": {
+        "required": true
+      },
+      "enableMinDateInput": true,
+      "enableMaxDateInput": false,
+      "input": true,
+      "widget": {
+        "type": "calendar",
+        "displayInTimezone": "viewer",
+        "locale": "nl",
+        "useLocaleSettings": true,
+        "allowInput": true,
+        "mode": "single",
+        "enableTime": false,
+        "noCalendar": false,
+        "format": "dd-MM-yyyy",
+        "minDate": "moment()"
+      }
+    },
+    {
+      "label": "Hersteltermijn (dagen):",
+      "type": "number",
+      "key": "NF_Hersteltermijn",
+      "tooltip": "Geef de hersteltermijn op voor het aanleveren van de aanvullende stukken (Dagen):",
+      "applyMaskOn": "change",
+      "mask": false,
+      "tableView": false,
+      "delimiter": false,
+      "requireDecimal": false,
+      "inputFormat": "plain",
+      "truncateMultipleSpaces": false,
+      "validateWhenHidden": false,
+      "input": true
+    },
+    {
+      "type": "content",
+      "key": "opschorten",
+      "html": "<p>Zaak opschorten op basis van hersteltermijn wordt niet ondersteund !</p>",
+      "refreshOnChange": false,
+      "input": false,
+      "tableView": false
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "action": "saveState",
+                  "state": "draft",
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

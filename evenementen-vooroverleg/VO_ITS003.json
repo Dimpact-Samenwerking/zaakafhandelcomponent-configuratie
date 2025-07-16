@@ -1,0 +1,120 @@
+{
+  "name": "VO_ITS003",
+  "title": "Vaststellen volledigheid",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "label": "De aanvraag is volledig genoeg om in behandeling te nemen:",
+      "type": "radio",
+      "key": "RB_AanvraagVolledig",
+      "input": true,
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "validate": {
+        "required": true
+      },
+      "values": [
+        {
+          "label": "Ja",
+          "value": "ja"
+        },
+        {
+          "label": "Nee, aanvulling vragen in brief",
+          "value": "nee"
+        }
+      ]
+    },
+    {
+      "type": "smartDocumentsFieldset",
+      "key": "TD_AanvullingVragen",
+      "input": false,
+      "components": [
+        {
+          "label": "Brief aanvulling:",
+          "type": "select",
+          "key": "TD_AanvullingVragen_Template",
+          "input": true,
+          "widget": "html5",
+          "dataSrc": "custom",
+          "clearOnRefresh": true
+        },
+        {
+          "label": "Maak document",
+          "action": "event",
+          "showValidations": false,
+          "tableView": false,
+          "key": "TD_AanvullingVragen_Create",
+          "type": "button",
+          "event": "createDocument",
+          "input": true,
+          "properties": {
+            "SmartDocuments_Group": "Dimpact/OpenZaak",
+            "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "df964baf-d3fe-430a-b711-03e389041f20",
+            "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "efc332f2-be3b-4bad-9e3c-49a6219c92ad"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Reden niet volledig:",
+      "type": "textfield",
+      "key": "TF_Redennietvolledig",
+      "input": true,
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Verzendinstructie:",
+      "type": "textarea",
+      "key": "TA_Verzendinstructie",
+      "autoExpand": false,
+      "input": true,
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "action": "saveState",
+                  "state": "draft",
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

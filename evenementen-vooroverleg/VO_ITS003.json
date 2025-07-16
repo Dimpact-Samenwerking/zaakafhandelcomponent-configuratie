@@ -29,6 +29,11 @@
       "type": "smartDocumentsFieldset",
       "key": "TD_AanvullingVragen",
       "input": false,
+      "conditional": {
+        "show": true,
+        "when": "RB_AanvraagVolledig",
+        "eq": "nee"
+      },
       "components": [
         {
           "label": "Brief aanvulling:",
@@ -63,6 +68,11 @@
       "input": true,
       "validate": {
         "required": true
+      },
+      "conditional": {
+        "show": true,
+        "when": "RB_AanvraagVolledig",
+        "eq": "nee"
       }
     },
     {
@@ -73,6 +83,11 @@
       "input": true,
       "validate": {
         "required": true
+      },
+      "conditional": {
+        "show": true,
+        "when": "RB_AanvraagVolledig",
+        "eq": "nee"
       }
     },
     {

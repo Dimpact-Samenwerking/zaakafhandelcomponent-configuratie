@@ -1,5 +1,5 @@
 {
-  "name": "VO_ITS070",
+  "name": "VO_ITS0070",
   "title": "Voortgangsbewaking adviezen",
   "display": "form",
   "type": "form",
@@ -55,14 +55,24 @@
       "type": "textfield",
       "key": "AGM_Adviseur2_Groep",
       "input": true,
-      "disabled": true
+      "disabled": true,
+      "conditional": {
+        "json": {
+          "var": "data.AGM_Adviseur2_Medewerker"
+        }
+      }
     },
     {
       "label": "Adviseur 2:",
       "type": "textfield",
       "key": "AGM_Adviseur2_Medewerker",
       "input": true,
-      "disabled": true
+      "disabled": true,
+      "conditional": {
+        "json": {
+          "var": "data.AGM_Adviseur2_Medewerker"
+        }
+      }
     },
     {
       "label": "Adviseur 2 is akkoord:",
@@ -81,7 +91,12 @@
           "label": "Nee",
           "value": "nee"
         }
-      ]
+      ],
+      "conditional": {
+        "json": {
+          "var": "data.AGM_Adviseur2_Medewerker"
+        }
+      }
     },
     {
       "label": "Reden adviseur 2 niet akkoord:",
@@ -97,45 +112,33 @@
       }
     },
     {
-      "label": "Buttons",
-      "key": "buttons",
-      "type": "container",
-      "input": false,
+      "key": "submit",
+      "label": "Afronden",
+      "type": "button",
+      "disableOnInvalid": true,
+      "input": true,
       "tableView": false,
-      "components": [
-        {
-          "type": "columns",
-          "columns": [
+      "conditional": {
+        "json": {
+          "and": [
             {
-              "width": "auto",
-              "components": [
-                {
-                  "key": "save",
-                  "label": "Opslaan",
-                  "type": "button",
-                  "action": "saveState",
-                  "state": "draft",
-                  "input": true,
-                  "tableView": false
-                }
-              ]
+              "var": "data.RB_AdviseurAkkoord1"
             },
             {
-              "width": "auto",
-              "components": [
+              "or": [
                 {
-                  "key": "submit",
-                  "label": "Opslaan & afronden",
-                  "type": "button",
-                  "disableOnInvalid": true,
-                  "input": true,
-                  "tableView": false
+                  "!": {
+                    "var": "data.AGM_Adviseur2_Medewerker"
+                  }
+                },
+                {
+                  "var": "data.RB_AdviseurAkkoord2"
                 }
               ]
             }
           ]
         }
-      ]
+      }
     }
   ]
 }

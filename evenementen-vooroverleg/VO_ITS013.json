@@ -1,0 +1,64 @@
+{
+  "name": "VO_ITS013",
+  "title": "Ondertekenen eindbrief",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "label": "Opmerkingen:",
+      "type": "textarea",
+      "key": "TA_OpmerkingenITS012SN001",
+      "autoExpand": false,
+      "input": true
+    },
+    {
+      "type": "content",
+      "key": "DO_eindbrief",
+      "html": "<p>Het kunnen ondertekenen van bijgevoegde documenten wordt niet ondersteund !</p>",
+      "refreshOnChange": false,
+      "input": false,
+      "tableView": false
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "action": "saveState",
+                  "state": "draft",
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "disableOnInvalid": true,
+                  "input": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

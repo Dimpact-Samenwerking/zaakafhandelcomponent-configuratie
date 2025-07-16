@@ -24,12 +24,12 @@
       },
       "values": [
         {
-          "label": "Ja",
-          "value": "ja"
-        },
-        {
           "label": "Nee",
           "value": "nee"
+        },
+        {
+          "label": "Ja",
+          "value": "ja"
         }
       ]
     },

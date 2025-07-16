@@ -13,9 +13,124 @@
       "buttonSettings": {
         "next": true,
         "previous": false,
-        "cancel": false
+        "cancel": true
       },
       "components": [
+        {
+          "type": "smartDocumentsFieldset",
+          "key": "TD_OpstellenEindbriefBesluit",
+          "input": false,
+          "components": [
+            {
+              "label": "Ontvangstbevestiging:",
+              "type": "select",
+              "key": "TD_OpstellenEindbriefBesluit_Template",
+              "input": true,
+              "widget": "html5",
+              "dataSrc": "custom",
+              "clearOnRefresh": true
+            },
+            {
+              "label": "Maak document",
+              "action": "event",
+              "showValidations": false,
+              "tableView": false,
+              "key": "TD_OpstellenEindbriefBesluit_Create",
+              "type": "button",
+              "event": "createDocument",
+              "input": true,
+              "properties": {
+                "SmartDocuments_Group": "Dimpact/OpenZaak",
+                "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "df964baf-d3fe-430a-b711-03e389041f20",
+                "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "efc332f2-be3b-4bad-9e3c-49a6219c92ad"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Moet er leges worden geheven?:",
+          "type": "radio",
+          "key": "RB_Leges",
+          "input": true,
+          "optionsLabelPosition": "right",
+          "inline": false,
+          "validate": {
+            "required": true
+          },
+          "values": [
+            {
+              "label": "Ja",
+              "value": "ja"
+            },
+            {
+              "label": "Nee",
+              "value": "nee"
+            }
+          ]
+        },
+        {
+          "label": "Opmerkingen:",
+          "type": "textarea",
+          "key": "TA_OpmerkingenITS012SN001",
+          "autoExpand": false,
+          "input": true
+        },
+        {
+          "type": "documentsFieldset",
+          "key": "DS_Ondertekening",
+          "input": false,
+          "components": [
+            {
+              "label": "Selecteer de te ondertekenen documenten:",
+              "type": "select",
+              "key": "DS_Ondertekening_Select",
+              "input": true,
+              "widget": "choicesjs",
+              "multiple": true,
+              "defaultValue": [],
+              "clearOnRefresh": true,
+              "dataSrc": "custom",
+              "placeholder": "Selecteer documenten",
+              "customOptions": {
+                "choicesOptions": {
+                  "removeItemButton": true,
+                  "placeholder": true,
+                  "searchEnabled": true,
+                  "shouldSort": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "content",
+          "key": "ZR_Zaakresultaat",
+          "html": "<p>Het kunnen selecteren van een zaak resultaat en deze in de UpdateZaakJavaDelegate kunnen gebruiken als resultaat wordt niet ondersteund !</p>",
+          "refreshOnChange": false,
+          "input": false,
+          "tableView": false
+        },
+        {
+          "label": "Het besluit van de zaak is:",
+          "type": "radio",
+          "key": "RB_Besluit",
+          "input": true,
+          "optionsLabelPosition": "right",
+          "inline": false,
+          "validate": {
+            "required": true
+          },
+          "values": [
+            {
+              "label": "Positief",
+              "value": "positief"
+            },
+            {
+              "label": "Negatief",
+              "value": "negatief"
+            }
+          ]
+        }
       ]
     },
     {
@@ -27,10 +142,93 @@
       "breadcrumbClickable": false,
       "buttonSettings": {
         "next": true,
-        "previous": false,
-        "cancel": false
+        "previous": true,
+        "cancel": true
+      },
+      "conditional": {
+        "show": true,
+        "when": "RB_Leges",
+        "eq": "ja"
       },
       "components": [
+        {
+          "label": "Leges evenement:",
+          "type": "currency",
+          "key": "NF_Leges",
+          "applyMaskOn": "change",
+          "mask": false,
+          "tableView": false,
+          "currency": "EUR",
+          "inputFormat": "plain",
+          "truncateMultipleSpaces": false,
+          "validateWhenHidden": false,
+          "input": true,
+          "delimiter": true,
+          "decimalLimit": 2,
+          "requireDecimal": true,
+          "decimalSymbol": ",",
+          "thousandsSeparator": ".",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "show": true,
+            "when": "CB_Activiteiten",
+            "eq": "evenement"
+          }
+        },
+        {
+          "label": "Leges ontheffing artikel 35 Alcoholwet:",
+          "type": "currency",
+          "key": "NF_LegesArtikel35",
+          "applyMaskOn": "change",
+          "mask": false,
+          "tableView": false,
+          "currency": "EUR",
+          "inputFormat": "plain",
+          "truncateMultipleSpaces": false,
+          "validateWhenHidden": false,
+          "input": true,
+          "delimiter": true,
+          "decimalLimit": 2,
+          "requireDecimal": true,
+          "decimalSymbol": ",",
+          "thousandsSeparator": ".",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "show": true,
+            "when": "CB_Activiteiten",
+            "eq": "artikel35"
+          }
+        },
+        {
+          "label": "Leges ontheffing stadsvloer:",
+          "type": "currency",
+          "key": "NF_LegesOntheffingStadsvloer",
+          "applyMaskOn": "change",
+          "mask": false,
+          "tableView": false,
+          "currency": "EUR",
+          "inputFormat": "plain",
+          "truncateMultipleSpaces": false,
+          "validateWhenHidden": false,
+          "input": true,
+          "delimiter": true,
+          "decimalLimit": 2,
+          "requireDecimal": true,
+          "decimalSymbol": ",",
+          "thousandsSeparator": ".",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "show": true,
+            "when": "CB_Activiteiten",
+            "eq": "stadvloer"
+          }
+        }
       ]
     },
     {
@@ -41,11 +239,24 @@
       "input": false,
       "breadcrumbClickable": false,
       "buttonSettings": {
-        "next": true,
-        "previous": false,
-        "cancel": false
+        "next": false,
+        "previous": true,
+        "cancel": true
+      },
+      "conditional": {
+        "show": true,
+        "when": "RB_Besluit",
+        "eq": "positief"
       },
       "components": [
+        {
+          "type": "content",
+          "key": "ZB_Besluit",
+          "html": "<p>Het kunnen kiezen en vastleggen van een besluit wordt niet ondersteund !</p>",
+          "refreshOnChange": false,
+          "input": false,
+          "tableView": false
+        }
       ]
     }
   ]

@@ -55,8 +55,8 @@
           "input": true,
           "properties": {
             "SmartDocuments_Group": "Dimpact/OpenZaak",
-            "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "df964baf-d3fe-430a-b711-03e389041f20",
-            "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "efc332f2-be3b-4bad-9e3c-49a6219c92ad"
+            "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "3e84c231-7ff8-43c8-a2a0-7e2601f1477a",
+            "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "cf145954-3eeb-4879-9547-e0541029fe01"
           }
         }
       ]

@@ -7,7 +7,7 @@
       <design:creationdate><![CDATA[2025-07-15T06:03:38.784Z]]></design:creationdate>
       <design:modificationdate><![CDATA[2025-07-16T14:16:07.077Z]]></design:modificationdate>
     </extensionElements>
-    <userTask id="VO_TN006" name="Keuze specialisten inhoudelujke beoordeling" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS006" flowable:formFieldValidation="false">
+    <userTask id="VO_TN006" name="Keuze specialisten inhoudelujke beoordeling" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS006" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS006]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -15,7 +15,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="VO_TN001" name="Opstellen en verzenden ontvangstbevestiging" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS001" flowable:formFieldValidation="false">
+    <userTask id="VO_TN001" name="Opstellen en verzenden ontvangstbevestiging" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS001" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS001]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -32,7 +32,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="VO_TN003" name="Vasstellen volledigheid" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS003" flowable:formFieldValidation="false">
+    <userTask id="VO_TN003" name="Vasstellen volledigheid" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS003" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS003]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -40,7 +40,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="VO_TN002" name="Voorbeelden attributen form.io" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS002" flowable:formFieldValidation="false">
+    <userTask id="VO_TN002" name="Voorbeelden attributen form.io" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS002" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS002]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -48,7 +48,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="VO_TN004" name="Afdrukken en verzenden brief aanvulling" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS004" flowable:formFieldValidation="false">
+    <userTask id="VO_TN004" name="Afdrukken en verzenden brief aanvulling" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS004" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS004]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -56,7 +56,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="VO_TN005" name="Voortgangsbewaking" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS005" flowable:formFieldValidation="false">
+    <userTask id="VO_TN005" name="Voortgangsbewaking" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS005" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS005]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -82,7 +82,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="VO_TN0070" name="Voortgangsbewaking adviezen" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS0070" flowable:formFieldValidation="false">
+    <userTask id="VO_TN0070" name="Voortgangsbewaking adviezen" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS0070" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS0070]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -115,7 +115,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="VO_TN012" name="Opstellen eindbrief" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS012" flowable:formFieldValidation="false">
+    <userTask id="VO_TN012" name="Opstellen eindbrief" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS012" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS012]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -123,7 +123,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="VO_TN013" name="Ondertekenen eindbrief" flowable:candidateGroups="groepa" flowable:formKey="VO_ITS013" flowable:formFieldValidation="false">
+    <userTask id="VO_TN013" name="Ondertekenen eindbrief" flowable:candidateUsers="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS013" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[VO_ITS013]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>

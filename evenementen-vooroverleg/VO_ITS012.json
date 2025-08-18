@@ -103,31 +103,22 @@
           ]
         },
         {
-          "type": "content",
+          "type": "zaakResultTypesFieldset",
           "key": "ZR_Zaakresultaat",
-          "html": "<p>Het kunnen selecteren van een zaak resultaat en deze in de UpdateZaakJavaDelegate kunnen gebruiken als resultaat wordt niet ondersteund !</p>",
-          "refreshOnChange": false,
           "input": false,
-          "tableView": false
-        },
-        {
-          "label": "Het besluit van de zaak is:",
-          "type": "radio",
-          "key": "RB_Besluit",
-          "input": true,
-          "optionsLabelPosition": "right",
-          "inline": false,
-          "validate": {
-            "required": true
-          },
-          "values": [
+          "components": [
             {
-              "label": "Positief",
-              "value": "positief"
-            },
-            {
-              "label": "Negatief",
-              "value": "negatief"
+              "label": "Het besluit van de zaak is:",
+              "optionsLabelPosition": "right",
+              "key": "SB_Besluit",
+              "widget": "html5",
+              "validate": {
+                "required": true,
+                "onlyAvailableItems": true
+              },
+              "type": "select",
+              "input": true,
+              "dataSrc": "custom"
             }
           ]
         }
@@ -245,8 +236,8 @@
       },
       "conditional": {
         "show": true,
-        "when": "RB_Besluit",
-        "eq": "positief"
+        "when": "SB_Besluit",
+        "eq": "Verleend"
       },
       "components": [
         {

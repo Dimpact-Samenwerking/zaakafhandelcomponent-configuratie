@@ -114,6 +114,25 @@
       ]
     },
     {
+      "label": "Parallelle stroomvertraging (seconden)",
+      "key": "NM_Vertraging",
+      "type": "number",
+      "applyMaskOn": "change",
+      "mask": false,
+      "tableView": false,
+      "delimiter": false,
+      "requireDecimal": false,
+      "inputFormat": "html",
+      "truncateMultipleSpaces": false,
+      "defaultValue": 15,
+      "validate": {
+        "min": 1,
+        "max": 60
+      },
+      "validateWhenHidden": false,
+      "input": true
+    },
+    {
       "label": "Buttons",
       "key": "buttons",
       "type": "container",

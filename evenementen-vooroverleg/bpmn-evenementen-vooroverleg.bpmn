@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:design="http://flowable.org/design" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://flowable.org/test" design:palette="flowable-work-process-palette">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:design="http://flowable.org/design" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://flowable.org/test" exporter="Flowable Design" exporterVersion="2025.1.02" design:palette="flowable-work-process-palette">
   <process id="bpmn-evenementen-vooroverleg" name="BPMN Evenementen Vooroverleg" isExecutable="true" flowable:candidateStarterGroups="flowableUser">
     <documentation>groepa</documentation>
     <extensionElements>
       <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
-      <design:creationdate><![CDATA[2025-07-30T15:26:24.524Z]]></design:creationdate>
-      <design:modificationdate><![CDATA[2025-08-05T15:57:05.860Z]]></design:modificationdate>
+      <design:creationdate><![CDATA[2025-08-18T19:45:02.360Z]]></design:creationdate>
+      <design:modificationdate><![CDATA[2025-08-21T11:13:43.109Z]]></design:modificationdate>
     </extensionElements>
     <userTask id="VO_TN006" name="Keuze specialisten inhoudelujke beoordeling" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${zaakGroep}" flowable:formKey="VO_ITS006" flowable:formFieldValidation="false">
       <extensionElements>
@@ -219,6 +219,15 @@
         <design:stencilid><![CDATA[StartNoneEvent]]></design:stencilid>
       </extensionElements>
     </startEvent>
+    <intermediateCatchEvent id="IntermediateTimerEvent_80" name="Vertraging parallelle stroming">
+      <extensionElements>
+        <design:stencilid><![CDATA[IntermediateTimerEvent]]></design:stencilid>
+        <design:display_ref_in_diagram><![CDATA[true]]></design:display_ref_in_diagram>
+      </extensionElements>
+      <timerEventDefinition>
+        <timeDuration>PT15S</timeDuration>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
     <endEvent id="end">
       <extensionElements>
         <design:stencilid><![CDATA[EndNoneEvent]]></design:stencilid>
@@ -320,10 +329,9 @@
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_10" sourceRef="Exclusive_Databased_Gateway_2" targetRef="VO_TN002">
+    <sequenceFlow id="SequenceFlow_81" sourceRef="Exclusive_Databased_Gateway_2" targetRef="IntermediateTimerEvent_80">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
-        <design:display_ref_in_diagram><![CDATA[true]]></design:display_ref_in_diagram>
       </extensionElements>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_13" name="Onvolledig" sourceRef="Exclusive_Databased_Gateway_5" targetRef="VO_TN004">
@@ -422,6 +430,11 @@
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_82" sourceRef="IntermediateTimerEvent_80" targetRef="VO_TN002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_bpmn-evenementen-vooroverleg">
     <bpmndi:BPMNPlane bpmnElement="bpmn-evenementen-vooroverleg" id="BPMNPlane_bpmn-evenementen-vooroverleg">
@@ -506,6 +519,12 @@
       <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
         <omgdc:Bounds height="30.0" width="30.0" x="161.0" y="261.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="IntermediateTimerEvent_80" id="BPMNShape_IntermediateTimerEvent_80">
+        <omgdc:Bounds height="30.0" width="30.0" x="617.0" y="125.0"></omgdc:Bounds>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.0" width="169.0" x="433.0" y="131.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
         <omgdc:Bounds height="28.0" width="28.0" x="2564.0" y="262.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
@@ -533,8 +552,8 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_8" id="BPMNEdge_SequenceFlow_8" flowable:sourceDockerX="51.0" flowable:sourceDockerY="47.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="526.0" y="275.0"></omgdi:waypoint>
-        <omgdi:waypoint x="569.0" y="275.0"></omgdi:waypoint>
-        <omgdi:waypoint x="569.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="568.5" y="275.0"></omgdi:waypoint>
+        <omgdi:waypoint x="568.5" y="276.0"></omgdi:waypoint>
         <omgdi:waypoint x="612.0" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_68" id="BPMNEdge_SequenceFlow_68" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="51.0" flowable:targetDockerY="47.0">
@@ -569,6 +588,14 @@
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_65" id="BPMNEdge_SequenceFlow_65" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="935.0" y="120.0"></omgdi:waypoint>
         <omgdi:waypoint x="935.0" y="18.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_81" id="BPMNEdge_SequenceFlow_81" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="15.0" flowable:targetDockerY="15.0">
+        <omgdi:waypoint x="632.0" y="256.0"></omgdi:waypoint>
+        <omgdi:waypoint x="632.0" y="155.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_82" id="BPMNEdge_SequenceFlow_82" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="647.0" y="140.0"></omgdi:waypoint>
+        <omgdi:waypoint x="725.0" y="140.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_61" id="BPMNEdge_SequenceFlow_61" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="2313.0" y="160.0"></omgdi:waypoint>
@@ -625,7 +652,7 @@
         <omgdi:waypoint x="1062.0" y="296.0"></omgdi:waypoint>
         <omgdi:waypoint x="1062.0" y="363.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="18.0" width="57.0" x="999.0" y="315.0"></omgdc:Bounds>
+          <omgdc:Bounds height="18.0" width="61.0" x="999.0" y="315.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_14" id="BPMNEdge_SequenceFlow_14" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
@@ -639,11 +666,6 @@
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_53" id="BPMNEdge_SequenceFlow_53" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="955.0" y="140.0"></omgdi:waypoint>
         <omgdi:waypoint x="2293.0" y="140.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_10" id="BPMNEdge_SequenceFlow_10" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
-        <omgdi:waypoint x="632.0" y="256.0"></omgdi:waypoint>
-        <omgdi:waypoint x="632.0" y="140.0"></omgdi:waypoint>
-        <omgdi:waypoint x="725.0" y="140.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_54" id="BPMNEdge_SequenceFlow_54" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="1062.0" y="783.0"></omgdi:waypoint>

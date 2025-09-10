@@ -1,0 +1,23 @@
+{
+  "label": "<De aanvraag bevat de volgende activiteiten:>",
+  "type": "radio",
+  "key": "<CB_Activiteiten>",
+  "input": true,
+  "tooltip": "<Optionele tooltip>",
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "<Evenementenvergunning>",
+      "value": "<evenement>"
+    },
+    {
+      "label": "<Ontheffing artikel 35 Alcoholwet>",
+      "value": "<artikel35>"
+    },
+    {
+      "label": "<Ontheffing stadsvloer>",
+      "value": "<stadvloer>"
+    }
+  ]
+}

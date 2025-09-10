@@ -1,0 +1,8 @@
+{
+  "label": "<Verzendinstructie:>",
+  "type": "textarea",
+  "key": "<TA_Verzendinstructie>",
+  "input": true,
+  "tooltip": "<Optionele tooltip>",
+  "autoExpand": false
+}

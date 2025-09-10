@@ -1,0 +1,26 @@
+{
+  "type": "groepMedewerkerFieldset",
+  "key": "<AGM_Adviseur1>",
+  "input": false,
+  "components": [
+    {
+      "label": "<Groep adviseur 1>",
+      "type": "select",
+      "key": "<AGM_Adviseur1_Groep>",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true
+    },
+    {
+      "label": "<Adviseur 1>",
+      "type": "select",
+      "key": "<AGM_Adviseur1_Medewerker>",
+      "widget": "html5",
+      "input": true,
+      "dataSrc": "custom",
+      "refreshOn": "<AGM_Adviseur1_Groep>",
+      "clearOnRefresh": true
+    }
+  ]
+}

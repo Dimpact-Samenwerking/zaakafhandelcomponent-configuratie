@@ -1,0 +1,18 @@
+{
+  "label": "<Leges evenement:>",
+  "type": "currency",
+  "key": "<NF_Leges>",
+  "input": true,
+  "applyMaskOn": "change",
+  "mask": false,
+  "tableView": false,
+  "currency": "EUR",
+  "inputFormat": "plain",
+  "truncateMultipleSpaces": false,
+  "validateWhenHidden": false,
+  "delimiter": true,
+  "decimalLimit": 2,
+  "requireDecimal": true,
+  "decimalSymbol": ",",
+  "thousandsSeparator": "."
+}

@@ -1,0 +1,16 @@
+{
+  "name": "<VO_ITS0070>",
+  "title": "<Voortgangsbewaking adviezen>",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "label": "Afronden",
+      "key": "submit",
+      "type": "button",
+      "input": true,
+      "disableOnInvalid": true,
+      "tableView": false
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "referenceTableFieldset",
+  "key": "<CB_CategorieEvenement>",
+  "input": false,
+  "components": [
+    {
+      "label": "<Categorie evenement>",
+      "type": "select",
+      "key": "<RT_ReferenceTable_Values>",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "properties": {
+        "ReferenceTable_Code": "<BPMN_EVENEMENT_CATEGORIEN>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "naam": "<VO_ITS012>",
+  "title": "<Opstellen eindbrief>",
+  "display": "wizard",
+  "components": [
+    {
+      "label": "<Opstellen eindbrief>",
+      "type": "panel",
+      "key": "<VO_ITS012_SN001>",
+      "title": "<Opstellen eindbrief>",
+      "input": false,
+      "breadcrumbClickable": false,
+      "buttonSettings": {
+        "next": true,
+        "previous": false,
+        "cancel": true
+      },
+      "components": [
+        {
+          "label": "...",
+          "type": "radio",
+          "key": "RB_Leges",
+          "values": [
+            {
+              "label": "Ja",
+              "value": "ja"
+            },
+            {
+              "label": "Nee",
+              "value": "nee"
+            }
+          ]
+        },
+        {
+          "type": "zaakResultTypesFieldset",
+          "key": "...",
+          "components": [
+            {
+              "label": "...",
+              "type": "select",
+              "key": "SB_Resultaat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "<Vastleggen leges>",
+      "type": "panel",
+      "key": "<VO_ITS012_SN002>",
+      "title": "<Vastleggen leges>",
+      "input": false,
+      "breadcrumbClickable": false,
+      "buttonSettings": {
+        "next": true,
+        "previous": true,
+        "cancel": true
+      },
+      "conditional": {
+        "show": true,
+        "when": "RB_Leges",
+        "eq": "ja"
+      },
+      "components": [
+      ]
+    },
+    {
+      "label": "<Vastleggen besluit>",
+      "type": "panel",
+      "key": "<VO_ITS012_SN004>",
+      "title": "<Vastleggen besluit>",
+      "input": false,
+      "breadcrumbClickable": false,
+      "buttonSettings": {
+        "next": false,
+        "previous": true,
+        "cancel": true
+      },
+      "conditional": {
+        "show": true,
+        "when": "SB_Resultaat",
+        "eq": "Verleend"
+      },
+      "components": [
+      ]
+    }
+  ]
+}

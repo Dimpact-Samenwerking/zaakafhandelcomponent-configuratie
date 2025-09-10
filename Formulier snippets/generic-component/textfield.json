@@ -1,0 +1,7 @@
+{
+  "label": "<Reden niet volledig:>",
+  "type": "textfield",
+  "key": "<TF_Redennietvolledig>",
+  "input": true,
+  "tooltip": "<Optionele tooltip>"
+}

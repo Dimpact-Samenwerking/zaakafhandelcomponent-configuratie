@@ -1,0 +1,10 @@
+{
+  "label": "...",
+  "type": "number",
+  "key": "...",
+  "validate": {
+    "min": 1,
+    "max": 60
+  },
+  "validateWhenHidden": false
+}

@@ -1,0 +1,8 @@
+{
+  "type": "content",
+  "key": "<MD_MasterDetail>",
+  "html": "< <p>Master-Detail gevuld vanuit referentietabel wordt niet ondersteund !</p> >",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+}

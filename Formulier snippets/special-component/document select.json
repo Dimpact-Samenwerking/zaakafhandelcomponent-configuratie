@@ -1,0 +1,27 @@
+{
+  "type": "documentsFieldset",
+  "key": "<DS_Ondertekening>",
+  "input": false,
+  "components": [
+    {
+      "label": "<Selecteer de te ondertekenen documenten:>",
+      "type": "select",
+      "key": "<DS_Ondertekening_Select>",
+      "input": true,
+      "widget": "choicesjs",
+      "multiple": true,
+      "defaultValue": [],
+      "clearOnRefresh": true,
+      "dataSrc": "custom",
+      "placeholder": "Selecteer documenten",
+      "customOptions": {
+        "choicesOptions": {
+          "removeItemButton": true,
+          "placeholder": true,
+          "searchEnabled": true,
+          "shouldSort": false
+        }
+      }
+    }
+  ]
+}

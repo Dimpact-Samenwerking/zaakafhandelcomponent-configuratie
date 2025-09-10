@@ -1,0 +1,27 @@
+[
+  {
+    "label": "",
+    "type": "radio",
+    "key": "RB_OntbrekendeStukkenOntvangen",
+    "values": [
+      {
+        "label": "Ja en zijn ontvankelijk",
+        "value": "ja"
+      },
+      {
+        "label": "Ja en zijn niet ontvankelijk",
+        "value": "janiet"
+      },
+      {
+        "label": "Nee, ik wil naar de taak \"Vaststellen volledigheid\" en daar gegevens aanpassen",
+        "value": "onvolledig"
+      }
+    ]
+  },
+  {
+    "label": "...",
+    "type": "...",
+    "key": "...",
+    "customConditional": "show = ['ja','janiet'].includes(data.RB_OntbrekendeStukkenOntvangen);"
+  }
+]

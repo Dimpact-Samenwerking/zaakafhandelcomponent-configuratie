@@ -1,0 +1,16 @@
+{
+  "type": "zaakResultTypesFieldset",
+  "key": "<...>",
+  "input": false,
+  "components": [
+    {
+      "label": "<Het resultaat van de zaak is:>",
+      "type": "select",
+      "key": "<SB_Resultaat>",
+      "input": true,
+      "optionsLabelPosition": "right",
+      "widget": "html5",
+      "dataSrc": "custom"
+    }
+  ]
+}

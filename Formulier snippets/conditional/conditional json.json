@@ -1,0 +1,29 @@
+{
+  "label": "...",
+  "type": "...",
+  "key": "...",
+  "conditional": {
+    "json": {
+      "and": [
+        {
+          "var": "data.<RB_AdviseurAkkoord1>"
+        },
+        {
+          "or": [
+            {
+              "!": {
+                "var": "data.<AGM_Adviseur2_Medewerker>"
+              }
+            },
+            {
+              "var": "data.<RB_AdviseurAkkoord2>"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+
+

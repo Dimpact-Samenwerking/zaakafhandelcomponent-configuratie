@@ -1,0 +1,27 @@
+[
+  {
+    "label": "...",
+    "type": "radio",
+    "key": "RB_Mailverzenden",
+    "values": [
+      {
+        "label": "Nee",
+        "value": "nee"
+      },
+      {
+        "label": "Ja",
+        "value": "ja"
+      }
+    ]
+  },
+  {
+    "label": "...",
+    "type": "...",
+    "key": "...",
+    "conditional": {
+      "show": true,
+      "when": "RB_Mailverzenden",
+      "eq": "ja"
+    }
+  }
+]

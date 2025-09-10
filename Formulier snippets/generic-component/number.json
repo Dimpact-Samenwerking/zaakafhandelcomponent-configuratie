@@ -1,0 +1,15 @@
+{
+  "label": "<Parallelle stroomvertraging (seconden)>",
+  "key": "<NM_Vertraging>",
+  "type": "number",
+  "input": true,
+  "tooltip": "<Optionele tooltip>",
+  "applyMaskOn": "change",
+  "mask": false,
+  "tableView": false,
+  "delimiter": false,
+  "requireDecimal": false,
+  "inputFormat": "plain",
+  "truncateMultipleSpaces": false,
+  "defaultValue": 15
+}

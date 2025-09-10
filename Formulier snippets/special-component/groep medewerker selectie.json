@@ -6,7 +6,7 @@
     {
       "label": "<Groep adviseur 1>",
       "type": "select",
-      "key": "<AGM_Adviseur1_Groep>",
+      "key": "<AGM_Adviseur1>_Groep",
       "input": true,
       "widget": "html5",
       "dataSrc": "custom",
@@ -15,7 +15,7 @@
     {
       "label": "<Adviseur 1>",
       "type": "select",
-      "key": "<AGM_Adviseur1_Medewerker>",
+      "key": "<AGM_Adviseur1>_Medewerker",
       "widget": "html5",
       "input": true,
       "dataSrc": "custom",

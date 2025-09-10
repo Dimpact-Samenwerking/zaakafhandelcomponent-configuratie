@@ -4,6 +4,8 @@
   "display": "form",
   "type": "form",
   "components": [
+    {},
+    {},
     {
       "label": "Buttons",
       "key": "buttons",

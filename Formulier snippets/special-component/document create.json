@@ -6,7 +6,7 @@
     {
       "label": "<Ontvangstbevestiging:>",
       "type": "select",
-      "key": "<TD_Ontvangstbevestiging_Template>",
+      "key": "<TD_Ontvangstbevestiging>_Template",
       "input": true,
       "widget": "html5",
       "dataSrc": "custom",
@@ -15,7 +15,7 @@
     {
       "label": "<Maak document>",
       "type": "button",
-      "key": "<TD_Ontvangstbevestiging_Create>",
+      "key": "<TD_Ontvangstbevestiging>_Create",
       "input": true,
       "action": "event",
       "showValidations": false,

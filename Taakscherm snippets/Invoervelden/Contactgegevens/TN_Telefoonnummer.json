@@ -1,0 +1,18 @@
+{
+    "label": "Telefoonnummer",
+    "tooltip": "Vul hier een mobiel of vast nummer in. Gebruik daarbij alleen cijfers. \nDe landcode van Nederland (+31) is wel toegestaan.",
+    "inputMask": "",
+    "applyMaskOn": "change",
+    "autocomplete": "off",
+    "tableView": true,
+    "validateOn": "blur",
+    "validate": {
+        "required": true,
+        "pattern": "(^\\+[1-9][0-9]{6,14}$)",
+        "customMessage": "Vul een geldig Nederlands telefoonnummer in."
+    },
+    "validateWhenHidden": false,
+    "key": "telefoonnummer",
+    "type": "phoneNumber",
+    "input": true
+}

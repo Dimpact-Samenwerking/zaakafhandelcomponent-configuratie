@@ -1,0 +1,16 @@
+{
+    "label": "Tekstveld met een regex voor IBAN rekeningnummer",
+    "key": "IBAN_Rekeningnummer",
+    "type": "textfield",
+    "input": true,
+    "tooltip": "Geef bij label een duidelijke omschrijving van het veld (deze is zichtbaar voor de gebruiker). \n Geef bij key een unieke waarde op, houd je daarbij aan de naamgevingsconventies (Bijv. TF_NaamZaakdataveldCamelCase).\nBij tooltip kun je extra uitleg geven bij een component. Wil je geen tooltip tonen? Haal dit key-value pair dan weg.",
+    "tableView": true,
+    "validateOn": "change",
+    "validate": {
+        "required": true,
+        "pattern": "^[A-Z]{2}[0-9]{2}\\s?[A-Z]{2,4}\\s?[A-Z]{0,4}\\s?[0-9]{2,28}$",
+        "customMessage": "Een IBAN bestaat uit een landcode, 2 controlegetallen, bankcode en rekeningnummer (bijvoorbeeld NL20 INGB 0001234567)."
+    },
+    "validateWhenHidden": false,
+    "truncateMultipleSpaces": true
+}

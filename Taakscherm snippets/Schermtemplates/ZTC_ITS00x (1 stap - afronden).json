@@ -1,0 +1,18 @@
+{
+  "name": "ZTC_ITS00x",
+  "title": "?Titel boven het taakscherm?. Enkelvoudig formulier. Dit schermtemplate bevat alléén een submit button.",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {},
+    {},
+    {
+      "label": "Afronden",
+      "key": "submit",
+      "type": "button",
+      "input": true,
+      "disableOnInvalid": true,
+      "tableView": false
+    }
+  ]
+}

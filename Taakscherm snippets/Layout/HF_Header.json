@@ -1,0 +1,9 @@
+{
+  "html": "<h2>Dit is een H2 heading</h2>",
+  "label": "HF_Header",
+  "refreshOnChange": false,
+  "key": "HF_Header",
+  "type": "content",
+  "input": false,
+  "tableView": false
+}

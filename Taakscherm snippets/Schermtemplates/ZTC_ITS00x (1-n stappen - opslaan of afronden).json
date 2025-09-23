@@ -1,0 +1,68 @@
+{
+    "naam": "ZTC_ITS00x",
+    "title": "?Titel boven het taakscherm?. Meervoudig formulier (wizard). Dit schermtemplate bevat zowel een opslaan (van ingevulde zaakdata) als een submit button.",
+    "display": "wizard",
+    "components": [
+        {
+            "label": "Stap 1",
+            "type": "panel",
+            "key": "ZTC00x_ITS00x_SN001",
+            "title": "Stap 1",
+            "input": false,
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": true,
+                "previous": false,
+                "cancel": true
+            },
+            "components": [
+                {},
+                {}
+            ]
+        },
+        {
+            "label": "Stap 2",
+            "type": "panel",
+            "key": "ZTC00x_ITS00x_SN002",
+            "title": "Stap 2",
+            "input": false,
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": true,
+                "previous": true,
+                "cancel": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "ZD_ZaakdataelementUitStap1EqualsOnderstaandeWaarde",
+                "eq": "bijvoorbeeld stringwaarde (tussen dubbel quotes), boolean (true of false), integer (geheel getal) of float (decimaal getal)"
+            },
+            "components": [
+                {},
+                {}
+            ]
+        },
+        {
+            "label": "Stap 3",
+            "type": "panel",
+            "key": "ZTC00x_ITS00x_SN003",
+            "title": "Stap 3",
+            "input": false,
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": false,
+                "previous": true,
+                "cancel": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "ZD_ZaakdataelementUitStap2EqualsOnderstaandeWaarde",
+                "eq": "bijvoorbeeld stringwaarde (tussen dubbel quotes), boolean (true of false), integer (geheel getal) of float (decimaal getal)"
+            },
+            "components": [
+                {},
+                {}
+            ]
+        }
+    ]
+}

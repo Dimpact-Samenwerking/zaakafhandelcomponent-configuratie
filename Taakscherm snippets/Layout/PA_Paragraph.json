@@ -1,0 +1,9 @@
+{
+  "html": "<p>Dit is een standaard formio Layout &gt; Content attribuut. Hierin kun je <strong>opmaak </strong>opnemen, maar ook <a href=\"https://example.com\" target=\"_blank\">linkjes</a> en andere html elementen zoals hieronder.</p><h2>Dit is een H2 heading</h2><p>Dit is een paragraph met een stukje <code>tekst tussen code tags</code>.</p><p>En dit een stukje keyboardinput tussen kdb tags <kbd>Crtl</kbd> + <kbd>c</kbd>",
+  "label": "PA_Toelichting",
+  "refreshOnChange": false,
+  "key": "PA_Toelichting",
+  "type": "content",
+  "input": false,
+  "tableView": false
+}

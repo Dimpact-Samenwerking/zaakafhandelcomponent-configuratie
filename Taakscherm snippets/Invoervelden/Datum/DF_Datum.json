@@ -9,7 +9,7 @@
   "datePicker": {
     "disableWeekends": false,
     "disableWeekdays": false,
-    "startingDay": 1 // dit is mogelijk nodig om de kalender op maandag te laten beginnen.
+    "startingDay": "1 // dit is mogelijk nodig om de kalender op maandag te laten beginnen."
   },
   "enableTime": false,
   "enableMinDateInput": true,

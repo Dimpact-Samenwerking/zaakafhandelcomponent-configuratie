@@ -2,6 +2,7 @@
   "type": "smartDocumentsFieldset",
   "key": "TM_DocumentMakenTemplateSD",
   "input": false,
+  "label": "Een document maken:",
   "components": [
     {
       "label": "Kies een sjabloon",

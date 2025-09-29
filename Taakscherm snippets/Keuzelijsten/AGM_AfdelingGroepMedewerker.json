@@ -1,0 +1,27 @@
+{
+  "type": "groepMedewerkerFieldset",
+  "key": "AGM_AfdelingGroepMedewerker",
+  "label": "Kies hieronder de groep en vervolgens de medewerker die (bijvoorbeeld) taak X moet uitvoeren:",
+  "input": false,
+  "components": [
+    {
+      "label": "Groep",
+      "type": "select",
+      "key": "AGM_AfdelingGroepMedewerker_Groep",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true
+    },
+    {
+      "label": "Medewerker",
+      "type": "select",
+      "key": "AGM_AfdelingGroepMedewerker_Medewerker",
+      "widget": "html5",
+      "input": true,
+      "dataSrc": "custom",
+      "refreshOn": "AGM_AfdelingGroepMedewerker_Groep>",
+      "clearOnRefresh": true
+    }
+  ]
+}

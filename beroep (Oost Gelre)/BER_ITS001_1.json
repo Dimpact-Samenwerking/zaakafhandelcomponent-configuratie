@@ -134,6 +134,7 @@
     {
       "type": "groepMedewerkerFieldset",
       "key": "AGM_ZaakbehandelingDoor",
+      "label":"Dit beroepschrift moet behandeld worden door:",
       "input": false,
       "components": [
         {
@@ -146,7 +147,7 @@
           "clearOnRefresh": true
         },
         {
-          "label": "Zaakbehandelaar",
+          "label": "Medewerker",
           "type": "select",
           "key": "AGM_ZaakbehandelingDoor_Medewerker",
           "widget": "html5",

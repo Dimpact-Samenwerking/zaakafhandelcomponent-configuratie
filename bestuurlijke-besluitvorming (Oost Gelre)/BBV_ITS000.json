@@ -1,0 +1,43 @@
+{
+    "name": "BBV_ITS000",
+    "title": "Start bestuurlijke besluitvorming",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Bestuurlijke besluitvorming</h2><p>Je hebt een zaak van het type <strong>Bestuurlijke besluitvorming</strong> gestart.</p><ul><li>Binnen deze zaak doorloop je de gehele besluitvormingscyclus:<ul><li>Voor collegevoorstellen is dit inclusief collegebehandeling.</li><li>Voor raadsvoorstellen is dit inclusief college-, commissie- en raadsbehandeling.</li></ul></li><li>Je kunt als zaakbehandelaar het proces volgen:<ul><li>Door de zaak te openen in het medewerkerportaal en de zaakstatus te bekijken.</li><li>Door er voor te kiezen om op specifieke momenten een e-mail te ontvangen met een statusupdate.</li></ul></li><li><strong>Let op!</strong> Niet alle taken staan straks op jouw naam. Deze moeten door de aangewezen taakbehandelaars worden afgehandeld.</li></ul><p><strong>Wil je meer informatie over het bestuurlijke besluitvormingsproces?</strong> <br />Op intranet vind je <a title=\"Gebruikershandleiding Bestuurlijke besluitvorming (opent in een nieuw tabblad)\" href=\"www.example.com\" target=\"_blank\">een handleiding waarin alle stappen worden uitgelegd</a>.</p><div class=\"alert alert-warning\"><strong>Dit zaaktype mag alléén gebruikt worden voor Bestuurlijke besluitvorming!<br /></strong>Gaat deze zaak over iets anders? Neem dan contact op met DIV. Zij kunnen de zaak omzetten naar het juiste zaaktype.<br />Je kunt DIV bereiken via info@example.com, of door telefonisch contact op te nemen met 1 van de DIV-medewerkers.</div>",
+            "label": "PA_ToelichtingStartBestuurlijkeBesluitvorming",
+            "refreshOnChange": false,
+            "key": "PA_ToelichtingStartBestuurlijkeBesluitvorming",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "html": "<h3>Bestuurlijke besluitvorming</h3><p><strong>Heb je nu al bijlagen die van belang zijn voor de besluitvorming?</strong> <br />Voeg deze dan toe aan de zaak. Dat kan door in het actiemenu van de zaak te kiezen voor:<br />Zaak &gt; Toevoegen document.</p><hr>",
+            "label": "PA_ToelichtingDocumentenToevoegen",
+            "refreshOnChange": false,
+            "key": "PA_ToelichtingDocumentenToevoegen",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+                {
+            "html": "<h3>Start!</h3><p><strong>Als bovenstaande allemaal in orde is, kun je starten met het proces</strong><br />Klik hieronder op [Afronden] om de eerste taak op te starten.</p>",
+            "label": "PA_Start",
+            "refreshOnChange": false,
+            "key": "PA_Start",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Afronden",
+            "key": "submit",
+            "type": "button",
+            "input": true,
+            "disableOnInvalid": true,
+            "tableView": false
+        }
+    ]
+}

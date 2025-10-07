@@ -13,7 +13,7 @@
             "input": false,
             "tableView": false
         },
-    {
+        {
             "label": "Datum uitspraak",
             "type": "datetime",
             "key": "DF_DatumUitspraak",
@@ -42,48 +42,7 @@
                 "required": true
             }
         },
-        {
-            "label": "Buttons",
-            "key": "buttons",
-            "type": "container",
-            "input": false,
-            "tableView": false,
-            "components": [
-                {
-                    "type": "columns",
-                    "columns": [
-                        {
-                            "width": "auto",
-                            "components": [
-                                {
-                                    "key": "save",
-                                    "label": "Opslaan",
-                                    "type": "button",
-                                    "theme": "secondary",
-                                    "input": true,
-                                    "action": "saveState",
-                                    "state": "draft",
-                                    "tableView": false
-                                }
-                            ]
-                        },
-                        {
-                            "width": "auto",
-                            "components": [
-                                {
-                                    "key": "submit",
-                                    "label": "Opslaan & afronden",
-                                    "type": "button",
-                                    "input": true,
-                                    "disableOnInvalid": true,
-                                    "tableView": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
+        
         {
             "label": "Opmerkingen",
             "type": "textarea",
@@ -123,6 +82,47 @@
                         "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke",
                         "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke"
                     }
+                }
+            ]
+        },{
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "theme": "secondary",
+                                    "input": true,
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Opslaan & afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "disableOnInvalid": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }

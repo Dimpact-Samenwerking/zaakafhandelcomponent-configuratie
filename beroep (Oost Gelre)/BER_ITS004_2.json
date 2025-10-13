@@ -1,0 +1,102 @@
+{
+    "name": "BER_ITS004_2",
+    "title": "Ondertekenen beslissing op bezwaar",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Ondertekenen beslissing op bezwaar</h2>",
+            "label": "HF_OndertekenenBeslissingOpBezwaar",
+            "refreshOnChange": false,
+            "key": "HF_OndertekenenBeslissingOpBezwaar",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "html": "<div class=\"alert alert-danger\" role=\"alert\">Er bestaat op dit moment géén custom component om documenten te tonen in een taakscherm.</div><p>Waarom je dit component mogelijk wel zou willen:</p><ul><li>Een lijst met geselecteerde documenten kunnen tonen (bijv. documenten die onderdeel uitmaken van een besluitvormingsproces).</li><li>Een lijst met documenten kunnen tonen die aan bepaalde eigenschappen voldoen (bijv. een bepaald publicatieniveau).</li></ul>",
+            "label": "DT_DocumentenTonen",
+            "refreshOnChange": false,
+            "key": "DT_DocumentenTonen",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Document(en) akkoord",
+            "key": "RB_OndertekenaarBOBAkkoord",
+            "type": "radio",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "tableView": false,
+            "values": [
+                {
+                    "label": "Ja",
+                    "value": true
+                },
+                {
+                    "label": "Nee",
+                    "value": false
+                }
+            ],
+            "defaultValue": "Wil je dat 1 van de radiobuttons standaard aangevinkt staat? Geef dan die value (bijvoorbeeld x) op. Wil je geen default instellen? Haal dit key-value pair dan weg.",
+            "validateWhenHidden": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Opmerkingen",
+            "type": "textarea",
+            "key": "TA_OpmerkingenOndertekenaarBeslissingOpBezwaar",
+            "input": true,
+            "autoExpand": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "theme": "secondary",
+                                    "input": true,
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Opslaan & afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "disableOnInvalid": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

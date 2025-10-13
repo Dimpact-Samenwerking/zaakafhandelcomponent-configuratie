@@ -1,75 +1,47 @@
 {
-    "name": "BER_ITS002",
-    "title": "Behandelen beroepschrift",
+    "name": "BER_ITS005",
+    "title": "Afstemmen met portefeuillehouder na uitspraak",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Behandelen beroepschrift</h2>",
-            "label": "HF_BehandelenBeroepschrift",
+            "html": "<h2>Afstemmen met portefeuillehouder na uitspraak</h2>",
+            "label": "HF_AfstemmenMetPortefeuillehouderNaUitspraak",
             "refreshOnChange": false,
-            "key": "HF_BehandelenBeroepschrift",
+            "key": "HF_AfstemmenMetPortefeuillehouderNaUitspraak",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+               {
+            "html": "<p><strong>Opmerking inhoudelijk behandelen: </strong>{{data.TA_OpmerkingenBehandelenBeroepschrift}}</p>",
+            "label": "PA_ToelichtingAfstemmingPONaUitspraak",
+            "refreshOnChange": false,
+            "key": "PA_ToelichtingAfstemmingPONaUitspraak",
             "type": "content",
             "input": false,
             "tableView": false
         },
         {
-            "html": "<p>HIER EEN TOELICHTING OVER DE OPTIES BIJ HET INHOUDELIJK BEHANDELEN VAN HET BEROEPSCHRIFT.</p>",
-            "label": "PA_ToelichtingBehandelenBeroepschrift",
-            "refreshOnChange": false,
-            "key": "PA_ToelichtingBehandelenBeroepschrift",
-            "type": "content",
-            "input": false,
-            "tableView": false
-        },
-        {
-            "label": "Wat wil je doen?",
-            "type": "radio",
-            "key": "RB_VervolgstapInhoudelijkBehandelen",
-            "input": true,
-            "optionsLabelPosition": "right",
-            "inline": false,
-            "values": [
-                {
-                    "label": "Een verweerschrift opstellen",
-                    "value": "verweerschrift"
-                },
-                {
-                    "label": "Een nieuwe beslissing op bezwaar (BOB) opstellen",
-                    "value": "bob"
-                },
-                {
-                    "label": "Afstemming na uitspraak met afdeling en portefeuillehouder",
-                    "value": "afstemming"
-                },
-                {
-                    "label": "Behandeling afronden (naar vastleggen uitkomst)",
-                    "value": "afronden"
-                }
-            ],
-            "validate": {
-                "required": true
-            }
-        },
-        {
-            "label": "Opmerkingen:",
+            "label": "Opmerkingen",
             "type": "textarea",
-            "key": "TA_OpmerkingenBehandelenBeroepschrift",
+            "key": "TA_OpmerkingenAfstemmenMetPortefeuillehouderNaUitspraak",
             "input": true,
-            "autoExpand": true,
+            "autoExpand": false,
             "validate": {
                 "required": true
             }
         },
         {
             "type": "smartDocumentsFieldset",
-            "key": "TM_DocumentMakenBehandelenBeroepschrift",
+            "key": "TM_DocumentMakenNaAfstemmingPOH",
             "input": false,
+            "label": "Een document maken:",
             "components": [
                 {
                     "label": "Kies een sjabloon",
                     "type": "select",
-                    "key": "TM_DocumentMakenBehandelenBeroepschrift_Template",
+                    "key": "TM_DocumentMakenNaAfstemmingPOH_Template",
                     "input": true,
                     "widget": "html5",
                     "dataSrc": "custom",
@@ -78,7 +50,7 @@
                 {
                     "label": "Maak document",
                     "type": "button",
-                    "key": "TM_DocumentMakenBehandelenBeroepschrift_Create",
+                    "key": "TM_DocumentMakenNaAfstemmingPOH_Create",
                     "input": true,
                     "action": "event",
                     "showValidations": false,

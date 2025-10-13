@@ -14,7 +14,7 @@
             "tableView": false
         },
         {
-            "html": "<p>HIER EEN TOELICHTING OP DE STAPPEN DIE IN DEZE TAAK GEZET MOETEN WORDEN.</p><p>Opgeslagen zaakdata (uit eerdere schermen) kun je op de volgende manier tonen in een Content Component:</p><ul><li>Plaats de zaakdata die je wilt gebruiken tussen dubbele accolades, voorafgegaan door data..</li><li>Data van het type text of textarea kun je eenvoudig tonen door <code>data.TF_VoorbeeldTekstveld</code> tussen dubbele accolades plaatsen</li><li>Data van het type datetime kun je ook als op die manier tonen, maar dan krijg je de volledige datumtijd uitgeschreven.</li><li>Om een uitgeschreven datum (bijvoorbeeld 1 januari 1970) te krijgen kun je <code>moment(data.DF_DatumInDateTimeFormaat).format(\"D MMMM YYYY\")</code> tussen dubbele accolades zetten.</li><li>Wil je ook nog een default opnemen? Dan kun je testen of de zaakdata gevuld is. Vervolgens geef je op wat er getoond moet worden als de conditie waar is, en wat als de conditie niet waar is.<br>Tussen dubbele accolades: <code>data.DF_DatumX ? DF_DatumX : \"Nog geen datum bekend\"</code></li><li>N.B. Deze test werkt in principe generiek: <code>conditie ? als true: als false</code></li></ul><p><strong>Datum stukken naar rechtbank:</strong>&nbsp;{{data.DF_DatumStukkenNaarDeRechtbank ? moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\" ) : \"Geen datum beschikbaar\"}}&nbsp;</p><p><strong>Datum verzending verweerschrift:</strong> {{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p>",
+            "html": "<p>HIER EEN TOELICHTING OP DE STAPPEN DIE IN DEZE TAAK GEZET MOETEN WORDEN.</p><p>Opgeslagen zaakdata (uit eerdere schermen) kun je op de volgende manier tonen in een Content Component:</p><ul><li>Plaats de zaakdata die je wilt gebruiken tussen dubbele accolades, voorafgegaan door data..</li><li>Data van het type text of textarea kun je eenvoudig tonen door het op de volgende manier tussen dubbele accolades te plaatsen: <code>{{data.TF_VoorbeeldTekstveld}}</code>.</li><li>Data van het type datetime kun je ook als op die manier tonen, maar dan krijg je de volledige datumtijd (datetime) uitgeschreven.</li><li>Om een uitgeschreven datum (bijvoorbeeld 1 januari 1970) te krijgen kun je <code>moment(data.DF_DatumInDateTimeFormaat).format(\"D MMMM YYYY\")</code> tussen dubbele accolades zetten.</li><li>Wil je ook nog een default opnemen? Dan kun je testen of de zaakdata gevuld is. Vervolgens geef je op wat er getoond moet worden als de conditie waar is, en wat als de conditie niet waar is.<br>Tussen dubbele accolades: <code>data.DF_DatumX ? DF_DatumX : \"Nog geen datum bekend\"</code></li><li>N.B. Deze test werkt in principe generiek: <code>conditie ? als true: als false</code></li></ul><p><strong>Datum stukken naar rechtbank:</strong>&nbsp;{{data.DF_DatumStukkenNaarDeRechtbank ? moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\" ) : \"Geen datum beschikbaar\"}}&nbsp;</p><p><strong>Datum verzending verweerschrift:</strong> {{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p>",
             "label": "PA_ToelichtingWachtenOpUitnodigingZitting",
             "refreshOnChange": false,
             "key": "PA_ToelichtingWachtenOpUitnodigingZitting",
@@ -26,6 +26,7 @@
             "label": "Datum zitting",
             "type": "datetime",
             "key": "DF_DatumZitting",
+            "tooltip": "Het invullen van dit veld is tijdelijk niet required. Hiermee kan het (conditioneel) tonen van procesdata getest worden.",
             "input": true,
             "useLocaleSettings": true,
             "format": "dd-MM-yyyy",
@@ -48,7 +49,7 @@
                 "format": "dd-MM-yyyy"
             },
             "validate": {
-                "required": true
+                "required": false
             }
         },
         {

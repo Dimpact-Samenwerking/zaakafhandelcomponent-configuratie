@@ -1,75 +1,28 @@
 {
-    "name": "BER_ITS002",
-    "title": "Behandelen beroepschrift",
+    "name": "BER_ITS006",
+    "title": "Vastleggen uitkomst",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Behandelen beroepschrift</h2>",
-            "label": "HF_BehandelenBeroepschrift",
+            "html": "<h2>Vastleggen uitkomst</h2>",
+            "label": "HF_VastleggenUitkomst",
             "refreshOnChange": false,
-            "key": "HF_BehandelenBeroepschrift",
+            "key": "HF_VastleggenUitkomst",
             "type": "content",
             "input": false,
             "tableView": false
-        },
-        {
-            "html": "<p>HIER EEN TOELICHTING OVER DE OPTIES BIJ HET INHOUDELIJK BEHANDELEN VAN HET BEROEPSCHRIFT.</p>",
-            "label": "PA_ToelichtingBehandelenBeroepschrift",
-            "refreshOnChange": false,
-            "key": "PA_ToelichtingBehandelenBeroepschrift",
-            "type": "content",
-            "input": false,
-            "tableView": false
-        },
-        {
-            "label": "Wat wil je doen?",
-            "type": "radio",
-            "key": "RB_VervolgstapInhoudelijkBehandelen",
-            "input": true,
-            "optionsLabelPosition": "right",
-            "inline": false,
-            "values": [
-                {
-                    "label": "Een verweerschrift opstellen",
-                    "value": "verweerschrift"
-                },
-                {
-                    "label": "Een nieuwe beslissing op bezwaar (BOB) opstellen",
-                    "value": "bob"
-                },
-                {
-                    "label": "Afstemming na uitspraak met afdeling en portefeuillehouder",
-                    "value": "afstemming"
-                },
-                {
-                    "label": "Behandeling afronden (naar vastleggen uitkomst)",
-                    "value": "afronden"
-                }
-            ],
-            "validate": {
-                "required": true
-            }
-        },
-        {
-            "label": "Opmerkingen:",
-            "type": "textarea",
-            "key": "TA_OpmerkingenBehandelenBeroepschrift",
-            "input": true,
-            "autoExpand": true,
-            "validate": {
-                "required": true
-            }
         },
         {
             "type": "smartDocumentsFieldset",
-            "key": "TM_DocumentMakenBehandelenBeroepschrift",
+            "key": "TM_DocumentVastleggenUitkomst",
             "input": false,
+            "label": "Een document maken:",
             "components": [
                 {
                     "label": "Kies een sjabloon",
                     "type": "select",
-                    "key": "TM_DocumentMakenBehandelenBeroepschrift_Template",
+                    "key": "TM_DocumentVastleggenUitkomst_Template",
                     "input": true,
                     "widget": "html5",
                     "dataSrc": "custom",
@@ -78,7 +31,7 @@
                 {
                     "label": "Maak document",
                     "type": "button",
-                    "key": "TM_DocumentMakenBehandelenBeroepschrift_Create",
+                    "key": "TM_DocumentVastleggenUitkomst_Create",
                     "input": true,
                     "action": "event",
                     "showValidations": false,
@@ -89,6 +42,22 @@
                         "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke",
                         "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke"
                     }
+                }
+            ]
+        },
+        {
+            "type": "zaakResultTypesFieldset",
+            "key": "ZR_ZaakresultaatBeroep",
+            "input": false,
+            "components": [
+                {
+                    "label": "Was is het resultaat van deze zaak?",
+                    "type": "select",
+                    "key": "CO_Zaakresultaat",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "widget": "html5",
+                    "dataSrc": "custom"
                 }
             ]
         },

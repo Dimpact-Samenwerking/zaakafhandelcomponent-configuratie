@@ -1,22 +1,22 @@
 {
-    "name": "BER_ITS003_4",
-    "title": "Wachten op uitspraak",
+    "name": "BER_ITS004_3",
+    "title": "Verzenden beslissing op bezwaar",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Wachten op uitspraak</h2><p><strong>Datum stukken naar rechtbank:</strong>{{moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\")}}</p><p><strong>Datum verzending verweerschrift:</strong>{{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p><p><strong>Datum zitting:</strong>{{moment(data.DF_DatumZitting).format(\"D MMMM YYYY\")}}</p>",
-            "label": "PA_ToelichtingWachtenOpUitspraak",
+            "html": "<h2>Verzenden beslissing op bezwaar</h2>",
+            "label": "HF_VerzendenBeslissingOpBezwaar",
             "refreshOnChange": false,
-            "key": "PA_ToelichtingWachtenOpUitspraak",
+            "key": "HF_VerzendenBeslissingOpBezwaar",
             "type": "content",
             "input": false,
             "tableView": false
         },
         {
-            "label": "Datum uitspraak",
+            "label": "Verzenddatum beslissing op bezwaar",
             "type": "datetime",
-            "key": "DF_DatumUitspraak",
+            "key": "DF_VerzenddatumBOB",
             "input": true,
             "useLocaleSettings": true,
             "format": "dd-MM-yyyy",
@@ -42,49 +42,7 @@
                 "required": true
             }
         },
-        
         {
-            "label": "Opmerkingen",
-            "type": "textarea",
-            "key": "TA_OpmerkingenNaUitspraak",
-            "input": true,
-            "autoExpand": false,
-            "validate": {
-                "required": true
-            }
-        },
-        {
-            "type": "smartDocumentsFieldset",
-            "key": "TM_DocumentMakenNaUitspraak",
-            "input": false,
-            "label": "Een document maken:",
-            "components": [
-                {
-                    "label": "Kies een sjabloon",
-                    "type": "select",
-                    "key": "TM_DocumentMakenNaUitspraak_Template",
-                    "input": true,
-                    "widget": "html5",
-                    "dataSrc": "custom",
-                    "clearOnRefresh": true
-                },
-                {
-                    "label": "Maak document",
-                    "type": "button",
-                    "key": "TM_DocumentMakenNaUitspraak_Create",
-                    "input": true,
-                    "action": "event",
-                    "showValidations": false,
-                    "tableView": false,
-                    "event": "createDocument",
-                    "properties": {
-                        "SmartDocuments_Group": "Hier de folder/subfolder zoals in SD bekend",
-                        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke",
-                        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke"
-                    }
-                }
-            ]
-        },{
             "label": "Buttons",
             "key": "buttons",
             "type": "container",

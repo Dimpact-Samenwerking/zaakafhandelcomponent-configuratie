@@ -1,75 +1,38 @@
 {
-    "name": "BER_ITS002",
-    "title": "Behandelen beroepschrift",
+    "name": "BER_ITS003_3",
+    "title": "Voorbereiden zitting (pleitnota)",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Behandelen beroepschrift</h2>",
-            "label": "HF_BehandelenBeroepschrift",
+            "html": "<h2>Voorbereiden zitting (pleitnota)</h2><p><strong>Datum stukken naar rechtbank:</strong>{{moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\")}}</p><p><strong>Datum verzending verweerschrift:</strong>{{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p><p><strong>Datum zitting :</strong>{{data.DF_DatumZitting ? moment(data.DF_DatumZitting).format(\"D MMMM YYYY\") : \"Nog geen datum bekend\"}}</p>",
+            "label": "PA_Toelichting",
             "refreshOnChange": false,
-            "key": "HF_BehandelenBeroepschrift",
+            "key": "PA_Toelichting",
             "type": "content",
             "input": false,
             "tableView": false
-        },
+        },        
         {
-            "html": "<p>HIER EEN TOELICHTING OVER DE OPTIES BIJ HET INHOUDELIJK BEHANDELEN VAN HET BEROEPSCHRIFT.</p>",
-            "label": "PA_ToelichtingBehandelenBeroepschrift",
-            "refreshOnChange": false,
-            "key": "PA_ToelichtingBehandelenBeroepschrift",
-            "type": "content",
-            "input": false,
-            "tableView": false
-        },
-        {
-            "label": "Wat wil je doen?",
-            "type": "radio",
-            "key": "RB_VervolgstapInhoudelijkBehandelen",
-            "input": true,
-            "optionsLabelPosition": "right",
-            "inline": false,
-            "values": [
-                {
-                    "label": "Een verweerschrift opstellen",
-                    "value": "verweerschrift"
-                },
-                {
-                    "label": "Een nieuwe beslissing op bezwaar (BOB) opstellen",
-                    "value": "bob"
-                },
-                {
-                    "label": "Afstemming na uitspraak met afdeling en portefeuillehouder",
-                    "value": "afstemming"
-                },
-                {
-                    "label": "Behandeling afronden (naar vastleggen uitkomst)",
-                    "value": "afronden"
-                }
-            ],
-            "validate": {
-                "required": true
-            }
-        },
-        {
-            "label": "Opmerkingen:",
+            "label": "Opmerkingen",
             "type": "textarea",
-            "key": "TA_OpmerkingenBehandelenBeroepschrift",
+            "key": "TA_OpmerkingenVoorbereidenZitting",
             "input": true,
-            "autoExpand": true,
+            "autoExpand": false,
             "validate": {
                 "required": true
             }
         },
         {
             "type": "smartDocumentsFieldset",
-            "key": "TM_DocumentMakenBehandelenBeroepschrift",
+            "key": "TM_DocumentMakenVoorbereidenZitting",
             "input": false,
+            "label": "Een document maken:",
             "components": [
                 {
                     "label": "Kies een sjabloon",
                     "type": "select",
-                    "key": "TM_DocumentMakenBehandelenBeroepschrift_Template",
+                    "key": "TM_DocumentMakenVoorbereidenZitting_Template",
                     "input": true,
                     "widget": "html5",
                     "dataSrc": "custom",
@@ -78,7 +41,7 @@
                 {
                     "label": "Maak document",
                     "type": "button",
-                    "key": "TM_DocumentMakenBehandelenBeroepschrift_Create",
+                    "key": "TM_DocumentMakenVoorbereidenZitting_Create",
                     "input": true,
                     "action": "event",
                     "showValidations": false,
@@ -91,8 +54,7 @@
                     }
                 }
             ]
-        },
-        {
+        },{
             "label": "Buttons",
             "key": "buttons",
             "type": "container",

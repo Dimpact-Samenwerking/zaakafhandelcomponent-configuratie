@@ -124,6 +124,38 @@
             }
         },
         {
+            "type": "groepMedewerkerFieldset",
+            "key": "AGM_OndertekeningNieuweBeslissingOpBezwaarDoor",
+            "label": "Selecteer de collega die het document moet ondertekenen:",
+            "input": false,
+            "components": [
+                {
+                    "label": "Groep",
+                    "type": "select",
+                    "key": "AGM_OndertekeningNieuweBeslissingOpBezwaarDoor_Groep",
+                    "input": true,
+                    "widget": "html5",
+                    "dataSrc": "custom",
+                    "clearOnRefresh": true
+                },
+                {
+                    "label": "Medewerker",
+                    "type": "select",
+                    "key": "AGM_OndertekeningNieuweBeslissingOpBezwaarDoor_Medewerker",
+                    "widget": "html5",
+                    "input": true,
+                    "dataSrc": "custom",
+                    "refreshOn": "AGM_OndertekeningNieuweBeslissingOpBezwaarDoor_Groep",
+                    "clearOnRefresh": true
+                }
+            ],
+            "conditional": {
+                "show": true,
+                "when": "RB_OndertekenenNieuweBeslissingOpBezwaar",
+                "eq": true
+            }
+        },
+        {
             "label": "Opmerkingen voor de ondertekenaar:",
             "type": "textarea",
             "key": "TA_OpmerkingenTeOndertekenenDocumentenBOB",
@@ -132,6 +164,38 @@
             "validate": {
                 "required": true
             },
+            "conditional": {
+                "show": true,
+                "when": "RB_OndertekenenNieuweBeslissingOpBezwaar",
+                "eq": true
+            }
+        },
+        {
+            "type": "groepMedewerkerFieldset",
+            "key": "AGM_VerzendingNieuweBeslissingOpBezwaarDoor",
+            "label": "Selecteer de collega die het document moet verzenden:",
+            "input": false,
+            "components": [
+                {
+                    "label": "Groep",
+                    "type": "select",
+                    "key": "AGM_VerzendingNieuweBeslissingOpBezwaarDoor_Groep",
+                    "input": true,
+                    "widget": "html5",
+                    "dataSrc": "custom",
+                    "clearOnRefresh": true
+                },
+                {
+                    "label": "Medewerker",
+                    "type": "select",
+                    "key": "AGM_VerzendingNieuweBeslissingOpBezwaarDoor_Medewerker",
+                    "widget": "html5",
+                    "input": true,
+                    "dataSrc": "custom",
+                    "refreshOn": "AGM_VerzendingNieuweBeslissingOpBezwaarDoor_Groep",
+                    "clearOnRefresh": true
+                }
+            ],
             "conditional": {
                 "show": true,
                 "when": "RB_OndertekenenNieuweBeslissingOpBezwaar",

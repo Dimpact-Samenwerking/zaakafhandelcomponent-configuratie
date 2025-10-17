@@ -5,7 +5,7 @@
     <extensionElements>
       <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
       <design:creationdate><![CDATA[2025-09-10T11:34:15.325Z]]></design:creationdate>
-      <design:modificationdate><![CDATA[2025-10-13T14:58:33.551Z]]></design:modificationdate>
+      <design:modificationdate><![CDATA[2025-10-17T10:06:59.244Z]]></design:modificationdate>
     </extensionElements>
     <userTask id="BER_TN001_2" name="Gegevens beroepschrift controleren en aanpassen" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P28D" flowable:formKey="BER_ITS001_2" flowable:formFieldValidation="false">
       <documentation>LT: Wat is het doel van deze taak? Deze gegevens komen uit een fysiek/pdf document? Dus worden sowieso niet voorgevuld?
@@ -170,7 +170,7 @@ Due date (willekeurig) op 3 dagen gezet.</documentation>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BER_TN006" name="Vastleggen uitkomst" flowable:assignee="${initiator}" flowable:formKey="BER_ITS006" flowable:formFieldValidation="false">
+    <userTask id="BER_TN006" name="Vastleggen uitkomst" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS006" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BER_ITS006]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -254,7 +254,7 @@ Due date (willekeurig) op 3 dagen gezet.</documentation>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="BER_TN003_2" name="Wachten op uitnodiging zitting" flowable:assignee="${initiator}" flowable:formKey="BER_ITS003_2" flowable:formFieldValidation="false">
+    <userTask id="BER_TN003_2" name="Wachten op uitnodiging zitting" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS003_2" flowable:formFieldValidation="false">
       <documentation>LT: moet hier nog een due date opgenomen worden?</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BER_ITS003_2]]></flowable:static-form-key>
@@ -263,7 +263,7 @@ Due date (willekeurig) op 3 dagen gezet.</documentation>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BER_TN003_3" name="Voorbereiden zitting (pleitnota)" flowable:assignee="${initiator}" flowable:formKey="BER_ITS003_3" flowable:formFieldValidation="false">
+    <userTask id="BER_TN003_3" name="Voorbereiden zitting (pleitnota)" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS003_3" flowable:formFieldValidation="false">
       <documentation>LT: Due date met expression testen. Bijvoorbeeld 2 dagen voor datum zitting.</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BER_ITS003_3]]></flowable:static-form-key>
@@ -272,7 +272,7 @@ Due date (willekeurig) op 3 dagen gezet.</documentation>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BER_TN003_4" name="Wachten op uitspraak" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateUsers="${var:get(zaakGroep)}" flowable:formKey="BER_ITS003_4" flowable:formFieldValidation="false">
+    <userTask id="BER_TN003_4" name="Wachten op uitspraak" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS003_4" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BER_ITS003_4]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -280,7 +280,7 @@ Due date (willekeurig) op 3 dagen gezet.</documentation>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BER_TN004_2" name="Ondertekenen beslissing op bezwaar" flowable:assignee="${initiator}" flowable:dueDate="P2D" flowable:formKey="BER_ITS004_2" flowable:formFieldValidation="false">
+    <userTask id="BER_TN004_2" name="Ondertekenen beslissing op bezwaar" flowable:assignee="${var:get(AGM_OndertekeningNieuweBeslissingOpBezwaarDoor_Medewerker)}" flowable:candidateGroups="${var:get(AGM_OndertekeningNieuweBeslissingOpBezwaarDoor_Groep)}" flowable:dueDate="P2D" flowable:formKey="BER_ITS004_2" flowable:formFieldValidation="false">
       <documentation>LT: Ondertekening door collega? Toewijzing via AGM component
 
 Due date (willekeurig) op 2 dagen gezet.</documentation>
@@ -291,7 +291,7 @@ Due date (willekeurig) op 2 dagen gezet.</documentation>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BER_TN004_3" name="Verzenden beslissing op bezwaar" flowable:assignee="${initiator}" flowable:dueDate="P1D" flowable:formKey="BER_ITS004_3" flowable:formFieldValidation="false">
+    <userTask id="BER_TN004_3" name="Verzenden beslissing op bezwaar" flowable:assignee="${var:get(AGM_VerzendingNieuweBeslissingOpBezwaarDoor_Medewerker)}" flowable:candidateGroups="${var:get(AGM_VerzendingNieuweBeslissingOpBezwaarDoor_Groep)}" flowable:dueDate="P1D" flowable:formKey="BER_ITS004_3" flowable:formFieldValidation="false">
       <documentation>LT: Na het onderteken wordt het besluit verzonden. Verzendtaak toewijzen aan postkamer?
 
 Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toegewezen. Bijvoorbeeld op basis van DF met (gewenste) verzenddatum.</documentation>

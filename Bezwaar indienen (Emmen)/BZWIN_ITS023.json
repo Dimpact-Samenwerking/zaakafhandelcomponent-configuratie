@@ -1,0 +1,51 @@
+{
+  "name": "BZWIN_ITS023",
+  "title": "Ontvangen en beoordelen ingebrekestelling",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {},
+    {},
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "input": true,
+                  "action": "saveState",
+                  "state": "draft",
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "input": true,
+                  "disableOnInvalid": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

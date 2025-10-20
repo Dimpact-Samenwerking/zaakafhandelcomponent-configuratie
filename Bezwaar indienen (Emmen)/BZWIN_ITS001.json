@@ -1,0 +1,253 @@
+{
+  "name": "BZWIN_ITS001",
+  "title": "Algemene gegevens bezwaar",
+  "display": "form",
+  "type": "form",
+  "components": [
+ {
+  "type": "content",
+  "key": "HF_AlgemeneGegevens",
+  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Algemene gegevens bezwaar</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},   
+{
+  "label": "Er ligt een besluit ten grondslag aan het bezwaar:",
+  "type": "radio",
+  "key": "RB_GeenPrimairBesluit",
+  "input": true,
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "validate": {
+    "required": true
+  },
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee",
+      "value": "nee"
+    }
+  ]
+},
+    {
+  "label": "Verzenddatum primair besluit:",
+  "type": "datetime",
+  "key": "DF_VerzenddatumBesluit",
+  "input": true,
+  "validate": {
+    "required": true
+  },
+  "useLocaleSettings": true,
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "conditional": {
+        "show": false,
+        "when": "RB_GeenPrimairBesluit",
+        "eq": "nee"
+      },
+"widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+    {
+  "label": "Dagtekening primair besluit:",
+  "type": "datetime",
+  "key": "DF_Dagtekening",
+  "input": true,
+"validate": {
+    "required": true
+  },
+  "useLocaleSettings": true,
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "conditional": {
+        "show": false,
+        "when": "RB_GeenPrimairBesluit",
+        "eq": "nee"
+      },
+"widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+        {
+      "label": "Categorie",
+      "widget": "choicesjs",
+      "tableView": true,
+      "data": {
+        "values": [
+          {
+            "label": "Omgevingsvergunning",
+            "value": "ovg"
+          },
+          {
+            "label": "Evenementen",
+            "value": "evg"
+          },
+          {
+            "label": "Handhaving",
+            "value": "hhb"
+          },
+          {
+            "label": "Verkeer",
+            "value": "vbt"
+          },{
+            "label": "Burgerzaken",
+            "value": "bz"
+          },
+          {
+            "label": "APV",
+            "value": "apv"
+          },
+          {
+            "label": "Woo",
+            "value": "woo"
+          },
+          {
+            "label": "Subsidie",
+            "value": "subs"
+          },
+          {
+            "label": "Overig",
+            "value": "overig"
+          }
+        ]
+      },
+      "validateWhenHidden": false,
+      "key": "select",
+      "type": "select",
+      "input": true
+    },
+    {
+  "label": "Moet het procesdossier worden aangeleverd?:",
+  "type": "radio",
+  "key": "RB_Procesdossier",
+  "input": true,
+"validate": {
+    "required": true
+  },
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee",
+      "value": "nee"
+    }
+  ]
+},
+    {
+  "type": "content",
+  "key": "HF_teambehandelaar",
+  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Behandelend team / behandelaar</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "type": "groepMedewerkerFieldset",
+  "key": "GM_TeamMedewerker",
+  "input": false,
+  "components": [
+    {
+      "label": "Team",
+      "type": "select",
+      "key": "GM_TeamMedewerker_Groep",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true
+    },
+    {
+      "label": "Medewerker",
+      "type": "select",
+      "key": "GM_TeamMedewerker_Medewerker",
+      "widget": "html5",
+      "input": true,
+      "dataSrc": "custom",
+      "refreshOn": "GM_TeamMedewerker_Groep",
+      "clearOnRefresh": true
+    }
+  ]
+},
+    {
+      "label": "",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "input": true,
+                  "action": "saveState",
+                  "state": "draft",
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "input": true,
+                  "disableOnInvalid": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

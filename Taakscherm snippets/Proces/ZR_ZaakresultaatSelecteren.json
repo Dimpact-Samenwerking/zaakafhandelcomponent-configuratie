@@ -1,0 +1,16 @@
+{
+  "type": "zaakResultTypesFieldset",
+  "key": "ZR_Zaakresultaat",
+  "input": false,
+  "components": [
+    {
+      "label": "Was is het resultaat van deze zaak?",
+      "type": "select",
+      "key": "CO_Zaakresultaat",
+      "input": true,
+      "optionsLabelPosition": "right",
+      "widget": "html5",
+      "dataSrc": "custom"
+    }
+  ]
+}

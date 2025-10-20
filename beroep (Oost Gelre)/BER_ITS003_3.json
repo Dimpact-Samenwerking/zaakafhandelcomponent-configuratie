@@ -1,0 +1,100 @@
+{
+    "name": "BER_ITS003_3",
+    "title": "Voorbereiden zitting (pleitnota)",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Voorbereiden zitting (pleitnota)</h2><p><strong>Datum stukken naar rechtbank:</strong>{{moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\")}}</p><p><strong>Datum verzending verweerschrift:</strong>{{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p><p><strong>Datum zitting :</strong>{{data.DF_DatumZitting ? moment(data.DF_DatumZitting).format(\"D MMMM YYYY\") : \"Nog geen datum bekend\"}}</p>",
+            "label": "PA_Toelichting",
+            "refreshOnChange": false,
+            "key": "PA_Toelichting",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },        
+        {
+            "label": "Opmerkingen",
+            "type": "textarea",
+            "key": "TA_OpmerkingenVoorbereidenZitting",
+            "input": true,
+            "autoExpand": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "type": "smartDocumentsFieldset",
+            "key": "TM_DocumentMakenVoorbereidenZitting",
+            "input": false,
+            "label": "Een document maken:",
+            "components": [
+                {
+                    "label": "Kies een sjabloon",
+                    "type": "select",
+                    "key": "TM_DocumentMakenVoorbereidenZitting_Template",
+                    "input": true,
+                    "widget": "html5",
+                    "dataSrc": "custom",
+                    "clearOnRefresh": true
+                },
+                {
+                    "label": "Maak document",
+                    "type": "button",
+                    "key": "TM_DocumentMakenVoorbereidenZitting_Create",
+                    "input": true,
+                    "action": "event",
+                    "showValidations": false,
+                    "tableView": false,
+                    "event": "createDocument",
+                    "properties": {
+                        "SmartDocuments_Group": "Hier de folder/subfolder zoals in SD bekend",
+                        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke",
+                        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke"
+                    }
+                }
+            ]
+        },{
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "theme": "secondary",
+                                    "input": true,
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Opslaan & afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "disableOnInvalid": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

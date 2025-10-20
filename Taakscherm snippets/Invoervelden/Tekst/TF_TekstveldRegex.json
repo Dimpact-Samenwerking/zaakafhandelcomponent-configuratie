@@ -1,0 +1,13 @@
+{
+  "label": "Tekstveld met reguliere expressie",
+  "type": "textfield",
+  "key": "TF_TekstveldRegex",
+  "input": true,
+  "tooltip": "Geef bij label een duidelijke omschrijving van het veld (deze is zichtbaar voor de gebruiker). \n Geef bij key een unieke waarde op, houd je daarbij aan de naamgevingsconventies (Bijv. TF_NaamZaakdataveldCamelCase).\nBij tooltip kun je extra uitleg geven bij een component. Wil je geen tooltip tonen? Haal dit key-value pair dan weg.",
+  "validateOn": "blur",
+  "validate": {
+    "required": true,
+    "pattern": "^[1-9][0-9]{0,5}-20\\d{2}$",
+    "customMessage": "Dit is de foutmelding die je te zien krijgt als de invoer niet aan de expressie (pattern) voldoet. Expressies kun je maken en testen via regex101.com. Voorbeeld foutmelding (bij bovenstaande expressie): Ongeldig zaaknummer. Een zaaknummer bestaat uit een nummer gevolgd door een streepje en een jaartal (bijvoorbeeld: 45678-2020)."
+  }
+}

@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:design="http://flowable.org/design" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://flowable.org/test" exporter="Flowable Design" exporterVersion="2025.1.03" design:palette="flowable-work-process-palette">
+  <process id="bpmn-beroep" name="Beroep" isExecutable="true" flowable:candidateStarterGroups="flowableUser">
+    <documentation>groepa</documentation>
+    <extensionElements>
+      <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
+      <design:creationdate><![CDATA[2025-09-10T11:34:15.325Z]]></design:creationdate>
+      <design:modificationdate><![CDATA[2025-10-17T10:06:59.244Z]]></design:modificationdate>
+    </extensionElements>
+    <userTask id="BER_TN001_2" name="Gegevens beroepschrift controleren en aanpassen" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P28D" flowable:formKey="BER_ITS001_2" flowable:formFieldValidation="false">
+      <documentation>LT: Wat is het doel van deze taak? Deze gegevens komen uit een fysiek/pdf document? Dus worden sowieso niet voorgevuld?
+Controleren, vastleggen of aanpassen gegevens beroepschrift.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS001_2]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <serviceTask id="BER_WZ001" name="Wijzigen zaakstatus in &quot;Ontvangen&quot;" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <documentation>LT: Nakijken of deze actie (service task) nodig is binnen OpenZaak. Bepalen welke statusovergangen we willen in dit specifieke proces.</documentation>
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Ontvangen]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <userTask id="BER_TN001_1" name="Controleren beroepschrift" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P5D" flowable:formKey="BER_ITS001_1" flowable:formFieldValidation="false">
+      <documentation>LT: Bepalen welke naam we deze taak willen geven. Binnen OG is de eerste stap nu vaak "Accepteren zaak".
+Doet de "Due date" (hier 5 dagen) ook iets?</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS001_1]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <serviceTask id="BER_EM001_1" name="Verzenden notificatie naar vakafdeling X" flowable:class="net.atos.zac.flowable.delegate.SendEmailDelegate">
+      <documentation>LT: Navragen bij Zwolle waarvoor dit gebruikt wordt.</documentation>
+      <extensionElements>
+        <flowable:field name="from">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="to">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="replyTo">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="template">
+          <flowable:string><![CDATA[BER Notificatie ingekomen beroepschrift]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BER_EM001_2" name="Verzenden notificatie naar vakafdeling Y" flowable:class="net.atos.zac.flowable.delegate.SendEmailDelegate">
+      <documentation>LT: Navragen bij Zwolle waarvoor dit gebruikt wordt.</documentation>
+      <extensionElements>
+        <flowable:field name="from">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="to">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="replyTo">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="template">
+          <flowable:string><![CDATA[BER Notificatie ingekomen beroepschrift]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BER_EM001_3" name="Verzenden notificatie naar vakafdeling Z" flowable:class="net.atos.zac.flowable.delegate.SendEmailDelegate">
+      <documentation>LT: Navragen bij Zwolle waarvoor dit gebruikt wordt.</documentation>
+      <extensionElements>
+        <flowable:field name="from">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="to">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="replyTo">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="template">
+          <flowable:string><![CDATA[BER Notificatie ingekomen beroepschrift]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <userTask id="BER_TN002" name="Behandelen beroepschrift" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BER_ITS002" flowable:formFieldValidation="false">
+      <documentation>LT: Termijn in iNavigator 4 weken (21 dagen aangehouden als Due date)
+
+De functioneel ambtenaar van de gemeente stelt samen met de jurist van de sector en eventueel in overleg met Juridische zaken een verweerschrift op. In het verweerschrift wordt ingegaan op de argumenten die in het beroepschrift naar voren worden gebracht.
+
+Een bijzondere situatie is aan de orde als het bestuursorgaan in zijn besluit is afgeweken van het advies van de commissie beroeps- en bezwaarschriften.
+
+Verder dient de functioneel ambtenaar de relevante stukken uit het dossier te lichten en aan het betreffende rechtscollege toe te sturen. Binnen vier weken dienen het verweerschrift en de relevante stukken te zijn ingediend.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS002]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <serviceTask id="BER_EM001_4" name="Verzenden notificatie naar  mailadres" flowable:class="net.atos.zac.flowable.delegate.SendEmailDelegate">
+      <documentation>LT: Navragen bij Zwolle waarvoor dit gebruikt wordt.</documentation>
+      <extensionElements>
+        <flowable:field name="from">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="to">
+          <flowable:string><![CDATA[${EM_MailadresTeInformerenOverigIntern}]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="replyTo">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="template">
+          <flowable:string><![CDATA[BER Notificatie ingekomen beroepschrift]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BER_WZ002" name="Zaaktoekenning &amp; wijzigen status &quot;In behandeling&quot;" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <documentation>LT: Bepalen welke statusovergangen we willen in dit specifieke proces.
+Taken kunnen aan een zaakBehandelaar (uit ZAC) worden toegewezen. Onbekend hoe/of je deze variabele kunt zetten vanuit het BPMN proces in ZAC.</documentation>
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[In behandeling]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <userTask id="BER_TN003_1" name="Opstellen verweerschrift" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P21D" flowable:formKey="BER_ITS003_1" flowable:formFieldValidation="false">
+      <documentation>LT: Opstellen en verzenden verweerschrift. En voor de zitting opstellen van een pleitnota.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS003_1]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BER_TN004_1" name="Opstellen beslissing op bezwaar" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P7D" flowable:formKey="BER_ITS004_1" flowable:formFieldValidation="false">
+      <documentation>LT: Na ?de uitspraak van de rechter? een beslissing nemen op het bezwaar (BOB). Eis ongegrond of (gedeeltelijk) gegrond. Resp. informeren bestuursorgaan via PFH en vernietigen besluit. In dat laatste geval moet er een nieuw besluit worden genomen door het bestuursorgaan (via aparte zaak). Daarna wordt de beroepzaak afgerond met juiste resultaat.
+
+Due date (willekeurig) op 7 dagen gezet.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS004_1]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BER_TN005" name="Afstemmen met portefeuillehouder na uitspraak" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P3D" flowable:formKey="BER_ITS005" flowable:formFieldValidation="false">
+      <documentation>LT: Na ?de uitspraak van de rechter? bij eis ongegerond: informeren van het betreffende bestuursorgaan (via de portefeuillehouder). 
+
+Due date (willekeurig) op 3 dagen gezet.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS005]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BER_TN006" name="Vastleggen uitkomst" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS006" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS006]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <serviceTask id="BER_EM002_1" name="Verzenden notificatie naar vakafdeling X" flowable:class="net.atos.zac.flowable.delegate.SendEmailDelegate">
+      <documentation>LT: Navragen bij Zwolle waarvoor dit gebruikt wordt.</documentation>
+      <extensionElements>
+        <flowable:field name="from">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="to">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="replyTo">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="template">
+          <flowable:string><![CDATA[BER Notificatie afgehandeld beroepschrift]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BER_EM002_2" name="Verzenden notificatie naar vakafdeling Y" flowable:class="net.atos.zac.flowable.delegate.SendEmailDelegate">
+      <documentation>LT: Navragen bij Zwolle waarvoor dit gebruikt wordt.</documentation>
+      <extensionElements>
+        <flowable:field name="from">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="to">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="replyTo">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="template">
+          <flowable:string><![CDATA[BER Notificatie afgehandeld beroepschrift]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BER_EM002_3" name="Verzenden notificatie naar vakafdeling Z" flowable:class="net.atos.zac.flowable.delegate.SendEmailDelegate">
+      <documentation>LT: Navragen bij Zwolle waarvoor dit gebruikt wordt.</documentation>
+      <extensionElements>
+        <flowable:field name="from">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="to">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="replyTo">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="template">
+          <flowable:string><![CDATA[BER Notificatie afgehandeld beroepschrift]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BER_EM002_4" name="Verzenden notificatie naar  mailadres" flowable:class="net.atos.zac.flowable.delegate.SendEmailDelegate">
+      <documentation>LT: Navragen bij Zwolle waarvoor dit gebruikt wordt.</documentation>
+      <extensionElements>
+        <flowable:field name="from">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="to">
+          <flowable:string><![CDATA[${EM_MailadresTeInformerenOverigIntern}]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="replyTo">
+          <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="template">
+          <flowable:string><![CDATA[BER Notificatie afgehandeld beroepschrift]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <userTask id="BER_TN003_2" name="Wachten op uitnodiging zitting" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS003_2" flowable:formFieldValidation="false">
+      <documentation>LT: moet hier nog een due date opgenomen worden?</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS003_2]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BER_TN003_3" name="Voorbereiden zitting (pleitnota)" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS003_3" flowable:formFieldValidation="false">
+      <documentation>LT: Due date met expression testen. Bijvoorbeeld 2 dagen voor datum zitting.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS003_3]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BER_TN003_4" name="Wachten op uitspraak" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS003_4" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS003_4]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BER_TN004_2" name="Ondertekenen beslissing op bezwaar" flowable:assignee="${var:get(AGM_OndertekeningNieuweBeslissingOpBezwaarDoor_Medewerker)}" flowable:candidateGroups="${var:get(AGM_OndertekeningNieuweBeslissingOpBezwaarDoor_Groep)}" flowable:dueDate="P2D" flowable:formKey="BER_ITS004_2" flowable:formFieldValidation="false">
+      <documentation>LT: Ondertekening door collega? Toewijzing via AGM component
+
+Due date (willekeurig) op 2 dagen gezet.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS004_2]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BER_TN004_3" name="Verzenden beslissing op bezwaar" flowable:assignee="${var:get(AGM_VerzendingNieuweBeslissingOpBezwaarDoor_Medewerker)}" flowable:candidateGroups="${var:get(AGM_VerzendingNieuweBeslissingOpBezwaarDoor_Groep)}" flowable:dueDate="P1D" flowable:formKey="BER_ITS004_3" flowable:formFieldValidation="false">
+      <documentation>LT: Na het onderteken wordt het besluit verzonden. Verzendtaak toewijzen aan postkamer?
+
+Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toegewezen. Bijvoorbeeld op basis van DF met (gewenste) verzenddatum.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BER_ITS004_3]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <parallelGateway id="BER_PN001_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[ParallelGateway]]></design:stencilid>
+      </extensionElements>
+    </parallelGateway>
+    <exclusiveGateway id="BER_EB001_0" default="SequenceFlow_48">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <inclusiveGateway id="BER_MB001_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[InclusiveGateway]]></design:stencilid>
+      </extensionElements>
+    </inclusiveGateway>
+    <inclusiveGateway id="BER_MB001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[InclusiveGateway]]></design:stencilid>
+      </extensionElements>
+    </inclusiveGateway>
+    <exclusiveGateway id="BER_EB003_0" default="SequenceFlow_54">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BER_EB003_1" default="SequenceFlow_42">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <parallelGateway id="BER_PN001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[ParallelGateway]]></design:stencilid>
+      </extensionElements>
+    </parallelGateway>
+    <exclusiveGateway id="BER_EB001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BER_EB002">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BER_EB005_0" default="SequenceFlow_59">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BER_EB005_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <inclusiveGateway id="BER_MB002_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[InclusiveGateway]]></design:stencilid>
+      </extensionElements>
+    </inclusiveGateway>
+    <inclusiveGateway id="BER_MB002_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[InclusiveGateway]]></design:stencilid>
+      </extensionElements>
+    </inclusiveGateway>
+    <exclusiveGateway id="BER_EB004_2" default="SequenceFlow_104">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BER_EB004_1" default="SequenceFlow_107">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BER_EB004_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <startEvent id="BER_START" flowable:initiator="initiator" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:work-form-field-validation><![CDATA[false]]></flowable:work-form-field-validation>
+        <design:stencilid><![CDATA[StartNoneEvent]]></design:stencilid>
+      </extensionElements>
+    </startEvent>
+    <endEvent id="BER_EIND001">
+      <extensionElements>
+        <design:stencilid><![CDATA[EndNoneEvent]]></design:stencilid>
+      </extensionElements>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_45" sourceRef="BER_TN001_2" targetRef="BER_PN001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_5" sourceRef="BER_WZ001" targetRef="BER_PN001_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_10" sourceRef="BER_TN001_1" targetRef="BER_EB001_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_26" sourceRef="BER_EM001_1" targetRef="BER_MB001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_27" sourceRef="BER_EM001_2" targetRef="BER_MB001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_28" sourceRef="BER_EM001_3" targetRef="BER_MB001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_35" sourceRef="BER_TN002" targetRef="BER_EB003_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_32" sourceRef="BER_EM001_4" targetRef="BER_MB001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_50" sourceRef="BER_WZ002" targetRef="BER_EB002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_92" sourceRef="BER_TN003_1" targetRef="BER_TN003_2">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_106" sourceRef="BER_TN004_1" targetRef="BER_EB004_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_53" sourceRef="BER_TN005" targetRef="BER_EB003_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_57" sourceRef="BER_TN006" targetRef="BER_EB005_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_81" sourceRef="BER_EM002_1" targetRef="BER_MB002_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_89" sourceRef="BER_EM002_2" targetRef="BER_MB002_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_90" sourceRef="BER_EM002_3" targetRef="BER_MB002_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_91" sourceRef="BER_EM002_4" targetRef="BER_MB002_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_94" sourceRef="BER_TN003_2" targetRef="BER_TN003_3">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_97" sourceRef="BER_TN003_3" targetRef="BER_TN003_4">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_103" sourceRef="BER_TN003_4" targetRef="BER_EB003_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_101" sourceRef="BER_TN004_2" targetRef="BER_EB004_2">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_102" sourceRef="BER_TN004_3" targetRef="BER_EB003_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_48" name="Geen notificaties verzenden" sourceRef="BER_EB001_0" targetRef="BER_EB001_1">
+      <extensionElements>
+        <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+        <design:display_ref_in_diagram><![CDATA[true]]></design:display_ref_in_diagram>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_46" sourceRef="BER_MB001_1" targetRef="BER_EB001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_52" sourceRef="BER_EB003_0" targetRef="BER_TN005">
+      <documentation>Conditie: RB_VervolgstapInhoudelijkBehandelen == afstemming</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'afstemming'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_54" sourceRef="BER_EB003_0" targetRef="BER_EB003_1">
+      <extensionElements>
+        <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_55" sourceRef="BER_PN001_1" targetRef="BER_TN006">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_47" sourceRef="BER_EB001_1" targetRef="BER_WZ002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_2" sourceRef="BER_START" targetRef="BER_WZ001">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_6" sourceRef="BER_PN001_0" targetRef="BER_TN001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_8" sourceRef="BER_PN001_0" targetRef="BER_TN001_2">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_16" sourceRef="BER_EB001_0" targetRef="BER_MB001_0">
+      <documentation>Conditie: CB_TeInformerenVakafdelingen niet leeg || EM_MailadresTeInformerenOverigIntern niet leeg</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:notEmpty(CB_TeInformerenVakafdelingen)||var:notEmpty(EM_MailadresTeInformerenOverigIntern)}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_18" sourceRef="BER_MB001_0" targetRef="BER_EM001_1">
+      <documentation>Conditie: CB_TeInformerenVakafdelingen bevat x</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'x')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_23" sourceRef="BER_MB001_0" targetRef="BER_EM001_2">
+      <documentation>Conditie: CB_TeInformerenVakafdelingen bevat y</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'y')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_24" sourceRef="BER_MB001_0" targetRef="BER_EM001_3">
+      <documentation>Conditie: CB_TeInformerenVakafdelingen bevat z</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'z')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_31" sourceRef="BER_MB001_0" targetRef="BER_EM001_4">
+      <documentation>Conditie: EM_MailadresTeInformerenOverigIntern niet leeg</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:notEmpty(EM_MailadresTeInformerenOverigIntern)}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_37" sourceRef="BER_EB003_0" targetRef="BER_TN003_1">
+      <documentation>Conditie: RB_VervolgstapInhoudelijkBehandelen == verweerschrift</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'verweerschrift'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_39" sourceRef="BER_EB003_0" targetRef="BER_EB004_0">
+      <documentation>Conditie: RB_VervolgstapInhoudelijkBehandelen == bob</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'bob'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_42" sourceRef="BER_EB003_1" targetRef="BER_EB002">
+      <extensionElements>
+        <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_43" name="Afronden" sourceRef="BER_EB003_1" targetRef="BER_PN001_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+        <design:display_ref_in_diagram><![CDATA[true]]></design:display_ref_in_diagram>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'afronden'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_51" sourceRef="BER_EB002" targetRef="BER_TN002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_59" sourceRef="BER_EB005_0" targetRef="BER_EB005_1">
+      <extensionElements>
+        <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_78" sourceRef="BER_EB005_0" targetRef="BER_MB002_0">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vars:notEmpty(CB_TeInformerenVakafdelingen)||vars:notEmpty(EM_MailadresTeInformerenOverigIntern)}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_60" sourceRef="BER_EB005_1" targetRef="BER_EIND001">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_82" sourceRef="BER_MB002_0" targetRef="BER_EM002_1">
+      <documentation>Conditie: CB_TeInformerenVakafdelingen bevat x</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'x')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_86" sourceRef="BER_MB002_0" targetRef="BER_EM002_2">
+      <documentation>Conditie: CB_TeInformerenVakafdelingen bevat y</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'y')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_87" sourceRef="BER_MB002_0" targetRef="BER_EM002_3">
+      <documentation>Conditie: CB_TeInformerenVakafdelingen bevat z</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'z')}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_88" sourceRef="BER_MB002_0" targetRef="BER_EM002_4">
+      <documentation>Conditie: EM_MailadresTeInformerenOverigIntern niet leeg</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:notEmpty(EM_MailadresTeInformerenOverigIntern)}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_83" sourceRef="BER_MB002_1" targetRef="BER_EB005_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_104" sourceRef="BER_EB004_2" targetRef="BER_TN004_3">
+      <extensionElements>
+        <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_111" sourceRef="BER_EB004_2" targetRef="BER_EB004_0">
+      <documentation>Condition: RB_OndertekenaarBOBAkkoord == false</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_OndertekenaarBOBAkkoord, false}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_107" sourceRef="BER_EB004_1" targetRef="BER_TN004_2">
+      <extensionElements>
+        <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_108" sourceRef="BER_EB004_1" targetRef="BER_EB004_2">
+      <documentation>Condition: RB_OndertekenenNieuweBeslissingOpBezwaar == false</documentation>
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_OndertekenenNieuweBeslissingOpBezwaar, false}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_110" sourceRef="BER_EB004_0" targetRef="BER_TN004_1">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <textAnnotation id="BER_OPM001">
+      <extensionElements>
+        <design:stencilid><![CDATA[TextAnnotation]]></design:stencilid>
+        <design:text><![CDATA[Als zaakbehandelaar kun je ervoor kiezen om een notificatiemail te sturen naar bepaalde afdelingen of een specifiek mailadres.]]></design:text>
+      </extensionElements>
+      <text>Als zaakbehandelaar kun je ervoor kiezen om een notificatiemail te sturen naar bepaalde afdelingen of een specifiek mailadres.</text>
+    </textAnnotation>
+    <association id="AssociationUndirected_74" sourceRef="BER_OPM001" targetRef="BER_MB001_0" associationDirection="None">
+      <extensionElements>
+        <design:stencilid><![CDATA[AssociationUndirected]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Association_Undirected]]></design:stencilsuperid>
+      </extensionElements>
+    </association>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_bpmn-beroep">
+    <bpmndi:BPMNPlane bpmnElement="bpmn-beroep" id="BPMNPlane_bpmn-beroep">
+      <bpmndi:BPMNShape bpmnElement="BER_OPM001" id="BPMNShape_BER_OPM001">
+        <omgdc:Bounds height="88.0" width="157.0" x="620.0" y="626.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN001_2" id="BPMNShape_BER_TN001_2">
+        <omgdc:Bounds height="103.0" width="100.0" x="620.0" y="190.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_WZ001" id="BPMNShape_BER_WZ001">
+        <omgdc:Bounds height="80.0" width="100.0" x="412.0" y="352.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN001_1" id="BPMNShape_BER_TN001_1">
+        <omgdc:Bounds height="80.0" width="100.0" x="620.0" y="352.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EM001_1" id="BPMNShape_BER_EM001_1">
+        <omgdc:Bounds height="80.0" width="100.0" x="934.0" y="452.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EM001_2" id="BPMNShape_BER_EM001_2">
+        <omgdc:Bounds height="80.0" width="100.0" x="934.0" y="542.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EM001_3" id="BPMNShape_BER_EM001_3">
+        <omgdc:Bounds height="80.0" width="100.0" x="934.0" y="634.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN002" id="BPMNShape_BER_TN002">
+        <omgdc:Bounds height="80.0" width="100.0" x="1472.9482698487197" y="352.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EM001_4" id="BPMNShape_BER_EM001_4">
+        <omgdc:Bounds height="80.0" width="100.0" x="934.0" y="728.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_WZ002" id="BPMNShape_BER_WZ002">
+        <omgdc:Bounds height="80.0" width="100.0" x="1244.0" y="352.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN003_1" id="BPMNShape_BER_TN003_1">
+        <omgdc:Bounds height="80.0" width="100.0" x="1695.9482698487197" y="452.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN004_1" id="BPMNShape_BER_TN004_1">
+        <omgdc:Bounds height="80.0" width="100.0" x="1815.9482698487197" y="630.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN005" id="BPMNShape_BER_TN005">
+        <omgdc:Bounds height="80.0" width="100.0" x="1695.9482698487197" y="728.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN006" id="BPMNShape_BER_TN006">
+        <omgdc:Bounds height="80.0" width="100.0" x="2738.94826984872" y="351.99999999999994"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EM002_1" id="BPMNShape_BER_EM002_1">
+        <omgdc:Bounds height="80.0" width="100.0" x="3056.0" y="452.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EM002_2" id="BPMNShape_BER_EM002_2">
+        <omgdc:Bounds height="80.0" width="100.0" x="3056.0" y="542.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EM002_3" id="BPMNShape_BER_EM002_3">
+        <omgdc:Bounds height="80.0" width="100.0" x="3056.0" y="630.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EM002_4" id="BPMNShape_BER_EM002_4">
+        <omgdc:Bounds height="80.0" width="100.0" x="3056.0" y="728.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN003_2" id="BPMNShape_BER_TN003_2">
+        <omgdc:Bounds height="80.0" width="100.0" x="1944.94826984872" y="452.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN003_3" id="BPMNShape_BER_TN003_3">
+        <omgdc:Bounds height="80.0" width="100.0" x="2083.94826984872" y="452.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN003_4" id="BPMNShape_BER_TN003_4">
+        <omgdc:Bounds height="80.0" width="100.0" x="2356.94826984872" y="452.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN004_2" id="BPMNShape_BER_TN004_2">
+        <omgdc:Bounds height="80.0" width="100.0" x="2083.94826984872" y="630.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_TN004_3" id="BPMNShape_BER_TN004_3">
+        <omgdc:Bounds height="80.0" width="100.0" x="2356.94826984872" y="630.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_PN001_0" id="BPMNShape_BER_PN001_0">
+        <omgdc:Bounds height="40.0" width="40.0" x="549.0" y="372.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB001_0" id="BPMNShape_BER_EB001_0">
+        <omgdc:Bounds height="40.0" width="40.0" x="760.0" y="372.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_MB001_0" id="BPMNShape_BER_MB001_0">
+        <omgdc:Bounds height="40.0" width="40.0" x="841.0" y="472.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_MB001_1" id="BPMNShape_BER_MB001_1">
+        <omgdc:Bounds height="40.0" width="40.0" x="1088.0" y="472.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB003_0" id="BPMNShape_BER_EB003_0">
+        <omgdc:Bounds height="40.0" width="40.0" x="1619.9482698487197" y="372.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB003_1" id="BPMNShape_BER_EB003_1">
+        <omgdc:Bounds height="40.0" width="40.0" x="2492.94826984872" y="372.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_PN001_1" id="BPMNShape_BER_PN001_1">
+        <omgdc:Bounds height="40.0" width="40.0" x="2647.94826984872" y="372.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB001_1" id="BPMNShape_BER_EB001_1">
+        <omgdc:Bounds height="40.0" width="40.0" x="1171.0" y="372.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB002" id="BPMNShape_BER_EB002">
+        <omgdc:Bounds height="40.0" width="40.0" x="1396.0" y="371.99999999999994"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB005_0" id="BPMNShape_BER_EB005_0">
+        <omgdc:Bounds height="40.0" width="40.0" x="2888.94826984872" y="372.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB005_1" id="BPMNShape_BER_EB005_1">
+        <omgdc:Bounds height="40.0" width="40.0" x="3274.94826984872" y="371.99999999999994"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_MB002_0" id="BPMNShape_BER_MB002_0">
+        <omgdc:Bounds height="40.0" width="40.0" x="2962.94826984872" y="472.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_MB002_1" id="BPMNShape_BER_MB002_1">
+        <omgdc:Bounds height="40.0" width="40.0" x="3206.0" y="472.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB004_2" id="BPMNShape_BER_EB004_2">
+        <omgdc:Bounds height="40.0" width="40.0" x="2241.94826984872" y="650.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB004_1" id="BPMNShape_BER_EB004_1">
+        <omgdc:Bounds height="40.0" width="40.0" x="1974.94826984872" y="650.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EB004_0" id="BPMNShape_BER_EB004_0">
+        <omgdc:Bounds height="40.0" width="40.0" x="1725.9482698487197" y="650.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_START" id="BPMNShape_BER_START">
+        <omgdc:Bounds height="30.0" width="30.0" x="337.0" y="377.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BER_EIND001" id="BPMNShape_BER_EIND001">
+        <omgdc:Bounds height="28.0" width="28.0" x="3367.94826984872" y="377.99999999999994"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_26" id="BPMNEdge_SequenceFlow_26" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1034.0" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1088.0" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_27" id="BPMNEdge_SequenceFlow_27" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1034.0" y="582.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1108.0" y="582.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1108.0" y="512.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_28" id="BPMNEdge_SequenceFlow_28" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1034.0" y="674.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1108.0" y="674.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1108.0" y="512.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_23" id="BPMNEdge_SequenceFlow_23" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="861.0" y="512.0"></omgdi:waypoint>
+        <omgdi:waypoint x="861.0" y="582.0"></omgdi:waypoint>
+        <omgdi:waypoint x="934.0" y="582.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_24" id="BPMNEdge_SequenceFlow_24" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="861.0" y="512.0"></omgdi:waypoint>
+        <omgdi:waypoint x="861.0" y="674.0"></omgdi:waypoint>
+        <omgdi:waypoint x="934.0" y="674.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_60" id="BPMNEdge_SequenceFlow_60" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="3314.94826984872" y="391.99999999999994"></omgdi:waypoint>
+        <omgdi:waypoint x="3367.94826984872" y="391.99999999999994"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_37" id="BPMNEdge_SequenceFlow_37" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1639.9482698487197" y="412.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1639.9482698487197" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1695.9482698487197" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_39" id="BPMNEdge_SequenceFlow_39" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1639.9482698487197" y="412.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1639.9482698487197" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1725.9482698487197" y="670.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_78" id="BPMNEdge_SequenceFlow_78" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2908.94826984872" y="412.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2908.94826984872" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2962.94826984872" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_35" id="BPMNEdge_SequenceFlow_35" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1572.9482698487197" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1619.9482698487197" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_31" id="BPMNEdge_SequenceFlow_31" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="861.0" y="512.0"></omgdi:waypoint>
+        <omgdi:waypoint x="861.0" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="934.0" y="768.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_111" id="BPMNEdge_SequenceFlow_111" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2261.94826984872" y="650.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2261.94826984872" y="590.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1745.9482698487197" y="590.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1745.9482698487197" y="650.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_32" id="BPMNEdge_SequenceFlow_32" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1034.0" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1108.0" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1108.0" y="512.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_110" id="BPMNEdge_SequenceFlow_110" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1765.9482698487197" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1815.9482698487197" y="670.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_48" id="BPMNEdge_SequenceFlow_48" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="800.0" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1171.0" y="392.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.0" width="149.0" x="913.4175395640839" y="366.69641563893646"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_88" id="BPMNEdge_SequenceFlow_88" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="2982.94826984872" y="512.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2982.94826984872" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3056.0" y="768.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_45" id="BPMNEdge_SequenceFlow_45" flowable:sourceDockerX="50.0" flowable:sourceDockerY="52.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="720.0" y="241.5"></omgdi:waypoint>
+        <omgdi:waypoint x="2667.94826984872" y="241.5"></omgdi:waypoint>
+        <omgdi:waypoint x="2667.94826984872" y="372.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_89" id="BPMNEdge_SequenceFlow_89" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="3156.0" y="582.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3226.0" y="582.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3226.0" y="512.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_8" id="BPMNEdge_SequenceFlow_8" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="52.0">
+        <omgdi:waypoint x="569.0" y="372.0"></omgdi:waypoint>
+        <omgdi:waypoint x="569.0" y="241.5"></omgdi:waypoint>
+        <omgdi:waypoint x="620.0" y="241.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_46" id="BPMNEdge_SequenceFlow_46" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1128.0" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1191.0" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1191.0" y="412.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_47" id="BPMNEdge_SequenceFlow_47" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1211.0" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1244.0" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_6" id="BPMNEdge_SequenceFlow_6" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="589.0" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="620.0" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_5" id="BPMNEdge_SequenceFlow_5" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="512.0" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="549.0" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_2" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="367.0" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="412.0" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_108" id="BPMNEdge_SequenceFlow_108" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1994.94826984872" y="690.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1994.94826984872" y="731.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2261.94826984872" y="731.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2261.94826984872" y="690.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_107" id="BPMNEdge_SequenceFlow_107" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="2014.94826984872" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2083.94826984872" y="670.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_102" id="BPMNEdge_SequenceFlow_102" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2456.94826984872" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2512.94826984872" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2512.94826984872" y="412.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_101" id="BPMNEdge_SequenceFlow_101" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2183.94826984872" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2241.94826984872" y="670.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_42" id="BPMNEdge_SequenceFlow_42" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2512.94826984872" y="372.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2512.94826984872" y="306.34456142915343"></omgdi:waypoint>
+        <omgdi:waypoint x="1416.0" y="306.34456142915343"></omgdi:waypoint>
+        <omgdi:waypoint x="1416.0" y="371.99999999999994"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_86" id="BPMNEdge_SequenceFlow_86" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="2982.94826984872" y="512.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2982.94826984872" y="582.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3056.0" y="582.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_43" id="BPMNEdge_SequenceFlow_43" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2532.94826984872" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2647.94826984872" y="392.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.0" width="49.0" x="2557.94826984872" y="362.8"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_87" id="BPMNEdge_SequenceFlow_87" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="2982.94826984872" y="512.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2982.94826984872" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3056.0" y="670.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_106" id="BPMNEdge_SequenceFlow_106" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1915.9482698487197" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1974.94826984872" y="670.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_81" id="BPMNEdge_SequenceFlow_81" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="3156.0" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3206.0" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_82" id="BPMNEdge_SequenceFlow_82" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="3002.94826984872" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3056.0" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_104" id="BPMNEdge_SequenceFlow_104" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="2281.94826984872" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2356.94826984872" y="670.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_103" id="BPMNEdge_SequenceFlow_103" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2456.94826984872" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2512.94826984872" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2512.94826984872" y="412.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_83" id="BPMNEdge_SequenceFlow_83" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="3246.0" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3294.94826984872" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3294.94826984872" y="411.99999999999994"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_59" id="BPMNEdge_SequenceFlow_59" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2928.94826984872" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3274.94826984872" y="391.99999999999994"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_16" id="BPMNEdge_SequenceFlow_16" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="780.0" y="412.0"></omgdi:waypoint>
+        <omgdi:waypoint x="780.0" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="841.0" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_18" id="BPMNEdge_SequenceFlow_18" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="881.0" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="934.0" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_55" id="BPMNEdge_SequenceFlow_55" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="2687.94826984872" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2738.94826984872" y="391.99999999999994"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_57" id="BPMNEdge_SequenceFlow_57" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="2838.94826984872" y="391.99999999999994"></omgdi:waypoint>
+        <omgdi:waypoint x="2888.94826984872" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_90" id="BPMNEdge_SequenceFlow_90" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="3156.0" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3226.0" y="670.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3226.0" y="512.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="AssociationUndirected_74" id="BPMNEdge_AssociationUndirected_74" flowable:sourceDockerX="79.0" flowable:sourceDockerY="44.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="698.5" y="626.0"></omgdi:waypoint>
+        <omgdi:waypoint x="698.5" y="564.0"></omgdi:waypoint>
+        <omgdi:waypoint x="847.1407249466951" y="498.1407249466951"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_51" id="BPMNEdge_SequenceFlow_51" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1436.0" y="391.99999999999994"></omgdi:waypoint>
+        <omgdi:waypoint x="1472.9482698487197" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_52" id="BPMNEdge_SequenceFlow_52" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1639.9482698487197" y="412.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1639.9482698487197" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1695.9482698487197" y="768.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_53" id="BPMNEdge_SequenceFlow_53" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1795.9482698487197" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2512.94826984872" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2512.94826984872" y="412.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_97" id="BPMNEdge_SequenceFlow_97" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="2183.94826984872" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2356.94826984872" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_10" id="BPMNEdge_SequenceFlow_10" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="720.0" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="760.0" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_54" id="BPMNEdge_SequenceFlow_54" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1659.9482698487197" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2492.94826984872" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_91" id="BPMNEdge_SequenceFlow_91" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="3156.0" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3226.0" y="768.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3226.0" y="512.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_92" id="BPMNEdge_SequenceFlow_92" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1795.9482698487197" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1944.94826984872" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_50" id="BPMNEdge_SequenceFlow_50" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1344.0" y="392.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1396.0" y="391.99999999999994"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_94" id="BPMNEdge_SequenceFlow_94" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="2044.94826984872" y="492.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2083.94826984872" y="492.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

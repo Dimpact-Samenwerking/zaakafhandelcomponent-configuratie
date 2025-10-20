@@ -1,0 +1,32 @@
+{
+  "type": "smartDocumentsFieldset",
+  "key": "TM_DocumentMakenTemplateSD",
+  "input": false,
+  "label": "Een document maken:",
+  "components": [
+    {
+      "label": "Kies een sjabloon",
+      "type": "select",
+      "key": "HierDeKeyDieDoorSmartDocHerkendWordt_Template",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "HierDeKeyDieDoorSmartDocHerkendWordt_Create",
+      "input": true,
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "Hier de folder/subfolder zoals in SD bekend",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke"
+      }
+    }
+  ]
+}

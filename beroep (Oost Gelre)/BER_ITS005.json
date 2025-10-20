@@ -1,0 +1,110 @@
+{
+    "name": "BER_ITS005",
+    "title": "Afstemmen met portefeuillehouder na uitspraak",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Afstemmen met portefeuillehouder na uitspraak</h2>",
+            "label": "HF_AfstemmenMetPortefeuillehouderNaUitspraak",
+            "refreshOnChange": false,
+            "key": "HF_AfstemmenMetPortefeuillehouderNaUitspraak",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+               {
+            "html": "<p><strong>Opmerking inhoudelijk behandelen: </strong>{{data.TA_OpmerkingenBehandelenBeroepschrift}}</p>",
+            "label": "PA_ToelichtingAfstemmingPONaUitspraak",
+            "refreshOnChange": false,
+            "key": "PA_ToelichtingAfstemmingPONaUitspraak",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Opmerkingen",
+            "type": "textarea",
+            "key": "TA_OpmerkingenAfstemmenMetPortefeuillehouderNaUitspraak",
+            "input": true,
+            "autoExpand": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "type": "smartDocumentsFieldset",
+            "key": "TM_DocumentMakenNaAfstemmingPOH",
+            "input": false,
+            "label": "Een document maken:",
+            "components": [
+                {
+                    "label": "Kies een sjabloon",
+                    "type": "select",
+                    "key": "TM_DocumentMakenNaAfstemmingPOH_Template",
+                    "input": true,
+                    "widget": "html5",
+                    "dataSrc": "custom",
+                    "clearOnRefresh": true
+                },
+                {
+                    "label": "Maak document",
+                    "type": "button",
+                    "key": "TM_DocumentMakenNaAfstemmingPOH_Create",
+                    "input": true,
+                    "action": "event",
+                    "showValidations": false,
+                    "tableView": false,
+                    "event": "createDocument",
+                    "properties": {
+                        "SmartDocuments_Group": "Hier de folder/subfolder zoals in SD bekend",
+                        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke",
+                        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "theme": "secondary",
+                                    "input": true,
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Opslaan & afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "disableOnInvalid": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

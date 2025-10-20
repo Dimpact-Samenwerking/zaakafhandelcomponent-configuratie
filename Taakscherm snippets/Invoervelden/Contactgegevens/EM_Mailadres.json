@@ -1,0 +1,13 @@
+{
+  "label": "E-mailadres:",
+  "applyMaskOn": "change",
+  "tableView": true,
+  "validateOn": "blur",
+  "validate": {
+    "required": true
+  },
+  "validateWhenHidden": false,
+  "key": "EM_Mailadres",
+  "type": "email",
+  "input": true
+}

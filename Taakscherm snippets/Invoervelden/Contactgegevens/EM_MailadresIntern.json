@@ -1,0 +1,15 @@
+{
+  "label": "E-mailadres <collega of afdeling>:",
+  "applyMaskOn": "change",
+  "tableView": true,
+  "validateOn": "blur",
+  "validate": {
+    "required": true,
+    "pattern": "^.{2,}(@example\\.com)$",
+    "customMessage": "Vul een geldig @example.com mailadres in."
+  },
+  "validateWhenHidden": false,
+  "key": "EM_MailadresIntern",
+  "type": "email",
+  "input": true
+}

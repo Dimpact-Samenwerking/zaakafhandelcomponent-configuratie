@@ -1,0 +1,28 @@
+{
+      "label": "Combobox (dropdown)",
+      "widget": "choicesjs",
+      "tableView": true,
+      "data": {
+        "values": [
+          {
+            "label": "Optie X",
+            "value": "x"
+          },
+          {
+            "label": "Optie Y",
+            "value": "y"
+          },
+          {
+            "label": "Optie Z",
+            "value": "z"
+          }
+        ]
+      },
+      "validate": {
+        "required": true
+      },
+      "validateWhenHidden": false,
+      "key": "CO_Combobox",
+      "type": "select",
+      "input": true
+    }

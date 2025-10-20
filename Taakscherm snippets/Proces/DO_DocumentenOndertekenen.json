@@ -1,0 +1,9 @@
+{
+  "html": "<div class=\"alert alert-danger\" role=\"alert\">Er bestaat op dit moment géén custom component om documenten te ondertekenen vanuit een taakscherm.</div><p>Waarom je dit component mogelijk wel zou willen:</p><ul><li>Eén of meerdere geselecteerde documenten in een ondertekenoverzicht kunnen tonen.</li><li>Deze specifieke documenten kunnen ondertekenen vanuit het taakscherm.</li></ul>",
+  "label": "DT_DocumentenOndertekenen",
+  "refreshOnChange": false,
+  "key": "DT_DocumentenOndertekenen",
+  "type": "content",
+  "input": false,
+  "tableView": false
+}

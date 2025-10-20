@@ -1,0 +1,18 @@
+{
+    "label": "Telefoonnummer internationaal",
+    "tooltip": "Vul hier het telefoonnummer inclusief landcode (bijvoorbeeld +49) in.",
+    "inputMask": "",
+    "applyMaskOn": "change",
+    "autocomplete": "off",
+    "tableView": true,
+    "validateOn": "blur",
+    "validate": {
+        "required": true,
+        "pattern": "(^\\+31[1-9][0-9]{8}$)|(^[0-9][1-9][0-9]{8}$)|(^14[0-9][1-9][0-9]{1,2}$)",
+        "customMessage": "Vul een geldig internationaal telefoonnummer in."
+    },
+    "validateWhenHidden": false,
+    "key": "telefoonnummer",
+    "type": "phoneNumber",
+    "input": true
+}

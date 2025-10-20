@@ -1,0 +1,21 @@
+{
+    "label": "Nummerveld positief geheel getal met duizendtal delimiter",
+    "key": "NF_NummerveldGeheelGetal",
+    "type": "number",
+    "applyMaskOn": "change",
+    "tooltip": "Geef bij label een duidelijke omschrijving van het veld (deze is zichtbaar voor de gebruiker). \n Geef bij key een unieke waarde op, houd je daarbij aan de naamgevingsconventies (Bijv. TF_NaamZaakdataveldCamelCase).\nBij tooltip kun je extra uitleg geven bij een component. Wil je geen tooltip tonen? Haal dit key-value pair dan weg.",
+    "mask": false,
+    "tableView": false,
+    "delimiter": true,
+    "inputFormat": "plain",
+    "truncateMultipleSpaces": true,
+    "validateOn": "blur",
+    "validate": {
+        "required": true,
+        "min": 0
+    },
+    "decimalLimit": 0,
+    "requireDecimal": false,
+    "validateWhenHidden": false,
+    "input": true
+}

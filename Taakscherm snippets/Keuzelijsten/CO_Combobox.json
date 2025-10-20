@@ -1,6 +1,6 @@
 {
       "label": "Combobox (dropdown)",
-      "widget": "choicesjs",
+      "widget": "html5",
       "tableView": true,
       "data": {
         "values": [

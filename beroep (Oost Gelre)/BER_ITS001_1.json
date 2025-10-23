@@ -1,11 +1,11 @@
 {
   "name": "BER_ITS001_1",
-  "title": "Controleren beroepschrift",
+  "title": "In behandeling nemen beroepschrift",
   "display": "form",
   "type": "form",
   "components": [
     {
-      "html": "<h2>Controleren beroepschrift</h2>",
+      "html": "<h2>In behandeling nemen beroepschrift</h2>",
       "label": "HF_ControlerenBeroepschrift",
       "refreshOnChange": false,
       "key": "HF_ControlerenBeroepschrift",
@@ -14,7 +14,7 @@
       "tableView": false
     },
     {
-      "html": "<p>Bekijk onder de zaakdocumenten het ingekomen beroepschrift en de eventuele bijlagen. Bepaal of het beroepschrift betrekking heeft op een besluit van de gemeente. Bepaal vervolgens welke afdeling en collega het verweerschrift moet opstellen.<br>Werkproces iNav: <a href=\"https://i-navigator.bizzib.nl/schemas/gem/B0758/index.htm\" target=\"_blank\">Beroep</a>.</p>",
+      "html": "<p>Bekijk onder de zaakdocumenten het ingekomen beroepschrift en de eventuele bijlagen. Bepaal of het beroepschrift betrekking heeft op een besluit van de gemeente. Bepaal vervolgens welke afdeling en collega het verweerschrift moet opstellen.<br>Processchema \"Beroep\" in de iNavigator: <a href=\"https://i-navigator.bizzib.nl/schemas/gem/B0758/index.htm\" target=\"_blank\">Beroep</a>.</p>",
       "label": "PA_Toelichting",
       "refreshOnChange": false,
       "key": "PA_Toelichting",

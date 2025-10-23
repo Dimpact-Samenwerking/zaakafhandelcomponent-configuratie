@@ -5,7 +5,7 @@
     <extensionElements>
       <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
       <design:creationdate><![CDATA[2025-09-10T11:34:15.325Z]]></design:creationdate>
-      <design:modificationdate><![CDATA[2025-10-17T10:06:59.244Z]]></design:modificationdate>
+      <design:modificationdate><![CDATA[2025-10-23T09:33:55.908Z]]></design:modificationdate>
     </extensionElements>
     <userTask id="BER_TN001_2" name="Gegevens beroepschrift controleren en aanpassen" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P28D" flowable:formKey="BER_ITS001_2" flowable:formFieldValidation="false">
       <documentation>LT: Wat is het doel van deze taak? Deze gegevens komen uit een fysiek/pdf document? Dus worden sowieso niet voorgevuld?
@@ -27,7 +27,7 @@ Controleren, vastleggen of aanpassen gegevens beroepschrift.</documentation>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="BER_TN001_1" name="Controleren beroepschrift" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P5D" flowable:formKey="BER_ITS001_1" flowable:formFieldValidation="false">
+    <userTask id="BER_TN001_1" name="In behandeling nemen beroepschrift" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P5D" flowable:formKey="BER_ITS001_1" flowable:formFieldValidation="false">
       <documentation>LT: Bepalen welke naam we deze taak willen geven. Binnen OG is de eerste stap nu vaak "Accepteren zaak".
 Doet de "Due date" (hier 5 dagen) ook iets?</documentation>
       <extensionElements>
@@ -116,13 +116,13 @@ Verder dient de functioneel ambtenaar de relevante stukken uit het dossier te li
           <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
         </flowable:field>
         <flowable:field name="to">
-          <flowable:string><![CDATA[${EM_MailadresTeInformerenOverigIntern}]]></flowable:string>
+          <flowable:expression><![CDATA[${var:get(EM_MailadresTeInformerenOverigIntern)}]]></flowable:expression>
         </flowable:field>
         <flowable:field name="replyTo">
           <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
         </flowable:field>
         <flowable:field name="template">
-          <flowable:string><![CDATA[BER Notificatie ingekomen beroepschrift]]></flowable:string>
+          <flowable:string><![CDATA[BER Notificatie ingekomen beroepschrift (PZ-8151 demo)]]></flowable:string>
         </flowable:field>
         <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
@@ -242,7 +242,7 @@ Due date (willekeurig) op 3 dagen gezet.</documentation>
           <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
         </flowable:field>
         <flowable:field name="to">
-          <flowable:string><![CDATA[${EM_MailadresTeInformerenOverigIntern}]]></flowable:string>
+          <flowable:expression><![CDATA[${var:get(EM_MailadresTeInformerenOverigIntern)}]]></flowable:expression>
         </flowable:field>
         <flowable:field name="replyTo">
           <flowable:string><![CDATA[esuite@oostgelre.nl]]></flowable:string>
@@ -263,7 +263,7 @@ Due date (willekeurig) op 3 dagen gezet.</documentation>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BER_TN003_3" name="Voorbereiden zitting (pleitnota)" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BER_ITS003_3" flowable:formFieldValidation="false">
+    <userTask id="BER_TN003_3" name="Voorbereiden zitting (pleitnota)" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="${DF_DatumZitting.minusDays(2).toDate()}" flowable:formKey="BER_ITS003_3" flowable:formFieldValidation="false">
       <documentation>LT: Due date met expression testen. Bijvoorbeeld 2 dagen voor datum zitting.</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BER_ITS003_3]]></flowable:static-form-key>
@@ -302,6 +302,18 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
+    <serviceTask id="WZ_VastleggenZaakresultaat" name="Vastleggen zaakresultaat" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:expression><![CDATA[${var:get(CO_Zaakresultaat)}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
     <parallelGateway id="BER_PN001_0">
       <extensionElements>
         <design:stencilid><![CDATA[ParallelGateway]]></design:stencilid>
@@ -503,6 +515,11 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_113" sourceRef="WZ_VastleggenZaakresultaat" targetRef="BER_EIND001">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
     <sequenceFlow id="SequenceFlow_48" name="Geen notificaties verzenden" sourceRef="BER_EB001_0" targetRef="BER_EB001_1">
       <extensionElements>
         <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
@@ -520,7 +537,7 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'afstemming'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'afstemming')}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_54" sourceRef="BER_EB003_0" targetRef="BER_EB003_1">
       <extensionElements>
@@ -534,6 +551,11 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       </extensionElements>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_47" sourceRef="BER_EB001_1" targetRef="BER_WZ002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_112" sourceRef="BER_EB005_1" targetRef="WZ_VastleggenZaakresultaat">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -558,28 +580,28 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:notEmpty(CB_TeInformerenVakafdelingen)||var:notEmpty(EM_MailadresTeInformerenOverigIntern)}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${CB_TeInformerenVakafdelingen.x||CB_TeInformerenVakafdelingen.y||CB_TeInformerenVakafdelingen.z||var:notEmpty(EM_MailadresTeInformerenOverigIntern)}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_18" sourceRef="BER_MB001_0" targetRef="BER_EM001_1">
       <documentation>Conditie: CB_TeInformerenVakafdelingen bevat x</documentation>
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'x')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${CB_TeInformerenVakafdelingen.x}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_23" sourceRef="BER_MB001_0" targetRef="BER_EM001_2">
       <documentation>Conditie: CB_TeInformerenVakafdelingen bevat y</documentation>
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'y')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${CB_TeInformerenVakafdelingen.y}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_24" sourceRef="BER_MB001_0" targetRef="BER_EM001_3">
       <documentation>Conditie: CB_TeInformerenVakafdelingen bevat z</documentation>
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'z')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${CB_TeInformerenVakafdelingen.z}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_31" sourceRef="BER_MB001_0" targetRef="BER_EM001_4">
       <documentation>Conditie: EM_MailadresTeInformerenOverigIntern niet leeg</documentation>
@@ -593,14 +615,14 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'verweerschrift'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'verweerschrift')}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_39" sourceRef="BER_EB003_0" targetRef="BER_EB004_0">
       <documentation>Conditie: RB_VervolgstapInhoudelijkBehandelen == bob</documentation>
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'bob'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'bob')}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_42" sourceRef="BER_EB003_1" targetRef="BER_EB002">
       <extensionElements>
@@ -613,7 +635,7 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
         <design:display_ref_in_diagram><![CDATA[true]]></design:display_ref_in_diagram>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'afronden'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgstapInhoudelijkBehandelen, 'afronden')}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_51" sourceRef="BER_EB002" targetRef="BER_TN002">
       <extensionElements>
@@ -630,33 +652,28 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vars:notEmpty(CB_TeInformerenVakafdelingen)||vars:notEmpty(EM_MailadresTeInformerenOverigIntern)}]]></conditionExpression>
-    </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_60" sourceRef="BER_EB005_1" targetRef="BER_EIND001">
-      <extensionElements>
-        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
-      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${CB_TeInformerenVakafdelingen.x||CB_TeInformerenVakafdelingen.y||CB_TeInformerenVakafdelingen.z||var:notEmpty(EM_MailadresTeInformerenOverigIntern)}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_82" sourceRef="BER_MB002_0" targetRef="BER_EM002_1">
       <documentation>Conditie: CB_TeInformerenVakafdelingen bevat x</documentation>
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'x')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${CB_TeInformerenVakafdelingen.x}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_86" sourceRef="BER_MB002_0" targetRef="BER_EM002_2">
       <documentation>Conditie: CB_TeInformerenVakafdelingen bevat y</documentation>
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'y')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${CB_TeInformerenVakafdelingen.y}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_87" sourceRef="BER_MB002_0" targetRef="BER_EM002_3">
       <documentation>Conditie: CB_TeInformerenVakafdelingen bevat z</documentation>
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:contains(CB_TeInformerenVakafdelingen, 'z')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${CB_TeInformerenVakafdelingen.z}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_88" sourceRef="BER_MB002_0" targetRef="BER_EM002_4">
       <documentation>Conditie: EM_MailadresTeInformerenOverigIntern niet leeg</documentation>
@@ -681,7 +698,7 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_OndertekenaarBOBAkkoord, false}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_OndertekenaarBOBAkkoord, false)}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_107" sourceRef="BER_EB004_1" targetRef="BER_TN004_2">
       <extensionElements>
@@ -694,7 +711,7 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_OndertekenenNieuweBeslissingOpBezwaar, false}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_OndertekenenNieuweBeslissingOpBezwaar, false)}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_110" sourceRef="BER_EB004_0" targetRef="BER_TN004_1">
       <extensionElements>
@@ -786,6 +803,9 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       <bpmndi:BPMNShape bpmnElement="BER_TN004_3" id="BPMNShape_BER_TN004_3">
         <omgdc:Bounds height="80.0" width="100.0" x="2356.94826984872" y="630.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="WZ_VastleggenZaakresultaat" id="BPMNShape_WZ_VastleggenZaakresultaat">
+        <omgdc:Bounds height="80.0" width="100.0" x="3371.228440280344" y="351.99999999999994"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BER_PN001_0" id="BPMNShape_BER_PN001_0">
         <omgdc:Bounds height="40.0" width="40.0" x="549.0" y="372.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
@@ -838,7 +858,7 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
         <omgdc:Bounds height="30.0" width="30.0" x="337.0" y="377.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BER_EIND001" id="BPMNShape_BER_EIND001">
-        <omgdc:Bounds height="28.0" width="28.0" x="3367.94826984872" y="377.99999999999994"></omgdc:Bounds>
+        <omgdc:Bounds height="28.0" width="28.0" x="3557.8248467904236" y="377.99999999999994"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_26" id="BPMNEdge_SequenceFlow_26" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="1034.0" y="492.0"></omgdi:waypoint>
@@ -864,10 +884,6 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
         <omgdi:waypoint x="861.0" y="674.0"></omgdi:waypoint>
         <omgdi:waypoint x="934.0" y="674.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_60" id="BPMNEdge_SequenceFlow_60" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
-        <omgdi:waypoint x="3314.94826984872" y="391.99999999999994"></omgdi:waypoint>
-        <omgdi:waypoint x="3367.94826984872" y="391.99999999999994"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_37" id="BPMNEdge_SequenceFlow_37" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="1639.9482698487197" y="412.0"></omgdi:waypoint>
         <omgdi:waypoint x="1639.9482698487197" y="492.0"></omgdi:waypoint>
@@ -886,6 +902,14 @@ Due date (willekeurig) op 1 dag gezet. Testen of deze dynamisch kan worden toege
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_35" id="BPMNEdge_SequenceFlow_35" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="1572.9482698487197" y="392.0"></omgdi:waypoint>
         <omgdi:waypoint x="1619.9482698487197" y="392.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_113" id="BPMNEdge_SequenceFlow_113" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="3471.228440280344" y="391.99999999999994"></omgdi:waypoint>
+        <omgdi:waypoint x="3557.8248467904236" y="391.99999999999994"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_112" id="BPMNEdge_SequenceFlow_112" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="3314.94826984872" y="391.99999999999994"></omgdi:waypoint>
+        <omgdi:waypoint x="3371.228440280344" y="391.99999999999994"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_31" id="BPMNEdge_SequenceFlow_31" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="861.0" y="512.0"></omgdi:waypoint>

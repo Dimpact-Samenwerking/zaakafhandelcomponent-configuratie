@@ -5,7 +5,7 @@
     "type": "form",
     "components": [
         {
-            "html": "<h2>Wachten op uitspraak</h2><p><strong>Datum stukken naar rechtbank:</strong>{{moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\")}}</p><p><strong>Datum verzending verweerschrift:</strong>{{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p><p><strong>Datum zitting:</strong>{{moment(data.DF_DatumZitting).format(\"D MMMM YYYY\")}}</p>",
+            "html": "<h2>Wachten op uitspraak</h2><p><strong>Datum stukken naar rechtbank:</strong> {{moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\")}}</p><p><strong>Datum verzending verweerschrift:</strong> {{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p><p><strong>Datum zitting:</strong> {{moment(data.DF_DatumZitting).format(\"D MMMM YYYY\")}}</p>",
             "label": "PA_ToelichtingWachtenOpUitspraak",
             "refreshOnChange": false,
             "key": "PA_ToelichtingWachtenOpUitspraak",

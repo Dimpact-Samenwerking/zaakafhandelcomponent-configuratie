@@ -1,11 +1,11 @@
 {
     "name": "BER_ITS001_2",
-    "title": "Controleren beroepschrift",
+    "title": "Gegevens beroepschrift controleren en aanpassen",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Gegevens beroepschrift</h2>",
+            "html": "<h2>Gegevens beroepschrift controleren en aanpassen</h2>",
             "label": "HF_GegevensBeroepschrift",
             "refreshOnChange": false,
             "key": "HF_GegevensBeroepschrift",
@@ -14,7 +14,7 @@
             "tableView": false
         },
         {
-            "html": "<p>WAT IS HET BELANG VAN DEZE TAAK? GEGEVENS INITIATOR UIT BRP OF KVK. OOK BETROKKENEN (GEMACHTIGDE, BELANGHEBBENDE) KUNNEN AAN DE ZAAK GEKOPPELD WORDEN, WAARBIJ GEGEVENS OOK UIT BRP OF KVK KOMEN. GEGEVENS BEROEP STAAN IN DE DOCUMENTEN EN ZAAKOMSCHRIJVING.</a>.</p>",
+            "html": "<p>OPTIE VOOR HET WIJZIGEN / VASTLEGGEN VAN GEGEVENS INITIATOR EN BETROKKEN NIET OVERGENOMEN VANUIT E-SUITE PROCES.<br>ZOWEL GEGEVENS VAN INITIATOR ALS BETROKKENEN (GEMACHTIGDE, BELANGHEBBENDE) KUNNEN AAN DE ZAAK GEKOPPELD WORDEN, WAARBIJ DEZE GEGEVENS UIT BRP OF KVK KOMEN.</p>",
             "label": "PA_ToelichtingGegevensBeroepschrift",
             "refreshOnChange": false,
             "key": "PA_ToelichtingGegevensBeroepschrift",
@@ -304,14 +304,15 @@
                     "clearOnRefresh": true
                 },
                 {
-                    "label": "Zaakbehandelaar (DEZE NIET TONEN IN PROCES)",
+                    "label": "Zaakbehandelaar (DEZE NIET TONEN IN PROCES: hidden of component weglaten?)",
                     "type": "select",
                     "key": "AGM_AfdelingPrimairBesluit_Medewerker",
                     "widget": "html5",
                     "input": true,
                     "dataSrc": "custom",
                     "refreshOn": "AGM_AfdelingPrimairBesluit_Groep",
-                    "clearOnRefresh": true
+                    "clearOnRefresh": true,
+                    "hidden": true
                 }
             ]
         },

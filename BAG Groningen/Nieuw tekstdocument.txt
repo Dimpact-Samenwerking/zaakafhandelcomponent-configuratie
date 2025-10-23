@@ -1,0 +1,8 @@
+"conditional": {
+  "json": {
+    "or": [
+      { "in": ["nummerbeschikkingTekenaar", { "var": "CB_TeStartenProces" }] },
+      { "in": ["nummerbeschikkingOndertekenaar", { "var": "CB_TeStartenProces" }] }
+    ]
+  }
+}

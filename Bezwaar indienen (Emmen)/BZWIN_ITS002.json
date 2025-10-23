@@ -1,0 +1,82 @@
+{
+  "name": "BZWIN_ITS002",
+  "title": "Procesdossier aanleveren door vakteam",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+  "type": "content",
+  "key": "HF_Procesdossier",
+  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Samenstellen procesdossier</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "type": "content",
+  "key": "PA_ToelichtingProcesdossier",
+  "html": "<p>Bezwaarmaker heeft aangegeven dat deze het procesdossier graag wil ontvangen om het bezwaar verder te kunnen motiveren. Stel het procesdossier samen door volgende stappen te doorlopen. (Voor het toevoegen van het procesdossier is een aparte handleiding beschikbaar):</p><ul><li>Klik&nbsp;<a href=\"https://dacceptatiemidoffice.emmen.nl/mp/zaak/$%7Bzaakstartparameters.zaakNummer.label%7D\">hier</a>&nbsp;om de zaak nog een keer in een ander tabblad te openen en voer onderstaande stappen uit. Deze taak blijft in de browser open staan;</li><li>Verzamel de documenten van het procesdossier en sla deze op in 1 map op een netwerkschijf;</li><li>Voeg de documenten toe aan deze zaak door gebruik te maken van de optie \"Toevoegen documenten\" in het linker menu van de zaak;</li><li>Wijzig de documenttitel van het document conform de handleiding;</li><li>Kies bij het toevoegen van de documenten voor het documenttype \"Procesdossier\", de status en het publicatieniveau worden automatisch voorgevuld.</li><li>Kies bij het toevoegen van meerdere documenten voor de optie \"Opslaan en nog een toevoegen\" tot alle documenten zijn toegevoegd;</li><li>Kies na het toevoegen van het laatste document voor de optie \"Opslaan\", het toevoegen document scherm wordt afgesloten;</li><li>Rond, als dit klaar is, deze taak af.</li></ul>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "label": "De documenten van het procesdossier zijn toegevoegd aan deze zaak.",
+  "type": "selectboxes",
+  "key": "CB_KoppelenDocumenten",
+  "validate": {
+    "required": true
+  },
+  "input": true,
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "",
+      "value": "ja"
+    }   
+  ]
+},
+    {
+      "label": "",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "input": true,
+                  "action": "saveState",
+                  "state": "draft",
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "input": true,
+                  "disableOnInvalid": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

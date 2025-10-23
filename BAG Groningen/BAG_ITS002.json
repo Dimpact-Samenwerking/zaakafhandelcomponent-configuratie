@@ -1,0 +1,83 @@
+{
+    "name": "BAG_ITS002",
+    "title": "Opdracht tekenaar (NB)",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Opdracht tekenaar, proces nummerbeschikking</h2>",
+            "label": "HF_Opdrachttekenaar",
+            "refreshOnChange": false,
+            "key": "HF_Opdrachttekenaar",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "html": "<p>Zaaknummer</p>",
+            "label": "PA_Toelichting",
+            "refreshOnChange": false,
+            "key": "PA_Toelichting",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Reden van starten proces nummerbeschikking:",
+            "widget": "choicesjs",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Verleende vergunning",
+                        "value": "verleendeVergunning"
+                    },
+                    {
+                        "label": "Terugmelding",
+                        "value": "terugmelding"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_RedenStartNummerbeschikking",
+            "type": "select",
+            "input": true,
+            "disabled": true
+        },
+        {
+            "label": "Toelichting nummerbeschikking aan tekenaar:",
+            "type": "textarea",
+            "key": "TA_ToelichtingNummerBeschikkingTekenaar",
+            "input": true,
+            "tooltip": "<Optionele tooltip>",
+            "autoExpand": false,
+            "disabled": true
+        },
+        {
+            "label": "Beoordeling tekening:",
+            "key": "RB_BeoordelingTekenaar",
+            "type": "radio",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "tableView": false,
+            "values": [
+                {
+                    "label": "Akkoord",
+                    "value": "akkoord"
+                },
+                {
+                    "label": "Niet akkoord",
+                    "value": "nietAkkoord"
+                }
+            ],
+            "validateWhenHidden": false,
+            "validate": {
+                "required": true
+            }
+        }
+    ]
+}

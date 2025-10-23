@@ -1,0 +1,159 @@
+{
+  "name": "BZWIN_ITS006",
+  "title": "Informele behandeling",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+  "type": "content",
+  "key": "HF_InformeleBehandeling",
+  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Informele behandeling</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "label": "Datum telefonisch contact met bezwaarmaker:",
+  "type": "datetime",
+  "key": "DF_DatumContact",
+  "input": true,
+  "useLocaleSettings": true,
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+    {
+  "label": "Is informele behandeling mogelijk?:",
+  "type": "radio",
+  "key": "RB_InformeelMogelijk",
+  "input": true,
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee",
+      "value": "nee"
+    }
+  ]
+},
+    {
+  "label": "Geef in het kort aan waarom er wel of geen informele behandeling toegepast kan worden:",
+  "type": "textarea",
+  "key": "TA_RedenGeenInformeleBehandeling",
+  "input": true,
+  "autoExpand": false
+},
+    {
+  "type": "content",
+  "key": "HF_uitvoerenInformeleBehandeling",
+  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Uitvoeren informele behandeling</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    },
+  "tableView": false
+},
+    {
+  "label": "Datum 1e gesprek:",
+  "type": "datetime",
+  "key": "DF_1eGesprek",
+  "input": true,
+  "useLocaleSettings": true,
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    },
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+    {},
+    {},
+    {},
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "input": true,
+                  "action": "saveState",
+                  "state": "draft",
+                  "tableView": false
+                }
+              ]
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Opslaan & afronden",
+                  "type": "button",
+                  "input": true,
+                  "disableOnInvalid": true,
+                  "tableView": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

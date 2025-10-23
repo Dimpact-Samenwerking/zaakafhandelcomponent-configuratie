@@ -4,7 +4,7 @@
     <extensionElements>
       <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
       <design:creationdate><![CDATA[2025-10-03T08:07:41.683Z]]></design:creationdate>
-      <design:modificationdate><![CDATA[2025-10-03T12:27:30.626Z]]></design:modificationdate>
+      <design:modificationdate><![CDATA[2025-10-23T14:13:15.391Z]]></design:modificationdate>
     </extensionElements>
     <userTask id="BAG_TN003" name="BAG 3 Beoordeling door BAG-beheerder :tekening (NB)" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS003" flowable:formFieldValidation="false">
       <extensionElements>
@@ -70,10 +70,10 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <serviceTask id="BAG_ST001" name="Status: In behandeling" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+    <serviceTask id="BAG_ST002" name="Status: In behandeling" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
       <extensionElements>
         <flowable:field name="statustypeOmschrijving">
-          <flowable:string><![CDATA[in behandeling]]></flowable:string>
+          <flowable:string><![CDATA[In behandeling]]></flowable:string>
         </flowable:field>
         <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
@@ -87,6 +87,15 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
+    <serviceTask id="BAG_ST001" name="Status: Nieuw" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Nieuw]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
     <inclusiveGateway id="BAG_MB001">
       <extensionElements>
         <design:stencilid><![CDATA[InclusiveGateway]]></design:stencilid>
@@ -161,12 +170,12 @@
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_3" sourceRef="BAG_TN001" targetRef="BAG_ST001">
+    <sequenceFlow id="SequenceFlow_3" sourceRef="BAG_TN001" targetRef="BAG_ST002">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_4" sourceRef="BAG_ST001" targetRef="BAG_MB001">
+    <sequenceFlow id="SequenceFlow_4" sourceRef="BAG_ST002" targetRef="BAG_MB001">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -176,11 +185,16 @@
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_33" sourceRef="BAG_ST001" targetRef="BAG_TN001">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
     <sequenceFlow id="SequenceFlow_9" sourceRef="BAG_MB001" targetRef="BAG_TN002">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vars:contains(CB_TeStartenProces, 'Nummerbeschikking-Tekenaar')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vars:contains(CB_TeStartenProces, 'nummerbeschikkingTekenaar')}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_10" sourceRef="BAG_MB001" targetRef="BAG_TN004">
       <extensionElements>
@@ -191,15 +205,15 @@
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vars:contains(CB_TeStartenProces, 'Nummerbeschikking-Ondertekenaar')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vars:contains(CB_TeStartenProces, 'nummerbeschikkingOndertekenaar')}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_12" sourceRef="BAG_MB001" targetRef="BAG_TN007">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vars:contains(CB_TeStartenProces, 'Schriftelijke verklaring')}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vars:contains(CB_TeStartenProces, 'schriftelijkeVerklaring')}]]></conditionExpression>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_2" sourceRef="startnoneevent1" targetRef="BAG_TN001">
+    <sequenceFlow id="SequenceFlow_2" sourceRef="startnoneevent1" targetRef="BAG_ST001">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -269,11 +283,14 @@
       <bpmndi:BPMNShape bpmnElement="BAG_TN001" id="BPMNShape_BAG_TN001">
         <omgdc:Bounds height="80.0" width="100.0" x="407.0" y="236.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="BAG_ST001" id="BPMNShape_BAG_ST001">
+      <bpmndi:BPMNShape bpmnElement="BAG_ST002" id="BPMNShape_BAG_ST002">
         <omgdc:Bounds height="80.0" width="100.0" x="589.0" y="236.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BAG_TN002" id="BPMNShape_BAG_TN002">
         <omgdc:Bounds height="80.0" width="100.0" x="893.0" y="53.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BAG_ST001" id="BPMNShape_BAG_ST001">
+        <omgdc:Bounds height="80.0" width="100.0" x="265.0" y="236.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BAG_MB001" id="BPMNShape_BAG_MB001">
         <omgdc:Bounds height="40.0" width="40.0" x="758.0" y="256.0"></omgdc:Bounds>
@@ -291,15 +308,15 @@
         <omgdc:Bounds height="40.0" width="40.0" x="1359.0" y="560.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="startnoneevent1" id="BPMNShape_startnoneevent1">
-        <omgdc:Bounds height="30.0" width="30.0" x="317.0" y="261.0"></omgdc:Bounds>
+        <omgdc:Bounds height="30.0" width="30.0" x="180.0" y="261.0"></omgdc:Bounds>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="18.0" width="23.0" x="315.5" y="295.0"></omgdc:Bounds>
+          <omgdc:Bounds height="18.0" width="23.0" x="183.5" y="295.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="EndTerminateEvent_31" id="BPMNShape_EndTerminateEvent_31">
         <omgdc:Bounds height="28.0" width="28.0" x="1763.0" y="262.0"></omgdc:Bounds>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="18.0" width="31.0" x="1760.5" y="294.0"></omgdc:Bounds>
+          <omgdc:Bounds height="18.0" width="31.0" x="1761.5" y="294.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_15" id="BPMNEdge_SequenceFlow_15" flowable:sourceDockerX="91.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
@@ -343,6 +360,10 @@
         <omgdi:waypoint x="1039.0" y="437.0"></omgdi:waypoint>
         <omgdi:waypoint x="1122.0" y="437.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_33" id="BPMNEdge_SequenceFlow_33" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="365.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="407.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_11" id="BPMNEdge_SequenceFlow_11" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="74.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="778.0" y="296.0"></omgdi:waypoint>
         <omgdi:waypoint x="778.0" y="437.0"></omgdi:waypoint>
@@ -383,8 +404,8 @@
         <omgdi:waypoint x="1424.0" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_2" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
-        <omgdi:waypoint x="347.0" y="276.0"></omgdi:waypoint>
-        <omgdi:waypoint x="407.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="210.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="265.0" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" id="BPMNEdge_SequenceFlow_3" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="507.0" y="276.0"></omgdi:waypoint>

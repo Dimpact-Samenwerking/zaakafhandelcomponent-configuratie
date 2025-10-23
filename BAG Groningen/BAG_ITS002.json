@@ -24,7 +24,7 @@
         },
         {
             "label": "Reden van starten proces nummerbeschikking:",
-            "widget": "choicesjs",
+            "widget": "html5",
             "tableView": true,
             "data": {
                 "values": [
@@ -52,7 +52,6 @@
             "type": "textarea",
             "key": "TA_ToelichtingNummerBeschikkingTekenaar",
             "input": true,
-            "tooltip": "<Optionele tooltip>",
             "autoExpand": false,
             "disabled": true
         },
@@ -64,6 +63,7 @@
             "optionsLabelPosition": "right",
             "inline": false,
             "tableView": false,
+            "disabled": true,
             "values": [
                 {
                     "label": "Akkoord",
@@ -75,6 +75,79 @@
                 }
             ],
             "validateWhenHidden": false,
+            "validate": {
+                "required": true
+            },
+            "conditional": {
+                "show": true,
+                "conjunction": "all",
+                "conditions": [
+                    {
+                        "component": "RB_BeoordelingTekenaar",
+                        "operator": "isNotEmpty"
+                    }
+                ]
+            }
+        },
+        {
+            "label": "Toelichting van BAG-beheerder die de tekening heeft beoordeeld:",
+            "type": "textarea",
+            "key": "TA_ToelichtingControleTekenaar",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "conditional": {
+                "show": true,
+                "conjunction": "all",
+                "conditions": [
+                    {
+                        "component": "TA_ToelichtingControleTekenaar",
+                        "operator": "isNotEmpty"
+                    }
+                ]
+            }
+        },
+        {
+            "label": "Toelichting van tekenaar:",
+            "type": "textarea",
+            "key": "TA_ToelichtingTekenaar",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true
+        },
+        {
+            "type": "groepMedewerkerFieldset",
+            "key": "AG_ToewijzenControleurTekenaar",
+            "label": "Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren:",
+            "input": false,
+            "components": [
+                {
+                    "label": "Groep",
+                    "type": "select",
+                    "key": "AG_ToewijzenControleurTekenaar_Groep",
+                    "input": true,
+                    "widget": "html5",
+                    "dataSrc": "custom",
+                    "clearOnRefresh": true
+                },
+                {
+                    "label": "Medewerker",
+                    "type": "select",
+                    "key": "AG_ToewijzenControleurTekenaar_Medewerker",
+                    "widget": "html5",
+                    "input": true,
+                    "dataSrc": "custom",
+                    "refreshOn": "AG_ToewijzenControleurTekenaar_Groep",
+                    "clearOnRefresh": true
+                }
+            ]
+        },
+        {
+            "label": "Tekening is als bijlage toegevoegd:",
+            "type": "checkbox",
+            "key": "CB_BijlageTekening",
+            "input": true,
+            "defaultValue": false,
             "validate": {
                 "required": true
             }

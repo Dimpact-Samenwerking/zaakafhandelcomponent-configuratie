@@ -1,14 +1,14 @@
 {
-    "name": "BAG_ITS002",
-    "title": "BAG 2 Opdracht naar tekenaar (NB)",
+    "name": "BAG_ITS008",
+    "title": "BAG 8 Beoordeling door BAG-beheerder:document schriftelijke verklaring (SV)",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Opdracht tekenaar, proces nummerbeschikking</h2>",
-            "label": "HF_Opdrachttekenaar",
+            "html": "<h2>Beoordelen van schriftelijke verklaring door BAG-beheerder</h2>",
+            "label": "HF_BeoordelenSchriftelijkeVerklaring",
             "refreshOnChange": false,
-            "key": "HF_Opdrachttekenaar",
+            "key": "HF_BeoordelenSchriftelijkeVerklaring",
             "type": "content",
             "input": false,
             "tableView": false
@@ -29,41 +29,45 @@
             "data": {
                 "values": [
                     {
-                        "label": "Verleende vergunning",
-                        "value": "verleendeVergunning"
-                    },
-                    {
                         "label": "Terugmelding",
                         "value": "terugmelding"
+                    },
+                    {
+                        "label": "Gemiste wettelijke termijn",
+                        "value": "gemisteWettelijkeTermijn"
                     }
                 ]
             },
-            "validate": {
-                "required": true
-            },
             "validateWhenHidden": false,
-            "key": "CO_RedenStartNummerbeschikking",
+            "key": "CO_RedenStartSchriftelijkeVerklaring",
             "type": "select",
             "input": true,
             "disabled": true
         },
         {
-            "label": "Toelichting nummerbeschikking aan tekenaar:",
+            "label": "Toelichting schriftelijke verklaring:",
             "type": "textarea",
-            "key": "TA_ToelichtingNummerBeschikkingTekenaar",
+            "key": "TA_ToelichtingSchriftelijkeVerklaring",
             "input": true,
             "autoExpand": false,
             "disabled": true
         },
         {
-            "label": "Beoordeling tekening:",
-            "key": "RB_BeoordelingTekenaar",
+            "label": "Nadere toelichting van BAG-beheerder aan de ondertekenaar:",
+            "type": "textarea",
+            "key": "TA_ToelichtingBagbeheerderAanOndertekenaar",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true
+        },
+        {
+            "label": "Beoordeling schriftelijke verklaring:",
+            "key": "RB_BeoordelingSchriftelijkeVerklaring",
             "type": "radio",
             "input": true,
             "optionsLabelPosition": "right",
             "inline": false,
             "tableView": false,
-            "disabled": true,
             "values": [
                 {
                     "label": "Akkoord",
@@ -77,85 +81,37 @@
             "validateWhenHidden": false,
             "validate": {
                 "required": true
-            },
-            "conditional": {
-                "show": true,
-                "conjunction": "all",
-                "conditions": [
-                    {
-                        "component": "RB_BeoordelingTekenaar",
-                        "operator": "isNotEmpty"
-                    }
-                ]
             }
         },
         {
-            "label": "Toelichting van BAG-beheerder die de tekening heeft beoordeeld:",
-            "type": "textarea",
-            "key": "TA_ToelichtingControleTekenaar",
+            "label": "Getekende verklaring is als bijlage toegevoegd:",
+            "key": "RB_GetekendeVerklaringToegevoegd",
+            "type": "radio",
             "input": true,
-            "autoExpand": false,
-            "disabled": true,
-            "conditional": {
-                "show": true,
-                "conjunction": "all",
-                "conditions": [
-                    {
-                        "component": "TA_ToelichtingControleTekenaar",
-                        "operator": "isNotEmpty"
-                    }
-                ]
-            }
-        },
-        {
-            "label": "Toelichting van tekenaar:",
-            "type": "textarea",
-            "key": "TA_ToelichtingTekenaar",
-            "input": true,
-            "autoExpand": false,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "tableView": false,
+            "values": [
+                {
+                    "label": "Ja",
+                    "value": "ja"
+                },
+                {
+                    "label": "Nee",
+                    "value": "nee"
+                }
+            ],
+            "validateWhenHidden": false,
             "validate": {
                 "required": true
             }
         },
         {
-            "type": "groepMedewerkerFieldset",
-            "key": "AG_ToewijzenControleurTekenaar",
-            "label": "Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren:",
-            "input": false,
-            "components": [
-                {
-                    "label": "Groep",
-                    "type": "select",
-                    "key": "AG_ToewijzenControleurTekenaar_Groep",
-                    "input": true,
-                    "widget": "html5",
-                    "dataSrc": "custom",
-                    "clearOnRefresh": true,
-                    "validate": {
-                        "required": true
-                    }
-                },
-                {
-                    "label": "Medewerker",
-                    "type": "select",
-                    "key": "AG_ToewijzenControleurTekenaar_Medewerker",
-                    "widget": "html5",
-                    "input": true,
-                    "dataSrc": "custom",
-                    "refreshOn": "AG_ToewijzenControleurTekenaar_Groep",
-                    "clearOnRefresh": true,
-                    "validate": {
-                        "required": true
-                    }
-                }
-            ]
-        },
-        {
-            "label": "Tekening is als bijlage toegevoegd:",
-            "type": "checkbox",
-            "key": "CB_BijlageTekening",
+            "label": "Toelichting van de BAG-beheerder die de controle heeft uitgevoerd:",
+            "type": "textarea",
+            "key": "TA_ToelichtingBagbeheerderControle",
             "input": true,
-            "defaultValue": false,
+            "autoExpand": false,
             "validate": {
                 "required": true
             }

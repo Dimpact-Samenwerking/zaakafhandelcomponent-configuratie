@@ -1,6 +1,6 @@
     {
         "name": "BAG_ITS001",
-        "title": "Start van het BAG-proces",
+        "title": "BAG 1 Keuze te starten BAG-proces",
         "display": "wizard",
         "components": [
             {
@@ -84,10 +84,7 @@
                                 "label": "Tekening",
                                 "value": "tekening"
                             }
-                        ],
-                        "validate": {
-                            "required": false
-                        }
+                        ]
                     }
                 ]
             },
@@ -114,7 +111,7 @@
                         "tableView": false
                     },
                     {
-                        "label": "Reden van starten proces nummerbeschikking:",
+                        "label": "<b>Reden van starten proces nummerbeschikking:</b>",
                         "widget": "html5",
                         "tableView": true,
                         "data": {
@@ -163,14 +160,15 @@
                             "required": true
                         },
                         "conditional": {
-                            "json": {
-                                "in": [
-                                    "nummerbeschikkingTekenaar",
-                                    {
-                                        "var": "CB_TeStartenProces"
-                                    }
-                                ]
-                            }
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingTekenaar"
+                                }
+                            ]
                         }
                     },
                     {
@@ -186,7 +184,10 @@
                                 "input": true,
                                 "widget": "html5",
                                 "dataSrc": "custom",
-                                "clearOnRefresh": true
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
                             },
                             {
                                 "label": "Medewerker",
@@ -196,7 +197,10 @@
                                 "input": true,
                                 "dataSrc": "custom",
                                 "refreshOn": "AG_Tekenaar_Groep",
-                                "clearOnRefresh": true
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
                             }
                         ],
                         "conditional": {
@@ -245,7 +249,10 @@
                                 "input": true,
                                 "widget": "html5",
                                 "dataSrc": "custom",
-                                "clearOnRefresh": true
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
                             },
                             {
                                 "label": "Medewerker",
@@ -255,7 +262,10 @@
                                 "input": true,
                                 "dataSrc": "custom",
                                 "refreshOn": "AG_OndertekenaarNummerBeschikking_Groep",
-                                "clearOnRefresh": true
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
                             }
                         ],
                         "conditional": {
@@ -339,7 +349,10 @@
                                 "input": true,
                                 "widget": "html5",
                                 "dataSrc": "custom",
-                                "clearOnRefresh": true
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
                             },
                             {
                                 "label": "Medewerker",
@@ -349,7 +362,10 @@
                                 "input": true,
                                 "dataSrc": "custom",
                                 "refreshOn": "AG_OndertekenaarSchriftelijkeVerklaring_Groep",
-                                "clearOnRefresh": true
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
                             }
                         ],
                         "conditional": {

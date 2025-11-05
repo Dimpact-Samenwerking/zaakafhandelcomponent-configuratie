@@ -1,14 +1,14 @@
 {
-    "name": "BAG_ITS002",
-    "title": "BAG 2 Opdracht naar tekenaar (NB)",
+    "name": "BAG_ITS006",
+    "title": "BAG 6 Beoordeling door BAG-beheerder document nummerbeschikking (NB)",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Opdracht tekenaar, proces nummerbeschikking</h2>",
-            "label": "HF_Opdrachttekenaar",
+            "html": "<h2>Beoordelen nummerbeschikking door BAG-beheerder</h2>",
+            "label": "HF_BeoordelennummerbeschikkingdoorBagbeheerder",
             "refreshOnChange": false,
-            "key": "HF_Opdrachttekenaar",
+            "key": "HF_BeoordelennummerbeschikkingdoorBagbeheerder",
             "type": "content",
             "input": false,
             "tableView": false
@@ -48,22 +48,29 @@
             "disabled": true
         },
         {
-            "label": "Toelichting nummerbeschikking aan tekenaar:",
+            "label": "Toelichting bij starten proces nummerbeschikking:",
             "type": "textarea",
-            "key": "TA_ToelichtingNummerBeschikkingTekenaar",
+            "key": "TA_ToelichtingNummerbeschikkingOndertekenaar",
             "input": true,
             "autoExpand": false,
             "disabled": true
         },
         {
-            "label": "Beoordeling tekening:",
-            "key": "RB_BeoordelingTekenaar",
+            "label": "Toelichting van BAG-beheerder voor ondertekenaar:",
+            "type": "textarea",
+            "key": "TA_ToelichtingVoorOndertekenaar",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true
+        },
+        {
+            "label": "Beoordeling nummerbeschikking:",
+            "key": "RB_BeoordelingNummerbeschikking",
             "type": "radio",
             "input": true,
             "optionsLabelPosition": "right",
             "inline": false,
             "tableView": false,
-            "disabled": true,
             "values": [
                 {
                     "label": "Akkoord",
@@ -77,88 +84,41 @@
             "validateWhenHidden": false,
             "validate": {
                 "required": true
+            }
+        },
+        {
+            "label": "Toelichting van de BAG-beheerder die de controle uitvoert:",
+            "type": "textarea",
+            "key": "TA_ToelichtingBeoordelaarNummerbeschikking",
+            "input": true,
+            "autoExpand": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Getekende nummerbeschikking toegevoegd:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Ja",
+                        "value": "ja"
+                    },
+                    {
+                        "label": "Nee",
+                        "value": "nee"
+                    }
+                ]
             },
-            "conditional": {
-                "show": true,
-                "conjunction": "all",
-                "conditions": [
-                    {
-                        "component": "RB_BeoordelingTekenaar",
-                        "operator": "isNotEmpty"
-                    }
-                ]
-            }
-        },
-        {
-            "label": "Toelichting van BAG-beheerder die de tekening heeft beoordeeld:",
-            "type": "textarea",
-            "key": "TA_ToelichtingControleTekenaar",
-            "input": true,
-            "autoExpand": false,
-            "disabled": true,
-            "conditional": {
-                "show": true,
-                "conjunction": "all",
-                "conditions": [
-                    {
-                        "component": "TA_ToelichtingControleTekenaar",
-                        "operator": "isNotEmpty"
-                    }
-                ]
-            }
-        },
-        {
-            "label": "Toelichting van tekenaar:",
-            "type": "textarea",
-            "key": "TA_ToelichtingTekenaar",
-            "input": true,
-            "autoExpand": false,
             "validate": {
                 "required": true
-            }
-        },
-        {
-            "type": "groepMedewerkerFieldset",
-            "key": "AG_ToewijzenControleurTekenaar",
-            "label": "Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren:",
-            "input": false,
-            "components": [
-                {
-                    "label": "Groep",
-                    "type": "select",
-                    "key": "AG_ToewijzenControleurTekenaar_Groep",
-                    "input": true,
-                    "widget": "html5",
-                    "dataSrc": "custom",
-                    "clearOnRefresh": true,
-                    "validate": {
-                        "required": true
-                    }
-                },
-                {
-                    "label": "Medewerker",
-                    "type": "select",
-                    "key": "AG_ToewijzenControleurTekenaar_Medewerker",
-                    "widget": "html5",
-                    "input": true,
-                    "dataSrc": "custom",
-                    "refreshOn": "AG_ToewijzenControleurTekenaar_Groep",
-                    "clearOnRefresh": true,
-                    "validate": {
-                        "required": true
-                    }
-                }
-            ]
-        },
-        {
-            "label": "Tekening is als bijlage toegevoegd:",
-            "type": "checkbox",
-            "key": "CB_BijlageTekening",
-            "input": true,
-            "defaultValue": false,
-            "validate": {
-                "required": true
-            }
+            },
+            "validateWhenHidden": false,
+            "key": "RB_GetekendeNummerbeschikkingToegevoegd",
+            "type": "select",
+            "input": true
         },
         {
             "label": "Buttons",

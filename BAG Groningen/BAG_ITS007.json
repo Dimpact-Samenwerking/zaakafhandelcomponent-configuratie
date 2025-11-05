@@ -1,14 +1,14 @@
 {
-    "name": "BAG_ITS002",
-    "title": "BAG 2 Opdracht naar tekenaar (NB)",
+    "name": "BAG_ITS007",
+    "title": "BAG 7 Opdracht uitzetten bij ondertekenaar van schriftelijke verklaring (SV)",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Opdracht tekenaar, proces nummerbeschikking</h2>",
-            "label": "HF_Opdrachttekenaar",
+            "html": "<h2>Opdracht uitzetten bij ondertekenaar van schriftelijke verklaring</h2>",
+            "label": "HF_OpdrachtUitzettenNaarOndertekenaar",
             "refreshOnChange": false,
-            "key": "HF_Opdrachttekenaar",
+            "key": "HF_OpdrachtUitzettenNaarOndertekenaar",
             "type": "content",
             "input": false,
             "tableView": false
@@ -29,35 +29,32 @@
             "data": {
                 "values": [
                     {
-                        "label": "Verleende vergunning",
-                        "value": "verleendeVergunning"
-                    },
-                    {
                         "label": "Terugmelding",
                         "value": "terugmelding"
+                    },
+                    {
+                        "label": "Gemiste wettelijke termijn",
+                        "value": "gemisteWettelijkeTermijn"
                     }
                 ]
             },
-            "validate": {
-                "required": true
-            },
             "validateWhenHidden": false,
-            "key": "CO_RedenStartNummerbeschikking",
+            "key": "CO_RedenStartSchriftelijkeVerklaring",
             "type": "select",
             "input": true,
             "disabled": true
         },
         {
-            "label": "Toelichting nummerbeschikking aan tekenaar:",
+            "label": "Toelichting schriftelijke verklaring:",
             "type": "textarea",
-            "key": "TA_ToelichtingNummerBeschikkingTekenaar",
+            "key": "TA_ToelichtingSchriftelijkeVerklaring",
             "input": true,
             "autoExpand": false,
             "disabled": true
         },
         {
-            "label": "Beoordeling tekening:",
-            "key": "RB_BeoordelingTekenaar",
+            "label": "Beoordeling schriftelijke verklaring:",
+            "key": "RB_BeoordelingSchriftelijkeVerklaring",
             "type": "radio",
             "input": true,
             "optionsLabelPosition": "right",
@@ -83,16 +80,16 @@
                 "conjunction": "all",
                 "conditions": [
                     {
-                        "component": "RB_BeoordelingTekenaar",
+                        "component": "RB_BeoordelingSchriftelijkeVerklaring",
                         "operator": "isNotEmpty"
                     }
                 ]
             }
         },
         {
-            "label": "Toelichting van BAG-beheerder die de tekening heeft beoordeeld:",
+            "label": "Toelichting van de BAG-beheerder die de controle heeft uitgevoerd:",
             "type": "textarea",
-            "key": "TA_ToelichtingControleTekenaar",
+            "key": "TA_ToelichtingBagbeheerderControle",
             "input": true,
             "autoExpand": false,
             "disabled": true,
@@ -101,16 +98,44 @@
                 "conjunction": "all",
                 "conditions": [
                     {
-                        "component": "TA_ToelichtingControleTekenaar",
+                        "component": "TA_ToelichtingBagbeheerderControle",
                         "operator": "isNotEmpty"
                     }
                 ]
             }
         },
         {
-            "label": "Toelichting van tekenaar:",
+            "label": "Opdracht uitzetten bij ondertekenaar",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Ambtelijke correctie",
+                        "value": "ambtelijkeCorrectie"
+                    },
+                    {
+                        "label": "Proces verbaal van constatering",
+                        "value": "procesVerbaalVanConstatering"
+                    },
+                    {
+                        "label": "Wijziging t.b.v. een goede registratie",
+                        "value": "wijzigingTbvEenGoedeRegistratie"
+                    }
+                ]
+            },
+            "validateWhenHidden": false,
+            "key": "CO_TeBeoordelenSchriftelijkeVerklaring",
+            "type": "select",
+            "input": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Nadere toelichting van BAG-beheerder aan de ondertekenaar:",
             "type": "textarea",
-            "key": "TA_ToelichtingTekenaar",
+            "key": "TA_ToelichtingBagbeheerderAanOndertekenaar",
             "input": true,
             "autoExpand": false,
             "validate": {
@@ -119,14 +144,14 @@
         },
         {
             "type": "groepMedewerkerFieldset",
-            "key": "AG_ToewijzenControleurTekenaar",
+            "key": "AG_ToewijzingBagbeheerderControle",
             "label": "Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren:",
             "input": false,
             "components": [
                 {
                     "label": "Groep",
                     "type": "select",
-                    "key": "AG_ToewijzenControleurTekenaar_Groep",
+                    "key": "AG_ToewijzingBagbeheerderControle_Groep",
                     "input": true,
                     "widget": "html5",
                     "dataSrc": "custom",
@@ -138,27 +163,17 @@
                 {
                     "label": "Medewerker",
                     "type": "select",
-                    "key": "AG_ToewijzenControleurTekenaar_Medewerker",
+                    "key": "AG_ToewijzingBagbeheerderControle_Medewerker",
                     "widget": "html5",
                     "input": true,
                     "dataSrc": "custom",
-                    "refreshOn": "AG_ToewijzenControleurTekenaar_Groep",
+                    "refreshOn": "AG_ToewijzingBagbeheerderControle_Groep",
                     "clearOnRefresh": true,
                     "validate": {
                         "required": true
                     }
                 }
             ]
-        },
-        {
-            "label": "Tekening is als bijlage toegevoegd:",
-            "type": "checkbox",
-            "key": "CB_BijlageTekening",
-            "input": true,
-            "defaultValue": false,
-            "validate": {
-                "required": true
-            }
         },
         {
             "label": "Buttons",

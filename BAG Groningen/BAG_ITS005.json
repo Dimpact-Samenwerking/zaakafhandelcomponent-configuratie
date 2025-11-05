@@ -1,14 +1,14 @@
 {
-    "name": "BAG_ITS002",
-    "title": "BAG 2 Opdracht naar tekenaar (NB)",
+    "name": "BAG_ITS005",
+    "title": "BAG 5 Opdracht uitzetten bij ondertekenaar van nummerbeschikking (NB)",
     "display": "form",
     "type": "form",
     "components": [
         {
-            "html": "<h2>Opdracht tekenaar, proces nummerbeschikking</h2>",
-            "label": "HF_Opdrachttekenaar",
+            "html": "<h2>Opdracht uitzetten bij ondertekenaar</h2>",
+            "label": "HF_OpdrachtUitzettenNaarOndertekenaar",
             "refreshOnChange": false,
-            "key": "HF_Opdrachttekenaar",
+            "key": "HF_OpdrachtUitzettenNaarOndertekenaar",
             "type": "content",
             "input": false,
             "tableView": false
@@ -48,16 +48,16 @@
             "disabled": true
         },
         {
-            "label": "Toelichting nummerbeschikking aan tekenaar:",
+            "label": "Toelichting opdracht uitzetten bij ondertekenaar:",
             "type": "textarea",
-            "key": "TA_ToelichtingNummerBeschikkingTekenaar",
+            "key": "TA_ToelichtingNummerbeschikkingOndertekenaar",
             "input": true,
             "autoExpand": false,
             "disabled": true
         },
         {
-            "label": "Beoordeling tekening:",
-            "key": "RB_BeoordelingTekenaar",
+            "label": "Beoordeling nummerbeschikking:",
+            "key": "RB_BeoordelingNummerbeschikking",
             "type": "radio",
             "input": true,
             "optionsLabelPosition": "right",
@@ -83,16 +83,16 @@
                 "conjunction": "all",
                 "conditions": [
                     {
-                        "component": "RB_BeoordelingTekenaar",
+                        "component": "RB_BeoordelingNummerbeschikking",
                         "operator": "isNotEmpty"
                     }
                 ]
             }
         },
         {
-            "label": "Toelichting van BAG-beheerder die de tekening heeft beoordeeld:",
+            "label": "Toelichting van de BAG-beheerder die de controle heeft uitgevoerd:",
             "type": "textarea",
-            "key": "TA_ToelichtingControleTekenaar",
+            "key": "TA_ToelichtingBeoordelaarNummerbeschikking",
             "input": true,
             "autoExpand": false,
             "disabled": true,
@@ -101,16 +101,16 @@
                 "conjunction": "all",
                 "conditions": [
                     {
-                        "component": "TA_ToelichtingControleTekenaar",
+                        "component": "TA_ToelichtingBeoordelaarNummerbeschikking",
                         "operator": "isNotEmpty"
                     }
                 ]
             }
         },
         {
-            "label": "Toelichting van tekenaar:",
+            "label": "Toelichting van BAG-beheerder voor ondertekenaar:",
             "type": "textarea",
-            "key": "TA_ToelichtingTekenaar",
+            "key": "TA_ToelichtingVoorOndertekenaar",
             "input": true,
             "autoExpand": false,
             "validate": {
@@ -119,14 +119,14 @@
         },
         {
             "type": "groepMedewerkerFieldset",
-            "key": "AG_ToewijzenControleurTekenaar",
+            "key": "AG_ToewijzingOndertekenaarControleur",
             "label": "Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren:",
             "input": false,
             "components": [
                 {
                     "label": "Groep",
                     "type": "select",
-                    "key": "AG_ToewijzenControleurTekenaar_Groep",
+                    "key": "AG_ToewijzingOndertekenaarControleur_Groep",
                     "input": true,
                     "widget": "html5",
                     "dataSrc": "custom",
@@ -138,27 +138,17 @@
                 {
                     "label": "Medewerker",
                     "type": "select",
-                    "key": "AG_ToewijzenControleurTekenaar_Medewerker",
+                    "key": "AG_ToewijzingOndertekenaarControleur_Medewerker",
                     "widget": "html5",
                     "input": true,
                     "dataSrc": "custom",
-                    "refreshOn": "AG_ToewijzenControleurTekenaar_Groep",
+                    "refreshOn": "AG_ToewijzingOndertekenaarControleur_Groep",
                     "clearOnRefresh": true,
                     "validate": {
                         "required": true
                     }
                 }
             ]
-        },
-        {
-            "label": "Tekening is als bijlage toegevoegd:",
-            "type": "checkbox",
-            "key": "CB_BijlageTekening",
-            "input": true,
-            "defaultValue": false,
-            "validate": {
-                "required": true
-            }
         },
         {
             "label": "Buttons",

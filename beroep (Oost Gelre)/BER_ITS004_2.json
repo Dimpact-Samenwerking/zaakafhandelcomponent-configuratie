@@ -14,7 +14,7 @@
             "tableView": false
         },
         {
-            "html": "<div class=\"alert alert-danger\" role=\"alert\">Er bestaat op dit moment géén custom component om documenten te tonen in een taakscherm.</div><p>Waarom je dit component mogelijk wel zou willen:</p><ul><li>Een lijst met geselecteerde documenten kunnen tonen (bijv. documenten die onderdeel uitmaken van een besluitvormingsproces).</li><li>Een lijst met documenten kunnen tonen die aan bepaalde eigenschappen voldoen (bijv. een bepaald publicatieniveau).</li></ul>",
+            "html": "<div class=\"alert alert-danger\" role=\"alert\">Er bestaat op dit moment géén custom component om documenten te tonen in een taakscherm.</div><p>Waarom je dit component mogelijk wel zou willen:</p><ul><li>Een lijst met geselecteerde documenten kunnen tonen (bijv. documenten die onderdeel uitmaken van een besluitvormingsproces).</li><li>Een lijst met documenten kunnen tonen die aan bepaalde eigenschappen voldoen (bijv. een bepaald publicatieniveau).</li><li>Een selectie van documenten kunnen tonen die ondertekend moeten worden.</li></ul><p>{{data.DS_DocumentenNieuweBeslissingOpBezwaar_Select}}</p>",
             "label": "DT_DocumentenTonen",
             "refreshOnChange": false,
             "key": "DT_DocumentenTonen",

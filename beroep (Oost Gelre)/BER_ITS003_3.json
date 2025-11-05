@@ -5,7 +5,7 @@
     "type": "form",
     "components": [
         {
-            "html": "<h2>Voorbereiden zitting (pleitnota)</h2><p><strong>Datum stukken naar rechtbank:</strong>{{moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\")}}</p><p><strong>Datum verzending verweerschrift:</strong>{{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p><p><strong>Datum zitting :</strong>{{data.DF_DatumZitting ? moment(data.DF_DatumZitting).format(\"D MMMM YYYY\") : \"Nog geen datum bekend\"}}</p>",
+            "html": "<h2>Voorbereiden zitting (pleitnota)</h2><p><strong>Datum stukken naar rechtbank:</strong> {{moment(data.DF_DatumStukkenNaarDeRechtbank).format(\"D MMMM YYYY\")}}</p><p><strong>Datum verzending verweerschrift:</strong> {{moment(data.DF_DatumVerzendingVerweerschrift).format(\"D MMMM YYYY\")}}</p><p><strong>Datum zitting:</strong> {{data.DF_DatumZitting ? moment(data.DF_DatumZitting).format(\"D MMMM YYYY\") : \"Nog geen datum bekend\"}}</p>",
             "label": "PA_Toelichting",
             "refreshOnChange": false,
             "key": "PA_Toelichting",

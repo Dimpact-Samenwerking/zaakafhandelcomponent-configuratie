@@ -1,6 +1,6 @@
     {
         "name": "BAG_ITS001",
-        "title": "Start van het BAG-proces",
+        "title": "BAG 1 Keuze te starten BAG-proces",
         "display": "wizard",
         "components": [
             {
@@ -18,191 +18,9 @@
                 "components": [
                     {
                         "html": "<h2>Start van het BAG-proces</h2>",
-                        "label": "HF_StartBagProces",
+                        "label": "Start van het BAG-proces",
                         "refreshOnChange": false,
                         "key": "HF_StartBagProces",
-                        "type": "content",
-                        "input": false,
-                        "tableView": false
-                    },
-                    {
-                        "label": "Welk proces moet er worden gestart:",
-                        "type": "selectboxes",
-                        "key": "CO_RedenStartNummerbeschikking",
-                        "input": true,
-                        "widget": "choicesjs",
-                        "tableView": true,
-                        "data": {
-                            "values": [
-                                {
-                                    "label": "Verleende vergunning",
-                                    "value": "verleendeVergunning"
-                                },
-                                {
-                                    "label": "Terugmelding",
-                                    "value": "terugmelding"
-                                }
-                            ]
-                        },
-                        "validate": {
-                            "required": true
-                        },
-                        "conditional": {
-                            "json": {
-                                "and": [
-                                    {
-                                        "var": "data.<RB_AdviseurAkkoord1>" //boolean
-                                    },
-                                    {
-                                        "or": [
-                                            {
-                                                "!": {
-                                                    "var": "data.<AGM_Adviseur2_Medewerker>"
-                                                }
-                                            },
-                                            {
-                                                "var": "data.<RB_AdviseurAkkoord2>"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "label": "Toegevoegde documenten:",
-                        "type": "selectboxes",
-                        "key": "CB_ToegevoegdeDocumenten",
-                        "input": true,
-                        "optionsLabelPosition": "right",
-                        "inline": false,
-                        "inputType": "checkbox",
-                        "values": [
-                            {
-                                "label": "Nummerbeschikking",
-                                "value": "nummerbeschikking"
-                            },
-                            {
-                                "label": "Schriftelijke verklaring-Ambtelijke correctie",
-                                "value": "schriftelijkeVerklaringAmbtelijkeCorrectie"
-                            },
-                            {
-                                "label": "Schriftelijke verklaring-Proces verbaal van constatering",
-                                "value": "schriftelijkeVerklaringProcesVerbaalVanConstatering"
-                            },
-                            {
-                                "label": "Schriftelijke verklaring-Wijziging t.b.v. een goede registratie",
-                                "value": "schriftelijkeVerklaringWijzigingTBVEenGoedeRegistratie"
-                            },
-                            {
-                                "label": "Postcodebeschikking",
-                                "value": "postcodebeschikking"
-                            },
-                            {
-                                "label": "Tekening",
-                                "value": "tekening"
-                            }
-                        ],
-                        "validate": {
-                            "required": false
-                        }
-                    },
-                    {
-                        "html": "<h2>Toelichting en toewijzing</h2>",
-                        "label": "HF_ToelichtingToewijzen",
-                        "refreshOnChange": false,
-                        "key": "HF_ToelichtingToewijzen",
-                        "type": "content",
-                        "input": false,
-                        "tableView": false
-                    },
-                    {
-                        "label": "Reden van starten proces nummerbeschikking:",
-                        "widget": "choicesjs",
-                        "tableView": true,
-                        "data": {
-                            "values": [
-                                {
-                                    "label": "Verleende vergunning",
-                                    "value": "verleendeVergunning"
-                                },
-                                {
-                                    "label": "Terugmelding",
-                                    "value": "terugmelding"
-                                }
-                            ]
-                        },
-                        "validate": {
-                            "required": true
-                        },
-                        "validateWhenHidden": false,
-                        "key": "CO_RedenStartNummerbeschikking",
-                        "type": "select",
-                        "input": true,
-                        "customConditional": "show = ['nummerbeschikkingTekenaar','nummerbeschikkingOndertekenaar'].includes(data.CB_TeStartenProces);"
-                    },
-                    {
-                        "label": "Toelichting nummerbeschikking aan tekenaar:",
-                        "type": "textarea",
-                        "key": "TA_ToelichtingNummerBeschikkingTekenaar",
-                        "input": true,
-                        "autoExpand": false,
-                        "validate": {
-                            "required": true
-                        }
-                    },
-                    {
-                        "type": "groepMedewerkerFieldset",
-                        "key": "AG_Tekenaar",
-                        "label": "Toewijzen aan tekenaar:",
-                        "input": false,
-                        "components": [
-                            {
-                                "label": "Groep",
-                                "type": "select",
-                                "key": "AG_Tekenaar_Groep",
-                                "input": true,
-                                "widget": "html5",
-                                "dataSrc": "custom",
-                                "clearOnRefresh": true
-                            },
-                            {
-                                "label": "Medewerker",
-                                "type": "select",
-                                "key": "AG_Tekenaar_Medewerker",
-                                "widget": "html5",
-                                "input": true,
-                                "dataSrc": "custom",
-                                "refreshOn": "AG_Tekenaar_Groep",
-                                "clearOnRefresh": true
-                            }
-                        ],
-                        "conditional": {
-                            "show": true,
-                            "when": "CB_TeStartenProces",
-                            "eq": "nummerbeschikkingTekenaar"
-                        }
-                    }
-                ]
-            },
-            {
-                "label": "Aanvullen en toewijzen",
-                "type": "panel",
-                "key": "BAG_ITS001_SN002",
-                "title": "Aanvullen en toewijzen",
-                "input": false,
-                "breadcrumbClickable": true,
-                "buttonSettings": {
-                    "next": false,
-                    "previous": true,
-                    "cancel": true
-                },
-                "components": [
-                    {
-                        "html": "<h2>Toelichting en toewijzing</h2>",
-                        "label": "HF_ToelichtingToewijzen",
-                        "refreshOnChange": false,
-                        "key": "HF_ToelichtingToewijzen",
                         "type": "content",
                         "input": false,
                         "tableView": false
@@ -266,11 +84,23 @@
                                 "label": "Tekening",
                                 "value": "tekening"
                             }
-                        ],
-                        "validate": {
-                            "required": false
-                        }
-                    },
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": "Aanvullen en toewijzen",
+                "type": "panel",
+                "key": "BAG_ITS001_SN002",
+                "title": "Aanvullen en toewijzen",
+                "input": false,
+                "breadcrumbClickable": true,
+                "buttonSettings": {
+                    "next": false,
+                    "previous": true,
+                    "cancel": true
+                },
+                "components": [
                     {
                         "html": "<h2>Toelichting en toewijzing</h2>",
                         "label": "HF_ToelichtingToewijzen",
@@ -281,8 +111,8 @@
                         "tableView": false
                     },
                     {
-                        "label": "Reden van starten proces nummerbeschikking:",
-                        "widget": "choicesjs",
+                        "label": "<b>Reden van starten proces nummerbeschikking:</b>",
+                        "widget": "html5",
                         "tableView": true,
                         "data": {
                             "values": [
@@ -303,7 +133,22 @@
                         "key": "CO_RedenStartNummerbeschikking",
                         "type": "select",
                         "input": true,
-                        "customConditional": "show = ['nummerbeschikkingTekenaar','nummerbeschikkingOndertekenaar'].includes(data.CB_TeStartenProces);"
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingOndertekenaar"
+                                },
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingTekenaar"
+                                }
+                            ]
+                        }
                     },
                     {
                         "label": "Toelichting nummerbeschikking aan tekenaar:",
@@ -313,6 +158,37 @@
                         "autoExpand": false,
                         "validate": {
                             "required": true
+                        },
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingTekenaar"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "html": "</br>Toewijzen aan tekenaar:",
+                        "label": "Toewijzen aan tekenaar",
+                        "refreshOnChange": false,
+                        "key": "HF_ToewijzenTekenaar",
+                        "type": "content",
+                        "input": false,
+                        "tableView": false,
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingTekenaar"
+                                }
+                            ]
                         }
                     },
                     {
@@ -328,7 +204,10 @@
                                 "input": true,
                                 "widget": "html5",
                                 "dataSrc": "custom",
-                                "clearOnRefresh": true
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
                             },
                             {
                                 "label": "Medewerker",
@@ -338,13 +217,227 @@
                                 "input": true,
                                 "dataSrc": "custom",
                                 "refreshOn": "AG_Tekenaar_Groep",
-                                "clearOnRefresh": true
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
                             }
                         ],
                         "conditional": {
                             "show": true,
-                            "when": "CB_TeStartenProces",
-                            "eq": "nummerbeschikkingTekenaar"
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingTekenaar"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "label":"<br/><br/><b>Toelichting opdracht uitzetten bij ondertekenaar:</b>",
+                        "type": "textarea",
+                        "key": "TA_ToelichtingNummerbeschikkingOndertekenaar",
+                        "input": true,
+                        "autoExpand": false,
+                        "validate": {
+                            "required": true
+                        },
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingOndertekenaar"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "html": "</br>Toewijzen aan ondertekenaar:",
+                        "label": "Toewijzen aan ondertekenaar",
+                        "refreshOnChange": false,
+                        "key": "HF_ToewijzenOndertekenaar",
+                        "type": "content",
+                        "input": false,
+                        "tableView": false,
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingOndertekenaar"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "groepMedewerkerFieldset",
+                        "key": "AG_OndertekenaarNummerBeschikking",
+                        "label": "Toewijzen aan ondertekenaar:",
+                        "input": false,
+                        "components": [
+                            {
+                                "label": "Groep",
+                                "type": "select",
+                                "key": "AG_OndertekenaarNummerBeschikking_Groep",
+                                "input": true,
+                                "widget": "html5",
+                                "dataSrc": "custom",
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
+                            },
+                            {
+                                "label": "Medewerker",
+                                "type": "select",
+                                "key": "AG_OndertekenaarNummerBeschikking_Medewerker",
+                                "widget": "html5",
+                                "input": true,
+                                "dataSrc": "custom",
+                                "refreshOn": "AG_OndertekenaarNummerBeschikking_Groep",
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
+                            }
+                        ],
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingOndertekenaar"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "label": "<br/><br/><b>Reden van starten proces schriftelijke verklaring:</b>",
+                        "widget": "html5",
+                        "tableView": true,
+                        "data": {
+                            "values": [
+                                {
+                                    "label": "Terugmelding",
+                                    "value": "terugmelding"
+                                },
+                                {
+                                    "label": "Gemiste wettelijke termijn",
+                                    "value": "gemisteWettelijkeTermijn"
+                                }
+                            ]
+                        },
+                        "validate": {
+                            "required": true
+                        },
+                        "validateWhenHidden": false,
+                        "key": "CO_RedenStartSchriftelijkeVerklaring",
+                        "type": "select",
+                        "input": true,
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "schriftelijkeVerklaring"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "label": "Toelichting schriftelijke verklaring:",
+                        "type": "textarea",
+                        "key": "TA_ToelichtingSchriftelijkeVerklaring",
+                        "input": true,
+                        "autoExpand": false,
+                        "validate": {
+                            "required": true
+                        },
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "schriftelijkeVerklaring"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "html": "</br>Toewijzing opdracht schriftelijke verklaring uitzetten bij ondertekenaar:",
+                        "label": "Toewijzing opdracht schriftelijke verklaring uitzetten bij ondertekenaar",
+                        "refreshOnChange": false,
+                        "key": "HF_OndertekenaarSchriftelijkeVerklaring",
+                        "type": "content",
+                        "input": false,
+                        "tableView": false,
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "schriftelijkeVerklaring"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "groepMedewerkerFieldset",
+                        "key": "AG_OndertekenaarSchriftelijkeVerklaring",
+                        "label": "Toewijzing opdracht schriftelijke verklaring uitzetten bij ondertekenaar:",
+                        "input": false,
+                        "components": [
+                            {
+                                "label": "Groep",
+                                "type": "select",
+                                "key": "AG_OndertekenaarSchriftelijkeVerklaring_Groep",
+                                "input": true,
+                                "widget": "html5",
+                                "dataSrc": "custom",
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
+                            },
+                            {
+                                "label": "Medewerker",
+                                "type": "select",
+                                "key": "AG_OndertekenaarSchriftelijkeVerklaring_Medewerker",
+                                "widget": "html5",
+                                "input": true,
+                                "dataSrc": "custom",
+                                "refreshOn": "AG_OndertekenaarSchriftelijkeVerklaring_Groep",
+                                "clearOnRefresh": true,
+                                "validate": {
+                                    "required": true
+                                }
+                            }
+                        ],
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "schriftelijkeVerklaring"
+                                }
+                            ]
                         }
                     }
                 ]

@@ -118,6 +118,15 @@
             }
         },
         {
+            "html": "<br/>Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren:",
+            "label": "Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren",
+            "refreshOnChange": false,
+            "key": "HF_ToewijzenControleurTekenaar",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
             "type": "groepMedewerkerFieldset",
             "key": "AG_ToewijzenControleurTekenaar",
             "label": "Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren:",

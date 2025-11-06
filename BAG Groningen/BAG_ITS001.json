@@ -172,6 +172,26 @@
                         }
                     },
                     {
+                        "html": "</br>Toewijzen aan tekenaar:",
+                        "label": "Toewijzen aan tekenaar",
+                        "refreshOnChange": false,
+                        "key": "HF_ToewijzenTekenaar",
+                        "type": "content",
+                        "input": false,
+                        "tableView": false,
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingTekenaar"
+                                }
+                            ]
+                        }
+                    },
+                    {
                         "type": "groepMedewerkerFieldset",
                         "key": "AG_Tekenaar",
                         "label": "Toewijzen aan tekenaar:",
@@ -216,7 +236,7 @@
                         }
                     },
                     {
-                        "label": "Toelichting opdracht uitzetten bij ondertekenaar:",
+                        "label":"<br/><br/><b>Toelichting opdracht uitzetten bij ondertekenaar:</b>",
                         "type": "textarea",
                         "key": "TA_ToelichtingNummerbeschikkingOndertekenaar",
                         "input": true,
@@ -237,9 +257,29 @@
                         }
                     },
                     {
+                        "html": "</br>Toewijzen aan ondertekenaar:",
+                        "label": "Toewijzen aan ondertekenaar",
+                        "refreshOnChange": false,
+                        "key": "HF_ToewijzenOndertekenaar",
+                        "type": "content",
+                        "input": false,
+                        "tableView": false,
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "nummerbeschikkingOndertekenaar"
+                                }
+                            ]
+                        }
+                    },
+                    {
                         "type": "groepMedewerkerFieldset",
                         "key": "AG_OndertekenaarNummerBeschikking",
-                        "label": "Toewijzen aan tekenaar:",
+                        "label": "Toewijzen aan ondertekenaar:",
                         "input": false,
                         "components": [
                             {
@@ -281,7 +321,7 @@
                         }
                     },
                     {
-                        "label": "Reden van starten proces schriftelijke verklaring:",
+                        "label": "<br/><br/><b>Reden van starten proces schriftelijke verklaring:</b>",
                         "widget": "html5",
                         "tableView": true,
                         "data": {
@@ -324,6 +364,26 @@
                         "validate": {
                             "required": true
                         },
+                        "conditional": {
+                            "show": true,
+                            "conjunction": "any",
+                            "conditions": [
+                                {
+                                    "component": "CB_TeStartenProces",
+                                    "operator": "isEqual",
+                                    "value": "schriftelijkeVerklaring"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "html": "</br>Toewijzing opdracht schriftelijke verklaring uitzetten bij ondertekenaar:",
+                        "label": "Toewijzing opdracht schriftelijke verklaring uitzetten bij ondertekenaar",
+                        "refreshOnChange": false,
+                        "key": "HF_OndertekenaarSchriftelijkeVerklaring",
+                        "type": "content",
+                        "input": false,
+                        "tableView": false,
                         "conditional": {
                             "show": true,
                             "conjunction": "any",

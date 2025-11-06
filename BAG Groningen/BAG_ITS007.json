@@ -143,6 +143,15 @@
             }
         },
         {
+            "html": "<br/>Toewijzen aan de BAG-beheerder die de controle en de ondertekening gaat uitvoeren:",
+            "label": "Toewijzen aan de BAG-beheerder die de controle en de ondertekening gaat uitvoeren",
+            "refreshOnChange": false,
+            "key": "HF_ToewijzingBagbeheerderControle",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
             "type": "groepMedewerkerFieldset",
             "key": "AG_ToewijzingBagbeheerderControle",
             "label": "Toewijzen aan BAG beheerder die de controle moet gaan uitvoeren:",

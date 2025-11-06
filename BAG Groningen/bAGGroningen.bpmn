@@ -5,9 +5,9 @@
     <extensionElements>
       <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
       <design:creationdate><![CDATA[2025-10-03T08:07:41.683Z]]></design:creationdate>
-      <design:modificationdate><![CDATA[2025-11-04T14:51:46.967Z]]></design:modificationdate>
+      <design:modificationdate><![CDATA[2025-11-06T06:16:21.222Z]]></design:modificationdate>
     </extensionElements>
-    <userTask id="BAG_TN003" name="BAG 3 Beoordeling door BAG-beheerder :tekening (NB)" flowable:assignee="${AG_ToewijzenControleurTekenaar_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS003" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN003" name="BAG 3 Beoordeling door BAG-beheerder :tekening (NB)" flowable:assignee="${AG_ToewijzenControleurTekenaar_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS003" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS003]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -15,7 +15,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BAG_TN007" name="BAG 7 Opdracht uitzetten bij ondertekenaar van schriftelijke verklaring (SV)" flowable:assignee="${AG_OndertekenaarSchriftelijkeVerklaring_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS007" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN007" name="BAG 7 Opdracht uitzetten bij ondertekenaar van schriftelijke verklaring (SV)" flowable:assignee="${AG_OndertekenaarSchriftelijkeVerklaring_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS007" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS007]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -23,7 +23,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BAG_TN008" name="BAG 8 Beoordeling door BAG-beheerder:document schriftelijke verklaring (SV)" flowable:assignee="${AG_ToewijzingBagbeheerderControle_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS008" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN008" name="BAG 8 Beoordeling door BAG-beheerder:document schriftelijke verklaring (SV)" flowable:assignee="${AG_ToewijzingBagbeheerderControle_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS008" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS008]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -31,7 +31,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BAG_TN006" name="BAG 6 Beoordeling door BAG-beheerder document nummerbeschikking (NB)" flowable:assignee="${AG_ToewijzingOndertekenaarControleur_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS006" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN006" name="BAG 6 Beoordeling door BAG-beheerder document nummerbeschikking (NB)" flowable:assignee="${AG_ToewijzingOndertekenaarControleur_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS006" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS006]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -39,7 +39,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BAG_TN004" name="BAG 4 Opvragen postcode en koppelen BAG-objecten" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS004" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN004" name="BAG 4 Opvragen postcode en koppelen BAG-objecten" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS004" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS004]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -47,7 +47,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BAG_TN005" name="BAG 5 Opdracht uitzetten bij ondertekenaar van nummerbeschikking (NB)" flowable:assignee="${AG_OndertekenaarNummerBeschikking_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS005" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN005" name="BAG 5 Opdracht uitzetten bij ondertekenaar van nummerbeschikking (NB)" flowable:assignee="${AG_OndertekenaarNummerBeschikking_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS005" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS005]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -55,7 +55,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BAG_TN009" name="BAG 9 Controle en afsluiten zaak door BAG-beheerder" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS009" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN009" name="BAG 9 Controle en afsluiten zaak door BAG-beheerder" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS009" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS009]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -63,7 +63,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BAG_TN001" name="BAG 1 Keuze te starten BAG-proces" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS001" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN001" name="BAG 1 Keuze te starten BAG-proces" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS001" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS001]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -80,7 +80,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="BAG_TN002" name="BAG 2 Opdracht naar tekenaar (NB)" flowable:assignee="${AG_Tekenaar_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:formKey="BAG_ITS002" flowable:formFieldValidation="false">
+    <userTask id="BAG_TN002" name="BAG 2 Opdracht naar tekenaar (NB)" flowable:assignee="${AG_Tekenaar_Medewerker}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P1D" flowable:formKey="BAG_ITS002" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:static-form-key><![CDATA[BAG_ITS002]]></flowable:static-form-key>
         <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
@@ -293,7 +293,7 @@
         <omgdc:Bounds height="73.0" width="162.0" x="953.0" y="239.5"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BAG_TN005" id="BPMNShape_BAG_TN005">
-        <omgdc:Bounds height="80.0" width="147.0" x="892.0" y="397.0"></omgdc:Bounds>
+        <omgdc:Bounds height="80.0" width="147.0" x="907.0" y="397.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BAG_TN009" id="BPMNShape_BAG_TN009">
         <omgdc:Bounds height="73.0" width="154.0" x="1530.0" y="239.5"></omgdc:Bounds>
@@ -331,13 +331,13 @@
       <bpmndi:BPMNShape bpmnElement="startnoneevent1" id="BPMNShape_startnoneevent1">
         <omgdc:Bounds height="30.0" width="30.0" x="180.0" y="261.0"></omgdc:Bounds>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="18.0" width="23.0" x="183.5" y="295.0"></omgdc:Bounds>
+          <omgdc:Bounds height="18.0" width="23.0" x="180.0" y="295.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="EndTerminateEvent_31" id="BPMNShape_EndTerminateEvent_31">
         <omgdc:Bounds height="28.0" width="28.0" x="1880.0" y="262.0"></omgdc:Bounds>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="18.0" width="31.0" x="1878.5" y="294.0"></omgdc:Bounds>
+          <omgdc:Bounds height="18.0" width="31.0" x="1880.0" y="294.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_15" id="BPMNEdge_SequenceFlow_15" flowable:sourceDockerX="91.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
@@ -347,8 +347,8 @@
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_26" id="BPMNEdge_SequenceFlow_26" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="74.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="1379.0" y="417.0"></omgdi:waypoint>
         <omgdi:waypoint x="1379.0" y="347.0"></omgdi:waypoint>
-        <omgdi:waypoint x="965.5" y="347.0"></omgdi:waypoint>
-        <omgdi:waypoint x="965.5" y="397.0"></omgdi:waypoint>
+        <omgdi:waypoint x="980.5" y="347.0"></omgdi:waypoint>
+        <omgdi:waypoint x="980.5" y="397.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_16" id="BPMNEdge_SequenceFlow_16" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="1379.0" y="73.0"></omgdi:waypoint>
@@ -378,7 +378,7 @@
         <omgdi:waypoint x="1444.0" y="296.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_22" id="BPMNEdge_SequenceFlow_22" flowable:sourceDockerX="74.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="75.0" flowable:targetDockerY="40.0">
-        <omgdi:waypoint x="1039.0" y="437.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1054.0" y="437.0"></omgdi:waypoint>
         <omgdi:waypoint x="1122.0" y="437.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_33" id="BPMNEdge_SequenceFlow_33" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
@@ -388,7 +388,7 @@
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_11" id="BPMNEdge_SequenceFlow_11" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="74.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="778.0" y="296.0"></omgdi:waypoint>
         <omgdi:waypoint x="778.0" y="437.0"></omgdi:waypoint>
-        <omgdi:waypoint x="892.0" y="437.0"></omgdi:waypoint>
+        <omgdi:waypoint x="907.0" y="437.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_23" id="BPMNEdge_SequenceFlow_23" flowable:sourceDockerX="89.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="77.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="1069.0" y="580.0"></omgdi:waypoint>

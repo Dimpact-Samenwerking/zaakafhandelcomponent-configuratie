@@ -1,38 +1,61 @@
 {
-  "name": "SUBV_SN002",
-  "title": "Subsidieplafond",
+  "name": "SUBV_SN0010",
+  "title": "Voortgangsbewaking op voornemen tot ambtshalve lager vaststellen",
   "display": "form",
   "type": "form",
   "components": [
     {
-      "label": "Subsidiejaar",
-      "useLocaleSettings": true,
-      "format": "yyyy",
-      "description": "Kies een datum en dan wordt het jaartaal in het veld getoond.",
+      "label": "De reactie op het voornemen tot ambtshalve lager vaststellen is ontvangen",
+      "optionsLabelPosition": "right",
+      "inline": true,
+      "tableView": false,
+      "values": [
+        {
+          "label": "Ja, per",
+          "value": "jaPer",
+          "shortcut": ""
+        },
+        {
+          "label": "Nee / niet volledig",
+          "value": "neeNietVolledig",
+          "shortcut": ""
+        }
+      ],
+      "validateWhenHidden": false,
+      "key": "RB_deReactieOpHetVoornemenTotAmbtshalveLagerVaststellenIsOntvangen",
+      "type": "radio",
+      "input": true
+    },
+    {
+      "label": "Datum voornemen tot ambtshalve lager vaststellen",
+      "format": "mm-DD-yyyy",
       "tableView": false,
       "datePicker": {
         "disableWeekends": false,
-        "disableWeekdays": false,
-        "startingDay": "1 // dit is mogelijk nodig om de kalender op maandag te laten beginnen."
+        "disableWeekdays": false
       },
       "enableTime": false,
-      "customOptions": "",
-      "enableMinDateInput": true,
+      "enableMinDateInput": false,
       "enableMaxDateInput": false,
       "validateWhenHidden": false,
-      "key": "DF_Datum",
+      "key": "datumVoornemenTotAmbtshalveLagerVaststellen",
+      "conditional": {
+        "show": true,
+        "when": "RB_deReactieOpHetVoornemenTotAmbtshalveLagerVaststellenIsOntvangen",
+        "eq": "jaPer"
+      },
       "type": "datetime",
       "input": true,
       "widget": {
         "type": "calendar",
         "displayInTimezone": "viewer",
         "locale": "en",
-        "useLocaleSettings": true,
+        "useLocaleSettings": false,
         "allowInput": true,
         "mode": "single",
         "enableTime": false,
         "noCalendar": false,
-        "format": "yyyy",
+        "format": "mm-DD-yyyy",
         "hourIncrement": 1,
         "minuteIncrement": 1,
         "time_24hr": false,
@@ -41,47 +64,6 @@
         "disableWeekdays": false,
         "maxDate": null
       }
-    },
-    {
-      "label": "Het subsidieplafond is bereikt (Check budget)",
-      "optionsLabelPosition": "right",
-      "tooltip": "Geef bij label een duidelijke omschrijving van het veld (deze is zichtbaar voor de gebruiker). \n Geef bij key een unieke waarde op, houd je daarbij aan de naamgevingsconventies (Bijv. TF_NaamZaakdataveldCamelCase).\nBij tooltip kun je extra uitleg geven bij een component. Wil je geen tooltip tonen? Haal dit key-value pair dan weg.",
-      "inline": true,
-      "tableView": false,
-      "defaultValue": "Wil je dat 1 van de radiobuttons standaard aangevinkt staat? Geef dan die value (bijvoorbeeld x) op. Wil je geen default instellen? Haal dit key-value pair dan weg.",
-      "values": [
-        {
-          "label": "Ja, aanvraag weigeren",
-          "value": "weigeren",
-          "shortcut": ""
-        },
-        {
-          "label": "Ja, wel verder in behandeling nemen",
-          "value": "behandelen",
-          "shortcut": ""
-        },
-        {
-          "label": "Nee",
-          "value": "nee",
-          "shortcut": ""
-        }
-      ],
-      "dataType": "boolean",
-      "clearOnHide": false,
-      "validateWhenHidden": false,
-      "key": "RB_SubsidieplafondIsBereikt",
-      "type": "radio",
-      "input": true
-    },
-    {
-      "label": "Opmerking",
-      "applyMaskOn": "change",
-      "autoExpand": false,
-      "tableView": true,
-      "validateWhenHidden": false,
-      "key": "TA_opmerking",
-      "type": "textarea",
-      "input": true
     },
     {
       "label": "Buttons",
@@ -100,7 +82,6 @@
                   "key": "save",
                   "label": "Opslaan",
                   "type": "button",
-                  "theme": "secondary",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",

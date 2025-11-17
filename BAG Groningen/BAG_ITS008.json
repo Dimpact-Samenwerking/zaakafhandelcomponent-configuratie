@@ -1,0 +1,162 @@
+{
+    "name": "BAG_ITS008",
+    "title": "BAG 8 Beoordeling door BAG-beheerder:document schriftelijke verklaring (SV)",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Beoordelen van schriftelijke verklaring door BAG-beheerder</h2>",
+            "label": "HF_BeoordelenSchriftelijkeVerklaring",
+            "refreshOnChange": false,
+            "key": "HF_BeoordelenSchriftelijkeVerklaring",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "html": "<p>Zaaknummer</p>",
+            "label": "PA_Toelichting",
+            "refreshOnChange": false,
+            "key": "PA_Toelichting",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Reden van starten proces nummerbeschikking:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Terugmelding",
+                        "value": "terugmelding"
+                    },
+                    {
+                        "label": "Gemiste wettelijke termijn",
+                        "value": "gemisteWettelijkeTermijn"
+                    }
+                ]
+            },
+            "validateWhenHidden": false,
+            "key": "CO_RedenStartSchriftelijkeVerklaring",
+            "type": "select",
+            "input": true,
+            "disabled": true
+        },
+        {
+            "label": "Toelichting schriftelijke verklaring:",
+            "type": "textarea",
+            "key": "TA_ToelichtingSchriftelijkeVerklaring",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true
+        },
+        {
+            "label": "Nadere toelichting van BAG-beheerder aan de ondertekenaar:",
+            "type": "textarea",
+            "key": "TA_ToelichtingBagbeheerderAanOndertekenaar",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true
+        },
+        {
+            "label": "Beoordeling schriftelijke verklaring:",
+            "key": "RB_BeoordelingSchriftelijkeVerklaring",
+            "type": "radio",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "tableView": false,
+            "values": [
+                {
+                    "label": "Akkoord",
+                    "value": "akkoord"
+                },
+                {
+                    "label": "Niet akkoord",
+                    "value": "nietAkkoord"
+                }
+            ],
+            "validateWhenHidden": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Getekende verklaring is als bijlage toegevoegd:",
+            "key": "RB_GetekendeVerklaringToegevoegd",
+            "type": "radio",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "tableView": false,
+            "values": [
+                {
+                    "label": "Ja",
+                    "value": "ja"
+                },
+                {
+                    "label": "Nee",
+                    "value": "nee"
+                }
+            ],
+            "validateWhenHidden": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Toelichting van de BAG-beheerder die de controle heeft uitgevoerd:",
+            "type": "textarea",
+            "key": "TA_ToelichtingBagbeheerderControle",
+            "input": true,
+            "autoExpand": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "theme": "secondary",
+                                    "input": true,
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Opslaan & afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "disableOnInvalid": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

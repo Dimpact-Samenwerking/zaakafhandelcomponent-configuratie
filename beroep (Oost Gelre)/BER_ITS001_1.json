@@ -132,10 +132,11 @@
       }
     },
     {
-      "type": "groepMedewerkerFieldset",
+      "type": "fieldset",
       "key": "AGM_ZaakbehandelingDoor",
-      "label":"Dit beroepschrift moet behandeld worden door:",
+      "legend": "Dit beroepschrift moet behandeld worden door:",
       "input": false,
+      "tableView": false,
       "components": [
         {
           "label": "Groep",
@@ -144,7 +145,13 @@
           "input": true,
           "widget": "html5",
           "dataSrc": "custom",
-          "clearOnRefresh": true
+          "clearOnRefresh": true,
+          "attributes": {
+            "ZAC_TYPE": "ZAC_groep"
+          },
+          "validate": {
+            "required": true
+          }
         },
         {
           "label": "Medewerker",
@@ -154,7 +161,10 @@
           "input": true,
           "dataSrc": "custom",
           "refreshOn": "AGM_ZaakbehandelingDoor_Groep",
-          "clearOnRefresh": true
+          "clearOnRefresh": true,
+          "attributes": {
+            "ZAC_TYPE": "ZAC_medewerker"
+          }
         }
       ],
       "conditional": {

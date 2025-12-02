@@ -1,0 +1,25 @@
+{
+    "name": "BBV_ITS002",
+    "title": "Bewaken voortgang adviezen",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Bewaken voortgang adviezen</h2><p>NOG IN ONTWIKKELING</p>",
+            "label": "PA_ToelichtingBewakenvoortgangAdviezen",
+            "refreshOnChange": false,
+            "key": "PA_ToelichtingBewakenvoortgangAdviezen",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Afronden",
+            "key": "submit",
+            "type": "button",
+            "input": true,
+            "disableOnInvalid": true,
+            "tableView": false
+        }
+    ]
+}

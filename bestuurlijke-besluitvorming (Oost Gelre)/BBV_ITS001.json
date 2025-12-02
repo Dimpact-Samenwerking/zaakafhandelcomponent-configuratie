@@ -70,6 +70,15 @@
                         "pattern": "^[1-9][0-9]{0,5}-20\\d{2}$",
                         "customMessage": "Ongeldig zaaknummer. Een zaaknummer bestaat uit een nummer gevolgd door een streepje en een jaartal (bijvoorbeeld: 45678-2020)."
                     }
+                },
+                {
+                    "key": "save",
+                    "label": "Opslaan",
+                    "type": "button",
+                    "input": true,
+                    "action": "saveState",
+                    "state": "draft",
+                    "tableView": false
                 }
             ]
         },
@@ -82,7 +91,7 @@
             "breadcrumbClickable": true,
             "buttonSettings": {
                 "next": true,
-                "previous": true,
+                "previous": false,
                 "cancel": true
             },
             "conditional": {
@@ -99,13 +108,47 @@
             },
             "components": [
                 {
-                    "html": "<h2>Overige gegevens voorstel</h2>",
+                    "html": "<h2>Gegevens voorstel</h2>",
                     "label": "HF_GegevensVoorstelEigenschappen",
                     "refreshOnChange": false,
                     "key": "HF_GegevensVoorstelEigenschappen",
                     "type": "content",
                     "input": false,
                     "tableView": false
+                },
+                {
+                    "type": "fieldset",
+                    "legend": "Voorstel te accorderen door mijn direct leidinggevende:",
+                    "key": "AGM_AccorderendAfdelingshoofd",
+                    "input": false,
+                    "components": [
+                        {
+                            "label": "Groep",
+                            "type": "select",
+                            "key": "AGM_AccorderendAfdelingshoofd_Groep",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "defaultValue": "beheerders",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            }
+                        },
+                        {
+                            "label": "Medewerker",
+                            "type": "select",
+                            "key": "AGM_AccorderendAfdelingshoofd_Medewerker",
+                            "widget": "html5",
+                            "input": true,
+                            "dataSrc": "custom",
+                            "refreshOn": "AGM_AccorderendAfdelingshoofd_Groep",
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            }
+                        }
+                    ]
                 },
                 {
                     "label": "Verantwoordelijk portefeuillehouder",
@@ -143,7 +186,7 @@
                     "type": "datetime",
                     "key": "DF_DatumCollegevergadering",
                     "input": true,
-                    "tooltip": "Bekijk  <a href=\"https://example.com\" target=\"_blank\">het vergaderschema</a> van het college, de commissies en de raad om te bepalen voor welke collegevergadering het voorstel geagendeerd moet worden.",
+                    "tooltip": "Bekijk https://example.com (foutmelding bij escapen van dubbel quotes in href) het vergaderschema van het college, de commissies en de raad om te bepalen voor welke collegevergadering het voorstel geagendeerd moet worden.",
                     "useLocaleSettings": true,
                     "format": "dd-MM-yyyy",
                     "datePicker": {
@@ -171,7 +214,7 @@
                 },
                 {
                     "label": "Het betreft een:",
-                    "widget": "choicesjs",
+                    "widget": "html5",
                     "tableView": true,
                     "data": {
                         "values": [
@@ -195,7 +238,7 @@
                 },
                 {
                     "label": "Het stuk is:",
-                    "widget": "choicesjs",
+                    "widget": "html5",
                     "tableView": true,
                     "data": {
                         "values": [
@@ -270,6 +313,15 @@
                         "when": "CO_Openbaarheid",
                         "eq": "vno"
                     }
+                },
+                {
+                    "key": "save",
+                    "label": "Opslaan",
+                    "type": "button",
+                    "input": true,
+                    "action": "saveState",
+                    "state": "draft",
+                    "tableView": false
                 }
             ]
         },
@@ -282,7 +334,7 @@
             "breadcrumbClickable": true,
             "buttonSettings": {
                 "next": true,
-                "previous": true,
+                "previous": false,
                 "cancel": true
             },
             "conditional": {
@@ -292,20 +344,60 @@
                             "var": "data.DF_DatumCollegevergadering"
                         },
                         {
-                            "var": "data.CO_Openbaarheid"
-                        },
-                        {
                             "var": "data.CO_SoortVoorstel"
                         },
                         {
                             "var": "data.RB_Portefeuillehouder"
+                        },
+                        {
+                            "if": [
+                                {
+                                    "or": [
+                                        {
+                                            "===": [
+                                                {
+                                                    "var": "data.CO_Openbaarheid"
+                                                },
+                                                "openbaar"
+                                            ]
+                                        },
+                                        {
+                                            "===": [
+                                                {
+                                                    "var": "data.CO_Openbaarheid"
+                                                },
+                                                "no"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                true,
+                                {
+                                    "and": [
+                                        {
+                                            "===": [
+                                                {
+                                                    "var": "data.CO_Openbaarheid"
+                                                },
+                                                "vno"
+                                            ]
+                                        },
+                                        {
+                                            "var": "data.DF_VoorlopigNietOpenbaarTot"
+                                        },
+                                        {
+                                            "var": "data.TA_RedenVoorlopigNietOpenbaar"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
             },
             "components": [
                 {
-                    "html": "<h2>Inhoudelijke controle</h2><p>Door onderstaande vragen te beantwoorden wordt bepaald of het voorstel inhoudelijke gecontroleerd moet worden door een financieel-, juridisch- of P&amp;O-consulent, of een communicatieadviseur. OPTIONEEL: DIRECT AGM TONEN WANNEER BEPAALD ADVIES NODIG IS.</p>",
+                    "html": "<h2>Inhoudelijke controle</h2><p>Door onderstaande vragen te beantwoorden wordt bepaald of het voorstel inhoudelijke gecontroleerd moet worden door een financieel-, juridisch- of P&amp;O-consulent, of een communicatieadviseur.</p>",
                     "label": "PA_Controle",
                     "refreshOnChange": false,
                     "key": "PA_Controle",
@@ -429,7 +521,7 @@
                     }
                 },
                 {
-                    "html": "<h3>Overige adviezen</h3><p>Heb je - naast de inhoudelijke controle hierboven - nog advies nodig van andere collega's? Dan kun je dat hieronder aangeven. ALTERNATIEF: ENKELVOUDIGE CHECKBOX (NIET VERPLICHT) MET OPTIE OM EXTRA COLLEGA OM ADVIES TE VRAGEN. DAARNA ZELFDE PRINCIPE VOOR TWEEDE ADVISEUR.</p>",
+                    "html": "<h3>Overige adviezen</h3><p>Heb je - naast de inhoudelijke controle hierboven - nog advies nodig van andere collega's? Dan kun je dat hieronder aangeven.</p>",
                     "label": "PA_AdviesVragenCollegas",
                     "refreshOnChange": false,
                     "key": "PA_AdviesVragenCollegas",
@@ -439,7 +531,7 @@
                 },
                 {
                     "label": "Wil je ook nog andere collega's om advies vragen?",
-                    "widget": "choicesjs",
+                    "widget": "html5",
                     "tableView": true,
                     "data": {
                         "values": [
@@ -480,23 +572,98 @@
             "input": false,
             "breadcrumbClickable": true,
             "buttonSettings": {
-                "next": false,
-                "previous": true,
+                "next": true,
+                "previous": false,
                 "cancel": true
             },
             "conditional": {
                 "json": {
-                    "!==": [
+                    "and": [
                         {
-                            "var": "data.RB_FinancieleGevolgen"
+                            "or": [
+                                {
+                                    "var": "data.RB_FinancieleGevolgen"
+                                },
+                                {
+                                    "var": "data.RB_PersoneleGevolgen"
+                                },
+                                {
+                                    "var": "data.RB_JuridischAdviesNodig"
+                                },
+                                {
+                                    "var": "data.RB_AdviesCommunicatieNodig"
+                                },
+                                {
+                                    "var": "data.RB_VoorstelNaarOR"
+                                },
+                                {
+                                    ">": [
+                                        {
+                                            "var": "data.CO_AantalCollegasAdviesVragen"
+                                        },
+                                        0
+                                    ]
+                                }
+                            ]
                         },
-                        null
+                        {
+                            "and": [
+                                {
+                                    "!==": [
+                                        {
+                                            "var": "data.RB_FinancieleGevolgen"
+                                        },
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "!==": [
+                                        {
+                                            "var": "data.RB_PersoneleGevolgen"
+                                        },
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "!==": [
+                                        {
+                                            "var": "data.RB_JuridischAdviesNodig"
+                                        },
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "!==": [
+                                        {
+                                            "var": "data.RB_AdviesCommunicatieNodig"
+                                        },
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "!==": [
+                                        {
+                                            "var": "data.RB_VoorstelNaarOR"
+                                        },
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "!==": [
+                                        {
+                                            "var": "data.CO_AantalCollegasAdviesVragen"
+                                        },
+                                        ""
+                                    ]
+                                }
+                            ]
+                        }
                     ]
                 }
             },
             "components": [
                 {
-                    "html": "<h2>Inhoudelijke controle</h2><p>Door onderstaande vragen te beantwoorden wordt bepaald of het voorstel inhoudelijke gecontroleerd moet worden door een financieel-, juridisch- of P&amp;O-consulent, of een communicatieadviseur. OPTIONEEL: DIRECT AGM TONEN WANNEER BEPAALD ADVIES NODIG IS.</p>",
+                    "html": "<h2>Inhoudelijke controle</h2><p>Door onderstaande vragen te beantwoorden wordt bepaald of het voorstel inhoudelijke gecontroleerd moet worden door een financieel-, juridisch- of P&amp;O-consulent, of een communicatieadviseur.</p>",
                     "label": "PA_Controle",
                     "refreshOnChange": false,
                     "key": "PA_Controle",
@@ -505,8 +672,49 @@
                     "tableView": false
                 },
                 {
-                    "type": "groepMedewerkerFieldset",
-                    "label": "Financieel consulent",
+                    "html": "<h3>Financiële controle</h3>",
+                    "label": "HF_FINControle",
+                    "refreshOnChange": false,
+                    "key": "HF_FINControle",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_FinancieleGevolgen",
+                        "eq": true
+                    }
+                },
+                {
+                    "label": "Past het binnen de begroting?",
+                    "key": "RB_PastBinnenBegrotingFIN",
+                    "type": "radio",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "inline": false,
+                    "tableView": false,
+                    "values": [
+                        {
+                            "label": "Ja",
+                            "value": true
+                        },
+                        {
+                            "label": "Nee",
+                            "value": false
+                        }
+                    ],
+                    "validateWhenHidden": false,
+                    "validate": {
+                        "required": true
+                    },
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_FinancieleGevolgen",
+                        "eq": true
+                    }
+                },
+                {
+                    "type": "fieldset",
                     "key": "AGM_AdviseurFIN",
                     "input": false,
                     "components": [
@@ -514,21 +722,31 @@
                             "label": "Groep",
                             "type": "select",
                             "key": "AGM_AdviseurFIN_Groep",
-                            "input": false,
+                            "input": true,
                             "widget": "html5",
                             "dataSrc": "custom",
-                            "clearOnRefresh": true,
-                            "defaultValue": "HIER FINCON GROEP"
+                            "defaultValue": "beheerders",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            },
+                            "hidden": true
                         },
                         {
-                            "label": "Medewerker",
+                            "label": "Financieel consulent",
                             "type": "select",
                             "key": "AGM_AdviseurFIN_Medewerker",
                             "widget": "html5",
                             "input": true,
                             "dataSrc": "custom",
-                            "refreshOn": "AGM_AdviseurFIN_Medewerker_Groep",
-                            "clearOnRefresh": true
+                            "refreshOn": "AGM_AdviseurFIN_Groep",
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            },
+                            "validateWhenHidden": false,
+                            "validate": {
+                                "required": true
+                            }
                         }
                     ],
                     "conditional": {
@@ -538,8 +756,37 @@
                     }
                 },
                 {
-                    "type": "groepMedewerkerFieldset",
-                    "label": "Juridisch consulent",
+                    "label": "Toelichting adviesaanvraag:",
+                    "type": "textarea",
+                    "key": "TA_AdviesaanvraagFIN",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": false,
+                        "maxLength": 500
+                    },
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_FinancieleGevolgen",
+                        "eq": true
+                    }
+                },
+                {
+                    "html": "<h3>Juridische controle</h3>",
+                    "label": "HF_JURControle",
+                    "refreshOnChange": false,
+                    "key": "HF_JURControle",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_JuridischAdviesNodig",
+                        "eq": true
+                    }
+                },
+                {
+                    "type": "fieldset",
                     "key": "AGM_AdviseurJUR",
                     "input": false,
                     "components": [
@@ -547,32 +794,71 @@
                             "label": "Groep",
                             "type": "select",
                             "key": "AGM_AdviseurJUR_Groep",
-                            "input": false,
+                            "input": true,
                             "widget": "html5",
                             "dataSrc": "custom",
-                            "clearOnRefresh": true,
-                            "defaultValue": "HIER JURCON GROEP"
+                            "defaultValue": "beheerders",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            },
+                            "hidden": true
                         },
                         {
-                            "label": "Medewerker",
+                            "label": "Juridisch consulent",
                             "type": "select",
                             "key": "AGM_AdviseurJUR_Medewerker",
                             "widget": "html5",
                             "input": true,
                             "dataSrc": "custom",
                             "refreshOn": "AGM_AdviseurJUR_Groep",
-                            "clearOnRefresh": true
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            },
+                            "validateWhenHidden": false,
+                            "validate": {
+                                "required": true
+                            }
                         }
                     ],
                     "conditional": {
                         "show": true,
-                        "when": "RB_JuridischeAdviesNodig",
+                        "when": "RB_JuridischAdviesNodig",
                         "eq": true
                     }
                 },
                 {
-                    "type": "groepMedewerkerFieldset",
-                    "label": "P&O-consulent",
+                    "label": "Toelichting adviesaanvraag:",
+                    "type": "textarea",
+                    "key": "TA_AdviesaanvraagJUR",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": false,
+                        "maxLength": 500
+                    },
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_JuridischAdviesNodig",
+                        "eq": true
+                    }
+                },
+                {
+                    "html": "<h3>Controle P&O</h3>",
+                    "label": "HF_POControle",
+                    "refreshOnChange": false,
+                    "key": "HF_POControle",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_PersoneleGevolgen",
+                        "eq": true
+                    }
+                },
+                {
+                    "type": "fieldset",
                     "key": "AGM_AdviseurPO",
                     "input": false,
                     "components": [
@@ -580,21 +866,31 @@
                             "label": "Groep",
                             "type": "select",
                             "key": "AGM_AdviseurPO_Groep",
-                            "input": false,
+                            "input": true,
                             "widget": "html5",
                             "dataSrc": "custom",
-                            "clearOnRefresh": true,
-                            "defaultValue": "HIER POCON GROEP"
+                            "defaultValue": "beheerders",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            },
+                            "hidden": true
                         },
                         {
-                            "label": "Medewerker",
+                            "label": "P&O-consulent",
                             "type": "select",
                             "key": "AGM_AdviseurPO_Medewerker",
                             "widget": "html5",
                             "input": true,
                             "dataSrc": "custom",
                             "refreshOn": "AGM_AdviseurPO_Groep",
-                            "clearOnRefresh": true
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            },
+                            "validateWhenHidden": false,
+                            "validate": {
+                                "required": true
+                            }
                         }
                     ],
                     "conditional": {
@@ -604,8 +900,51 @@
                     }
                 },
                 {
-                    "type": "groepMedewerkerFieldset",
-                    "label": "Communicatieadviseur",
+                    "label": "Toelichting adviesaanvraag:",
+                    "type": "textarea",
+                    "key": "TA_AdviesaanvraagPO",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": false,
+                        "maxLength": 500
+                    },
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_PersoneleGevolgen",
+                        "eq": true
+                    }
+                },
+                {
+                    "html": "<h3>Communicatie- & participatieadvies</h3>",
+                    "label": "HF_COMControle",
+                    "refreshOnChange": false,
+                    "key": "HF_COMControle",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_AdviesCommunicatieNodig",
+                        "eq": true
+                    }
+                },
+                {
+                    "html": "<div class=\"alert alert-info\"><strong>Draagt samenwerking met inwoners of ondernemers (mogelijk) bij aan betere besluitvorming?</strong><br />Laat je dan, naast een communicatieadviseur, óók adviseren door een participatieadviseur.</div>",
+                    "label": "PA_COMControle",
+                    "refreshOnChange": false,
+                    "key": "PA_COMControle",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_AdviesCommunicatieNodig",
+                        "eq": true
+                    }
+                },
+                {
+                    "type": "fieldset",
                     "key": "AGM_AdviseurCOM",
                     "input": false,
                     "components": [
@@ -613,21 +952,31 @@
                             "label": "Groep",
                             "type": "select",
                             "key": "AGM_AdviseurCOM_Groep",
-                            "input": false,
+                            "input": true,
                             "widget": "html5",
                             "dataSrc": "custom",
-                            "clearOnRefresh": true,
-                            "defaultValue": "HIER COMADV GROEP"
+                            "defaultValue": "beheerders",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            },
+                            "hidden": true
                         },
                         {
-                            "label": "Medewerker",
+                            "label": "Communicatieadviseur",
                             "type": "select",
                             "key": "AGM_AdviseurCOM_Medewerker",
                             "widget": "html5",
                             "input": true,
                             "dataSrc": "custom",
                             "refreshOn": "AGM_AdviseurCOM_Groep",
-                            "clearOnRefresh": true
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            },
+                            "validateWhenHidden": false,
+                            "validate": {
+                                "required": true
+                            }
                         }
                     ],
                     "conditional": {
@@ -637,8 +986,7 @@
                     }
                 },
                 {
-                    "type": "groepMedewerkerFieldset",
-                    "label": "Participatieadviseur",
+                    "type": "fieldset",
                     "key": "AGM_AdviseurPAR",
                     "input": false,
                     "components": [
@@ -646,21 +994,27 @@
                             "label": "Groep",
                             "type": "select",
                             "key": "AGM_AdviseurPAR_Groep",
-                            "input": false,
+                            "input": true,
                             "widget": "html5",
                             "dataSrc": "custom",
-                            "clearOnRefresh": true,
-                            "defaultValue": "HIER PARADV GROEP"
+                            "defaultValue": "beheerders",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            },
+                            "hidden": true
                         },
                         {
-                            "label": "Medewerker",
+                            "label": "Participatieadviseur",
                             "type": "select",
                             "key": "AGM_AdviseurPAR_Medewerker",
                             "widget": "html5",
                             "input": true,
                             "dataSrc": "custom",
                             "refreshOn": "AGM_AdviseurPAR_Groep",
-                            "clearOnRefresh": true
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            }
                         }
                     ],
                     "conditional": {
@@ -670,8 +1024,57 @@
                     }
                 },
                 {
-                    "type": "groepMedewerkerFieldset",
-                    "label": "Adviseur 1 (cond. tonen obv aantal adviseurs groter dan 0)",
+                    "label": "Toelichting adviesaanvraag:",
+                    "type": "textarea",
+                    "key": "TA_AdviesaanvraagCOM",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": false,
+                        "maxLength": 500
+                    },
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_AdviesCommunicatieNodig",
+                        "eq": true
+                    }
+                },
+                {
+                    "html": "<h3>Behandeling door de OR</h3><div class=\"alert alert-warning\"><strong>Je hebt aangegeven dat je advies van de OR nodig hebt</strong><br/>Dit advies vraag je buiten het systeem om. Zodra je het advies ontvangen hebt voeg je het toe als zaakdocument.</div>",
+                    "label": "PA_ORControle",
+                    "refreshOnChange": false,
+                    "key": "PA_ORControle",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "RB_VoorstelNaarOR",
+                        "eq": true
+                    }
+                },
+                {
+                    "html": "<hr><h3>Overige adviezen</h3>",
+                    "label": "HF_AdviesOverig",
+                    "refreshOnChange": false,
+                    "key": "HF_AdviesOverig",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "json": {
+                            ">": [
+                                {
+                                    "var": "data.CO_AantalCollegasAdviesVragen"
+                                },
+                                0
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "fieldset",
+                    "legend": "Adviseur 1",
                     "key": "AGM_Adviseur1",
                     "input": false,
                     "components": [
@@ -682,19 +1085,727 @@
                             "input": true,
                             "widget": "html5",
                             "dataSrc": "custom",
-                            "clearOnRefresh": true
+                            "clearOnRefresh": true,
+                            "defaultValue": "Behandelaars",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            }
                         },
                         {
-                            "label": "Medewerker",
+                            "label": "Adviseur 1",
                             "type": "select",
                             "key": "AGM_Adviseur1_Medewerker",
                             "widget": "html5",
                             "input": true,
                             "dataSrc": "custom",
-                            "refreshOn": "AGM_AfdelingPrimairBesluit_Groep",
-                            "clearOnRefresh": true
+                            "refreshOn": "AGM_Adviseur1_Groep",
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            }
+                        }
+                    ],
+                    "conditional": {
+                        "json": {
+                            ">": [
+                                {
+                                    "var": "data.CO_AantalCollegasAdviesVragen"
+                                },
+                                0
+                            ]
+                        }
+                    }
+                },
+                {
+                    "label": "Toelichting adviesaanvraag:",
+                    "type": "textarea",
+                    "key": "TA_AdviesaanvraagADV1",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": true,
+                        "maxLength": 500
+                    },
+                    "conditional": {
+                        "json": {
+                            ">": [
+                                {
+                                    "var": "data.CO_AantalCollegasAdviesVragen"
+                                },
+                                0
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "fieldset",
+                    "legend": "Adviseur 2",
+                    "key": "AGM_Adviseur2",
+                    "input": false,
+                    "components": [
+                        {
+                            "label": "Groep",
+                            "type": "select",
+                            "key": "AGM_Adviseur2_Groep",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "defaultValue": "Behandelaars",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            }
+                        },
+                        {
+                            "label": "Adviseur 2",
+                            "type": "select",
+                            "key": "AGM_Adviseur2_Medewerker",
+                            "widget": "html5",
+                            "input": true,
+                            "dataSrc": "custom",
+                            "refreshOn": "AGM_Adviseur2_Groep",
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            }
+                        }
+                    ],
+                    "conditional": {
+                        "json": {
+                            ">": [
+                                {
+                                    "var": "data.CO_AantalCollegasAdviesVragen"
+                                },
+                                1
+                            ]
+                        }
+                    }
+                },
+                {
+                    "label": "Toelichting adviesaanvraag:",
+                    "type": "textarea",
+                    "key": "TA_AdviesaanvraagADV2",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": true,
+                        "maxLength": 500
+                    },
+                    "conditional": {
+                        "json": {
+                            ">": [
+                                {
+                                    "var": "data.CO_AantalCollegasAdviesVragen"
+                                },
+                                1
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "fieldset",
+                    "legend": "Adviseur 3",
+                    "key": "AGM_Adviseur3",
+                    "input": false,
+                    "components": [
+                        {
+                            "label": "Groep",
+                            "type": "select",
+                            "key": "AGM_Adviseur3_Groep",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "defaultValue": "Behandelaars",
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            }
+                        },
+                        {
+                            "label": "Adviseur 3",
+                            "type": "select",
+                            "key": "AGM_Adviseur3_Medewerker",
+                            "widget": "html5",
+                            "input": true,
+                            "dataSrc": "custom",
+                            "refreshOn": "AGM_Adviseur3_Groep",
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            }
+                        }
+                    ],
+                    "conditional": {
+                        "json": {
+                            ">": [
+                                {
+                                    "var": "data.CO_AantalCollegasAdviesVragen"
+                                },
+                                2
+                            ]
+                        }
+                    }
+                },
+                {
+                    "label": "Toelichting adviesaanvraag:",
+                    "type": "textarea",
+                    "key": "TA_AdviesaanvraagADV1",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": true,
+                        "maxLength": 500
+                    },
+                    "conditional": {
+                        "json": {
+                            ">": [
+                                {
+                                    "var": "data.CO_AantalCollegasAdviesVragen"
+                                },
+                                2
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Document maken",
+            "type": "panel",
+            "key": "BBV_ITS001_SN001_5",
+            "title": "Document maken",
+            "input": false,
+            "breadcrumbClickable": true,
+            "buttonSettings": {
+                "next": true,
+                "previous": false,
+                "cancel": true
+            },
+            "conditional": {
+                "json": {
+                    "or": [
+                        {
+                            "and": [
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_FinancieleGevolgen"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_PersoneleGevolgen"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_JuridischAdviesNodig"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_AdviesCommunicatieNodig"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_VoorstelNaarOR"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.CO_AantalCollegasAdviesVragen"
+                                        },
+                                        0
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "and": [
+                                {
+                                    "if": [
+                                        {
+                                            "var": "data.RB_FinancieleGevolgen"
+                                        },
+                                        {
+                                            "===": [
+                                                {
+                                                    "var": "data.AGM_AdviseuFIN_Medewerker"
+                                                },
+                                                null
+                                            ]
+                                        },
+                                        true
+                                    ]
+                                },
+                                {
+                                    "if": [
+                                        {
+                                            "var": "data.RB_PersoneleGevolgen"
+                                        },
+                                        {
+                                            "===": [
+                                                {
+                                                    "var": "data.AGM_AdviseurPO_Medewerker"
+                                                },
+                                                null
+                                            ]
+                                        },
+                                        true
+                                    ]
+                                }
+                            ]
                         }
                     ]
+                }
+            },
+            "components": [
+                {
+                    "html": "<h2>Document maken</h2><p>In deze stap maak je het document aan waarin je het <strong>collegevoorstel</strong> verder uitwerkt.</p>",
+                    "label": "PA_CollegevoorstelOpstellen",
+                    "refreshOnChange": false,
+                    "key": "PA_CollegevoorstelOpstellen",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "CO_SoortVoorstel",
+                        "eq": "collegevoorstel"
+                    }
+                },
+                {
+                    "html": "<h2>Document maken</h2><p>In deze stap maak je het document aan waarin je het <strong>raadsvoorstel</strong> verder uitwerkt. Vervolgens maak je in deze stap &oacute;&oacute;k het <strong>raadsbesluit</strong> aan.</p>",
+                    "label": "PA_RaadsvoorstelOpstellen",
+                    "refreshOnChange": false,
+                    "key": "PA_RaadsvoorstelOpstellen",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "CO_SoortVoorstel",
+                        "eq": "raadsvoorstel"
+                    }
+                },
+                {
+                    "type": "fieldset",
+                    "key": "TM_CollegevoorstelMaken",
+                    "input": false,
+                    "components": [
+                        {
+                            "label": "Kies een sjabloon:",
+                            "type": "select",
+                            "key": "TM_CollegevoorstelMaken_Template",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "properties": {
+                                "SmartDocuments_Group": "Dimpact/OpenZaak"
+                            },
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_smart_documents_template"
+                            }
+                        },
+                        {
+                            "label": "Maak document",
+                            "type": "button",
+                            "key": "TM_CollegevoorstelMaken_Create",
+                            "input": true,
+                            "action": "event",
+                            "showValidations": false,
+                            "block": true,
+                            "tableView": false,
+                            "event": "createDocument",
+                            "properties": {
+                                "SmartDocuments_Group": "Dimpact/OpenZaak",
+                                "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "3e84c231-7ff8-43c8-a2a0-7e2601f1477a",
+                                "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "cf145954-3eeb-4879-9547-e0541029fe01"
+                            }
+                        }
+                    ],
+                    "conditional": {
+                        "show": true,
+                        "when": "CO_SoortVoorstel",
+                        "eq": "collegevoorstel"
+                    }
+                },
+                {
+                    "type": "fieldset",
+                    "key": "TM_RaadsvoorstelMaken",
+                    "input": false,
+                    "components": [
+                        {
+                            "label": "Kies een sjabloon:",
+                            "type": "select",
+                            "key": "TM_RaadsvoorstelMaken_Template",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "properties": {
+                                "SmartDocuments_Group": "Dimpact/OpenZaak"
+                            },
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_smart_documents_template"
+                            }
+                        },
+                        {
+                            "label": "Maak document",
+                            "type": "button",
+                            "key": "TM_RaadsvoorstelMaken_Create",
+                            "input": true,
+                            "action": "event",
+                            "showValidations": false,
+                            "block": true,
+                            "tableView": false,
+                            "event": "createDocument",
+                            "properties": {
+                                "SmartDocuments_Group": "Dimpact/OpenZaak",
+                                "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "3e84c231-7ff8-43c8-a2a0-7e2601f1477a",
+                                "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "cf145954-3eeb-4879-9547-e0541029fe01"
+                            }
+                        }
+                    ],
+                    "conditional": {
+                        "show": true,
+                        "when": "CO_SoortVoorstel",
+                        "eq": "raadsvoorstel"
+                    }
+                },
+                {
+                    "html": "<h3>Collegevoorstel gemaakt?</h3><p><strong>Heb je het collegevoorstel klaar en opgeslagen in de zaak?</strong><br />Klik dan hieronder op [Volgende] om naar de volgende stap te gaan.</p><p><strong>Moet je het voorstel nog aanpassen?</strong><br />Kies dan voor [Opslaan en afsluiten]. De gegevens die je in de vorige schermen hebt ingevuld blijven hierbij bewaard. De taak kun je daarna op ieder moment weer starten.</p>",
+                    "label": "PA_DocumentenGereedCollegevoorstel",
+                    "refreshOnChange": false,
+                    "key": "PA_DocumentenGereedCollegevoorstel",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "CO_SoortVoorstel",
+                        "eq": "collegevoorstel"
+                    }
+                },
+                {
+                    "html": "<h3>Raadsvoorstel en raadsbesluit gemaakt?</h3><p><strong>Heb je het raadsvoorstel &eacute;n raadsbesluit klaar en opgeslagen in de zaak?</strong><br />Klik dan hieronder op [Volgende] om naar de volgende stap te gaan.</p><p><strong>Moet je de documenten nog aanpassen?</strong><br />Kies dan voor [Opslaan en afsluiten]. De gegevens die je in de vorige schermen hebt ingevuld blijven hierbij bewaard. De taak kun je daarna op ieder moment weer starten.</p>",
+                    "label": "PA_DocumentenGereedRaadsvoorstel",
+                    "refreshOnChange": false,
+                    "key": "PA_DocumentenGereedRaadsvoorstel",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "when": "CO_SoortVoorstel",
+                        "eq": "raadsvoorstel"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Documentselectie",
+            "type": "panel",
+            "key": "BBV_ITS001_SN006",
+            "title": "Documentselectie",
+            "input": false,
+            "breadcrumbClickable": true,
+            "buttonSettings": {
+                "next": true,
+                "previous": false,
+                "cancel": true
+            },
+            "conditional": {
+                "json": {
+                    "or": [
+                        {
+                            "or": [
+                                {
+                                    "var": "data.RB_FinancieleGevolgen"
+                                },
+                                {
+                                    "var": "data.RB_PersoneleGevolgen"
+                                },
+                                {
+                                    "var": "data.RB_JuridischAdviesNodig"
+                                },
+                                {
+                                    "var": "data.RB_AdviesCommunicatieNodig"
+                                },
+                                {
+                                    "var": "data.RB_VoorstelNaarOR"
+                                },
+                                {
+                                    ">": [
+                                        {
+                                            "var": "data.CO_AantalCollegasAdviesVragen"
+                                        },
+                                        0
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "and": [
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_FinancieleGevolgen"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_PersoneleGevolgen"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_JuridischAdviesNodig"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_AdviesCommunicatieNodig"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_VoorstelNaarOR"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.CO_AantalCollegasAdviesVragen"
+                                        },
+                                        0
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "components": [
+                {
+                    "html": "<h2>Documentselectie</h2>",
+                    "label": "HF_Documentselectie",
+                    "refreshOnChange": false,
+                    "key": "HF_Documentselectie",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "label": "Selecteer de documenten die van belang zijn voor inhoudelijke controle, advies en besluitvorming:",
+                    "type": "select",
+                    "key": "DS_DocumentenBesluitvorming_Select",
+                    "input": true,
+                    "widget": "choicejs",
+                    "multiple": true,
+                    "defaultValue": [],
+                    "clearOnRefresh": true,
+                    "dataSrc": "custom",
+                    "placeholder": "Selecteer documenten",
+                    "customOptions": {
+                        "choicesOptions": {
+                            "removeItemButton": true,
+                            "placeholder": true,
+                            "searchEnabled": true,
+                            "shouldSort": false
+                        }
+                    },
+                    "attributes": {
+                        "ZAC_TYPE": "ZAC_documenten"
+                    }
+                },
+                {
+                    "html": "<h3>Bijlagen toevoegen</h3><p><strong>Missen hierboven nog documenten die w&egrave;l van belang zijn voor de besluitvorming?</strong><br />Ga dan naar de zaak en klik in het actiemenu op \"Toevoegen document\" om de ontbrekende documenten toe te voegen. <br />Klik vervolgens in deze taak op het ververs-icoontje om de toegevoegde documenten te kunnen selecteren.</p><p><strong>Zorg ervoor dat deze documenten in het {{data.CO_SoortVoorstel}} genoemd worden onder het kopje Bijlagen</strong></p><ul><li>Geef de bijlagen een duidelijke titel wanneer je deze aan de zaak toevoegt.</li><li>Nummer de bijlagen in het {{data.CO_SoortVoorstel}} in volgorde van belangrijkheid.</li></ul>",
+                    "label": "PA_ToelichtingDocumentselectie",
+                    "refreshOnChange": false,
+                    "key": "PA_ToelichtingDocumentselectie",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                }
+            ]
+        },
+        {
+            "label": "Voorstel doorzetten",
+            "type": "panel",
+            "key": "BBV_ITS001_SN007",
+            "title": "Voorstel doorzetten",
+            "input": false,
+            "breadcrumbClickable": true,
+            "buttonSettings": {
+                "next": false,
+                "previous": false,
+                "cancel": true
+            },
+            "conditional": {
+                "json": {
+                    "var": "data.DS_DocumentenBesluitvorming_Select.length > 0"
+                }
+            },
+            "components": [
+                {
+                    "html": "<h2>Voorstel doorzetten</h2><p><strong>Is je voorstel klaar en heb je alle bijlagen toegevoegd?</strong><br />Dan kan de volgende stap in het proces worden gezet. Welke stap dat is zie je hieronder.<br />Bevestig dat je het voorstel definitief wil doorzetten en geef aan of je geïnformeerd wilt worden over de voortgang van het voorstel.</p>",
+                    "label": "PA_VoorstelDoorzetten",
+                    "refreshOnChange": false,
+                    "key": "PA_VoorstelDoorzetten",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "html": "<h3>Vervolgstap</h3>",
+                    "label": "HF_VervolgstapVoorstel",
+                    "refreshOnChange": false,
+                    "key": "HF_VervolgstapVoorstel",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "html": "<p>Voor controle en advies naar de gekozen adviseur(s).</p><div class=\"alert alert-info\"><strong>Heb je alle adviezen ontvangen en verwerkt?</strong> <br />Rond dan de taak \"Bewaken voortgang adviezen\" af. <br /><br /><strong>Je hebt daar de mogelijkheid om het voorstel:</strong><ul><li>Voor goedkeuring door te zetten naar jouw TEAMLEIDER OF AFDELINGSHOOFD {{data.AGM_AccorderendAfdelingshoofd_Medewerker}}</li><li>Opnieuw voor controle of advies voor te leggen aan 1 of meer collega's.</li></ul></div>",
+                    "label": "PA_NaarAdviseurEnAfdelingshoofd",
+                    "refreshOnChange": false,
+                    "key": "PA_NaarAdviseurEnAfdelingshoofd",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "json": {
+                            "or": [
+                                {
+                                    "var": "data.RB_FinancieleGevolgen"
+                                },
+                                {
+                                    "var": "data.RB_PersoneleGevolgen"
+                                },
+                                {
+                                    "var": "data.RB_JuridischAdviesNodig"
+                                },
+                                {
+                                    "var": "data.RB_AdviesCommunicatieNodig"
+                                },
+                                {
+                                    "var": "data.RB_VoorstelNaarOR"
+                                },
+                                {
+                                    ">": [
+                                        {
+                                            "var": "data.CO_AantalCollegasAdviesVragen"
+                                        },
+                                        0
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "html": "<p>Voor goedkeuring naar jouw TEAMLEIDER OF AFDELINGSHOOFD {{data.AGM_AccorderendAfdelingshoofd_Medewerker}}</p>",
+                    "label": "PA_NaarAfdelinghoofd",
+                    "refreshOnChange": false,
+                    "key": "PA_NaarAfdelinghoofd",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "json": {
+                            "and": [
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_FinancieleGevolgen"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_PersoneleGevolgen"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_JuridischAdviesNodig"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_AdviesCommunicatieNodig"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.RB_VoorstelNaarOR"
+                                        },
+                                        false
+                                    ]
+                                },
+                                {
+                                    "===": [
+                                        {
+                                            "var": "data.CO_AantalCollegasAdviesVragen"
+                                        },
+                                        0
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "html": "<h3>Voorstel doorzetten</h3>",
+                    "label": "HF_TaakOpstellenAfronden",
+                    "refreshOnChange": false,
+                    "key": "HF_TaakOpstellenAfronden",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
                 }
             ]
         }

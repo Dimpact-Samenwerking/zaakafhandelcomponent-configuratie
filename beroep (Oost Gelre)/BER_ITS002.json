@@ -85,9 +85,9 @@
                     "tableView": false,
                     "event": "createDocument",
                     "properties": {
-                        "SmartDocuments_Group": "Hier de folder/subfolder zoals in SD bekend",
-                        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke",
-                        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "Hier een UUID, nakijken welke"
+                        "SmartDocuments_Group": "Dimpact/OpenZaak",
+                        "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "3e84c231-7ff8-43c8-a2a0-7e2601f1477a",
+                        "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "cf145954-3eeb-4879-9547-e0541029fe01"
                     }
                 }
             ]

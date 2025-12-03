@@ -10,7 +10,7 @@ Je kunt de code eenvoudig kopieren en toevoegen aan het JSON-bestand van het taa
 
 ## Stappenplan
 
-### NietTaakscherm
+### Nieuw taakscherm
 
 1. Taakscherm aanmaken
    - Maak een nieuw bestand aan.
@@ -39,3 +39,4 @@ Je kunt de code eenvoudig kopieren en toevoegen aan het JSON-bestand van het taa
 De snippets (stukjes JSON-code) voor de meestvoorkomende componenten vind je hier, en zijn onderverdeeld in [invoervelden](./Invoervelden), [keuzelijsten](./Keuzelijsten), [(scherm)opmaak](./Layout) en [ZAC-procescomponenten](./Proces). Daarnaast is er ook een aantal [schermtemplates](./Schermtemplates) gemaakt waarmee je eenvoudig de eerst opzet van een scherm kunt maken.  
 
 In de basis werken deze snippets "out of the box" en hoef je dan ook maar een paar dingen aan te passen / te configuren. Maar als je wilt kunt je het component (binnen de grenzen van Form.io) natuurlijk aanpassen zoals je zelf wilt.  
+

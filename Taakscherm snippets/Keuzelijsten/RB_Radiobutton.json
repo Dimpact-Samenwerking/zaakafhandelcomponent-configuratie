@@ -3,7 +3,6 @@
     "key": "RB_Radiobutton",
     "type": "radio",
     "input": true,
-    "tooltip": "Geef bij label een duidelijke omschrijving van het veld (deze is zichtbaar voor de gebruiker). \n Geef bij key een unieke waarde op, houd je daarbij aan de naamgevingsconventies (Bijv. TF_NaamZaakdataveldCamelCase).\nBij tooltip kun je extra uitleg geven bij een component. Wil je geen tooltip tonen? Haal dit key-value pair dan weg.",
     "optionsLabelPosition": "right",
     "inline": false,
     "tableView": false,
@@ -21,7 +20,7 @@
             "value": "z"
         }
     ],
-    "defaultValue": "Wil je dat 1 van de radiobuttons standaard aangevinkt staat? Geef dan die value (bijvoorbeeld x) op. Wil je geen default instellen? Haal dit key-value pair dan weg.",
+    "defaultValue": "Wil je dat 1 van de radiobuttons standaard aangevinkt staat? Geef dan die value op (let op: neem ook de dubbel quotes als de value een string is). Wil je geen default instellen? Haal dit key-value pair dan weg.",
     "validateWhenHidden": false,
     "validate": {
         "required": true

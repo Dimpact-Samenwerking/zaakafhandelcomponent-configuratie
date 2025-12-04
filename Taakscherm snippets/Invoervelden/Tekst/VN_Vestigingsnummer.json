@@ -2,7 +2,7 @@
     "label": "Tekstveld met regex voor Vestigingsnummer",
     "key": "KVK_Vestigingsnummer",
     "type": "textfield",
-    "tooltip": "Geef bij label een duidelijke omschrijving van het veld (deze is zichtbaar voor de gebruiker). \n Geef bij key een unieke waarde op, houd je daarbij aan de naamgevingsconventies (Bijv. TF_NaamZaakdataveldCamelCase).\nBij tooltip kun je extra uitleg geven bij een component. Wil je geen tooltip tonen? Haal dit key-value pair dan weg.",
+    "tooltip": "Vul hier het vestigingsnummer in zoals deze bij de Kamer van Koophandel geregistreerd is.",
     "validateOn": "blur",
     "validate": {
         "required": true,

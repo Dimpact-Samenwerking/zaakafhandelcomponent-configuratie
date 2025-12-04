@@ -3,7 +3,6 @@
   "type": "selectboxes",
   "key": "CB_CheckboxMeervoudig",
   "input": true,
-  "tooltip": "Geef bij label een duidelijke omschrijving van het veld (deze is zichtbaar voor de gebruiker). \n Geef bij key een unieke waarde op, houd je daarbij aan de naamgevingsconventies (Bijv. TF_NaamZaakdataveldCamelCase).\nBij tooltip kun je extra uitleg geven bij een component. Wil je geen tooltip tonen? Haal dit key-value pair dan weg.",
   "optionsLabelPosition": "right",
   "inline": false,
   "inputType": "checkbox",

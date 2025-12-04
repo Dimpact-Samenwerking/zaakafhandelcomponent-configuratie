@@ -10,7 +10,7 @@ Je kunt de code eenvoudig kopieren en toevoegen aan het JSON-bestand van het taa
 
 ## Stappenplan
 
-### Nieuw taakscherm
+### Nieuw taakscherm maken
 
 1. Taakscherm aanmaken
    - Maak een nieuw bestand aan.
@@ -23,7 +23,7 @@ Je kunt de code eenvoudig kopieren en toevoegen aan het JSON-bestand van het taa
    - Vul bij `name` en `title` de gewenste waarde in.
    - Bepaal welke component(en) je op het scherm wilt plaatsen.
 
-### Componenten
+### Componenten aan taakscherm toevoegen
 
 1. Kopieer de code van het gewenste component naar het taakscherm (JSON-bestand)
    - De code plaats je onder `components`.
@@ -40,3 +40,38 @@ De snippets (stukjes JSON-code) voor de meestvoorkomende componenten vind je hie
 
 In de basis werken deze snippets "out of the box" en hoef je dan ook maar een paar dingen aan te passen / te configuren. Maar als je wilt kunt je het component (binnen de grenzen van Form.io) natuurlijk aanpassen zoals je zelf wilt.  
 
+### Veelgebruikte configuratieopties
+
+Een component (een JSON object) bestaat uit bepaalde eigenschappen met elk een bepaalde waarde. Dit wordt vaak een key-value pair genoemd.  
+Hieronder worden enkele veelgebruikte eigenschappen (keys) uitgelegd die je bij veel van de componenten kunt configureren.
+
+- `"label"`:  
+Meestal de vraag, met een string als waarde. Bijvoorbeeld `"Wat is de datum van de collegevergadering?"`  
+- `"key"`:  
+De unieke sleutel van het key-value pair. Bijvoorbeeld `"DF_DatumCollegevergadering"`  
+- `"type"`:  
+Het soort component, waarvan enkele veelgebruikte:
+  - `"datetime"`: Een datumveld
+  - `"textfield"`: Een tekstveld
+  - `"textarea"`: Een tekstvak
+  - `"number"`: Een nummerveld. Zowel voor gehele getallen (integer) als decimale getallen (float).
+  - `"email"`: Een e-mailveld met een controle om te zien of de invoer aan het juiste format voldoet (bijvoorbeeld `j.doe@example.com`)
+  - `"phoneNumber"`: Een telefoonnummer met een controle met een controle om te zien of de invoer aan het juiste format voldoet (bijvoorbeeld `+310123456789`)
+  - `"select"`: Een dropdownlijst / combobox.
+  - `"selectboxes"`: Een meervoudige selectielijst / checkboxes.
+  - `"radio"`: Een enkelvoudige selectielijst / radiobuttons.
+  - `"content"`: html-content zoals headers en paragraphs.
+- `"defaultValue"`:  
+De standaardwaarde die een component heeft. (Optioneel; standaard leeg)  
+Afhankelijk van het `type` kan dit o.a. een tekst (string) `"Dit is een tekst"`, geheel getal (integer) `1`, of een waar/niet-waar (boolean) `true`/`false` waarde zijn.
+- `"tooltip"`: dit kun je gebruiken om een extra toelichting geven bij een component. De toelichting wordt zichtbaar wanneer de gebruiker naar het [?]-icoontje gaat.
+- `"optionsLabelPosition"`:  
+De positie van `???????` (Optioneel; standaard boven). Bijvoorbeeld `"right"`.
+- `"validate"`:  
+Hiermee geef je aan welke validatie je op de invoer wilt doen. (Optioneel; standaard geen validatie).
+  - `"required"`: geeft aan of invoer verplicht (`true`) of niet-verplicht (`false`).
+  - `"min"` en `"max"`: geeft aan wat de minimale en/of maximale invoer moet zijn. Gebruikt bij numerieke invoer (o.a. integer).
+  - `"maxLength"`: gebruikt om de invoer te beperkten tot een aantal karakters.
+  - `"pattern"`: gebruikt om de invoer te controleren op een bepaald patroon (in de vorm van een [regulier expressie](https://regex101.com/)).
+  - `"customMessage"`: gebruikt om een specifieke (fout)melding te tonen wanneer de invoer niet door de validatie komt.
+- DE LIJST MET VEELGEBRUIKTE CONFIGOPTIES WORDT WAARSCHIJNLIJK NOG VERDER UITGEBREID 🚧👷🏻‍♂️🚧

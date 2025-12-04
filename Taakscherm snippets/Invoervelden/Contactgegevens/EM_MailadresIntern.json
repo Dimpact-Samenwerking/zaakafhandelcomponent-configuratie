@@ -1,5 +1,9 @@
 {
   "label": "E-mailadres <collega of afdeling>:",
+  "key": "EM_MailadresIntern",
+  "type": "email",
+  "input": true,
+  "inputMask": "j.doe@example.com",
   "applyMaskOn": "change",
   "tableView": true,
   "validateOn": "blur",
@@ -8,8 +12,5 @@
     "pattern": "^.{2,}(@example\\.com)$",
     "customMessage": "Vul een geldig @example.com mailadres in."
   },
-  "validateWhenHidden": false,
-  "key": "EM_MailadresIntern",
-  "type": "email",
-  "input": true
+  "validateWhenHidden": false
 }

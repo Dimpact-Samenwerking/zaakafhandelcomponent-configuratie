@@ -1,27 +1,26 @@
-{
-  "type": "documentsFieldset",
-  "key": "DS_DocumentenSelecteren",
-  "input": false,
-  "components": [
-    {
-      "label": "Selecteer de documenten die ...",
-      "type": "select",
-      "key": "DS_DocumentenSelecteren_Select",
-      "input": true,
-      "widget": "choicesjs",
-      "multiple": true,
-      "defaultValue": [],
-      "clearOnRefresh": true,
-      "dataSrc": "custom",
-      "placeholder": "Selecteer documenten",
-      "customOptions": {
-        "choicesOptions": {
-          "removeItemButton": true,
-          "placeholder": true,
-          "searchEnabled": true,
-          "shouldSort": false
-        }
-      }
+ {
+  "label": "Selecteer de documenten die ...",
+  "type": "select",
+  "key": "DS_DocumentenSelecteren_Select",
+  "input": true,
+  "widget": "choicesjs",
+  "multiple": true,
+  "defaultValue": [],
+  "clearOnRefresh": true,
+  "dataSrc": "custom",
+  "placeholder": "Select één of meer documenten",
+  "customOptions": {
+    "choicesOptions": {
+      "removeItemButton": true,
+      "placeholder": true,
+      "searchEnabled": true,
+      "shouldSort": false
     }
-  ]
+  },
+  "validate": {
+    "required": true
+  },
+  "attributes": {
+    "ZAC_TYPE": "ZAC_documenten"
+  }
 }

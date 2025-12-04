@@ -1,16 +1,16 @@
 {
-  "type": "zaakResultTypesFieldset",
-  "key": "ZR_Zaakresultaat",
-  "input": false,
-  "components": [
-    {
-      "label": "Was is het resultaat van deze zaak?",
-      "type": "select",
-      "key": "CO_Zaakresultaat",
-      "input": true,
-      "optionsLabelPosition": "right",
-      "widget": "html5",
-      "dataSrc": "custom"
-    }
-  ]
+  "label": "Was is het resultaat van deze zaak?",
+  "optionsLabelPosition": "right",
+  "key": "CO_Zaakresultaat",
+  "type": "select",
+  "widget": "html5",
+  "input": true,
+  "dataSrc": "custom",
+  "attributes": {
+    "ZAC_TYPE": "ZAC_resultaat"
+  },
+  "validate": {
+    "required": true,
+    "onlyAvailableItems": true
+  }
 }

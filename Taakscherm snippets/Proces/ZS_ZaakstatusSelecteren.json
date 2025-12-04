@@ -1,0 +1,16 @@
+{
+  "label": "Welke (tussen)status moet de zaak krijgen?",
+  "optionsLabelPosition": "right",
+  "key": "CO_Zaakstatus",
+  "widget": "html5",
+  "validate": {
+    "required": true,
+    "onlyAvailableItems": true
+  },
+  "type": "select",
+  "input": true,
+  "dataSrc": "custom",
+  "attributes": {
+    "ZAC_TYPE": "ZAC_status"
+  }
+}

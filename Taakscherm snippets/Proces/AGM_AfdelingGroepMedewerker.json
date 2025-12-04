@@ -1,0 +1,34 @@
+{
+  "type": "fieldset",
+  "legend": "Taak X toewijzen aan:",
+  "key": "AGM_Adviseur1",
+  "input": false,
+  "components": [
+    {
+      "label": "Groep",
+      "type": "select",
+      "key": "AGM_TaakToewijzingAan_Groep",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "defaultValue": "Behandelaars",
+      "attributes": {
+        "ZAC_TYPE": "ZAC_groep"
+      }
+    },
+    {
+      "label": "Medewerker",
+      "type": "select",
+      "key": "AGM_TaakToewijzingAan_Medewerker",
+      "widget": "html5",
+      "input": true,
+      "dataSrc": "custom",
+      "refreshOn": "AGM_TaakToewijzingAan_Groep",
+      "clearOnRefresh": true,
+      "attributes": {
+        "ZAC_TYPE": "ZAC_medewerker"
+      }
+    }
+  ]
+}

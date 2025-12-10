@@ -1,0 +1,268 @@
+{
+    "naam": "BBV_GR_ITS002",
+    "title": "Voorstel opnemen in Gemeente Oplossingen",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Voorstel opnemen in Gemeente Oplossingen</h2>",
+            "label": "Voorstel opnemen in Gemeente Oplossingen",
+            "refreshOnChange": false,
+            "key": "HF_OpnameGO",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "html": "<p><strong>Het voorstel is aangepast/aangevuld door Bureau Collegezaken.</strong></p>",
+            "label": "Het voorstel is aangepast/aangevuld door Bureau Collegezaken.",
+            "refreshOnChange": false,
+            "key": "PA_VoorstelGewijzigdBurcol",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "customConditional": "show = data.schermBezocht === true;"
+        },
+        {
+            "html": "<p>Neem de relevante documenten van onderstaand voorstel op in het raadsinformatiesysteem Gemeente Oplossingen:</strong></p>",
+            "label": "Neem de relevante documenten van onderstaand voorstel op in het raadsinformatiesysteem Gemeente Oplossingen:",
+            "refreshOnChange": false,
+            "key": "PA_UploadenGO",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Samenvatting",
+            "type": "textarea",
+            "key": "TA_Samenvatting",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "disabled": true,
+            "customConditional": "show = data.TA_Samenvatting && data.TA_Samenvatting.trim() !== '';"
+        },
+        {
+            "label": "Besluitpunten",
+            "type": "textarea",
+            "key": "TA_Besluitpunten",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "disabled": true,
+            "customConditional": "show = data.TA_Besluitpunten && data.TA_Besluitpunten.trim() !== '';"
+        },
+        {
+            "label": "Het stuk is:",
+            "widget": "html5",
+            "tableView": true,
+            "disabled": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Openbaar",
+                        "value": "openbaar"
+                    },
+                    {
+                        "label": "Geheim",
+                        "value": "geheim"
+                    }
+                ]
+            },
+            "validateWhenHidden": false,
+            "key": "CO_VoorstelOpAgenda",
+            "type": "select",
+            "input": true
+        },
+        {
+            "label": "Collegebrief betreffende het collegevoorstel moet naar de Gemeenteraad:",
+            "widget": "html5",
+            "tableView": true,
+            "disabled": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Ter kennisname",
+                        "value": "terKennisname"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_CollegevoorstelNaarRaad",
+            "type": "select",
+            "input": true,
+            "conditional": {
+                "show": true,
+                "when": "CO_Betreft",
+                "eq": "collegevoorstel"
+            },
+            "defaultValue": "terKennisname"
+        },
+        {
+            "label": "Raadsvoorstel naar Gemeenteraad:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Ter besluitvorming",
+                        "value": "terBesluitvorming"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_RaadsvoorstelNaarRaad",
+            "type": "select",
+            "input": true,
+            "disabled": true,
+            "conditional": {
+                "show": true,
+                "when": "CO_Betreft",
+                "eq": "raadsvoorstel"
+            },
+            "defaultValue": "terBesluitvorming"
+        },
+        {
+            "label": "Brief aan Gemeenteraad is:",
+            "type": "radio",
+            "key": "RB_BriefRaad",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "values": [
+                {
+                    "label": "Ter informatie",
+                    "value": "terInformatie"
+                },
+                {
+                    "label": "Voor wensen/bedenkingen",
+                    "value": "voorWensenBedenkingen"
+                },
+                {
+                    "label": "Opiniërend",
+                    "value": "opinierend"
+                }
+            ],
+            "disabled": true,
+            "validate": {
+                "required": true
+            },
+            "customConditional": "show = data.RB_BriefRaad && data.CO_Betreft === 'collegevoorstel';"
+        },
+        {
+            "label": "Aandachtspunten van College ondersteuning:",
+            "type": "textarea",
+            "key": "TA_AanwBurcolGriffie",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "disabled": true,
+            "customConditional": "show = data.TA_AanwBurcolGriffie && data.TA_AanwBurcolGriffie.trim() !== '';"
+        },
+        {
+            "label": "Voorstel laten aanpassen door Bureau Collegezaken:",
+            "type": "radio",
+            "key": "RB_VoorstelAanpassenBurcol",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "values": [
+                {
+                    "label": "Ja",
+                    "value": "ja"
+                },
+                {
+                    "label": "Nee",
+                    "value": "nee"
+                }
+            ],
+            "defaultValue" : "nee",
+            "validate": {
+                "required": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "CO_BronVoorstel",
+                "eq": "college"
+            }
+        },
+        {
+            "label": "Aandachtspunten voor Bureau Collegezaken:",
+            "type": "textarea",
+            "key": "TA_AanpassingenBurcol",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "validate": {
+                "required": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "RB_VoorstelAanpassenBurcol",
+                "eq": "ja"
+            }
+        },
+        {
+            "label": "Relevante documenten opgenomen in Gemeente Oplossingen",
+            "type": "checkbox",
+            "key": "CB_OpgenomenGO",
+            "input": true,
+            "defaultValue": false,
+            "validate": {
+                "required": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "RB_VoorstelAanpassenBurcol",
+                "eq": "nee"
+            }
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

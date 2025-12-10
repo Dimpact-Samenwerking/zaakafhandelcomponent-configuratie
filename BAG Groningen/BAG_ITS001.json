@@ -172,26 +172,6 @@
                         }
                     },
                     {
-                        "html": "</br>Toewijzen aan tekenaar:",
-                        "label": "Toewijzen aan tekenaar",
-                        "refreshOnChange": false,
-                        "key": "HF_ToewijzenTekenaar",
-                        "type": "content",
-                        "input": false,
-                        "tableView": false,
-                        "conditional": {
-                            "show": true,
-                            "conjunction": "any",
-                            "conditions": [
-                                {
-                                    "component": "CB_TeStartenProces",
-                                    "operator": "isEqual",
-                                    "value": "nummerbeschikkingTekenaar"
-                                }
-                            ]
-                        }
-                    },
-                    {
                         "type": "groepMedewerkerFieldset",
                         "key": "AG_Tekenaar",
                         "label": "Toewijzen aan tekenaar:",
@@ -207,6 +187,9 @@
                                 "clearOnRefresh": true,
                                 "validate": {
                                     "required": true
+                                },
+                                "attributes": {
+                                    "ZAC_TYPE": "ZAC_groep"
                                 }
                             },
                             {
@@ -220,6 +203,9 @@
                                 "clearOnRefresh": true,
                                 "validate": {
                                     "required": true
+                                },
+                                "attributes": {
+                                    "ZAC_TYPE": "ZAC_medewerker"
                                 }
                             }
                         ],
@@ -236,7 +222,7 @@
                         }
                     },
                     {
-                        "label":"<br/><br/><b>Toelichting opdracht uitzetten bij ondertekenaar:</b>",
+                        "label": "<br/><br/><b>Toelichting opdracht uitzetten bij ondertekenaar:</b>",
                         "type": "textarea",
                         "key": "TA_ToelichtingNummerbeschikkingOndertekenaar",
                         "input": true,
@@ -244,26 +230,6 @@
                         "validate": {
                             "required": true
                         },
-                        "conditional": {
-                            "show": true,
-                            "conjunction": "any",
-                            "conditions": [
-                                {
-                                    "component": "CB_TeStartenProces",
-                                    "operator": "isEqual",
-                                    "value": "nummerbeschikkingOndertekenaar"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "html": "</br>Toewijzen aan ondertekenaar:",
-                        "label": "Toewijzen aan ondertekenaar",
-                        "refreshOnChange": false,
-                        "key": "HF_ToewijzenOndertekenaar",
-                        "type": "content",
-                        "input": false,
-                        "tableView": false,
                         "conditional": {
                             "show": true,
                             "conjunction": "any",
@@ -292,6 +258,9 @@
                                 "clearOnRefresh": true,
                                 "validate": {
                                     "required": true
+                                },
+                                "attributes": {
+                                    "ZAC_TYPE": "ZAC_groep"
                                 }
                             },
                             {
@@ -305,6 +274,9 @@
                                 "clearOnRefresh": true,
                                 "validate": {
                                     "required": true
+                                },
+                                "attributes": {
+                                    "ZAC_TYPE": "ZAC_medewerker"
                                 }
                             }
                         ],
@@ -377,26 +349,6 @@
                         }
                     },
                     {
-                        "html": "</br>Toewijzing opdracht schriftelijke verklaring uitzetten bij ondertekenaar:",
-                        "label": "Toewijzing opdracht schriftelijke verklaring uitzetten bij ondertekenaar",
-                        "refreshOnChange": false,
-                        "key": "HF_OndertekenaarSchriftelijkeVerklaring",
-                        "type": "content",
-                        "input": false,
-                        "tableView": false,
-                        "conditional": {
-                            "show": true,
-                            "conjunction": "any",
-                            "conditions": [
-                                {
-                                    "component": "CB_TeStartenProces",
-                                    "operator": "isEqual",
-                                    "value": "schriftelijkeVerklaring"
-                                }
-                            ]
-                        }
-                    },
-                    {
                         "type": "groepMedewerkerFieldset",
                         "key": "AG_OndertekenaarSchriftelijkeVerklaring",
                         "label": "Toewijzing opdracht schriftelijke verklaring uitzetten bij ondertekenaar:",
@@ -412,6 +364,9 @@
                                 "clearOnRefresh": true,
                                 "validate": {
                                     "required": true
+                                },
+                                "attributes": {
+                                    "ZAC_TYPE": "ZAC_groep"
                                 }
                             },
                             {
@@ -425,6 +380,9 @@
                                 "clearOnRefresh": true,
                                 "validate": {
                                     "required": true
+                                },
+                                "attributes": {
+                                    "ZAC_TYPE": "ZAC_medewerker"
                                 }
                             }
                         ],

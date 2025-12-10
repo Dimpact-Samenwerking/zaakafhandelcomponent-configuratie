@@ -1,0 +1,300 @@
+{
+    "naam": "BBV_GR_ITS004",
+    "title": "Vastleggen resultaat besluitvorming",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Vastleggen resultaat besluitvorming</h2>",
+            "label": "Vastleggen resultaat besluitvorming",
+            "refreshOnChange": false,
+            "key": "HF_VastleggenResultaat",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "html": "<p><p><strong>LET OP: </strong></p><p><strong>Deze taak pas uitvoeren en afdoen als de besluitvorming helemaal is afgerond en alle documenten vanuit Gemeente Oplossingen zijn toegevoegd aan het zaakdossier in de eSuite.</strong></p></p>",
+            "label": "Deze taak pas uitvoeren en afdoen als de besluitvorming helemaal is afgerond en alle documenten vanuit Gemeente Oplossingen zijn toegevoegd aan het zaakdossier in de eSuite.",
+            "refreshOnChange": false,
+            "key": "PA_VastleggenResultaat",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Voorstel is besproken in (meerdere keuzes mogelijk):",
+            "type": "selectboxes",
+            "key": "CB_VoorstelBesprokenIn",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "inputType": "checkbox",
+            "validate": {
+                "required": true
+            },
+            "values": [
+                {
+                    "label": "Raadscommissie",
+                    "value": "raadscommissie"
+                },
+                {
+                    "label": "Gemeenteraad",
+                    "value": "gemeenteraad"
+                }
+            ],
+            "customConditional": "show = !data.CO_CollegevoorstelNaarRaad;"
+        },
+        {
+            "label": "Voorstel besproken (code, hidden)",
+            "key": "CB_VoorstelBesprokenIn_code",
+            "type": "hidden",
+            "input": true,
+            "hidden": true,
+            "persistent": true,
+            "clearOnHide": false,
+            "calculateValue": "var v = data.CB_VoorstelBesprokenIn || {}; if (v.raadscommissie && !v.gemeenteraad) { return 'raadscommissie'; } else if (!v.raadscommissie && v.gemeenteraad) { return 'gemeenteraad'; } else if (v.raadscommissie && v.gemeenteraad) { return 'beide'; } else { return 'geen'; }"
+        },
+        {
+            "type": "fieldset",
+            "input": false,
+            "customConditional": "show = !!data.CO_CollegevoorstelNaarRaad;",
+            "components": [
+                {
+                    "label": "Collegebrief is besproken in (meerdere keuzes mogelijk):",
+                    "type": "selectboxes",
+                    "key": "CB_CollegebriefBesprokenIn",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "inline": false,
+                    "inputType": "checkbox",
+                    "validate": {
+                        "required": true
+                    },
+                    "values": [
+                        {
+                            "label": "Raadscommissie",
+                            "value": "raadscommissie"
+                        },
+                        {
+                            "label": "Gemeenteraad",
+                            "value": "gemeenteraad"
+                        },
+                        {
+                            "label": "Geen van beide",
+                            "value": "geenVanBeide"
+                        }
+                    ]
+                },
+                {
+                    "html": "<h2>Vastleggen resultaat Collegebrief</h2>",
+                    "label": "Vastleggen resultaat Collegebrief",
+                    "refreshOnChange": false,
+                    "key": "HF_ResultaatCollegebrief",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "customConditional": "const v = data.CB_CollegebriefBesprokenIn || {}; show = Object.values(v).some(x => x === true);"
+                },
+                {
+                    "label": "Collegebrief is besproken in:",
+                    "widget": "html5",
+                    "tableView": true,
+                    "disabled": true,
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Raadscommissie",
+                                "value": "raadscommissie"
+                            }
+                        ]
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "validateWhenHidden": false,
+                    "key": "CO_BesprokenRaadsCie",
+                    "type": "select",
+                    "customConditional": "const v = data.CB_CollegebriefBesprokenIn || {}; show = !!v.raadscommissie && !v.gemeenteraad && !v.geenVanBeide;",
+                    "input": true,
+                    "defaultValue": "raadscommissie"
+                },
+                {
+                    "label": "Collegebrief is besproken in:",
+                    "widget": "html5",
+                    "tableView": true,
+                    "disabled": true,
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Gemeenteraad",
+                                "value": "gemeenteraad"
+                            }
+                        ]
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "validateWhenHidden": false,
+                    "key": "CO_BesprokenRaad",
+                    "type": "select",
+                    "customConditional": "const v = data.CB_CollegebriefBesprokenIn || {}; show = !!v.gemeenteraad && !v.geenVanBeide;",
+                    "input": true,
+                    "defaultValue": "gemeenteraad"
+                },
+                {
+                    "label": "Collegebrief is:",
+                    "widget": "html5",
+                    "tableView": true,
+                    "disabled": true,
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ter kennis name",
+                                "value": "terKennisName"
+                            }
+                        ]
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "validateWhenHidden": false,
+                    "key": "CO_TerKennisname",
+                    "type": "select",
+                    "customConditional": "const v = data.CB_CollegebriefBesprokenIn || {}; show = !!v.geenVanBeide;",
+                    "input": true,
+                    "defaultValue": "terKennisName"
+                }
+            ]
+        },
+        {
+            "type": "fieldset",
+            "input": false,
+            "customConditional": "const v = data.CB_VoorstelBesprokenIn || {}; show = !data.CO_CollegevoorstelNaarRaad && !!v.raadscommissie && !v.gemeenteraad;",
+            "components": [
+                {
+                    "html": "<h2>Vastleggen resultaat besluitvorming Gemeenteraad</h2>",
+                    "label": "Vastleggen resultaat besluitvorming Gemeenteraad",
+                    "refreshOnChange": false,
+                    "key": "HF_ResultaatCollegebrief",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "label": "Besluit Raadscommissie:",
+                    "widget": "html5",
+                    "tableView": true,
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Akkoord Raadscommissie",
+                                "value": "akkoordRaadscommissie"
+                            },
+                            {
+                                "label": "Teruggenomen door College",
+                                "value": "teruggenomenDoorCollege"
+                            }
+                        ]
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "validateWhenHidden": false,
+                    "key": "CO_ResultaatRaadscommissie",
+                    "type": "select",
+                    "input": true
+                }
+            ]
+        },
+        {
+            "type": "fieldset",
+            "input": false,
+            "customConditional": "const v = data.CB_VoorstelBesprokenIn || {}; show = !data.CO_CollegevoorstelNaarRaad && !!v.gemeenteraad;",
+            "components": [
+                {
+                    "html": "<h2>Vastleggen resultaat besluitvorming Gemeenteraad</h2>",
+                    "label": "Vastleggen resultaat besluitvorming Gemeenteraad",
+                    "refreshOnChange": false,
+                    "key": "HF_ResultaatRaad",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "label": "Besluit Gemeenteraad:",
+                    "widget": "html5",
+                    "tableView": true,
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Aangenomen door Raad",
+                                "value": "aangenomenDoorRaad"
+                            },
+                            {
+                                "label": "Gewijzigd aangenomen door Raad",
+                                "value": "gewijzigdAangenomenDoorRaad"
+                            },
+                            {
+                                "label": "Afgewezen door Raad",
+                                "value": "afgewezenDoorRaad"
+                            },
+                            {
+                                "label": "Teruggenomen door College",
+                                "value": "teruggenomenDoorCollege"
+                            }
+                        ]
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "validateWhenHidden": false,
+                    "key": "CO_ResultaatRaad",
+                    "type": "select",
+                    "input": true
+                }
+            ]
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,232 @@
+{
+    "naam": "BBV_COL_ITS002_1",
+    "title": "Bewaken voortgang adviezen",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Bewaken voortgang adviezen</h2>",
+            "label": "Bewaken voortgang adviezen",
+            "refreshOnChange": false,
+            "key": "HF_BewakenVoortgangAdviezen",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Advies Concerncontroller",
+            "type": "fieldset",
+            "legend": "Advies Concerncontroller",
+            "input": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesConcerncontroller",
+                "eq": "ja"
+            },
+            "components": [
+                {
+                    "label": "Voorstel akkoord",
+                    "type": "select",
+                    "key": "CO_AkkoordConcerncontroller",
+                    "widget": "html5",
+                    "input": true,
+                    "disabled": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ja",
+                                "value": "ja"
+                            },
+                            {
+                                "label": "Nee",
+                                "value": "nee"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Opmerkingen",
+                    "type": "textarea",
+                    "key": "TA_OpmerkingenConcerncontroller",
+                    "applyMaskOn": "change",
+                    "autoExpand": false,
+                    "input": true,
+                    "disabled": true
+                }
+            ]
+        },
+        {
+            "label": "Advies Bureau Collegezaken",
+            "type": "fieldset",
+            "legend": "Advies Bureau Collegezaken",
+            "input": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesCollegeondersteuning",
+                "eq": "ja"
+            },
+            "components": [
+                {
+                    "label": "Voorstel akkoord",
+                    "type": "select",
+                    "key": "CO_AkkoordCollegeondersteuning",
+                    "widget": "html5",
+                    "input": true,
+                    "disabled": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ja",
+                                "value": "ja"
+                            },
+                            {
+                                "label": "Nee",
+                                "value": "nee"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Opmerkingen",
+                    "type": "textarea",
+                    "key": "TA_OpmerkingenCollegeondersteuning",
+                    "applyMaskOn": "change",
+                    "autoExpand": false,
+                    "input": true,
+                    "disabled": true
+                }
+            ]
+        },
+        {
+            "label": "Advies Secretaris Collegevergadering",
+            "type": "fieldset",
+            "legend": "Advies Secretaris Collegevergadering",
+            "input": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesSCV",
+                "eq": "ja"
+            },
+            "components": [
+                {
+                    "label": "Voorstel akkoord",
+                    "type": "select",
+                    "key": "CO_AkkoordSCV",
+                    "widget": "html5",
+                    "input": true,
+                    "disabled": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ja",
+                                "value": "ja"
+                            },
+                            {
+                                "label": "Nee",
+                                "value": "nee"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Opmerkingen",
+                    "type": "textarea",
+                    "key": "TA_OpmerkingenAdviesSCV",
+                    "applyMaskOn": "change",
+                    "autoExpand": false,
+                    "input": true,
+                    "disabled": true
+                }
+            ]
+        },
+        {
+            "label": "Vervolg",
+            "type": "fieldset",
+            "legend": "Vervolg",
+            "input": false,
+            "components": [
+                {
+                    "label": "Het stuk kan verder in procedure",
+                    "type": "select",
+                    "key": "CO_VerdereProcedure",
+                    "tooltip": "Heb je alle adviezen binnen en eventuele opmerkingen verwerkt? Klik dan pas op afronden.",
+                    "widget": "html5",
+                    "input": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ja",
+                                "value": "ja"
+                            },
+                            {
+                                "label": "Nee",
+                                "value": "nee"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Notities betreffende voortgang adviezen",
+                    "type": "textarea",
+                    "key": "TA_NotitieBewakenAdvies",
+                    "applyMaskOn": "change",
+                    "autoExpand": false,
+                    "input": true
+                }
+            ]
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

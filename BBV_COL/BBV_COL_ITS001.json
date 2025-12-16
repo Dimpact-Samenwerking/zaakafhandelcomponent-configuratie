@@ -1,0 +1,793 @@
+{
+    "naam": "BBV_COL_ITS001",
+    "title": "Aanpassen voorstel",
+    "display": "wizard",
+    "components": [
+        {
+            "label": "Aanpassen voorstel",
+            "type": "panel",
+            "key": "BBV_COL_ITS001_SN001",
+            "title": "Aanpassen voorstel",
+            "input": false,
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": true,
+                "previous": false,
+                "cancel": false
+            },
+            "components": [
+                {
+                    "html": "<h2>Aanpassen voorstel</h2>",
+                    "label": "Aanpassen voorstel",
+                    "refreshOnChange": false,
+                    "key": "HF_OpstellenAanpassen",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "label": "Verzoek tot aanpassing ontvangen van Portefeuillehouder na 'Vastgesteld onder mandaat' door College:",
+                    "type": "textarea",
+                    "key": "TA_BerichtTekstueleWijzigingen_PO",
+                    "input": true,
+                    "autoExpand": false,
+                    "disabled": true,
+                    "customConditional": "show = data.CO_BesluitVoorstel && data.CO_BesluitVoorstel === 'vastgesteldOnderMandaat' && data.TA_BerichtTekstueleWijzigingen_PO && data.TA_BerichtTekstueleWijzigingen_PO.trim() !== '';"
+                },
+                {
+                    "label": "Verzoek tot aanpassing ontvangen van Gemeentesecretaris na 'Vastgesteld onder mandaat' door College:",
+                    "type": "textarea",
+                    "key": "TA_BerichtTekstueleWijzigingen",
+                    "input": true,
+                    "autoExpand": false,
+                    "disabled": true,
+                    "customConditional": "show = data.CO_BesluitVoorstel && data.CO_BesluitVoorstel === 'vastgesteldOnderMandaat' && data.TA_BerichtTekstueleWijzigingen && data.TA_BerichtTekstueleWijzigingen.trim() !== '';"
+                },
+                {
+                    "label": "Moet het voorstel 'Vastgesteld onder mandaat' de reguliere ambtelijke accorderingsprocedure volgen?",
+                    "widget": "html5",
+                    "tableView": true,
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ja, ambtelijke accorderingsprocedure volgen",
+                                "value": "ja"
+                            },
+                            {
+                                "label": "Nee, direct door naar portefeuillehouder",
+                                "value": "nee"
+                            }
+                        ]
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "validateWhenHidden": false,
+                    "key": "CO_ReguliereProcedure",
+                    "type": "select",
+                    "input": true,
+                    "defaultValue": "nee",
+                    "conditional": {
+                        "show": true,
+                        "conjunction": "any",
+                        "conditions": [
+                            {
+                                "component": "CO_BesluitVoorstel",
+                                "operator": "isEqual",
+                                "value": "vastgesteldOnderMandaat"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "html": "<h5>Verzoek tot aanpassing ontvangen van portefeuillehouder</h5>",
+                    "label": "Verzoek tot aanpassing ontvangen van portefeuillehouder:",
+                    "refreshOnChange": false,
+                    "key": "PA_OpmerkingenAfdelingshoofd",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "customConditional": "show = data.CO_VerdereProcedureAfdelingshoofd === 'aanpassen' && data.TA_OpmerkingenAfdelingshoofd && data.TA_TA_OpmerkingenAfdelingshoofd.trim() !== '';"
+                },
+                {
+                    "label": "Opmerkingen  portefeuillehouder:",
+                    "type": "textarea",
+                    "key": "TA_OpmerkingenAfdelingshoofd",
+                    "input": true,
+                    "autoExpand": false,
+                    "disabled": true,
+                    "customConditional": "show = data.CO_VerdereProcedureAfdelingshoofd === 'aanpassen' && data.TA_OpmerkingenAfdelingshoofd && data.TA_OpmerkingenAfdelingshoofd.trim() !== '';"
+                },
+                {
+                    "label": "Verzoek tot aanpassing ontvangen van Gemeentesecretaris:",
+                    "type": "textarea",
+                    "key": "TA_OpmerkingenGemeentesecretaris",
+                    "input": true,
+                    "autoExpand": false,
+                    "disabled": true,
+                    "customConditional": "show = data.CO_VerdereProcedureGemeentesecretaris && data.CO_VerdereProcedureGemeentesecretaris === 'aanpassen';"
+                },
+                {
+                    "label": "Verzoek tot aanpassing ontvangen van College:",
+                    "type": "textarea",
+                    "key": "TA_BerichtTerugNaarSteller",
+                    "input": true,
+                    "autoExpand": false,
+                    "disabled": true,
+                    "customConditional": "show = data.CO_BesluitVoorstel === 'voorstelAanpassen';"
+                },
+                {
+                    "type": "groepMedewerkerFieldset",
+                    "key": "AG_Steller",
+                    "label": "Steller:",
+                    "input": false,
+                    "components": [
+                        {
+                            "label": "Groep",
+                            "type": "select",
+                            "key": "AG_Steller_Groep",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "validate": {
+                                "required": true
+                            },
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            }
+                        },
+                        {
+                            "label": "Medewerker",
+                            "type": "select",
+                            "key": "AG_Steller_Medewerker",
+                            "widget": "html5",
+                            "input": true,
+                            "dataSrc": "custom",
+                            "refreshOn": "AG_Steller_Groep",
+                            "clearOnRefresh": true,
+                            "validate": {
+                                "required": true
+                            },
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "Besluitpunten",
+                    "type": "textarea",
+                    "key": "TA_Besluitpunten",
+                    "tooltip": "Kopieer hier de tekst van het dictum van het collegevoorstel.",
+                    "applyMaskOn": "change",
+                    "autoExpand": false,
+                    "input": true,
+                    "validate": {
+                        "required": true
+                    }
+                },
+                {
+                    "label": "Samenvatting",
+                    "type": "textarea",
+                    "key": "TA_Samenvatting",
+                    "tooltip": "Kopieer hier de tekst van de samenvatting van het collegevoorstel. Maximaal 8 regels tekst.",
+                    "applyMaskOn": "change",
+                    "autoExpand": false,
+                    "validateWhenHidden": false,
+                    "input": true,
+                    "validate": {
+                        "required": true
+                    }
+                },
+                {
+                    "label": "Het beteft een:",
+                    "type": "select",
+                    "key": "CO_Betreft",
+                    "tooltip": "Collegevoorstel: Vink collegevoorstel aan wanneer jouw zaak niet naar de raad hoeft. Dit vink je ook aan als er een brief aan de raad bij jouw stukken zit. Raadsvoorstel: Vink raadsvoorstel aan als er een raadvoorstel bij jouw stukken zit.",
+                    "widget": "html5",
+                    "input": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Collegevoorstel",
+                                "value": "collegevoorstel"
+                            },
+                            {
+                                "label": "Raadsvoorstel",
+                                "value": "raadsvoorstel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Het stuk is",
+                    "type": "select",
+                    "key": "CO_VoorstelOpAgenda",
+                    "widget": "html5",
+                    "input": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Openbaar",
+                                "value": "openbaar"
+                            },
+                            {
+                                "label": "Geheim",
+                                "value": "geheim"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Agenderen als",
+                    "type": "radio",
+                    "key": "RB_VoorstelAgendering",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "inline": false,
+                    "validate": {
+                        "required": true
+                    },
+                    "values": [
+                        {
+                            "label": "Conform",
+                            "value": "conform"
+                        },
+                        {
+                            "label": "Discussie",
+                            "value": "discussie"
+                        },
+                        {
+                            "label": "Opiniërend",
+                            "value": "opinierend"
+                        }
+                    ]
+                },
+                {
+                    "label": "Voorstel vergaderdatum",
+                    "type": "datetime",
+                    "key": "DF_VoorstelVergadering",
+                    "input": true,
+                    "useLocaleSettings": true,
+                    "format": "dd-MM-yyyy",
+                    "datePicker": {
+                        "disableWeekends": false,
+                        "disableWeekdays": false,
+                        "minDate": "moment()"
+                    },
+                    "enableTime": false,
+                    "enableMinDateInput": true,
+                    "enableMaxDateInput": false,
+                    "widget": {
+                        "type": "calendar",
+                        "displayInTimezone": "viewer",
+                        "locale": "nl",
+                        "useLocaleSettings": true,
+                        "allowInput": true,
+                        "mode": "single",
+                        "enableTime": false,
+                        "noCalendar": false,
+                        "format": "dd-MM-yyyy",
+                        "minDate": "moment()"
+                    },
+                    "validate": {
+                        "required": true
+                    }
+                },
+                {
+                    "label": "Moet gepubliceerd op www.overheid.nl",
+                    "type": "radio",
+                    "key": "RB_Publicatie",
+                    "tooltip": "Kies voor 'Ja' als het voorstel na vaststelling moet worden gepubliceerd op www.overheid.nl. Svp het document Bekendmaking toevoegen als WORD-document.",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "inline": false,
+                    "validate": {
+                        "required": true
+                    },
+                    "values": [
+                        {
+                            "label": "Ja",
+                            "value": "ja"
+                        },
+                        {
+                            "label": "Nee",
+                            "value": "nee"
+                        }
+                    ]
+                },
+                {
+                    "label": "Advies Concerncontroller",
+                    "type": "select",
+                    "key": "CO_AdviesConcerncontroller",
+                    "widget": "html5",
+                    "input": true,
+                    "disabled": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ja",
+                                "value": "ja"
+                            },
+                            {
+                                "label": "Nee",
+                                "value": "nee"
+                            }
+                        ]
+                    },
+                    "defaultValue": "ja"
+                },
+                {
+                    "label": "Advies Bureau Collegezaken",
+                    "type": "select",
+                    "key": "CO_AdviesCollegeondersteuning",
+                    "widget": "html5",
+                    "input": true,
+                    "disabled": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ja",
+                                "value": "ja"
+                            },
+                            {
+                                "label": "Nee",
+                                "value": "nee"
+                            }
+                        ]
+                    },
+                    "defaultValue": "ja"
+                },
+                {
+                    "label": "Advies secretaris Collegevergadering",
+                    "type": "select",
+                    "key": "CO_AdviesSCV",
+                    "widget": "html5",
+                    "input": true,
+                    "disabled": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ja",
+                                "value": "ja"
+                            },
+                            {
+                                "label": "Nee",
+                                "value": "nee"
+                            }
+                        ]
+                    },
+                    "defaultValue": "ja"
+                },
+                {
+                    "label": "Overige aanwijzingen:",
+                    "type": "textarea",
+                    "key": "TA_AanwijzingenSteller",
+                    "input": true,
+                    "autoExpand": true
+                },
+                {
+                    "html": "<h2>Alle gegevens zijn ingevuld. Na het afronden wordt de taak gesloten.</h2>",
+                    "label": "Alle gegevens zijn ingevuld. Na het afronden wordt de taak gesloten.",
+                    "refreshOnChange": false,
+                    "key": "HF_AfsluitenTaak",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "customConditional": "show = data.CO_ReguliereProcedure === 'nee' && data.CO_ReguliereProcedure != null;"
+                }
+            ]
+        },
+        {
+            "label": "Procedure",
+            "type": "panel",
+            "key": "BBV_COL_ITS001_SN002",
+            "title": "Procedure",
+            "input": false,
+            "customConditional": "show = data.CO_ReguliereProcedure === 'ja' || data.CO_ReguliereProcedure == null;",
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": true,
+                "previous": true,
+                "cancel": false
+            },
+            "components": [
+                {
+                    "html": "<h2>Procedure Collegevoorstel</h2>",
+                    "label": "HF_ProcedureCollegevoorstel",
+                    "refreshOnChange": false,
+                    "key": "HF_ProcedureCollegevoorstel",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "conjunction": "any",
+                        "conditions": [
+                            {
+                                "component": "CO_Betreft",
+                                "operator": "isEqual",
+                                "value": "collegevoorstel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "html": "<h2>Procedure Raadsvoorstel</h2>",
+                    "label": "HF_ProcedureRaadsvoorstel",
+                    "refreshOnChange": false,
+                    "key": "HF_ProcedureRaadsvoorstel",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "conditional": {
+                        "show": true,
+                        "conjunction": "any",
+                        "conditions": [
+                            {
+                                "component": "CO_Betreft",
+                                "operator": "isEqual",
+                                "value": "raadsvoorstel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Procedure:",
+                    "widget": "html5",
+                    "tableView": true,
+                    "key": "CO_Procedure",
+                    "type": "select",
+                    "input": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "dataSrc": "custom",
+                    "valueProperty": "value",
+                    "refreshOn": "CO_Betreft",
+                    "template": "<span>{{ item.label }}</span>",
+                    "calculateValue": "const betreft = data.CO_Betreft; const huidige = data.CO_Procedure; if (betreft === 'raadsvoorstel' && huidige !== 'terBesluitvorming') { value = 'terBesluitvorming'; }",
+                    "customOptions": {},
+                    "data": {
+                        "custom": "const opties = [\n { label: 'Ter kennisname', value: 'terKennisname' },\n { label: 'Ter bespreking', value: 'terBespreking' },\n { label: 'Ter besluitvorming', value: 'terBesluitvorming' }\n];\n\nif (data.CO_Betreft === 'raadsvoorstel') {\n values = opties.filter(o => o.value === 'terBesluitvorming');\n} else {\n values = opties;\n}"
+                    }
+                },
+                {
+                    "label": "Welk proces moet er worden gestart:",
+                    "type": "selectboxes",
+                    "key": "CB_Brieven",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "inline": false,
+                    "inputType": "checkbox",
+                    "values": [
+                        {
+                            "label": "Met brief aan Raad",
+                            "value": "metBriefAanRaad"
+                        },
+                        {
+                            "label": "Met brief aan derden",
+                            "value": "metBriefAanDerden"
+                        }
+                    ],
+                    "conditional": {
+                        "show": true,
+                        "conjunction": "any",
+                        "conditions": [
+                            {
+                                "component": "CO_Betreft",
+                                "operator": "isEqual",
+                                "value": "collegevoorstel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "html": "<h2>Aanwijzing brieven</h2>",
+                    "label": "HF_Brieven",
+                    "refreshOnChange": false,
+                    "key": "HF_Brieven",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false,
+                    "customConditional": "show = Object.values(data.CB_Brieven || {}).some(v => v === true);"
+                },
+                {
+                    "label": "Soort brief aan Raad:",
+                    "type": "radio",
+                    "key": "RB_BriefRaad",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "inline": false,
+                    "values": [
+                        {
+                            "label": "Ter informatie",
+                            "value": "terInformatie"
+                        },
+                        {
+                            "label": "Voor wensen/bedenkingen",
+                            "value": "voorWensenBedenkingen"
+                        },
+                        {
+                            "label": "Opiniërend",
+                            "value": "opinierend"
+                        }
+                    ],
+                    "validate": {
+                        "required": true
+                    },
+                    "conditional": {
+                        "show": true,
+                        "conjunction": "any",
+                        "conditions": [
+                            {
+                                "component": "CB_Brieven",
+                                "operator": "isEqual",
+                                "value": "metBriefAanRaad"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Aanwijzingen brief aan Raad:",
+                    "type": "textarea",
+                    "key": "TA_BriefRaadAanw",
+                    "input": true,
+                    "autoExpand": false,
+                    "conditional": {
+                        "show": true,
+                        "conjunction": "any",
+                        "conditions": [
+                            {
+                                "component": "CB_Brieven",
+                                "operator": "isEqual",
+                                "value": "metBriefAanRaad"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "Aanwijzingen brief aan derden:",
+                    "type": "textarea",
+                    "key": "TA_BriefDerdenAanw",
+                    "input": true,
+                    "autoExpand": false,
+                    "conditional": {
+                        "show": true,
+                        "conjunction": "any",
+                        "conditions": [
+                            {
+                                "component": "CB_Brieven",
+                                "operator": "isEqual",
+                                "value": "metBriefAanDerden"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Toewijzen concerncontroller / portefeuillehouder",
+            "type": "panel",
+            "key": "BBV_COL_ITS001_SN003",
+            "customConditional": "show = data.CO_ReguliereProcedure === 'ja' || data.CO_ReguliereProcedure == null;",
+            "title": "Toewijzen concerncontroller / portefeuillehouder",
+            "input": false,
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": true,
+                "previous": true,
+                "cancel": false
+            },
+            "components": [
+                {
+                    "html": "<h2>Toewijzen concerncontroller / portefeuillehouder</h2>",
+                    "label": "Steller:",
+                    "refreshOnChange": false,
+                    "key": "HF_NietSpoed",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "type": "groepMedewerkerFieldset",
+                    "key": "AG_AdviesConcerncontroller",
+                    "label": "Ter advisering concerncontroller:",
+                    "input": false,
+                    "components": [
+                        {
+                            "label": "Groep",
+                            "type": "select",
+                            "key": "AG_AdviesConcerncontroller_Groep",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "validate": {
+                                "required": true
+                            },
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            }
+                        },
+                        {
+                            "label": "Medewerker",
+                            "type": "select",
+                            "key": "AG_AdviesConcerncontroller_Medewerker",
+                            "widget": "html5",
+                            "input": true,
+                            "dataSrc": "custom",
+                            "refreshOn": "AG_AdviesConcerncontroller_Groep",
+                            "clearOnRefresh": true,
+                            "validate": {
+                                "required": true
+                            },
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            }
+                        }
+                    ],
+                    "conditional": {
+                        "show": true,
+                        "conjunction": "any",
+                        "conditions": [
+                            {
+                                "component": "CO_AdviesConcerncontroller",
+                                "operator": "isEqual",
+                                "value": "ja"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "groepMedewerkerFieldset",
+                    "key": "AG_GoedkeuringAfdelingshoofd",
+                    "label": "Ter accordering naar portefeuillehouder:",
+                    "input": false,
+                    "components": [
+                        {
+                            "label": "Groep",
+                            "type": "select",
+                            "key": "AG_GoedkeuringAfdelingshoofd_Groep",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "validate": {
+                                "required": true
+                            },
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_groep"
+                            }
+                        },
+                        {
+                            "label": "Medewerker",
+                            "type": "select",
+                            "key": "AG_GoedkeuringAfdelingshoofd_Medewerker",
+                            "widget": "html5",
+                            "input": true,
+                            "dataSrc": "custom",
+                            "refreshOn": "AG_Steller_Groep",
+                            "clearOnRefresh": true,
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_medewerker"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Adviesvraag vaste adviseurs",
+            "type": "panel",
+            "key": "BBV_COL_ITS001_SN004",
+            "title": "Adviesvraag vaste adviseurs",
+            "input": false,
+            "customConditional": "show = data.CO_ReguliereProcedure === 'ja' || data.CO_ReguliereProcedure == null;",
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": false,
+                "previous": true,
+                "cancel": false
+            },
+            "components": [
+                {
+                    "html": "<h2>Adviesvraag vaste adviseurs</h2>",
+                    "label": "Adviesvraag vaste adviseurs",
+                    "refreshOnChange": false,
+                    "key": "HF_AdviesvraagVasteAdviseurs",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "label": "Toelichting adviesvraag Concerncontroller:",
+                    "type": "textarea",
+                    "key": "TA_AdviesvraagConcerncontroller",
+                    "input": true,
+                    "autoExpand": false
+                },
+                {
+                    "label": "Toelichting op adviesvraag Bureau Collegezaken:",
+                    "type": "textarea",
+                    "key": "TA_AdviesvraagCollegeOndersteuning",
+                    "input": true,
+                    "autoExpand": false
+                },
+                {
+                    "label": "Toelichting op adviesvraag Secretaris Collegevergadering:",
+                    "type": "textarea",
+                    "key": "TA_AdviesvraagSCV",
+                    "input": true,
+                    "autoExpand": false
+                },
+                {
+                    "html": "<h2>Alle gegevens zijn ingevuld. Na het afronden wordt de taak gesloten.</h2>",
+                    "label": "Alle gegevens zijn ingevuld. Na het afronden wordt de taak gesloten.",
+                    "refreshOnChange": false,
+                    "key": "HF_AfsluitenTaak",
+                    "type": "content",
+                    "input": false,
+                    "tableView": false
+                },
+                {
+                    "label": "Buttons",
+                    "key": "buttons",
+                    "type": "container",
+                    "input": false,
+                    "tableView": false,
+                    "components": [
+                        {
+                            "type": "columns",
+                            "columns": [
+                                {
+                                    "width": "auto",
+                                    "components": [
+                                        {
+                                            "key": "submit",
+                                            "label": "Afronden",
+                                            "type": "button",
+                                            "input": true,
+                                            "tableView": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "width": "auto",
+                                    "components": [
+                                        {
+                                            "key": "save",
+                                            "label": "Opslaan",
+                                            "type": "button",
+                                            "action": "saveState",
+                                            "state": "draft",
+                                            "disableOnInvalid": true,
+                                            "input": true,
+                                            "tableView": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "naam": "BBV_COL_ITS017",
+    "title": "BBV 17 Starten nieuwe zaak: Bestuurlijke dienstverlening besluiten - Griffie",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Starten nieuwe zaak: Bestuurlijke dienstverlening besluiten - Griffie</h2>",
+            "label": "Starten nieuwe zaak: Bestuurlijke dienstverlening besluiten - Griffie",
+            "refreshOnChange": false,
+            "key": "HF_MaakZaakAanGriffie",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+{
+    "naam": "BBV_COL_ITS029",
+    "title": "BBV 29 Doorvoeren wijzigingen Collegebesluit",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Doorvoeren wijzigingen Collegebesluit</h2>",
+            "label": "Doorvoeren wijzigingen Collegebesluit",
+            "refreshOnChange": false,
+            "key": "HF_WijzigingenCollegebesluit",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Aanwijzingen door te voeren wijzigingen Collegebesluit:",
+            "type": "textarea",
+            "key": "TA_BerichtSCV",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "customConditional": "show = data.TA_BerichtSCV && data.TA_BerichtSCV.trim() !== '';"
+        },
+        {
+            "label": "De tekstuele aanpassingen in het gewijzigd vastgestelde Collegebesluit zijn doorgevoerd",
+            "type": "checkbox",
+            "key": "CB_WijzigingenDoorgevoerd",
+            "input": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

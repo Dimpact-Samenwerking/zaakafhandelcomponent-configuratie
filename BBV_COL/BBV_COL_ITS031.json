@@ -1,0 +1,107 @@
+{
+    "naam": "BBV_COL_ITS031",
+    "title": "BBV 31 Publicatie op overheid.nl",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Publicatie op Overheid.nl</h2>",
+            "label": "Publicatie op Overheid.nl",
+            "refreshOnChange": false,
+            "key": "HF_Publicatie",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "type": "documentsFieldset",
+            "key": "DS_overheid_nl",
+            "input": false,
+            "components": [
+                {
+                    "label": "Documenten:",
+                    "type": "select",
+                    "key": "ZAAK_Documents_Select",
+                    "input": true,
+                    "disabled" : true,
+                    "widget": "choicesjs",
+                    "multiple": true,
+                    "defaultValue": [],
+                    "clearOnRefresh": true,
+                    "dataSrc": "custom",
+                    "placeholder": "Geselecteerde documenten",
+                    "customOptions": {
+                        "choicesOptions": {
+                            "removeItemButton": true,
+                            "placeholder": true,
+                            "searchEnabled": true,
+                            "shouldSort": false
+                        }
+                    },
+                    "attributes": {
+                        "ZAC_TYPE": "ZAC_documenten"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Aanwijzingen voor publicatie op www.overheid.nl:",
+            "type": "textarea",
+            "key": "TA_Publicatie_overheid_nl",
+            "disabled": true,
+            "input": true,
+            "autoExpand": false,
+            "customConditional": "show = data.TA_Publicatie_overheid_nl && data.TA_Publicatie_overheid_nl.trim() !== '';"
+        },
+        {
+            "label": "Gepubliceerd op www.overheid.nl",
+            "type": "checkbox",
+            "key": "CB_PublicatieJa",
+            "input": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

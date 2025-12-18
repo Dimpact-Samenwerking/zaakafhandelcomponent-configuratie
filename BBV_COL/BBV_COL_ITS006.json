@@ -1,0 +1,215 @@
+{
+    "naam": "BBV_COL_ITS006",
+    "title": "BBV 6 Intrekken voorstel",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Intrekken voorstel</h2>",
+            "label": "Intrekken voorstel",
+            "refreshOnChange": false,
+            "key": "HF_IntrekkenVoorstel",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "type": "content",
+            "key": "PA_IntrekkenVoorstel",
+            "html": "<p>In het besluitvormingstraject is besloten dat het voorstel niet verder behandeld gaat worden en daarom wordt ingetrokken.</p>",
+            "refreshOnChange": false,
+            "input": false,
+            "tableView": false
+        },
+        {
+            "type": "groepMedewerkerFieldset",
+            "key": "AG_GoedkeuringAfdelingshoofd",
+            "label": "Besluit genomen door Portefeuillehouder:",
+            "disabled": true,
+            "input": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_VerdereProcedureAfdelingshoofd",
+                "eq": "intrekken"
+            },
+            "components": [
+                {
+                    "label": "Groep",
+                    "type": "select",
+                    "key": "AG_GoedkeuringAfdelingshoofd_Groep",
+                    "input": true,
+                    "widget": "html5",
+                    "dataSrc": "custom",
+                    "clearOnRefresh": true,
+                    "attributes": {
+                        "ZAC_TYPE": "ZAC_groep"
+                    }
+                },
+                {
+                    "label": "Medewerker",
+                    "type": "select",
+                    "key": "AG_GoedkeuringAfdelingshoofd_Medewerker",
+                    "widget": "html5",
+                    "input": true,
+                    "dataSrc": "custom",
+                    "refreshOn": "AG_GoedkeuringAfdelingshoofd_Groep",
+                    "clearOnRefresh": true,
+                    "attributes": {
+                        "ZAC_TYPE": "ZAC_medewerker"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Reden intrekking:",
+            "type": "textarea",
+            "key": "TA_OpmerkingenAfdelingshoofd",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "conditional": {
+                "show": true,
+                "when": "CO_VerdereProcedureAfdelingshoofd",
+                "eq": "intrekken"
+            }
+        },
+        {
+            "type": "content",
+            "key": "PA_IntrekkingDoorGemeentesecretaris",
+            "html": "<p></br>Besluit genomen door gemeentesecretaris</p>",
+            "refreshOnChange": false,
+            "input": false,
+            "tableView": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_VerdereProcedureGemeentesecretaris",
+                "eq": "intrekken"
+            }
+        },
+        {
+            "label": "Reden intrekking:",
+            "type": "textarea",
+            "key": "TA_OpmerkingenGemeentesecretaris",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "conditional": {
+                "show": true,
+                "when": "CO_VerdereProcedureGemeentesecretaris",
+                "eq": "intrekken"
+            }
+        },
+        {
+            "html": "<h5>Besluit college Collegevoorstel</h5>",
+            "label": "Besluit college Collegevoorstel",
+            "refreshOnChange": false,
+            "key": "HF_BesluitCollegevoorstel",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "customConditional" : "show = data.CO_Betreft === 'collegevoorstel' && data.CO_BesluitVoorstel === 'ingetrokken';"
+        },
+        {
+            "html": "<h5>Besluit college Raadsvoorstel</h5>",
+            "label": "Besluit college Raadsvoorstel",
+            "refreshOnChange": false,
+            "key": "HF_BesluitRaadsvoorstel",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "customConditional" : "show = data.CO_Betreft === 'raadsvoorstel' && data.CO_BesluitVoorstel === 'ingetrokken';"
+        },
+        {
+            "label": "Besluit:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Besloten conform voorstel",
+                        "value": "beslotenConformVoorstel"
+                    },
+                    {
+                        "label": "Gewijzigd vastgesteld",
+                        "value": "gewijzigdVastgesteld"
+                    },
+                    {
+                        "label": "Vastgesteld onder mandaat",
+                        "value": "vastgesteldOnderMandaat"
+                    },
+                    {
+                        "label": "Ingetrokken",
+                        "value": "ingetrokken"
+                    },
+                    {
+                        "label": "Voorstel aanpassen",
+                        "value": "voorstelAanpassen"
+                    },
+                    {
+                        "label": "Aangehouden, later behandelen op",
+                        "value": "aangehoudenLaterBehandelenOp"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "customConditional" : "show = data.CO_BesluitVoorstel === 'ingetrokken';",
+            "validateWhenHidden": false,
+            "key": "CO_BesluitVoorstel",
+            "type": "select",
+            "input": true,
+            "disabled": true
+        },
+        {
+            "label": "Reden intrekking:",
+            "type": "textarea",
+            "key": "TA_BerichtTerugNaarSteller",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "customConditional" : "show = data.CO_BesluitVoorstel === 'ingetrokken';"
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

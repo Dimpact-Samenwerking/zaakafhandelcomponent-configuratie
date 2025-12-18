@@ -1,0 +1,303 @@
+{
+    "naam": "BBV_GR_ITS003",
+    "title": "Aanpassen voorstel (College)",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Aanpassen voorstel (algemeen)<h2>",
+            "label": "Aanpassen voorstel (algemeen)",
+            "refreshOnChange": false,
+            "key": "HF_AanpassenVoorstelAlg",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "html": "<p><strong>De Griffie verzoekt om aanpassing/aanvulling van het voorstel conform onderstaand verzoek.</strong></p>",
+            "label": "De Griffie verzoekt om aanpassing/aanvulling van het voorstel conform onderstaand verzoek.",
+            "refreshOnChange": false,
+            "key": "PA_AanpassenVoorstel",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Aandachtspunten voor aanpassing/aanvulling:",
+            "type": "textarea",
+            "key": "TA_AanpassingenBurcol",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "disabled": true
+        },
+        {
+            "type": "groepMedewerkerFieldset",
+            "key": "AG_Steller",
+            "label": "Steller:",
+            "input": false,
+            "components": [
+                {
+                    "label": "Groep",
+                    "type": "select",
+                    "key": "AG_Steller_Groep",
+                    "input": true,
+                    "widget": "html5",
+                    "dataSrc": "custom",
+                    "clearOnRefresh": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "attributes": {
+                        "ZAC_TYPE": "ZAC_groep"
+                    }
+                },
+                {
+                    "label": "Medewerker",
+                    "type": "select",
+                    "key": "AG_Steller_Medewerker",
+                    "widget": "html5",
+                    "input": true,
+                    "dataSrc": "custom",
+                    "refreshOn": "AG_Steller_Groep",
+                    "clearOnRefresh": true,
+                    "validate": {
+                        "required": true
+                    },
+                    "attributes": {
+                        "ZAC_TYPE": "ZAC_medewerker"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Het betreft een:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Collegevoorstel",
+                        "value": "collegevoorstel"
+                    },
+                    {
+                        "label": "Raadsvoorstel",
+                        "value": "raadsvoorstel"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_Betreft",
+            "type": "select",
+            "input": true
+        },
+        {
+            "label": "Het stuk is:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Openbaar",
+                        "value": "openbaar"
+                    },
+                    {
+                        "label": "Geheim",
+                        "value": "geheim"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_VoorstelOpAgenda",
+            "type": "select",
+            "input": true
+        },
+        {
+            "label": "Besluitpunten:",
+            "type": "textarea",
+            "key": "TA_Besluitpunten",
+            "input": true,
+            "autoExpand": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Samenvatting:",
+            "type": "textarea",
+            "key": "TA_Samenvatting",
+            "input": true,
+            "autoExpand": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "type": "hidden",
+            "key": "schermBezocht",
+            "label": "Scherm bezocht",
+            "defaultValue": true,
+            "input": true,
+            "persistent": true,
+            "hidden": true
+        },
+        {
+            "label": "Aanpassen voorstel (Collegevoorstel)",
+            "type": "fieldset",
+            "legend": "Aanpassen voorstel (Collegevoorstel)",
+            "input": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_Betreft",
+                "eq": "collegevoorstel"
+            },
+            "components": [
+                {
+                    "label": "Collegebrief betreffende het collegevoorstel moet naar de Gemeenteraad:",
+                    "widget": "html5",
+                    "tableView": true,
+                    "disabled": true,
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ter kennisname",
+                                "value": "terKennisname"
+                            }
+                        ]
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "validateWhenHidden": false,
+                    "key": "CO_CollegevoorstelNaarRaad",
+                    "type": "select",
+                    "input": true,
+                    "defaultValue": "terKennisname"
+                },
+                {
+                    "label": "Brief aan Gemeenteraad is:",
+                    "type": "radio",
+                    "key": "RB_BriefRaad",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "inline": false,
+                    "values": [
+                        {
+                            "label": "Ter informatie",
+                            "value": "terInformatie"
+                        },
+                        {
+                            "label": "Voor wensen/bedenkingen",
+                            "value": "voorWensenBedenkingen"
+                        },
+                        {
+                            "label": "Opiniërend",
+                            "value": "opinierend"
+                        }
+                    ],
+                    "validate": {
+                        "required": true
+                    }
+                },
+                {
+                    "label": "Aanwijzingen voor de Griffie:",
+                    "type": "textarea",
+                    "key": "TA_AanwBurcolGriffie",
+                    "applyMaskOn": "change",
+                    "autoExpand": false,
+                    "input": true
+                }
+            ]
+        },
+        {
+            "label": "Aanpassen voorstel (Raadsvoorstel)",
+            "type": "fieldset",
+            "legend": "Aanpassen voorstel (Raadsvoorstel)",
+            "input": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_Betreft",
+                "eq": "raadsvoorstel"
+            },
+            "components": [
+                {
+                    "label": "Collegebrief betreffende het collegevoorstel moet naar de Gemeenteraad:",
+                    "widget": "html5",
+                    "tableView": true,
+                    "disabled": true,
+                    "data": {
+                        "values": [
+                            {
+                                "label": "Ter besluitvorming",
+                                "value": "terBesluitvorming"
+                            }
+                        ]
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "validateWhenHidden": false,
+                    "key": "CO_RaadsvoorstelNaarRaad",
+                    "type": "select",
+                    "input": true,
+                    "defaultValue": "terBesluitvorming"
+                },
+                {
+                    "label": "Aanwijzingen voor de Griffie:",
+                    "type": "textarea",
+                    "key": "TA_AanwBurcolGriffie",
+                    "applyMaskOn": "change",
+                    "autoExpand": false,
+                    "input": true
+                }
+            ]
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

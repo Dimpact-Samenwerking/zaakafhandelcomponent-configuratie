@@ -1,0 +1,95 @@
+{
+    "naam": "BBV_COL_ITS002_11",
+    "title": "Uitbrengen advies Secretaris Collegevergadering",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Uitbrengen advies Secretaris Collegevergadering</h2>",
+            "label": "Uitbrengen advies Secretaris Collegevergadering",
+            "refreshOnChange": false,
+            "key": "HF_AdviesSCV",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "type": "content",
+            "key": "PA_ToelichtingAdviesVraagSCV",
+            "html": "</br><h5>Toelichting op adviesvraag Concerncontroller</h5>{{ data.TA_AdviesvraagSCV }}",
+            "input": true,
+            "customConditional" : "show = !!data.TA_AdviesvraagSCV;"
+        },
+        {
+            "label": "Het voorstel is akkoord:",
+            "type": "select",
+            "key": "CO_AkkoordSCV",
+            "widget": "html5",
+            "input": true,
+            "validate": {
+                "required": true
+            },
+            "data": {
+                "values": [
+                    {
+                        "label": "Ja",
+                        "value": "ja"
+                    },
+                    {
+                        "label": "Nee",
+                        "value": "nee"
+                    }
+                ]
+            }
+        },
+        {
+            "label": "Opmerkingen:",
+            "type": "textarea",
+            "key": "TA_OpmerkingenAdviesSCV",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

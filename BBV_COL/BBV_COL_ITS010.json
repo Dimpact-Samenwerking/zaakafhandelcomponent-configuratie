@@ -1,0 +1,232 @@
+{
+    "naam": "BBV_COL_ITS010",
+    "title": "BBV 10 Opvoeren in iBabs (agenda College)",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Opvoeren voorstel in iBabs (agenda college)</h2>",
+            "label": "Opvoeren voorstel in iBabs (agenda college)",
+            "refreshOnChange": false,
+            "key": "HF_OpvoerenVoorstelIbabsAgendaCollege",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Het voorstel kan op de agenda gezet worden voor de vergadering op:",
+            "type": "datetime",
+            "key": "DF_VoorlopigGemeentesecretaris",
+            "input": true,
+            "useLocaleSettings": true,
+            "format": "dd-MM-yyyy",
+            "datePicker": {
+                "disableWeekends": false,
+                "disableWeekdays": false,
+                "minDate": "moment()"
+            },
+            "enableTime": false,
+            "enableMinDateInput": true,
+            "enableMaxDateInput": false,
+            "widget": {
+                "type": "calendar",
+                "displayInTimezone": "viewer",
+                "locale": "nl",
+                "useLocaleSettings": true,
+                "allowInput": true,
+                "mode": "single",
+                "enableTime": false,
+                "noCalendar": false,
+                "format": "dd-MM-yyyy",
+                "minDate": "moment()"
+            },
+            "validate": {
+                "required": true
+            },
+            "disabled": true
+        },
+        {
+            "label": "Opmerking voor Bureau Collegezakenl / SCV:",
+            "type": "textarea",
+            "key": "TA_AanwijzingVoorBurcolSCV",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "disabled" :true,
+            "customConditional": "show = data.TA_AanwijzingVoorBurcolSCV && data.TA_AanwijzingVoorBurcolSCV.trim() !== '';"
+        },
+        {
+            "label": "Het voorstel is op de agenda gezet voor de vergadering op:",
+            "type": "datetime",
+            "key": "DF_VoorstelDefinitiefOpAgendaGezet",
+            "input": true,
+            "useLocaleSettings": true,
+            "format": "dd-MM-yyyy",
+            "datePicker": {
+                "disableWeekends": false,
+                "disableWeekdays": false,
+                "minDate": "moment()"
+            },
+            "enableTime": false,
+            "enableMinDateInput": true,
+            "enableMaxDateInput": false,
+            "widget": {
+                "type": "calendar",
+                "displayInTimezone": "viewer",
+                "locale": "nl",
+                "useLocaleSettings": true,
+                "allowInput": true,
+                "mode": "single",
+                "enableTime": false,
+                "noCalendar": false,
+                "format": "dd-MM-yyyy",
+                "minDate": "moment()"
+            },
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Het stuk is:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Openbaar",
+                        "value": "openbaar"
+                    },
+                    {
+                        "label": "Geheim",
+                        "value": "geheim"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_VoorstelOpAgenda",
+            "type": "select",
+            "input": true,
+            "disabled": true
+        },
+        {
+            "type": "content",
+            "key": "HF_SamenvattingVoorstelAgendering",
+            "input": false,
+            "html": "Agenderen als:</br> <b>{{ data.LBL_VoorstelAgendering }}</b>"
+        },
+        {
+            "label": "Besluitpunten:",
+            "type": "textarea",
+            "key": "TA_Besluitpunten",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Samenvatting:",
+            "type": "textarea",
+            "key": "TA_Samenvatting",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Bijgevoegde brieven:",
+            "type": "selectboxes",
+            "key": "CB_Brieven",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "inputType": "checkbox",
+            "disabled": true,
+            "values": [
+                {
+                    "label": "Met brief aan Raad",
+                    "value": "metBriefAanRaad"
+                },
+                {
+                    "label": "Met brief aan derden",
+                    "value": "metBriefAanDerden"
+                }
+            ],
+            "customConditional": "const v = data.CB_Brieven || {}; show = Object.values(v).some(x => x === true) && data.CO_Betreft === 'collegevoorstel';"
+        },
+        {
+            "label": "Aanwijzingen brief aan Raad:",
+            "type": "textarea",
+            "key": "TA_BriefRaadAanw",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "customConditional": "show = data.TA_BriefRaadAanw && data.TA_BriefRaadAanw.trim() !== '';"
+        },
+        {
+            "label": "Aanwijzingen brief aan derden:",
+            "type": "textarea",
+            "key": "TA_BriefDerdenAanw",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "customConditional": "show = data.TA_BriefDerdenAanw && data.TA_BriefDerdenAanw.trim() !== '';"
+        },
+        {
+            "label": "Overige aanwijzingen steller:",
+            "type": "textarea",
+            "key": "TA_AanwijzingenSteller",
+            "input": true,
+            "disabled": true,
+            "autoExpand": false,
+            "customConditional": "show = data.TA_AanwijzingenSteller && data.TA_AanwijzingenSteller.trim() !== '';"
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

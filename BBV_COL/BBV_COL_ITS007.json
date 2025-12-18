@@ -1,0 +1,380 @@
+{
+    "naam": "BBV_COL_ITS007",
+    "title": "BBV 7 Accorderen voorstel Portefeuillehouder",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "type": "textfield",
+            "key": "LBL_VoorstelAgendering",
+            "label": "Agenderen als (label)",
+            "input": true,
+            "disabled": true,
+            "hidden": true,
+            "calculateValue": "value = data.RB_VoorstelAgendering === 'conform' ? 'Conform' : (data.RB_VoorstelAgendering === 'discussie' ? 'Discussie' : (data.RB_VoorstelAgendering === 'opinierend' ? 'Opiniërend' : ''));"
+        },
+        {
+            "html": "<h2>Accorderen voorstel Portefeuillehouder</h2>",
+            "label": "Accorderen voorstel Portefeuillehouder",
+            "refreshOnChange": false,
+            "key": "HF_AccorderenVoorstelAfdelingshoofd",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Besluitpunten:",
+            "type": "textarea",
+            "key": "TA_Besluitpunten",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Samenvatting:",
+            "type": "textarea",
+            "key": "TA_Samenvatting",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Het betreft een:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Collegevoorstel",
+                        "value": "collegevoorstel"
+                    },
+                    {
+                        "label": "Raadsvoorstel",
+                        "value": "raadsvoorstel"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_Betreft",
+            "type": "select",
+            "disabled": true,
+            "input": true
+        },
+        {
+            "label": "Het stuk is:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Openbaar",
+                        "value": "openbaar"
+                    },
+                    {
+                        "label": "Geheim",
+                        "value": "geheim"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_VoorstelOpAgenda",
+            "type": "select",
+            "disabled": true,
+            "input": true
+        },
+        {
+            "label": "De Steller stelt voor het stuk op de agenda te zetten voor de vergadering van:",
+            "type": "datetime",
+            "key": "DF_VoorstelVergadering",
+            "disabled": true,
+            "input": true,
+            "useLocaleSettings": true,
+            "format": "dd-MM-yyyy",
+            "datePicker": {
+                "disableWeekends": false,
+                "disableWeekdays": false,
+                "minDate": "moment()"
+            },
+            "enableTime": false,
+            "enableMinDateInput": true,
+            "enableMaxDateInput": false,
+            "widget": {
+                "type": "calendar",
+                "displayInTimezone": "viewer",
+                "locale": "nl",
+                "useLocaleSettings": true,
+                "allowInput": true,
+                "mode": "single",
+                "enableTime": false,
+                "noCalendar": false,
+                "format": "dd-MM-yyyy",
+                "minDate": "moment()"
+            },
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "html": "<h2>Adviezen</h2>",
+            "label": "Adviezen",
+            "refreshOnChange": false,
+            "key": "HF_AdviesGevraagdVan",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "html": "<h4>Advies Concerncontroller:</h4>",
+            "label": "Advies Concerncontroller",
+            "refreshOnChange": false,
+            "key": "HF_AdviesConcerncontroller",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesConcerncontroller",
+                "eq": "ja"
+            }
+        },
+        {
+            "label": "Voorstel akkoord",
+            "type": "select",
+            "key": "CO_AkkoordConcerncontroller",
+            "widget": "html5",
+            "input": true,
+            "disabled": true,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesConcerncontroller",
+                "eq": "ja"
+            },
+            "validate": {
+                "required": true
+            },
+            "data": {
+                "values": [
+                    {
+                        "label": "Ja",
+                        "value": "ja"
+                    },
+                    {
+                        "label": "Nee",
+                        "value": "nee"
+                    }
+                ]
+            }
+        },
+        {
+            "label": "Opmerkingen",
+            "type": "textarea",
+            "key": "TA_OpmerkingenConcerncontroller",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "disabled": true,
+            "customConditional": "show = data.CO_AdviesConcerncontroller === 'ja' && data.TA_OpmerkingenConcerncontroller && data.TA_OpmerkingenConcerncontroller.trim() !== '';"
+        },
+        {
+            "html": "<h4>Advies Bureau Collegezaken</h4>",
+            "label": "Advies Bureau Collegezaken",
+            "refreshOnChange": false,
+            "key": "HF_AdviesCollegeondersteuning",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesCollegeondersteuning",
+                "eq": "ja"
+            }
+        },
+        {
+            "label": "Voorstel akkoord",
+            "type": "select",
+            "key": "CO_AkkoordCollegeondersteuning",
+            "widget": "html5",
+            "input": true,
+            "disabled": true,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesCollegeondersteuning",
+                "eq": "ja"
+            },
+            "validate": {
+                "required": true
+            },
+            "data": {
+                "values": [
+                    {
+                        "label": "Ja",
+                        "value": "ja"
+                    },
+                    {
+                        "label": "Nee",
+                        "value": "nee"
+                    }
+                ]
+            }
+        },
+        {
+            "label": "Opmerkingen",
+            "type": "textarea",
+            "key": "TA_OpmerkingenCollegeondersteuning",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "disabled": true,
+            "customConditional": "show = data.CO_AdviesCollegeondersteuning === 'ja' && data.TA_OpmerkingenCollegeondersteuning && data.TA_OpmerkingenCollegeondersteuning.trim() !== '';"
+        },
+        {
+            "html": "<h4>Advies Secretaris Collegevergadering</h4>",
+            "label": "Opstellen voorstel",
+            "refreshOnChange": false,
+            "key": "HF_AdviesSecretarisCollegevergadering",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesSCV",
+                "eq": "ja"
+            }
+        },
+        {
+            "label": "Voorstel akkoord",
+            "type": "select",
+            "key": "CO_AkkoordSCV",
+            "widget": "html5",
+            "input": true,
+            "disabled": true,
+            "conditional": {
+                "show": true,
+                "when": "CO_AdviesSCV",
+                "eq": "ja"
+            },
+            "validate": {
+                "required": true
+            },
+            "data": {
+                "values": [
+                    {
+                        "label": "Ja",
+                        "value": "ja"
+                    },
+                    {
+                        "label": "Nee",
+                        "value": "nee"
+                    }
+                ]
+            }
+        },
+        {
+            "label": "Opmerkingen",
+            "type": "textarea",
+            "key": "TA_OpmerkingenAdviesSCV",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true,
+            "disabled": true,
+            "customConditional": "show = data.CO_AdviesSCV === 'ja' && data.TA_OpmerkingenAdviesSCV && data.TA_OpmerkingenAdviesSCV.trim() !== '';"
+        },
+        {
+            "html": "<h2>Vervolg</h2>",
+            "label": "Vervolg",
+            "refreshOnChange": false,
+            "key": "HF_Vervolg",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Voorstel akkoord",
+            "type": "select",
+            "key": "CO_VerdereProcedureAfdelingshoofd",
+            "tooltip": "Alleen de portefeuillehouder mag akkoord geven.",
+            "widget": "html5",
+            "input": true,
+            "validate": {
+                "required": true
+            },
+            "data": {
+                "values": [
+                    {
+                        "label": "Ja",
+                        "value": "ja"
+                    },
+                    {
+                        "label": "Nee, voorstel aanpassen",
+                        "value": "aanpassen"
+                    },
+                    {
+                        "label": "Nee, voorstel wordt ingetrokken",
+                        "value": "intrekken"
+                    }
+                ]
+            }
+        },
+        {
+            "label": "Opmerkingen",
+            "type": "textarea",
+            "key": "TA_OpmerkingenAfdelingshoofd",
+            "applyMaskOn": "change",
+            "autoExpand": false,
+            "input": true
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:design="http://flowable.org/design" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://flowable.org/test" exporter="Flowable Design" exporterVersion="2025.1.03" design:palette="flowable-work-process-palette">
+  <process id="bpmnBBV_Griffie" name="bpmn-Griffie" isExecutable="true" flowable:candidateStarterGroups="flowableUser">
+    <extensionElements>
+      <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
+      <design:creationdate><![CDATA[2025-11-25T06:20:02.041Z]]></design:creationdate>
+      <design:modificationdate><![CDATA[2025-12-10T09:35:13.714Z]]></design:modificationdate>
+    </extensionElements>
+    <serviceTask id="BBV_GR_ST009" name="Resultaat: Teruggenomen door College (Raadscommissie)" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:string><![CDATA[Teruggenomen door College]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <userTask id="BBV_GR_ITS001" name="Registratievoorstel (College/Griffie)" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P999D" flowable:formKey="BBV_GR_ITS001" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BBV_GR_ITS001]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BBV_GR_ITS002" name="Voorstel opnemen in Gemeente Oplossingen" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P999D" flowable:formKey="BBV_GR_ITS002" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BBV_GR_ITS002]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BBV_GR_ITS003" name="Aanpassen voorstel (College)" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P999D" flowable:formKey="BBV_GR_ITS003" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BBV_GR_ITS003]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <userTask id="BBV_GR_ITS004" name="Vastleggen resultaat besluitvorming" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P999D" flowable:formKey="BBV_GR_ITS004" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BBV_GR_ITS004]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <serviceTask id="BBV_GR_ST001" name="Status: Nieuw" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Nieuw]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BBV_GR_ST002" name="Status: In behandeling" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[In behandeling]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BBV_GR_ST003" name="Resultaat: Ter kennisname Raad" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:string><![CDATA[Ter kennisname Raad]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BBV_GR_ST004" name="Resultaat: Besproken" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:string><![CDATA[Besproken]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BBV_GR_ST005" name="Resultaat: Teruggenomen door College" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:string><![CDATA[Teruggenomen door College]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BBV_GR_ST006" name="Resultaat: Aangenomen door Raad" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:string><![CDATA[Aangenomen door Raad]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BBV_GR_ST007" name="Resultaat: Gewijzigd door Raad" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:string><![CDATA[Gewijzigd aangenomen door Raad]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BBV_GR_ST008" name="Resultaat: Afgewezen door Raad" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:string><![CDATA[Afgewezen door Raad]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="BBV_GR_ST010" name="Resultaat: Akkoord Raadscommissie" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
+      <extensionElements>
+        <flowable:field name="statustypeOmschrijving">
+          <flowable:string><![CDATA[Afgehandeld]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultaattypeOmschrijving">
+          <flowable:string><![CDATA[Akkoord Raadscommissie]]></flowable:string>
+        </flowable:field>
+        <design:stencilid><![CDATA[ServiceTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </serviceTask>
+    <exclusiveGateway id="BBV_GR_EB001" default="SequenceFlow_14">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+        <design:display_ref_in_diagram><![CDATA[true]]></design:display_ref_in_diagram>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BBV_GR_EB002">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BBV_GR_EB003">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BBV_GR_EB004">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BBV_GR_EB005">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BBV_GR_EB006" default="SequenceFlow_30">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BBV_GR_EB007">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <exclusiveGateway id="BBV_GR_EB008">
+      <extensionElements>
+        <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
+      </extensionElements>
+    </exclusiveGateway>
+    <startEvent id="startnoneevent1" flowable:initiator="initiator" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:work-form-field-validation><![CDATA[false]]></flowable:work-form-field-validation>
+        <design:stencilid><![CDATA[StartNoneEvent]]></design:stencilid>
+      </extensionElements>
+    </startEvent>
+    <endEvent id="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[EndTerminateEvent]]></design:stencilid>
+      </extensionElements>
+      <terminateEventDefinition></terminateEventDefinition>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_47" sourceRef="BBV_GR_ST009" targetRef="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_6" sourceRef="BBV_GR_ITS001" targetRef="BBV_GR_ST002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_9" sourceRef="BBV_GR_ITS002" targetRef="BBV_GR_EB001">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_12" sourceRef="BBV_GR_ITS003" targetRef="BBV_GR_ITS002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_15" sourceRef="BBV_GR_ITS004" targetRef="BBV_GR_EB002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_5" sourceRef="BBV_GR_ST001" targetRef="BBV_GR_ITS001">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_8" sourceRef="BBV_GR_ST002" targetRef="BBV_GR_ITS002">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_32" sourceRef="BBV_GR_ST003" targetRef="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_33" sourceRef="BBV_GR_ST004" targetRef="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_51" sourceRef="BBV_GR_ST005" targetRef="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_50" sourceRef="BBV_GR_ST006" targetRef="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_49" sourceRef="BBV_GR_ST007" targetRef="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_48" sourceRef="BBV_GR_ST008" targetRef="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_46" sourceRef="BBV_GR_ST010" targetRef="EndTerminateEvent_31">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_11" sourceRef="BBV_GR_EB001" targetRef="BBV_GR_ITS003">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${execution.getVariable('RB_VoorstelAanpassenBurcol') == 'ja'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_14" sourceRef="BBV_GR_EB001" targetRef="BBV_GR_ITS004">
+      <extensionElements>
+        <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_19" sourceRef="BBV_GR_EB002" targetRef="BBV_GR_EB003">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${execution.getVariable('CO_CollegevoorstelNaarRaad') == 'terKennisname'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_18" sourceRef="BBV_GR_EB002" targetRef="BBV_GR_EB004">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ (execution.getVariable('CO_CollegevoorstelNaarRaad') == null
+      || execution.getVariable('CO_CollegevoorstelNaarRaad') == '')
+  && (execution.getVariable('CB_VoorstelBesprokenIn_code') == 'gemeenteraad' || execution.getVariable('CB_VoorstelBesprokenIn_code') == 'beide')}
+
+ ]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_20" sourceRef="BBV_GR_EB002" targetRef="BBV_GR_EB005">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ (execution.getVariable('CO_CollegevoorstelNaarRaad') == null
+      || execution.getVariable('CO_CollegevoorstelNaarRaad') == '')
+  && execution.getVariable('CB_VoorstelBesprokenIn_code') == 'raadscommissie' }]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_39" sourceRef="BBV_GR_EB003" targetRef="BBV_GR_EB006">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_52" sourceRef="BBV_GR_EB004" targetRef="BBV_GR_EB007">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_53" sourceRef="BBV_GR_EB005" targetRef="BBV_GR_EB008">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_26" sourceRef="BBV_GR_EB006" targetRef="BBV_GR_ST003">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ execution.getVariable('CO_TerKennisname') == 'terKennisName' }]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_30" sourceRef="BBV_GR_EB006" targetRef="BBV_GR_ST004">
+      <extensionElements>
+        <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_40" sourceRef="BBV_GR_EB007" targetRef="BBV_GR_ST005">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ execution.getVariable('CO_ResultaatRaad') == 'teruggenomenDoorCollege' }]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_41" sourceRef="BBV_GR_EB007" targetRef="BBV_GR_ST006">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ execution.getVariable('CO_ResultaatRaad') == 'aangenomenDoorRaad' }]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_42" sourceRef="BBV_GR_EB007" targetRef="BBV_GR_ST007">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ execution.getVariable('CO_ResultaatRaad') == 'gewijzigdAangenomenDoorRaad' }]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_43" sourceRef="BBV_GR_EB007" targetRef="BBV_GR_ST008">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ execution.getVariable('CO_ResultaatRaad') == 'afgewezenDoorRaad' }]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_44" sourceRef="BBV_GR_EB008" targetRef="BBV_GR_ST009">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ execution.getVariable('CO_ResultaatRaadscommissie') == 'teruggenomenDoorCollege' }]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_45" sourceRef="BBV_GR_EB008" targetRef="BBV_GR_ST010">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ execution.getVariable('CO_ResultaatRaadscommissie') == 'akkoordRaadscommissie' }]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_2" sourceRef="startnoneevent1" targetRef="BBV_GR_ST001">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_bpmnBBV_Griffie">
+    <bpmndi:BPMNPlane bpmnElement="bpmnBBV_Griffie" id="BPMNPlane_bpmnBBV_Griffie">
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST009" id="BPMNShape_BBV_GR_ST009">
+        <omgdc:Bounds height="97.0" width="122.0" x="1798.0" y="580.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ITS001" id="BPMNShape_BBV_GR_ITS001">
+        <omgdc:Bounds height="75.0" width="113.0" x="476.0" y="238.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ITS002" id="BPMNShape_BBV_GR_ITS002">
+        <omgdc:Bounds height="75.0" width="113.0" x="850.0" y="238.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ITS003" id="BPMNShape_BBV_GR_ITS003">
+        <omgdc:Bounds height="75.0" width="113.0" x="476.0" y="69.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ITS004" id="BPMNShape_BBV_GR_ITS004">
+        <omgdc:Bounds height="75.0" width="113.0" x="1117.5" y="238.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST001" id="BPMNShape_BBV_GR_ST001">
+        <omgdc:Bounds height="80.0" width="100.0" x="303.0" y="236.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST002" id="BPMNShape_BBV_GR_ST002">
+        <omgdc:Bounds height="80.0" width="100.0" x="683.0" y="236.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST003" id="BPMNShape_BBV_GR_ST003">
+        <omgdc:Bounds height="80.0" width="100.0" x="1798.0" y="-110.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST004" id="BPMNShape_BBV_GR_ST004">
+        <omgdc:Bounds height="80.0" width="100.0" x="1798.0" y="-8.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST005" id="BPMNShape_BBV_GR_ST005">
+        <omgdc:Bounds height="80.0" width="100.0" x="1798.0" y="127.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST006" id="BPMNShape_BBV_GR_ST006">
+        <omgdc:Bounds height="80.0" width="100.0" x="1798.0" y="236.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST007" id="BPMNShape_BBV_GR_ST007">
+        <omgdc:Bounds height="80.0" width="100.0" x="1798.0" y="347.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST008" id="BPMNShape_BBV_GR_ST008">
+        <omgdc:Bounds height="80.0" width="100.0" x="1798.0" y="454.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_ST010" id="BPMNShape_BBV_GR_ST010">
+        <omgdc:Bounds height="80.0" width="100.0" x="1798.0" y="701.2"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_EB001" id="BPMNShape_BBV_GR_EB001">
+        <omgdc:Bounds height="40.0" width="40.0" x="1008.0" y="256.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_EB002" id="BPMNShape_BBV_GR_EB002">
+        <omgdc:Bounds height="40.0" width="40.0" x="1277.0" y="256.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_EB003" id="BPMNShape_BBV_GR_EB003">
+        <omgdc:Bounds height="40.0" width="40.0" x="1373.0" y="12.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_EB004" id="BPMNShape_BBV_GR_EB004">
+        <omgdc:Bounds height="40.0" width="40.0" x="1373.0" y="256.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_EB005" id="BPMNShape_BBV_GR_EB005">
+        <omgdc:Bounds height="40.0" width="40.0" x="1373.0" y="608.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_EB006" id="BPMNShape_BBV_GR_EB006">
+        <omgdc:Bounds height="40.0" width="40.0" x="1667.0" y="12.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_EB007" id="BPMNShape_BBV_GR_EB007">
+        <omgdc:Bounds height="40.0" width="40.0" x="1667.0" y="256.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_GR_EB008" id="BPMNShape_BBV_GR_EB008">
+        <omgdc:Bounds height="40.0" width="40.0" x="1667.0" y="608.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startnoneevent1" id="BPMNShape_startnoneevent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="212.0" y="261.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="EndTerminateEvent_31" id="BPMNShape_EndTerminateEvent_31">
+        <omgdc:Bounds height="28.0" width="28.0" x="2074.0" y="262.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_48" id="BPMNEdge_SequenceFlow_48" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1898.0" y="494.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="494.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="290.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_26" id="BPMNEdge_SequenceFlow_26" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1687.0" y="12.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1687.0" y="-70.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1798.0" y="-70.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_49" id="BPMNEdge_SequenceFlow_49" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1898.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="290.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_44" id="BPMNEdge_SequenceFlow_44" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="61.0" flowable:targetDockerY="49.0">
+        <omgdi:waypoint x="1707.0" y="628.5"></omgdi:waypoint>
+        <omgdi:waypoint x="1798.0" y="628.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_45" id="BPMNEdge_SequenceFlow_45" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1687.0" y="648.5"></omgdi:waypoint>
+        <omgdi:waypoint x="1687.0" y="741.2"></omgdi:waypoint>
+        <omgdi:waypoint x="1798.0" y="741.2"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_8" id="BPMNEdge_SequenceFlow_8" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="57.0" flowable:targetDockerY="38.0">
+        <omgdi:waypoint x="783.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="850.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_46" id="BPMNEdge_SequenceFlow_46" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1898.0" y="741.2"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="741.2"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="290.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_47" id="BPMNEdge_SequenceFlow_47" flowable:sourceDockerX="61.0" flowable:sourceDockerY="49.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1920.0" y="628.5"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="628.5"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="290.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_9" id="BPMNEdge_SequenceFlow_9" flowable:sourceDockerX="57.0" flowable:sourceDockerY="38.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="963.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1008.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_6" id="BPMNEdge_SequenceFlow_6" flowable:sourceDockerX="57.0" flowable:sourceDockerY="38.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="589.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="683.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_5" id="BPMNEdge_SequenceFlow_5" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="57.0" flowable:targetDockerY="38.0">
+        <omgdi:waypoint x="403.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="476.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_2" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="242.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="303.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_40" id="BPMNEdge_SequenceFlow_40" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1687.0" y="256.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1687.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1798.0" y="167.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_41" id="BPMNEdge_SequenceFlow_41" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1707.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1798.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_20" id="BPMNEdge_SequenceFlow_20" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1297.0" y="296.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1297.0" y="628.5"></omgdi:waypoint>
+        <omgdi:waypoint x="1373.0" y="628.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_42" id="BPMNEdge_SequenceFlow_42" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1687.0" y="296.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1687.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1798.0" y="387.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_43" id="BPMNEdge_SequenceFlow_43" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1687.0" y="296.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1687.0" y="494.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1798.0" y="494.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_15" id="BPMNEdge_SequenceFlow_15" flowable:sourceDockerX="57.0" flowable:sourceDockerY="38.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1230.5" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1277.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_39" id="BPMNEdge_SequenceFlow_39" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1413.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1667.0" y="32.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_18" id="BPMNEdge_SequenceFlow_18" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1317.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1373.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_33" id="BPMNEdge_SequenceFlow_33" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1898.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="262.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_11" id="BPMNEdge_SequenceFlow_11" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="57.0" flowable:targetDockerY="38.0">
+        <omgdi:waypoint x="1028.0" y="256.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1028.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="589.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_12" id="BPMNEdge_SequenceFlow_12" flowable:sourceDockerX="57.0" flowable:sourceDockerY="38.0" flowable:targetDockerX="57.0" flowable:targetDockerY="38.0">
+        <omgdi:waypoint x="532.5" y="144.5"></omgdi:waypoint>
+        <omgdi:waypoint x="532.5" y="191.5"></omgdi:waypoint>
+        <omgdi:waypoint x="906.5" y="191.5"></omgdi:waypoint>
+        <omgdi:waypoint x="906.5" y="238.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_14" id="BPMNEdge_SequenceFlow_14" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="57.0" flowable:targetDockerY="38.0">
+        <omgdi:waypoint x="1048.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1117.5" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_19" id="BPMNEdge_SequenceFlow_19" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1297.0" y="256.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1297.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1373.0" y="32.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_51" id="BPMNEdge_SequenceFlow_51" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1898.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="262.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_52" id="BPMNEdge_SequenceFlow_52" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1413.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1667.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_30" id="BPMNEdge_SequenceFlow_30" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="1707.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1798.0" y="32.00000000000001"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_53" id="BPMNEdge_SequenceFlow_53" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="1413.0" y="628.5"></omgdi:waypoint>
+        <omgdi:waypoint x="1667.0" y="628.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_32" id="BPMNEdge_SequenceFlow_32" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1898.0" y="-70.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="-70.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2088.0" y="262.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_50" id="BPMNEdge_SequenceFlow_50" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1898.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="2074.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

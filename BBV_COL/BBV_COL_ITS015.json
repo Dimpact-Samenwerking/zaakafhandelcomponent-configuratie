@@ -1,0 +1,286 @@
+{
+    "naam": "BBV_COL_ITS015",
+    "title": "BBV 15 Afronden besluitvorming College",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Afronden besluitvorming College</h2>",
+            "label": "Afronden besluitvorming College",
+            "refreshOnChange": false,
+            "key": "HF_OndertekenenCollegebesluit",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Het betreft een:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Collegevoorstel",
+                        "value": "collegevoorstel"
+                    },
+                    {
+                        "label": "Raadsvoorstel",
+                        "value": "raadsvoorstel"
+                    }
+                ]
+            },
+            "validateWhenHidden": false,
+            "key": "CO_Betreft",
+            "type": "select",
+            "disabled": true,
+            "input": true
+        },
+        {
+            "label": "Het stuk is:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Openbaar",
+                        "value": "openbaar"
+                    },
+                    {
+                        "label": "Geheim",
+                        "value": "geheim"
+                    }
+                ]
+            },
+            "disabled": true,
+            "validateWhenHidden": false,
+            "key": "CO_VoorstelOpAgenda",
+            "type": "select",
+            "input": true
+        },
+        {
+            "label": "Het voorstel is op de agenda gezet voor de Collegevergadering op:",
+            "type": "datetime",
+            "key": "DF_VoorstelDefinitiefOpAgendaGezet",
+            "input": true,
+            "useLocaleSettings": true,
+            "format": "dd-MM-yyyy",
+            "datePicker": {
+                "disableWeekends": false,
+                "disableWeekdays": false,
+                "minDate": "moment()"
+            },
+            "enableTime": false,
+            "enableMinDateInput": true,
+            "enableMaxDateInput": false,
+            "widget": {
+                "type": "calendar",
+                "displayInTimezone": "viewer",
+                "locale": "nl",
+                "useLocaleSettings": true,
+                "allowInput": true,
+                "mode": "single",
+                "enableTime": false,
+                "noCalendar": false,
+                "format": "dd-MM-yyyy",
+                "minDate": "moment()"
+            },
+            "disabled": true
+        },
+        {
+            "html": "<h5>Besluit college Collegevoorstel</h5>",
+            "label": "Besluit college Collegevoorstel",
+            "refreshOnChange": false,
+            "key": "HF_BesluitCollegevoorstel",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_Betreft",
+                "eq": "collegevoorstel"
+            }
+        },
+        {
+            "html": "<h5>Besluit college Raadsvoorstel</h5>",
+            "label": "Besluit college Raadsvoorstel",
+            "refreshOnChange": false,
+            "key": "HF_BesluitRaadsvoorstel",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_Betreft",
+                "eq": "raadsvoorstel"
+            }
+        },
+        {
+            "label": "Besluit:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Besloten conform voorstel",
+                        "value": "beslotenConformVoorstel"
+                    },
+                    {
+                        "label": "Gewijzigd vastgesteld",
+                        "value": "gewijzigdVastgesteld"
+                    },
+                    {
+                        "label": "Vastgesteld onder mandaat",
+                        "value": "vastgesteldOnderMandaat"
+                    },
+                    {
+                        "label": "Ingetrokken",
+                        "value": "ingetrokken"
+                    }
+                ]
+            },
+            "disabled": true,
+            "validateWhenHidden": false,
+            "key": "CO_BesluitVoorstel",
+            "type": "select",
+            "input": true
+        },
+        {
+            "label": "Bijgevoegde brieven:",
+            "type": "selectboxes",
+            "key": "CB_Brieven",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "inputType": "checkbox",
+            "disabled": true,
+            "values": [
+                {
+                    "label": "Met brief aan Raad",
+                    "value": "metBriefAanRaad"
+                },
+                {
+                    "label": "Met brief aan derden",
+                    "value": "metBriefAanDerden"
+                }
+            ],
+            "customConditional": "const v = data.CB_Brieven || {}; show = Object.values(v).some(x => x === true) && (data.CO_Betreft === 'collegevoorstel');"
+        },
+        {
+            "label": "Collegebrief moet naar de Raad:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Ja, ter kennisname",
+                        "value": "ja"
+                    },
+                    {
+                        "label": "Nee",
+                        "value": "nee"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_CollegevoorstelNaarRaad",
+            "disabled": true,
+            "type": "select",
+            "input": true,
+            "customConditional": "show = !!data.CO_CollegevoorstelNaarRaad;"
+        },
+        {
+            "label": "Raadsvoorstel moet naar de Raad:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Ja, ter besluitvorming",
+                        "value": "ja"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_RaadsvoorstelNaarRaadJa",
+            "type": "select",
+            "input": true,
+            "disabled": true,
+            "defaultValue": "ja",
+            "customConditional": "show = data.CO_Betreft === 'raadsvoorstel' && data.CO_BesluitVoorstel && data.CO_BesluitVoorstel !== 'ingetrokken';"
+        },
+        {
+            "label": "Aanwijzingen brief aan Raad:",
+            "type": "textarea",
+            "key": "TA_BriefRaadAanw",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "customConditional": "show = data.TA_BriefRaadAanw && data.TA_BriefRaadAanw.trim() !== '';"
+        },
+        {
+            "label": "Aanwijzingen brief aan derden:",
+            "type": "textarea",
+            "key": "TA_BriefDerdenAanw",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "customConditional": "show = data.TA_BriefDerdenAanw && data.TA_BriefDerdenAanw.trim() !== '';"
+        },
+        {
+            "label": "Alle stappen in het proces zijn uitgevoerd",
+            "type": "checkbox",
+            "key": "CB_CollegebesluitOndertekend",
+            "input": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

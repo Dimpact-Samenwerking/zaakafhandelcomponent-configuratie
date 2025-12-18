@@ -1,0 +1,213 @@
+{
+    "naam": "BBV_COL_ITS030",
+    "title": "BBV 30 Accorderen tekstuele wijzingen door Portefeuillehouder",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "html": "<h2>Accorderen tekstuele wijzigingen door Portefeuillehouder</h2>",
+            "label": "Accorderen tekstuele wijzigingen door Portefeuillehouder",
+            "refreshOnChange": false,
+            "key": "HF_AccorderenTekstueleWijzigingen_PO",
+            "type": "content",
+            "input": false,
+            "tableView": false
+        },
+        {
+            "label": "Het voorstel is op de agenda gezet voor de Collegevergadering op:",
+            "type": "datetime",
+            "key": "DF_VoorstelDefinitiefOpAgendaGezet",
+            "disabled": true,
+            "input": true,
+            "useLocaleSettings": true,
+            "format": "dd-MM-yyyy",
+            "datePicker": {
+                "disableWeekends": false,
+                "disableWeekdays": false,
+                "minDate": "moment()"
+            },
+            "enableTime": false,
+            "enableMinDateInput": true,
+            "enableMaxDateInput": false,
+            "widget": {
+                "type": "calendar",
+                "displayInTimezone": "viewer",
+                "locale": "nl",
+                "useLocaleSettings": true,
+                "allowInput": true,
+                "mode": "single",
+                "enableTime": false,
+                "noCalendar": false,
+                "format": "dd-MM-yyyy",
+                "minDate": "moment()"
+            },
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Besluitpunten:",
+            "type": "textarea",
+            "key": "TA_Besluitpunten",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Samenvatting:",
+            "type": "textarea",
+            "key": "TA_Samenvatting",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Het betreft een:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "Collegevoorstel",
+                        "value": "collegevoorstel"
+                    },
+                    {
+                        "label": "Raadsvoorstel",
+                        "value": "raadsvoorstel"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_Betreft",
+            "type": "select",
+            "disabled": true,
+            "input": true
+        },
+        {
+            "label": "Tekstuele wijzigingen (College):",
+            "type": "textarea",
+            "key": "TA_BerichtTekstueleWijzigingen",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Tekstuele wijzigingen (portefeuillehouder):",
+            "type": "textarea",
+            "key": "TA_BerichtTekstueleWijzigingen_PO",
+            "input": true,
+            "autoExpand": false,
+            "disabled": true,
+            "validate": {
+                "required": true
+            },
+            "customConditional": "show = data.TA_BerichtTekstueleWijzigingen_PO && data.TA_BerichtTekstueleWijzigingen_PO.trim() !=='';"
+        },
+        {
+            "label": "Vervolg:",
+            "widget": "html5",
+            "tableView": true,
+            "data": {
+                "values": [
+                    {
+                        "label": "De tekstuele wijzigingen van het College van B&W zijn akkoord",
+                        "value": "akkoord"
+                    },
+                    {
+                        "label": "Voorstel aanpassen",
+                        "value": "aanpassen"
+                    }
+                ]
+            },
+            "validate": {
+                "required": true
+            },
+            "validateWhenHidden": false,
+            "key": "CO_BesluitTekstueleWijzigingen_PO",
+            "type": "select",
+            "input": true
+        },
+        {
+            "html": "<h2>Terug naar steller</h2>",
+            "label": "Terug naar steller",
+            "refreshOnChange": false,
+            "key": "HF_TerugNaarStellerTekstueleWijzigingenPO",
+            "type": "content",
+            "input": false,
+            "tableView": false,
+            "conditional": {
+                "show": true,
+                "when": "CO_BesluitTekstueleWijzigingen_PO",
+                "eq": "aanpassen"
+            }
+        },
+        {
+            "label": "Bericht aan steller:",
+            "type": "textarea",
+            "key": "TA_BerichtTekstueleWijzigingen_PO",
+            "input": true,
+            "autoExpand": false,
+            "validate": {
+                "required": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "CO_BesluitTekstueleWijzigingen_PO",
+                "eq": "aanpassen"
+            }
+        },
+        {
+            "label": "Buttons",
+            "key": "buttons",
+            "type": "container",
+            "input": false,
+            "tableView": false,
+            "components": [
+                {
+                    "type": "columns",
+                    "columns": [
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "submit",
+                                    "label": "Afronden",
+                                    "type": "button",
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        },
+                        {
+                            "width": "auto",
+                            "components": [
+                                {
+                                    "key": "save",
+                                    "label": "Opslaan",
+                                    "type": "button",
+                                    "action": "saveState",
+                                    "state": "draft",
+                                    "disableOnInvalid": true,
+                                    "input": true,
+                                    "tableView": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

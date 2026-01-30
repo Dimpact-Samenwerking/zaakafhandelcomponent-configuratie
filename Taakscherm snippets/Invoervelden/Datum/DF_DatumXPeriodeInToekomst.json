@@ -27,6 +27,7 @@
     "minDate": "moment().add(14, 'days')"
   },
   "validate": {
-    "required": true
+    "required": true,
+    "customMessage": "Selecteer de gewenste datum. Deze moet ten minste 2 weken in de toekomst liggen."
   }
 }

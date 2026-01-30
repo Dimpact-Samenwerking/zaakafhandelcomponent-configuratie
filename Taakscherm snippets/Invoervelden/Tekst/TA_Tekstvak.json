@@ -6,6 +6,7 @@
     "autoExpand": true,
     "validate": {
         "required": true,
-        "maxLength": 500
+        "maxLength": 500,
+        "customMessage": "Dit veld is verplicht met een maximale invoer van 500 karakters."
     }
 }

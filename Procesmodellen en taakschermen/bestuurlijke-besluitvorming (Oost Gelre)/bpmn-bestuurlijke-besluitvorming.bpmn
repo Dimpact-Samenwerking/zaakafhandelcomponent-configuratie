@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:design="http://flowable.org/design" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://flowable.org/test" exporter="Flowable Design" exporterVersion="2025.1.03" design:palette="flowable-work-process-palette">
-  <process id="bpmn-bestuurlijke-besluitvorming" name="Bestuurlijke besluitvorming" isExecutable="true" flowable:candidateStarterGroups="flowableUser">
-    <documentation>BBV v2025.10.14</documentation>
+  <process id="bpmn-bestuurlijke-besluitvorming" name="Bestuurlijke besluitvorming (Oost Gelre)" isExecutable="true" flowable:candidateStarterGroups="flowableUser">
+    <documentation>BBV v2026.01.08</documentation>
     <extensionElements>
       <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
       <design:creationdate><![CDATA[2025-10-07T11:33:02.278Z]]></design:creationdate>
       <design:description><![CDATA[BBV v2025.10.07]]></design:description>
-      <design:modificationdate><![CDATA[2025-10-14T13:03:36.566Z]]></design:modificationdate>
+      <design:modificationdate><![CDATA[2026-01-08T09:26:06.128Z]]></design:modificationdate>
     </extensionElements>
     <serviceTask id="BBV_ST099" name="Status: Ingetrokken" flowable:class="net.atos.zac.flowable.delegate.UpdateZaakJavaDelegate">
       <documentation>Zaakstatus naar Ingetrokken</documentation>
@@ -28,7 +28,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="BBV_TN001" name="Opstellen voorstel" flowable:assignee="${initiator}" flowable:dueDate="P60D" flowable:formKey="BBV_ITS001" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN001" name="Opstellen voorstel" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P60D" flowable:formKey="BBV_ITS001" flowable:formFieldValidation="false">
       <documentation>Steller stelt het voorstel op, geeft een korte beschrijving van het voorstel en geeft aan of er advies nodig is. Vervolgens wordt het voorstel (indien van toepassing) voor advies uitgezet bij collega's en gaat het daarna voor akkoord naar het afdelingshoofd.</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS001]]></flowable:static-form-key>
@@ -56,7 +56,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="BBV_TN002" name="Bewaken voortgang adviezen" flowable:assignee="${initiator}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS002" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN002" name="Bewaken voortgang adviezen" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS002" flowable:formFieldValidation="false">
       <documentation>Steller ziet in deze taak een overzicht van de uitgebrachte adviezen. Na het verwerken van deze adviezen rond de steller deze taak af. Het voorstel wordt vervolgens doorgezet naar het afdelingshoofd ter accordering.</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS002]]></flowable:static-form-key>
@@ -65,7 +65,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BBV_TN003_1" name="Uitbrengen advies (Financieel consulent)" flowable:assignee="${initiator}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS003_1" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN003_1" name="Uitbrengen advies (Financieel consulent)" flowable:assignee="${var:get(AGM_AdviseurFIN_Medewerker)}" flowable:candidateGroups="${var:get(AGM_AdviseurFIN_Groep)}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS003_1" flowable:formFieldValidation="false">
       <documentation>Advies en goedkeuring door Financieel consulent</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS003_1]]></flowable:static-form-key>
@@ -74,7 +74,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BBV_TN003_2" name="Uitbrengen advies (P&amp;O-consulent)" flowable:assignee="${initiator}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS003_2" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN003_2" name="Uitbrengen advies (P&amp;O-consulent)" flowable:assignee="${var:get(AGM_AdviseurPO_Medewerker)}" flowable:candidateGroups="${var:get(AGM_AdviseurPO_Medewerker)}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS003_2" flowable:formFieldValidation="false">
       <documentation>Advies en goedkeuring door P&amp;O-consulent</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS003_2]]></flowable:static-form-key>
@@ -83,7 +83,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BBV_TN003_3" name="Uitbrengen advies (Juridisch consulent)" flowable:assignee="${initiator}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS003_3" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN003_3" name="Uitbrengen advies (Juridisch consulent)" flowable:assignee="${var:get(AGM_AdviseurJUR_Medewerker)}" flowable:candidateGroups="${var:get(AGM_AdviseurJUR_Medewerker)}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS003_3" flowable:formFieldValidation="false">
       <documentation>Advies en goedkeuring door Juridisch-consulent</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS003_3]]></flowable:static-form-key>
@@ -92,7 +92,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BBV_TN003_4" name="Uitbrengen advies (Communicatieadviseur)" flowable:assignee="${initiator}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS003_4" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN003_4" name="Uitbrengen advies (Communicatieadviseur)" flowable:assignee="${var:get(AGM_AdviseurCOM_Medewerker)}" flowable:candidateGroups="${var:get(AGM_AdviseurCOM_Medewerker)}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS003_4" flowable:formFieldValidation="false">
       <documentation>Advies en goedkeuring door Communicatieadviseur</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS003_4]]></flowable:static-form-key>
@@ -129,7 +129,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </serviceTask>
-    <userTask id="BBV_TN004_1" name="Uitbrengen advies (Adviseur 1)" flowable:assignee="${initiator}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS004_1" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN004_1" name="Uitbrengen advies (Adviseur 1)" flowable:assignee="${var:get(AGM_Adviseur1_Medewerker)}" flowable:candidateGroups="${var:get(AGM_Adviseur1_Medewerker)}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS004_1" flowable:formFieldValidation="false">
       <documentation>Gebruikt voor overige advisering.</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS004_1]]></flowable:static-form-key>
@@ -138,7 +138,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BBV_TN004_12" name="Uitbrengen advies (Adviseur 2)" flowable:assignee="${initiator}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS004_2" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN004_12" name="Uitbrengen advies (Adviseur 2)" flowable:assignee="${var:get(AGM_Adviseur2_Medewerker)}" flowable:candidateGroups="${var:get(AGM_Adviseur2_Medewerker)}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS004_2" flowable:formFieldValidation="false">
       <documentation>Gebruikt voor overige advisering.</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS004_2]]></flowable:static-form-key>
@@ -147,7 +147,7 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
-    <userTask id="BBV_TN004_3" name="Uitbrengen advies (Adviseur 3)" flowable:assignee="${initiator}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS004_3" flowable:formFieldValidation="false">
+    <userTask id="BBV_TN004_3" name="Uitbrengen advies (Adviseur 3)" flowable:assignee="${var:get(AGM_Adviseur3_Medewerker)}" flowable:candidateGroups="${var:get(AGM_Adviseur3_Medewerker)}" flowable:dueDate="P15D" flowable:formKey="BBV_ITS004_3" flowable:formFieldValidation="false">
       <documentation>Gebruikt voor overige advisering.</documentation>
       <extensionElements>
         <flowable:static-form-key><![CDATA[BBV_ITS004_3]]></flowable:static-form-key>
@@ -360,6 +360,15 @@
         <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
       </extensionElements>
     </userTask>
+    <userTask id="BBV_TN000" name="Start Bestuurlijke besluitvorming" flowable:assignee="${var:get(zaakBehandelaar)}" flowable:candidateGroups="${var:get(zaakGroep)}" flowable:dueDate="P2D" flowable:formKey="BBV_ITS000" flowable:formFieldValidation="false">
+      <documentation>Introductiescherm bestuurlijke besluitvorming.</documentation>
+      <extensionElements>
+        <flowable:static-form-key><![CDATA[BBV_ITS000]]></flowable:static-form-key>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
     <exclusiveGateway id="BBV_EB002" default="SequenceFlow_6">
       <extensionElements>
         <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
@@ -435,7 +444,7 @@
         <design:stencilid><![CDATA[Exclusive_Databased_Gateway]]></design:stencilid>
       </extensionElements>
     </exclusiveGateway>
-    <startEvent id="startnoneevent1" flowable:initiator="initiator" flowable:formFieldValidation="false">
+    <startEvent id="BBV_START" flowable:initiator="initiator" flowable:formFieldValidation="false">
       <extensionElements>
         <flowable:work-form-field-validation><![CDATA[false]]></flowable:work-form-field-validation>
         <design:stencilid><![CDATA[StartNoneEvent]]></design:stencilid>
@@ -601,7 +610,7 @@
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_124" sourceRef="BBV_ST007" targetRef="BBV_EB007_2">
+    <sequenceFlow id="SequenceFlow_127" sourceRef="BBV_ST007" targetRef="BBV_TN010">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -612,6 +621,11 @@
       </extensionElements>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_126" sourceRef="BBV_TN011" targetRef="BBV_EB007_2">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_128" sourceRef="BBV_TN000" targetRef="BBV_EB000">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -689,7 +703,7 @@
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_56" sourceRef="startnoneevent1" targetRef="BBV_EB000">
+    <sequenceFlow id="SequenceFlow_124" sourceRef="BBV_START" targetRef="BBV_TN000">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -782,7 +796,7 @@
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_114" sourceRef="BBV_EB007_1" targetRef="BBV_ST007">
+    <sequenceFlow id="SequenceFlow_114" sourceRef="BBV_EB007_1" targetRef="BBV_EB007_2">
       <extensionElements>
         <flowable:is-default-flow><![CDATA[true]]></flowable:is-default-flow>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
@@ -794,7 +808,7 @@
       </extensionElements>
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${var:equals(RB_VervolgCollegebesluit, 'raad'}]]></conditionExpression>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_125" sourceRef="BBV_EB007_2" targetRef="BBV_TN010">
+    <sequenceFlow id="SequenceFlow_125" sourceRef="BBV_EB007_2" targetRef="BBV_ST007">
       <extensionElements>
         <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
       </extensionElements>
@@ -802,9 +816,9 @@
     <textAnnotation id="TextAnnotation_47">
       <extensionElements>
         <design:stencilid><![CDATA[TextAnnotation]]></design:stencilid>
-        <design:text><![CDATA[Bekijken of greaterThan expressie werkt voor CO_AantalCollegasAdviesVragen]]></design:text>
+        <design:text><![CDATA[Bekijken of greaterThan expressie werkt voor CO_AantalCollegasAdviesVragen.]]></design:text>
       </extensionElements>
-      <text>Bekijken of greaterThan expressie werkt voor CO_AantalCollegasAdviesVragen</text>
+      <text>Bekijken of greaterThan expressie werkt voor CO_AantalCollegasAdviesVragen.</text>
     </textAnnotation>
     <textAnnotation id="TextAnnotation_46">
       <extensionElements>
@@ -827,6 +841,13 @@
       </extensionElements>
       <text>Is er al een functie om een zaakresultaat aan de zaak toe te kennen?</text>
     </textAnnotation>
+    <textAnnotation id="TextAnnotation_123">
+      <extensionElements>
+        <design:stencilid><![CDATA[TextAnnotation]]></design:stencilid>
+        <design:text><![CDATA[Aantal taken voor de raad nog uitbreiden]]></design:text>
+      </extensionElements>
+      <text>Aantal taken voor de raad nog uitbreiden</text>
+    </textAnnotation>
     <association id="AssociationUndirected_49" sourceRef="TextAnnotation_47" targetRef="BBV_MB001_0" associationDirection="None">
       <extensionElements>
         <design:stencilid><![CDATA[AssociationUndirected]]></design:stencilid>
@@ -846,6 +867,12 @@
       </extensionElements>
     </association>
     <association id="AssociationUndirected_73" sourceRef="TextAnnotation_72" targetRef="BBV_EIND099" associationDirection="None">
+      <extensionElements>
+        <design:stencilid><![CDATA[AssociationUndirected]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Association_Undirected]]></design:stencilsuperid>
+      </extensionElements>
+    </association>
+    <association id="AssociationUndirected_124" sourceRef="TextAnnotation_123" targetRef="BBV_TN011" associationDirection="None">
       <extensionElements>
         <design:stencilid><![CDATA[AssociationUndirected]]></design:stencilid>
         <design:stencilsuperid><![CDATA[Association_Undirected]]></design:stencilsuperid>
@@ -957,13 +984,19 @@
         <omgdc:Bounds height="80.0" width="100.0" x="3381.5009220116744" y="236.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBV_ST007" id="BPMNShape_BBV_ST007">
-        <omgdc:Bounds height="80.0" width="100.0" x="3608.233630651554" y="236.0"></omgdc:Bounds>
+        <omgdc:Bounds height="80.0" width="100.0" x="3780.233630651554" y="236.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBV_TN010" id="BPMNShape_BBV_TN010">
-        <omgdc:Bounds height="80.0" width="100.0" x="3822.500922011673" y="236.0"></omgdc:Bounds>
+        <omgdc:Bounds height="80.0" width="100.0" x="3916.500922011673" y="236.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBV_TN011" id="BPMNShape_BBV_TN011">
-        <omgdc:Bounds height="80.0" width="100.0" x="3608.233630651554" y="85.5"></omgdc:Bounds>
+        <omgdc:Bounds height="80.0" width="100.0" x="3591.233630651554" y="85.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BBV_TN000" id="BPMNShape_BBV_TN000">
+        <omgdc:Bounds height="80.0" width="100.0" x="-18.0" y="236.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TextAnnotation_123" id="BPMNShape_TextAnnotation_123">
+        <omgdc:Bounds height="50.0" width="120.0" x="3705.500922011674" y="-37.999999999999034"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBV_EB002" id="BPMNShape_BBV_EB002">
         <omgdc:Bounds height="40.0" width="40.0" x="707.0" y="256.00000000000006"></omgdc:Bounds>
@@ -1008,16 +1041,16 @@
         <omgdc:Bounds height="40.0" width="40.0" x="3531.5009220116744" y="256.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBV_EB007_2" id="BPMNShape_BBV_EB007_2">
-        <omgdc:Bounds height="40.0" width="40.0" x="3745.500922011674" y="256.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="3705.500922011674" y="256.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="startnoneevent1" id="BPMNShape_startnoneevent1">
-        <omgdc:Bounds height="30.0" width="30.0" x="78.0" y="261.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="BBV_START" id="BPMNShape_BBV_START">
+        <omgdc:Bounds height="30.0" width="30.0" x="-122.0" y="261.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBV_EIND099" id="BPMNShape_BBV_EIND099">
         <omgdc:Bounds height="28.0" width="28.0" x="2140.348687892697" y="111.5"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="BBV_EIND001" id="BPMNShape_BBV_EIND001">
-        <omgdc:Bounds height="28.0" width="28.0" x="3977.5009220116735" y="262.0"></omgdc:Bounds>
+        <omgdc:Bounds height="28.0" width="28.0" x="4056.500922011673" y="262.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_26" id="BPMNEdge_SequenceFlow_26" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="929.0" y="785.0"></omgdi:waypoint>
@@ -1057,9 +1090,9 @@
         <omgdi:waypoint x="1046.0" y="884.0"></omgdi:waypoint>
         <omgdi:waypoint x="1046.0" y="607.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_124" id="BPMNEdge_SequenceFlow_124" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
-        <omgdi:waypoint x="3708.233630651554" y="276.0"></omgdi:waypoint>
-        <omgdi:waypoint x="3745.500922011674" y="276.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_124" id="BPMNEdge_SequenceFlow_124" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="-92.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="-18.0" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_63" id="BPMNEdge_SequenceFlow_63" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="185.0" y="340.0"></omgdi:waypoint>
@@ -1072,7 +1105,7 @@
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_122" id="BPMNEdge_SequenceFlow_122" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="3551.5009220116744" y="256.0"></omgdi:waypoint>
         <omgdi:waypoint x="3551.5009220116744" y="125.5"></omgdi:waypoint>
-        <omgdi:waypoint x="3608.233630651554" y="125.5"></omgdi:waypoint>
+        <omgdi:waypoint x="3591.233630651554" y="125.5"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_21" id="BPMNEdge_SequenceFlow_21" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="747.0" y="587.0"></omgdi:waypoint>
@@ -1082,14 +1115,22 @@
         <omgdi:waypoint x="1336.0" y="276.0"></omgdi:waypoint>
         <omgdi:waypoint x="1396.854539964149" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_128" id="BPMNEdge_SequenceFlow_128" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="82.0" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="165.0" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_127" id="BPMNEdge_SequenceFlow_127" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="3880.233630651554" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3916.500922011673" y="276.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_126" id="BPMNEdge_SequenceFlow_126" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
-        <omgdi:waypoint x="3708.233630651554" y="125.5"></omgdi:waypoint>
-        <omgdi:waypoint x="3765.500922011674" y="125.5"></omgdi:waypoint>
-        <omgdi:waypoint x="3765.500922011674" y="256.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3691.233630651554" y="125.5"></omgdi:waypoint>
+        <omgdi:waypoint x="3725.500922011674" y="125.5"></omgdi:waypoint>
+        <omgdi:waypoint x="3725.500922011674" y="256.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_125" id="BPMNEdge_SequenceFlow_125" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
-        <omgdi:waypoint x="3785.500922011674" y="276.0"></omgdi:waypoint>
-        <omgdi:waypoint x="3822.500922011673" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3745.500922011674" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3780.233630651554" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="AssociationUndirected_49" id="BPMNEdge_AssociationUndirected_49" flowable:sourceDockerX="104.0" flowable:sourceDockerY="51.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="554.5" y="644.0"></omgdi:waypoint>
@@ -1115,8 +1156,8 @@
         <omgdi:waypoint x="707.0" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_120" id="BPMNEdge_SequenceFlow_120" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
-        <omgdi:waypoint x="3922.500922011673" y="276.0"></omgdi:waypoint>
-        <omgdi:waypoint x="3977.5009220116735" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="4016.500922011673" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="4056.500922011673" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_34" id="BPMNEdge_SequenceFlow_34" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="929.0" y="380.0"></omgdi:waypoint>
@@ -1165,16 +1206,16 @@
         <omgdi:waypoint x="1316.0" y="125.49999999999999"></omgdi:waypoint>
         <omgdi:waypoint x="1858.9999999999998" y="125.5"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="26.0" width="53.0" x="1326.2539747434719" y="165.44163764533351"></omgdc:Bounds>
+          <omgdc:Bounds height="18.0" width="49.0" x="1326.2539747434719" y="165.44163764533351"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_71" id="BPMNEdge_SequenceFlow_71" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
         <omgdi:waypoint x="2058.6913305490807" y="125.50000000000001"></omgdi:waypoint>
         <omgdi:waypoint x="2140.348687892697" y="125.50000000000001"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_114" id="BPMNEdge_SequenceFlow_114" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_114" id="BPMNEdge_SequenceFlow_114" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="3571.5009220116744" y="276.0"></omgdi:waypoint>
-        <omgdi:waypoint x="3608.233630651554" y="276.0"></omgdi:waypoint>
+        <omgdi:waypoint x="3705.500922011674" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_48" id="BPMNEdge_SequenceFlow_48" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
         <omgdi:waypoint x="929.0" y="1121.0"></omgdi:waypoint>
@@ -1277,10 +1318,6 @@
         <omgdi:waypoint x="2861.6314806920063" y="276.0"></omgdi:waypoint>
         <omgdi:waypoint x="2911.6314806920063" y="276.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_56" id="BPMNEdge_SequenceFlow_56" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
-        <omgdi:waypoint x="108.0" y="276.0"></omgdi:waypoint>
-        <omgdi:waypoint x="165.0" y="276.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_57" id="BPMNEdge_SequenceFlow_57" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="205.0" y="276.0"></omgdi:waypoint>
         <omgdi:waypoint x="277.0" y="276.0"></omgdi:waypoint>
@@ -1293,6 +1330,12 @@
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="18.0" width="60.0" x="1329.4822022531844" y="400.01946083598114"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="AssociationUndirected_124" id="BPMNEdge_AssociationUndirected_124" flowable:sourceDockerX="60.0" flowable:sourceDockerY="25.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="3765.500922011674" y="12.000000000000966"></omgdi:waypoint>
+        <omgdi:waypoint x="3765.500922011674" y="48.75000000000048"></omgdi:waypoint>
+        <omgdi:waypoint x="3641.233630651554" y="48.75000000000048"></omgdi:waypoint>
+        <omgdi:waypoint x="3641.233630651554" y="85.5"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_95" id="BPMNEdge_SequenceFlow_95" flowable:sourceDockerX="20.0" flowable:sourceDockerY="20.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
         <omgdi:waypoint x="2719.979490241229" y="276.0"></omgdi:waypoint>

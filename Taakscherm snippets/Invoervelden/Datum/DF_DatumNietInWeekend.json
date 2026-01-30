@@ -26,6 +26,7 @@
     "format": "dd-MM-yyyy"
   },
   "validate": {
-    "required": true
+    "required": true,
+    "customMessage": "Selecteer de gewenste datum. Deze mag niet in het weekend liggen."
   }
 }

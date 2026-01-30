@@ -18,7 +18,8 @@
     }
   },
   "validate": {
-    "required": true
+    "required": true,
+    "customMessage": "Selecteer ten minste 1 document."
   },
   "attributes": {
     "ZAC_TYPE": "ZAC_documenten"

@@ -11,6 +11,7 @@
   },
   "validate": {
     "required": true,
-    "onlyAvailableItems": true
+    "onlyAvailableItems": true,
+    "customMessage": "Selecteer het gewenste zaakresultaat."
   }
 }

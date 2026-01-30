@@ -27,6 +27,6 @@
     "minDate": "moment()"
   },
   "validate": {
-    "required": true
+    "required": true,"customMessage": "Selecteer de gewenste datum. Deze mag niet in het verleden liggen."
   }
 }

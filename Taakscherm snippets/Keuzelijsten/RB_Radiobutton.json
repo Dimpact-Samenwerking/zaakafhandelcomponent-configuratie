@@ -23,6 +23,7 @@
     "defaultValue": "Wil je dat 1 van de radiobuttons standaard aangevinkt staat? Geef dan die value op (let op: neem ook de dubbel quotes als de value een string is). Wil je geen default instellen? Haal dit key-value pair dan weg.",
     "validateWhenHidden": false,
     "validate": {
-        "required": true
+        "required": true,
+        "customMessage": "Selecteer de gewenste optie."
     }
 }

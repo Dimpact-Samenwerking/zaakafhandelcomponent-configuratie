@@ -12,7 +12,8 @@
     "validateOn": "blur",
     "validate": {
         "required": true,
-        "min": 0
+        "min": 0,
+        "customMessage": "Vul een geheel getal in. Deze mag niet negatief zijn."
     },
     "decimalLimit": 0,
     "requireDecimal": false,

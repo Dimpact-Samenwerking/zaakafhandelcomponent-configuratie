@@ -5,6 +5,7 @@
     "input": true,
     "defaultValue": false,
     "validate": {
-        "required": true
+        "required": true,
+        "customMessage": "Dit veld moet aangevinkt worden."
     }
 }

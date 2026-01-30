@@ -1,0 +1,213 @@
+{
+    "naam": "GEN_ITS002",
+    "title": "Behandelen zaak",
+    "display": "wizard",
+    "components": [
+        {
+            "label": "Gewenste vervolgstap",
+            "type": "panel",
+            "key": "GEN_ITS002_SN001",
+            "title": "Kies de gewenste vervolgstap",
+            "input": false,
+            "breadcrumbClickable": true,
+            "buttonSettings": {
+                "next": true,
+                "previous": false,
+                "cancel": true
+            },
+            "components": [
+                {
+                    "label": "Wat wil je doen?",
+                    "key": "RB_VervolgstapBehandelenZaak",
+                    "type": "radio",
+                    "input": true,
+                    "optionsLabelPosition": "right",
+                    "inline": false,
+                    "tableView": false,
+                    "values": [
+                        {
+                            "label": "Document maken",
+                            "value": "document maken"
+                        },
+                        {
+                            "label": "Document(en) verzenden",
+                            "value": "document verzenden"
+                        },
+                        {
+                            "label": "Zaak afronden",
+                            "value": "zaak afronden"
+                        }
+                    ],
+                    "defaultValue": "document maken",
+                    "validateWhenHidden": false,
+                    "validate": {
+                        "required": true
+                    }
+                },
+                {
+                    "label": "Opmerking bij behandelen zaak (voor intern gebruik):",
+                    "type": "textarea",
+                    "key": "TA_OpmerkingenBehandelenZaak",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": true,
+                        "maxLength": 500
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Document maken",
+            "type": "panel",
+            "key": "GEN_ITS002_SN002",
+            "title": "Een document maken",
+            "input": false,
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": true,
+                "previous": true,
+                "cancel": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "RB_VervolgstapBehandelenZaak",
+                "eq": "document maken"
+            },
+            "components": [
+                {
+                    "type": "fieldset",
+                    "key": "TM_DocumentMaken",
+                    "input": false,
+                    "legend": "Document maken",
+                    "components": [
+                        {
+                            "label": "Kies een sjabloon",
+                            "type": "select",
+                            "key": "SD_SmartDocuments_Template",
+                            "input": true,
+                            "widget": "html5",
+                            "dataSrc": "custom",
+                            "clearOnRefresh": true,
+                            "properties": {
+                                "SmartDocuments_Group": "Dimpact/OpenZaak"
+                            },
+                            "attributes": {
+                                "ZAC_TYPE": "ZAC_smart_documents_template"
+                            }
+                        },
+                        {
+                            "label": "Maak document",
+                            "action": "event",
+                            "showValidations": false,
+                            "block": true,
+                            "tableView": false,
+                            "key": "SD_SmartDocuments_Create",
+                            "type": "button",
+                            "event": "createDocument",
+                            "input": true,
+                            "properties": {
+                                "SmartDocuments_Group": "Dimpact/OpenZaak",
+                                "SmartDocuments_Data_Test_InformatieobjecttypeUuid": "hier-het-informatieobjecttype-uuid",
+                                "SmartDocuments_OpenZaakTest_InformatieobjecttypeUuid": "hier-het-informatieobjecttype-uuid"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Document verzenden",
+            "type": "panel",
+            "key": "GEN_ITS002_SN003",
+            "title": "Document(en) verzenden",
+            "input": false,
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": true,
+                "previous": true,
+                "cancel": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "RB_VervolgstapBehandelenZaak",
+                "eq": "document verzenden"
+            },
+            "components": [
+                {
+                    "label": "Selecteer de documenten die je ter verzending wilt aanbieden:",
+                    "type": "select",
+                    "key": "DS_DocumentenSelecteren_Select",
+                    "input": true,
+                    "widget": "choicesjs",
+                    "multiple": true,
+                    "defaultValue": [],
+                    "clearOnRefresh": true,
+                    "dataSrc": "custom",
+                    "placeholder": "Select één of meer documenten",
+                    "customOptions": {
+                        "choicesOptions": {
+                            "removeItemButton": true,
+                            "placeholder": true,
+                            "searchEnabled": true,
+                            "shouldSort": false
+                        }
+                    },
+                    "validate": {
+                        "required": true
+                    },
+                    "attributes": {
+                        "ZAC_TYPE": "ZAC_documenten"
+                    }
+                },
+                {
+                    "label": "Verzendinstructies (niet verplicht)",
+                    "type": "textarea",
+                    "key": "TA_OpmerkingenVezendenDocumenten",
+                    "input": true,
+                    "autoExpand": true,
+                    "validate": {
+                        "required": false,
+                        "maxLength": 100
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Zaak afronden",
+            "type": "panel",
+            "key": "GEN_ITS002_SN004",
+            "title": "De zaak afronden",
+            "input": false,
+            "breadcrumbClickable": false,
+            "buttonSettings": {
+                "next": true,
+                "previous": true,
+                "cancel": true
+            },
+            "conditional": {
+                "show": true,
+                "when": "RB_VervolgstapBehandelenZaak",
+                "eq": "zaak afronden"
+            },
+            "components": [
+                {
+                    "label": "Was is het resultaat van deze zaak?",
+                    "optionsLabelPosition": "right",
+                    "key": "CO_Zaakresultaat",
+                    "type": "select",
+                    "widget": "html5",
+                    "input": true,
+                    "dataSrc": "custom",
+                    "attributes": {
+                        "ZAC_TYPE": "ZAC_resultaat"
+                    },
+                    "validate": {
+                        "required": true,
+                        "onlyAvailableItems": true
+                    }
+                }
+            ]
+        }
+    ]
+}

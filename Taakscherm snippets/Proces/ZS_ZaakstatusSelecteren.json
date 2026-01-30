@@ -5,7 +5,8 @@
   "widget": "html5",
   "validate": {
     "required": true,
-    "onlyAvailableItems": true
+    "onlyAvailableItems": true,
+    "customMessage": "Selecteer de gewenste zaakstatus."
   },
   "type": "select",
   "input": true,

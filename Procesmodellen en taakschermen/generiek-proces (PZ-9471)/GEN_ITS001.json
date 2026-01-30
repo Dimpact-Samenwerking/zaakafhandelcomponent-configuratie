@@ -1,0 +1,51 @@
+{
+    "name": "GEN_ITS001",
+    "title": "Accepteren zaak",
+    "display": "form",
+    "type": "form",
+    "components": [
+        {
+            "label": "Zijn er nog aanvullingen nodig voordat je de aanvraag in behandeling kunt nemen?",
+            "key": "RB_AanvullingenNodig",
+            "type": "radio",
+            "input": true,
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "tableView": false,
+            "values": [
+                {
+                    "label": "Ja, er zijn nog aanvullingen nodig.",
+                    "value": "ja"
+                },
+                {
+                    "label": "Nee, er zijn geen aanvullingen nodig. Ik neem de zaak in behandeling.",
+                    "value": "nee"
+                }
+            ],
+            "defaultValue": "nee",
+            "validateWhenHidden": false,
+            "validate": {
+                "required": true
+            }
+        },
+        {
+            "label": "Opmerking bij in behandeling nemen (voor intern gebruik):",
+            "type": "textarea",
+            "key": "TA_OpmerkingenInBehandelingNemen",
+            "input": true,
+            "autoExpand": true,
+            "validate": {
+                "required": false,
+                "maxLength": 500
+            }
+        },
+        {
+            "label": "Afronden",
+            "key": "submit",
+            "type": "button",
+            "input": true,
+            "disableOnInvalid": true,
+            "tableView": false
+        }
+    ]
+}

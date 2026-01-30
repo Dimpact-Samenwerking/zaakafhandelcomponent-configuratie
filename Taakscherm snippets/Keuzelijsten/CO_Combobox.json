@@ -1,28 +1,29 @@
 {
-      "label": "Combobox (dropdown)",
-      "widget": "html5",
-      "tableView": true,
-      "data": {
-        "values": [
-          {
-            "label": "Optie X",
-            "value": "x"
-          },
-          {
-            "label": "Optie Y",
-            "value": "y"
-          },
-          {
-            "label": "Optie Z",
-            "value": "z"
-          }
-        ]
+  "label": "Combobox (dropdown)",
+  "widget": "html5",
+  "tableView": true,
+  "data": {
+    "values": [
+      {
+        "label": "Optie X",
+        "value": "x"
       },
-      "validate": {
-        "required": true
+      {
+        "label": "Optie Y",
+        "value": "y"
       },
-      "validateWhenHidden": false,
-      "key": "CO_Combobox",
-      "type": "select",
-      "input": true
-    }
+      {
+        "label": "Optie Z",
+        "value": "z"
+      }
+    ]
+  },
+  "validate": {
+    "required": true,
+    "customMessage": "Selecteer de gewenste optie."
+  },
+  "validateWhenHidden": false,
+  "key": "CO_Combobox",
+  "type": "select",
+  "input": true
+}

@@ -25,6 +25,7 @@
     "format": "dd-MM-yyyy"
   },
   "validate": {
-    "required": true
+    "required": true,
+    "customMessage": "Selecteer de gewenste datum."
   }
 }

@@ -59,7 +59,8 @@
             "input": true,
             "autoExpand": true,
             "validate": {
-                "required": true
+                "required": true,
+                "customMessage": "Geef een toelichting."
             }
         },
         {

@@ -26,6 +26,7 @@
         "z": false
       },
   "validate": {
-    "required": true
+    "required": true,
+    "customMessage": "Selecteer ten minste 1 optie."
   }
 }

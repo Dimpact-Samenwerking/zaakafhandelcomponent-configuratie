@@ -5,6 +5,7 @@
   "input": true,
   "validateOn": "blur",
   "validate": {
-    "required": true
+    "required": true,
+    "customMessage": "Dit veld is verplicht."
   }
 }

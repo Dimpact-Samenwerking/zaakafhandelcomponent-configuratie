@@ -27,6 +27,7 @@
     "maxDate": "moment()"
   },
   "validate": {
-    "required": true
+    "required": true,
+    "customMessage": "Selecteer de gewenste datum. Deze mag niet in de toekomst liggen."
   }
 }

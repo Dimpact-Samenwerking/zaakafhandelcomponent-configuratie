@@ -19,6 +19,7 @@
   "validateOn": "blur",
   "validate": {
     "required": true,
-    "min": 0
+    "min": 0,
+    "customMessage": "Vul een bedrag in. Deze mag niet negatief zijn."
   }
 }

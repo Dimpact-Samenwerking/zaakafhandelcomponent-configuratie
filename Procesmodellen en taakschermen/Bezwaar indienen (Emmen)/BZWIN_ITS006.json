@@ -7,7 +7,7 @@
     {
   "type": "content",
   "key": "HF_InformeleBehandeling",
-  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Informele behandeling</span></h3>",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Informele behandeling</span></h3>",
   "refreshOnChange": false,
   "input": false,
   "tableView": false
@@ -17,6 +17,9 @@
   "type": "datetime",
   "key": "DF_DatumContact",
   "input": true,
+  "validate": {
+        "required": true
+      },
   "useLocaleSettings": true,
   "format": "dd-MM-yyyy",
   "datePicker": {
@@ -45,6 +48,9 @@
   "type": "radio",
   "key": "RB_InformeelMogelijk",
   "input": true,
+  "validate": {
+        "required": true
+      },
   "optionsLabelPosition": "right",
   "inline": false,
   "values": [
@@ -68,7 +74,7 @@
     {
   "type": "content",
   "key": "HF_uitvoerenInformeleBehandeling",
-  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Uitvoeren informele behandeling</span></h3>",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Uitvoeren informele behandeling</span></h3>",
   "refreshOnChange": false,
   "input": false,
   "conditional": {
@@ -82,6 +88,42 @@
   "label": "Datum 1e gesprek:",
   "type": "datetime",
   "key": "DF_1eGesprek",
+  "input": true,
+  "useLocaleSettings": true,
+  "validate": {
+        "required": true
+      },
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    },
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+    {
+  "label": "Datum 2e gesprek:",
+  "type": "datetime",
+  "key": "DF_2eGesprek",
   "input": true,
   "useLocaleSettings": true,
   "conditional": {
@@ -111,11 +153,181 @@
     "minDate": "moment()"
   }
 },
-    {},
-    {},
-    {},
     {
-      "label": "Buttons",
+  "label": "Datum 3e gesprek:",
+  "type": "datetime",
+  "key": "DF_3eGesprek",
+  "input": true,
+  "useLocaleSettings": true,
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    },
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+    {
+  "label": "Geef in het kort weer wat er met bezwaarmaker is besproken:",
+  "type": "textarea",
+  "key": "TA_Gespreksverslag",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    },
+  "autoExpand": false
+},
+    {
+  "label": "Het bezwaar wordt ingetrokken en de bevestiging van bewaarmaker is ontvangen:",
+  "type": "radio",
+  "key": "RB_IntrekkenInformeleBehandeling",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    },
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee",
+      "value": "nee"
+    }
+  ]
+},
+    {
+  "type": "content",
+  "key": "HF_DocumentMediation",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen document(en) informele behandeling</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    },
+  "tableView": false
+},
+    {
+  "type": "smartDocumentsFieldset",
+  "key": "DC_DocumentenInformeel",
+  "input": false,
+  "components": [
+    {
+      "label": "Selecteer de juiste brief in de lijst:",
+      "type": "select",
+      "key": "DC_DocumentenInformeel_Template",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    }
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "DC_DocumentenInformeel_Create",
+      "input": true,
+      "size":"sm",
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "<Dimpact/OpenZaak>",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "<3e84c231-7ff8-43c8-a2a0-7e2601f1477a>",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "<cf145954-3eeb-4879-9547-e0541029fe01>"
+      }
+    }
+  ]
+},
+    {
+  "type": "content",
+  "key": "HF_Header",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Afronden informele behandeling</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    }
+},
+    {
+  "label": "Geef de datum waarop de informele behandeling is afgerond",
+  "type": "datetime",
+  "key": "DF_DatumInformeelAfgerond",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "conditional": {
+      "show": true,
+      "when": "RB_InformeelMogelijk",
+      "eq": "ja"
+    },
+  "useLocaleSettings": true,
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -129,9 +341,10 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "action": "saveState",
                   "state": "draft",
                   "tableView": false
@@ -143,9 +356,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

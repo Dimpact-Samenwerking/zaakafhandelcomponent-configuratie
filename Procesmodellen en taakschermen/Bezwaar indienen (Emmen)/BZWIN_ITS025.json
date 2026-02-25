@@ -4,10 +4,112 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
-    {},
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "RB_Verlengen",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Verlengen beslistermijn</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "label": "De beslistermijn verlengen?:",
+  "type": "radio",
+  "key": "RB_Verlengen",
+  "input": true,
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee",
+      "value": "nee"
+    }
+  ]
+},
+    {
+  "label": "Geef het aantal dagen waarmee de beslistermijn moet worden verlengd:",
+  "key": "NF_VerlengenTermijn",
+  "type": "number",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "conditional": {
+      "show": true,
+      "when": "RB_Verlengen",
+      "eq": "ja"
+    },
+  "applyMaskOn": "change",
+  "mask": false,
+  "tableView": false,
+  "delimiter": false,
+  "requireDecimal": false,
+  "inputFormat": "plain",
+  "truncateMultipleSpaces": false,
+  "defaultValue": 42
+},
+    {
+  "type": "content",
+  "key": "HF_DocumentVerlengen",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen document(en) verlengen termijn</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_Verlengen",
+      "eq": "ja"
+    },
+  "tableView": false
+},
+    {
+  "type": "smartDocumentsFieldset",
+  "key": "DC_VerlengenTermijn",
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_Verlengen",
+      "eq": "ja"
+    },
+  "components": [
+    {
+      "label": "Selecteer de juiste brief in de lijst:",
+      "type": "select",
+      "key": "DC_VerlengenTermijn_Template",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "properties": {
+    "SmartDocuments_Group": "Dimpact/OpenZaak"
+  },
+     "attributes": {
+    "ZAC_TYPE": "ZAC_smart_documents_template"
+  }
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "DC_VerlengenTermijn_Create",
+      "input": true,
+      "size":"sm",
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "<Dimpact/OpenZaak>",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "<3e84c231-7ff8-43c8-a2a0-7e2601f1477a>",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "<cf145954-3eeb-4879-9547-e0541029fe01>"
+      }
+    }
+  ]
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,8 +123,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,9 +138,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

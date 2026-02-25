@@ -4,10 +4,114 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
-    {},
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "HF_NotitieHeroverweging",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen notitie van heroverweging</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "type": "content",
+  "key": "PA_Toelichtingheroverweging",
+  "html": "<p>De notitie van heroverweging en het procesdossier moeten uiterlijk op <strong>{{moment(data.DF_DatumHoorzitting).subtract(21,'days').format(\"D-MM-YYYY\")}}</strong> zijn aangeleverd. Maak de notitie van heroverweging en voer de stappen uit voor het samenstellen van het procesdossier.</p>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+   {
+  "type": "smartDocumentsFieldset",
+  "key": "DC_NotitieHeroverweging",
+  "input": false,
+  "components": [
+    {
+      "label": "Selecteer de juiste brief in de lijst:",
+      "type": "select",
+      "key": "DC_NotitieHeroverweging_Template",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "properties": {
+    "SmartDocuments_Group": "Dimpact/OpenZaak"
+  },
+     "attributes": {
+    "ZAC_TYPE": "ZAC_smart_documents_template"
+  }
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "DC_NotitieHeroverweging_Create",
+      "input": true,
+      "size":"sm",
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "<Dimpact/OpenZaak>",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "<3e84c231-7ff8-43c8-a2a0-7e2601f1477a>",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "<cf145954-3eeb-4879-9547-e0541029fe01>"
+      }
+    }
+  ]
+},
+   {
+  "type": "content",
+  "key": "HF_AanleverenProcesdossier",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Samenstellen procesdossier</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "type": "content",
+  "key": "PA_AanleverenProcesdossier2A",
+  "html": "<p>Samen met de notitie van heroverweging moet het procesdossier aangeleverd worden. Stel het procesdossier samen door volgende stappen te doorlopen. (Voor het toevoegen van het procesdossier is een aparte handleiding beschikbaar):</p><ul><li>Verzamel de documenten van het procesdossier en sla deze op in 1 map op een netwerkschijf;</li><li>Voeg de documenten toe aan deze zaak door gebruik te maken van de optie ‘Toevoegen documenten’ in het linker menu van de zaak.</li><li>Wijzig de documenttitel van het document conform de handleiding.</li><li>Kies bij het toevoegen van de documenten voor het documenttype ‘Procesdossier’, de status en het publicatieniveau worden automatisch voorgevuld.</li><li>Kies bij het toevoegen van meerdere documenten voor de optie ‘Opslaan en nog een toevoegen’ tot alle documenten zijn toegevoegd.</li><li>Kies na het toevoegen van het laatste document voor de optie ‘Opslaan’, het toevoegen document scherm wordt afgesloten.</li><li>Rond, als dit klaar is, deze taak af.</li></ul>",
+  "refreshOnChange": false,
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_Procesdossier",
+      "eq": "nee"
+    },
+  "tableView": false
+},
+    {
+  "type": "content",
+  "key": "PA_AanleverenProcesdossier2B",
+  "html": "<p>Samen met de notitie van heroverweging moet het procesdossier aangeleverd worden. Het procesdossier is in de beginfase van de zaak al op hoofdlijnen samengesteld. Stel het procesdossier verder samen door volgende stappen te doorlopen. (Voor het toevoegen van het procesdossier is een aparte handleiding beschikbaar):</p><ul><li>Contoleer het procesdossier zoals deze eerder in het proces is aangeleverd en bepaal welke relevante documenten er nog ontbreken;</li><li>Verzamel de nog ontbrekende documenten van het procesdossier en sla deze op in 1 map op een netwerkschijf;</li><li>Voeg de documenten toe aan deze zaak door gebruik te maken van de optie \"Toevoegen documenten\" in het linker menu van de zaak;</li><li>Wijzig de documenttitel van het document conform de handleiding;</li><li>Kies bij het toevoegen van de documenten voor het documenttype \"Procesdossier\", de status en het publicatieniveau worden automatisch voorgevuld;</li><li>Kies bij het toevoegen van meerdere documenten voor de optie \"Opslaan en nog een toevoegen\" tot alle documenten zijn toegevoegd;</li><li>Kies na het toevoegen van het laatste document voor de optie \"Opslaan\", het toevoegen document scherm wordt afgesloten;</li><li>Rond, als dit klaar is, deze taak af.</li></ul>",
+  "refreshOnChange": false,
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_Procesdossier",
+      "eq": "ja"
+    },
+  "tableView": false
+},
+    {
+  "label": "",
+  "type": "selectboxes",
+  "key": "CB_KoppelenDocumenten",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "tooltip": "Optionele tooltip",
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "De documenten van het procesdossier zijn toegevoegd aan deze zaak.",
+      "value": "ja"
+    }
+  ]
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,8 +125,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,8 +140,9 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "disableOnInvalid": true,
                   "tableView": false

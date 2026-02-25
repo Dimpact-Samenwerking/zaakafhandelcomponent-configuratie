@@ -4,13 +4,435 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
-    {},
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "HF_Samenvatting",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Besluit op bezwaar (BOB) - samenvatting verloop proces</span></h3>",
+  "refreshOnChange": false,
+  "customConditional":"show = (!data.RB_Adviesakkoord && data.taskCompleted !== 'StartBestuurlijkeBesluitvorming')",
+  "input": false,
+  "tableView": false
+},
+    {
+  "type": "content",
+  "key": "HF_SamenvattingVervolg",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Besluit op bezwaar (BOB) vervolg - samenvatting verloop proces</span></h3>",
+  "refreshOnChange": false,
+  "customConditional":"show = (data.RB_Adviesakkoord !=='' && data.taskCompleted === 'StartBestuurlijkeBesluitvorming')",
+  "input": false,
+  "tableView": false
+},
+    {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Uitkomst ontvankelijkheidstoets: <strong>{{data.RB_Ontvankelijk}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_Ontvankelijkheid",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Aanvullende stukken n.a.v. hersteltermijn zijn aangeleverd en ontvankelijk: <strong>{{data.RB_Voortgangsbewaking}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_Hersteltermijn",
+      "type": "content",
+      "input": false,
+      "conditional": {
+      "show": false,
+      "when": "RB_Voortgangsbewaking",
+      "eq": ""
+    },
+      "tableView": false
+    },
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Informele behandeling is uitgevoerd: : <strong>{{data.RB_InformeelMogelijk}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_Mediation",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Toelichting op informele behandeling: <strong>{{data.TA_RedenGeenInformeleBehandeling}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_MediationToelichting",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Er is een ingebrekestelling ontvangen?: <strong>{{data.RB_Ingebrekestelling}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_IngebrekestellingOntvangen",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Beoordeling ingebrekestelling: <strong>{{data.RB_AfhandelingIngebrekestelling}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_BeoordelingIngebrekestelling",
+      "type": "content",
+      "input": false,
+      "conditional": {
+      "show": true,
+      "when": "RB_Ingebrekestelling",
+      "eq": "ja"
+    },
+      "tableView": false
+    },
+    {
+  "type": "content",
+  "key": "HF_UitkomstBBV",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Bestuurlijke besluitvorming</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "label": "De bestuurlijke besluitvormingszaak is afgerond?:",
+  "type": "radio",
+  "key": "RB_UitkomstBBV",
+  "input": true,
+  "conditional": {
+      "show": true,
+      "when": "taskCompleted",
+      "eq": "StartBestuurlijkeBesluitvorming"
+    },
+  "validate": {
+        "required": true
+      },
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee",
+      "value": "nee"
+    }
+  ]
+},
+{
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Verwerk, indien van toepassing, de uitkomst van de bestuurlijke besluitvormingszaak in het definitieve besluit op bezwaar.</span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "PA_BBV",
+      "type": "content",
+      "input": false,
+      "conditional": {
+      "show": true,
+      "when": "taskCompleted",
+      "eq": "StartBestuurlijkeBesluitvorming"
+    },
+      "tableView": false
+    },
+   {
+  "type": "content",
+  "key": "HF_ConceptBOB",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Reactie vakteam op concept BOB</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "taskCompleted",
+      "eq": "ConceptBOBVakteam"
+    },
+  "tableView": false
+},
+    {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Het concept besluit op bezwaar (BOB) is door het vakteam beoordeeld en is:<strong>{{data.RB_Adviesakkoord}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_ConceptBOB",
+      "type": "content",
+      "input": false,
+      "conditional": {
+      "show": true,
+      "when": "taskCompleted",
+      "eq": "ConceptBOBVakteam"
+    },
+      "tableView": false
+    },
+    {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Opmerking vakteam concept BOB: <strong>{{data.TA_OpmerkingenConceptBOB}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_OpmerkingConceptBOB",
+      "type": "content",
+      "input": false,
+      "conditional": {
+      "show": false,
+      "when": "TA_OpmerkingenConceptBOB",
+      "eq": ""
+    },
+      "tableView": false
+    },
+{
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Verwerk, indien van toepassing, de opmerkingen van het vakteam in het definitieve besluit op bezwaar. Het vakteam heeft de bevindingen met 'Wijzigingen bijhouden' in het originele document verwerkt.</span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "PA_ConceptAdviesVervolg",
+      "type": "content",
+      "input": false,
+      "conditional": {
+      "show": true,
+      "when": "taskCompleted",
+      "eq": "ConceptBOBVakteam"
+    },
+      "tableView": false
+    },
+{
+  "type": "content",
+  "key": "HF_BOB",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Besluit op bezwaar (BOB)</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+{
+  "type": "content",
+  "key": "HF_BOBVervolg",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Besluit op bezwaar (BOB) vervolg</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+{
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Het advies van de commissie is: <strong>{{data.RB_AdviesCAB}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_AdviesCommissie",
+      "type": "content",
+      "input": false,
+      "conditional": {
+      "show": false,
+      "when": "RB_AdviesCAB",
+      "eq": ""
+    },
+      "tableView": false
+    },
+{
+  "label": "Het advies van de commissie wordt overgenomen:",
+  "type": "radio",
+  "key": "RB_AdviescommissieOvernemen",
+  "input": true,
+"conditional": {
+      "show": false,
+      "when": "RB_AdviesCAB",
+      "eq": ""
+    },
+  "validate": {
+        "required": true
+      },
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee, er wordt contrair aan het advies besloten",
+      "value": "nee"
+    }
+  ]
+},
+{
+  "label": "Het bezwaar is?:",
+  "type": "radio",
+  "key": "RB_BOB",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Niet-Ontvankelijk",
+      "value": "nietontvankelijk"
+    },
+    {
+      "label": "Kennelijk niet-ontvankelijk",
+      "value": "kennelijknietontvankelijk"
+    },
+{
+      "label": "Ongegrond",
+      "value": "ongegrond"
+    },
+{
+      "label": "Ongegrond met aanvulling motivering",
+      "value": "ongegrondmetaanvulling"
+    },
+{
+      "label": "Kennelijk ongegrond",
+      "value": "kennelijkongegrond"
+    },
+{
+      "label": "Gegrond",
+      "value": "gegrond"
+    },
+{
+      "label": "Gedeeltelijk gegrond",
+      "value": "gedeeltelijkgegrond"
+    }
+  ]
+},
+{
+  "type": "content",
+  "key": "HF_BestuurlijkeBesluitvorming",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Besluitvorming CMT, college en/of gemeenteraad</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "customConditional":"show = (data.RB_BOB==='gegrond' && data.TF_OmschrijvingZaakBBV === '') || (data.RB_BOB==='gedeeltelijkgegrond' && data.TF_OmschrijvingZaakBBV === '')",
+  "tableView": false
+},
+{
+  "type": "content",
+  "key": "PA_InleidingBBV",
+  "html": "Vul hieronder het onderwerp van het voorstel tot besluitvorming in. Het onderwerp wordt dan gebruikt voor de omschrijving van de gerelateerde zaak 'Bestuurlijke besluitvorming behandelen'.",
+  "refreshOnChange": false,
+  "input": false,
+  "customConditional":"show = (data.RB_BOB==='gegrond' && data.TF_OmschrijvingZaakBBV === '') || (data.RB_BOB==='gedeeltelijkgegrond' && data.TF_OmschrijvingZaakBBV === '')",
+  "validate": {
+        "required": true
+      },
+  "tableView": false
+},
+{
+  "label": "Onderwerp van het voorstel tot besluitvorming:",
+  "type": "textfield",
+  "key": "TF_OmschrijvingZaakBBV",
+  "input": true,
+  "customConditional":"show = (data.RB_BOB==='gegrond' && data.TF_OmschrijvingZaakBBV === '') || (data.RB_BOB==='gedeeltelijkgegrond' && data.TF_OmschrijvingZaakBBV === '')"
+},
+{
+  "type": "content",
+  "key": "HF_DocumentBOB",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen document(en) besluit op bezwaar (BOB)</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+{
+  "type": "content",
+  "key": "HF_DocumentBOB",
+  "html": "Let op! De ingebrekestelling is tijdig ingediend en het besluit op bezwaar kan binnen 2 weken worden verzonden. Verwerk de afwijzing van de dwangsom in het besluit op bezwaar.",
+  "refreshOnChange": false,
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_AfhandelingIngebrekestelling",
+      "eq": "Tijdig binnen 2 weken"
+    },
+  "tableView": false
+},
+{
+  "type": "content",
+  "key": "PA_ingebrekeToekenning",
+  "html": "Let op! De ingebrekestelling is tijdig ingediend en het besluit op bezwaar kan niet binnen 2 weken worden verzonden. Verwerk de toekenning van de dwangsom in het besluit op bezwaar.",
+  "refreshOnChange": false,
+  "input": false,
+  "conditional": {
+      "show": true,
+      "when": "RB_AfhandelingIngebrekestelling",
+      "eq": "Tijdig na 2 weken"
+    },
+  "tableView": false
+},
+{
+  "type": "smartDocumentsFieldset",
+  "key": "TD_TaakdocumentenBOB",
+  "input": false,
+  "components": [
+    {
+      "label": "Selecteer de juiste brief in de lijst:",
+      "type": "select",
+      "key": "TD_TaakdocumentenBOB_Template",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "properties": {
+    "SmartDocuments_Group": "Dimpact/OpenZaak"
+  },
+     "attributes": {
+    "ZAC_TYPE": "ZAC_smart_documents_template"
+  }
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "TD_TaakdocumentenBOB_Create",
+      "input": true,
+      "size":"sm",
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "<Dimpact/OpenZaak>",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "<3e84c231-7ff8-43c8-a2a0-7e2601f1477a>",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "<cf145954-3eeb-4879-9547-e0541029fe01>"
+      }
+    }
+  ]
+},
+{
+  "type": "content",
+  "key": "HF_VerzendenBesluit",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Verzenden besluit</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+{
+  "label": "Verzenddatum besluit op bezwaar:",
+  "type": "datetime",
+  "key": "DF_VerzenddatumBOB",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "useLocaleSettings": true,
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
+      "validate": {
+        "required": true
+      },
       "tableView": false,
       "components": [
         {
@@ -21,8 +443,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,9 +458,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

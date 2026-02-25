@@ -4,10 +4,149 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
-    {},
+{
+  "type": "content",
+  "key": "HF_Samenvatting",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen advies CAB - samenvatting verloop proces</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},   
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Uitkomst ontvankelijkheidstoets: <strong>{{data.RB_Ontvankelijk}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_Ontvankelijkheid",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Aanvullende stukken n.a.v. hersteltermijn zijn aangeleverd en ontvankelijk: <strong>{{data.RB_Voortgangsbewaking}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_Hersteltermijn",
+      "type": "content",
+      "input": false,
+      "conditional": {
+      "show": false,
+      "when": "RB_Voortgangsbewaking",
+      "eq": ""
+    },
+      "tableView": false
+    },
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Informele behandeling is uitgevoerd: : <strong>{{data.RB_InformeelMogelijk}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_Mediation",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+ {
+      "html": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(102,102,102);\">Toelichting op informele behandeling: <strong>{{data.TA_RedenGeenInformeleBehandeling}}</strong></span></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_MediationToelichting",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "HF_AdviesCAB",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen advies CAB</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+{
+  "label": "Het advies vanuit het CAB is:",
+  "type": "radio",
+  "key": "RB_AdviesCAB",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Niet-ontvankelijk",
+      "value": "nietontvankelijk"
+    },
+    {
+      "label": "Ongegrond",
+      "value": "Ongegrond"
+    },
+{
+      "label": "Ongegrond met aanvulling motivering",
+      "value": "ongegrondaanvullingmotivering"
+    },
+{
+      "label": "Gegrond",
+      "value": "gegrond"
+    },
+{
+      "label": "Gedeeltelijk gegrond",
+      "value": "gedeeltelijkgegrond"
+    },
+{
+      "label": "Het bezwaar wordt ingetrokken nav de hoorzitting",
+      "value": "bezwaaringetrokkenhoorzitting"
+    }
+  ]
+},
+{
+  "type": "content",
+  "key": "HF_DocumentenCAB",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen document(en) advies CAB</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},    
+{
+  "type": "smartDocumentsFieldset",
+  "key": "DC_AdviesCAB",
+  "input": false,
+  "components": [
+    {
+      "label": "Selecteer de juiste brief in de lijst:",
+      "type": "select",
+      "key": "DC_AdviesCAB_Template",
+      "input": true,
+      "description": "Let op! Rond na het afronden van deze taak ook de parallelle taak ‘Ontvangen ingebrekestelling’ en indien nodig de vervolg taak ‘1e beoordeling ingebrekestelling’ af als dit nog niet is gedaan. De informatie m.b.t. de ingebrekestelling wordt dan getoond op de taak ‘Besluit Op Bezwaar (BOB)’",
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "properties": {
+    "SmartDocuments_Group": "Dimpact/OpenZaak"
+  },
+     "attributes": {
+    "ZAC_TYPE": "ZAC_smart_documents_template"
+  }
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "DC_AdviesCAB_Create",
+      "input": true,
+      "size":"sm",
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "<Dimpact/OpenZaak>",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "<3e84c231-7ff8-43c8-a2a0-7e2601f1477a>",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "<cf145954-3eeb-4879-9547-e0541029fe01>"
+      }
+    }
+  ]
+},
+{
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,8 +160,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,9 +175,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

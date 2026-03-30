@@ -1,0 +1,559 @@
+{
+  "name": "BPMNe2e_Start",
+  "title": "Keuze scherm",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "html": "<p><strong>Uitleg regressie testen!</strong></p><p>U kunt pas een nieuwe taak kiezen nadat u de huidige taak heeft afgerond. Ga daarna terug naar de zaak en navigeer naar de volgende taak via het oog icoon aan de rechterkant.</p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "content",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+    {
+      "label": "Maak hier de keuze wat je wilt gaan testen!",
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "tableView": false,
+      "values": [
+        {
+          "label": "E-mail verzenden",
+          "value": "email",
+          "shortcut": ""
+        },
+        {
+          "label": "Toewijzen naar behandelaar",
+          "value": "taken",
+          "shortcut": ""
+        },
+        {
+          "label": "Meervoudig toewijzen",
+          "value": "meerdereBehandelaars",
+          "shortcut": ""
+        },
+        {
+          "label": "Tonen van Document(en)",
+          "value": "tonen",
+          "shortcut": ""
+        },
+        {
+          "label": "Document ondertekenen",
+          "value": "documentOndertekenen",
+          "shortcut": ""
+        },
+        {
+          "label": "Document aanmaken",
+          "value": "documentAanmaken",
+          "shortcut": ""
+        },
+        {
+          "label": "Zaak verlengen (eenmalig)",
+          "value": "zaakVerlengen",
+          "shortcut": ""
+        },
+        {
+          "label": "Opschorten en hervatten",
+          "value": "opschortenEnHervatten",
+          "shortcut": ""
+        },
+        {
+          "label": "Zaak toewijzen",
+          "value": "zaakToewijzen",
+          "shortcut": ""
+        },
+        {
+          "label": "Status wijzigen",
+          "value": "statusWijzigen",
+          "shortcut": ""
+        },
+        {
+          "label": "Fatale datum instellen",
+          "value": "fataleDatum",
+          "shortcut": ""
+        },
+        {
+          "label": "Attributen testen",
+          "value": "attributenTesten",
+          "shortcut": ""
+        },
+        {
+          "label": "Zaak afsluiten",
+          "value": "zaakAfsluiten",
+          "shortcut": ""
+        }
+      ],
+      "validate": {
+        "required": true
+      },
+      "validateWhenHidden": false,
+      "key": "RB_onderdelenTesten",
+      "type": "radio",
+      "input": true
+    },
+    {
+      "label": "Fatale datum van een taak instellen",
+      "format": "dd-MM-yyyy",
+      "tableView": true,
+      "datePicker": {
+        "disableWeekends": false,
+        "disableWeekdays": false
+      },
+      "enableTime": false,
+      "enableMinDateInput": false,
+      "enableMaxDateInput": false,
+      "validateWhenHidden": false,
+      "key": "DT_fataleDatum",
+      "conditional": {
+        "show": true,
+        "when": "RB_onderdelenTesten",
+        "eq": "fataleDatum"
+      },
+      "type": "datetime",
+      "input": true,
+      "widget": {
+        "type": "calendar",
+        "displayInTimezone": "viewer",
+        "locale": "en",
+        "useLocaleSettings": false,
+        "allowInput": true,
+        "mode": "single",
+        "enableTime": false,
+        "noCalendar": false,
+        "format": "dd-MM-yyyy",
+        "hourIncrement": 1,
+        "minuteIncrement": 1,
+        "time_24hr": false,
+        "minDate": null,
+        "disableWeekends": false,
+        "disableWeekdays": false,
+        "maxDate": null
+      }
+    },
+    {
+      "label": "Automatische E-mail verzenden",
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "tableView": false,
+      "values": [
+        {
+          "label": "Ja",
+          "value": "ja",
+          "shortcut": ""
+        },
+        {
+          "label": "Nee",
+          "value": "nee",
+          "shortcut": ""
+        }
+      ],
+      "validate": {
+        "required": true
+      },
+      "validateWhenHidden": false,
+      "key": "RB_automatischeEMailVerzenden",
+      "conditional": {
+        "show": true,
+        "when": "RB_onderdelenTesten",
+        "eq": "email"
+      },
+      "type": "radio",
+      "input": true
+    },
+    {
+      "label": "Select besluit",
+      "widget": "html5",
+      "tableView": true,
+      "dataSrc": "custom",
+      "validate": {
+        "required": true,
+        "onlyAvailableItems": true
+      },
+      "validateWhenHidden": false,
+      "key": "ZK_Besluit",
+      "conditional": {
+        "show": true,
+        "when": "RB_onderdelenTesten",
+        "eq": "besluitVastleggen"
+      },
+      "attributes": {
+        "ZAC_TYPE": "ZAC_besluit"
+      },
+      "type": "select",
+      "input": true
+    },
+    {
+      "label": "Handmatige e-mail",
+      "key": "fieldset_handmatige_email",
+      "type": "fieldset",
+      "legend": "Handmatige e-mailgegevens",
+      "input": false,
+      "tableView": false,
+      "customConditional": "show = data.RB_onderdelenTesten === 'email' && data.RB_automatischeEMailVerzenden === 'nee';",
+      "components": [
+        {
+          "type": "email",
+          "key": "TF_afzender",
+          "label": "Afzender",
+          "input": true,
+          "validate": {
+            "required": true
+          },
+          "tableView": true
+        },
+        {
+          "type": "email",
+          "key": "EM_ontvanger",
+          "label": "Ontvanger",
+          "input": true,
+          "validate": {
+            "required": true
+          },
+          "tableView": true
+        },
+        {
+          "type": "email",
+          "key": "EM_ReplyTo",
+          "label": "Antwoord aan",
+          "input": true,
+          "validate": {
+            "required": true
+          },
+          "tableView": true
+        }
+      ]
+    },
+    {
+      "label": "Toewijzen naar:",
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "tableView": false,
+      "values": [
+        {
+          "label": "Volgende behandelaar",
+          "value": "volgendeBehandelaar",
+          "shortcut": ""
+        },
+        {
+          "label": "Behandelaar zaak",
+          "value": "jeZelf",
+          "shortcut": ""
+        },
+        {
+          "label": "Vorige behandelaar",
+          "value": "vorigeBehandelaar",
+          "shortcut": ""
+        }
+      ],
+      "validate": {
+        "required": true
+      },
+      "validateWhenHidden": false,
+      "key": "RB_toewijzenNaar",
+      "conditional": {
+        "show": true,
+        "when": "RB_onderdelenTesten",
+        "eq": "taken"
+      },
+      "type": "radio",
+      "input": true
+    },
+    {
+      "label": "Selecteer behandelaars",
+      "optionsLabelPosition": "right",
+      "hidden": true,
+      "hideLabel": true,
+      "tableView": false,
+      "defaultValue": {
+        "a": false,
+        "b": false,
+        "c": false
+      },
+      "values": [
+        {
+          "label": "Behandelaar A",
+          "value": "a",
+          "shortcut": ""
+        },
+        {
+          "label": "Behandelaar B",
+          "value": "b",
+          "shortcut": ""
+        },
+        {
+          "label": "Behandelaar C",
+          "value": "c",
+          "shortcut": ""
+        }
+      ],
+      "validateWhenHidden": false,
+      "key": "CB_selecteerBehandelaars",
+      "conditional": {
+        "show": true,
+        "when": "RB_onderdelenTesten",
+        "eq": "meerdereBehandelaars"
+      },
+      "type": "selectboxes",
+      "input": true,
+      "inputType": "checkbox"
+    },
+    {
+      "legend": "Selecteer de groep en medewerker A",
+      "key": "AGM_AdviseurA",
+      "conditional": {
+        "show": true,
+        "when": "CB_selecteerBehandelaars",
+        "eq": "a"
+      },
+      "type": "fieldset",
+      "label": "Field Set",
+      "input": false,
+      "components": [
+        {
+          "label": "Groep",
+          "widget": "html5",
+          "tableView": true,
+          "dataSrc": "custom",
+          "clearOnRefresh": true,
+          "validate": {
+            "required": true
+          },
+          "validateWhenHidden": false,
+          "key": "AGM_TaakToewijzingAan_GroepA",
+          "attributes": {
+            "ZAC_TYPE": "ZAC_groep"
+          },
+          "type": "select",
+          "input": true
+        },
+        {
+          "label": "Medewerker",
+          "widget": "html5",
+          "tableView": true,
+          "dataSrc": "custom",
+          "refreshOn": "AGM_TaakToewijzingAan_GroepA",
+          "clearOnRefresh": true,
+          "validate": {
+            "required": true
+          },
+          "validateWhenHidden": false,
+          "key": "AGM_TaakToewijzingAan_MedewerkerA",
+          "attributes": {
+            "ZAC_TYPE": "ZAC_medewerker"
+          },
+          "type": "select",
+          "input": true
+        }
+      ],
+      "tableView": false
+    },
+    {
+      "legend": "Selecteer de groep en medewerker B",
+      "key": "AGM_AdviseurB",
+      "conditional": {
+        "show": true,
+        "when": "CB_selecteerBehandelaars",
+        "eq": "b"
+      },
+      "type": "fieldset",
+      "label": "Field Set",
+      "input": false,
+      "components": [
+        {
+          "label": "Groep",
+          "widget": "html5",
+          "tableView": true,
+          "dataSrc": "custom",
+          "clearOnRefresh": true,
+          "validate": {
+            "required": true
+          },
+          "validateWhenHidden": false,
+          "key": "AGM_TaakToewijzingAan_GroepB",
+          "attributes": {
+            "ZAC_TYPE": "ZAC_groep"
+          },
+          "type": "select",
+          "input": true
+        },
+        {
+          "label": "Medewerker",
+          "widget": "html5",
+          "tableView": true,
+          "dataSrc": "custom",
+          "refreshOn": "AGM_TaakToewijzingAan_GroepB",
+          "clearOnRefresh": true,
+          "validate": {
+            "required": true
+          },
+          "validateWhenHidden": false,
+          "key": "AGM_TaakToewijzingAan_MedewerkerB",
+          "attributes": {
+            "ZAC_TYPE": "ZAC_medewerker"
+          },
+          "type": "select",
+          "input": true
+        }
+      ],
+      "tableView": false
+    },
+    {
+      "legend": "Selecteer de groep en medewerker C",
+      "key": "AGM_AdviseurC",
+      "conditional": {
+        "show": true,
+        "when": "CB_selecteerBehandelaars",
+        "eq": "c"
+      },
+      "type": "fieldset",
+      "label": "Field Set",
+      "input": false,
+      "components": [
+        {
+          "label": "Groep",
+          "widget": "html5",
+          "tableView": true,
+          "dataSrc": "custom",
+          "clearOnRefresh": true,
+          "validate": {
+            "required": true
+          },
+          "validateWhenHidden": false,
+          "key": "AGM_TaakToewijzingAan_GroepC",
+          "attributes": {
+            "ZAC_TYPE": "ZAC_groep"
+          },
+          "type": "select",
+          "input": true
+        },
+        {
+          "label": "Medewerker",
+          "widget": "html5",
+          "tableView": true,
+          "dataSrc": "custom",
+          "refreshOn": "AGM_TaakToewijzingAan_GroepC",
+          "clearOnRefresh": true,
+          "validate": {
+            "required": true
+          },
+          "validateWhenHidden": false,
+          "key": "AGM_TaakToewijzingAan_MedewerkerC",
+          "attributes": {
+            "ZAC_TYPE": "ZAC_medewerker"
+          },
+          "type": "select",
+          "input": true
+        }
+      ],
+      "tableView": false
+    },
+    {
+      "legend": "Selecteer de groep en medewerker",
+      "key": "AGM_Adviseur1",
+      "conditional": {
+        "show": true,
+        "when": "RB_toewijzenNaar",
+        "eq": "volgendeBehandelaar"
+      },
+      "type": "fieldset",
+      "label": "Field Set",
+      "input": false,
+      "components": [
+        {
+          "label": "Groep",
+          "widget": "html5",
+          "tableView": true,
+          "dataSrc": "custom",
+          "clearOnRefresh": true,
+          "validate": {
+            "required": true
+          },
+          "validateWhenHidden": false,
+          "key": "AGM_TaakToewijzingAan_Groep",
+          "attributes": {
+            "ZAC_TYPE": "ZAC_groep"
+          },
+          "type": "select",
+          "input": true
+        },
+        {
+          "label": "Medewerker",
+          "widget": "html5",
+          "tableView": true,
+          "dataSrc": "custom",
+          "refreshOn": "AGM_TaakToewijzingAan_Groep",
+          "clearOnRefresh": true,
+          "validate": {
+            "required": true
+          },
+          "validateWhenHidden": false,
+          "key": "AGM_TaakToewijzingAan_Medewerker",
+          "attributes": {
+            "ZAC_TYPE": "ZAC_medewerker"
+          },
+          "type": "select",
+          "input": true
+        }
+      ],
+      "tableView": false
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "theme": "secondary",
+                  "input": true,
+                  "action": "saveState",
+                  "state": "draft",
+                  "tableView": false
+                }
+              ],
+              "offset": 0,
+              "push": 0,
+              "pull": 0,
+              "size": "md",
+              "currentWidth": "auto"
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Afronden",
+                  "type": "button",
+                  "input": true,
+                  "disableOnInvalid": true,
+                  "tableView": false
+                }
+              ],
+              "offset": 0,
+              "push": 0,
+              "pull": 0,
+              "size": "md",
+              "currentWidth": "auto"
+            }
+          ],
+          "input": false,
+          "key": "columns",
+          "tableView": false,
+          "label": "Columns"
+        }
+      ]
+    }
+  ]
+}

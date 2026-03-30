@@ -1,5 +1,5 @@
 {
-    "naam": "ZTC_ITS00x",
+    "name": "ZTC_ITS00x",
     "title": "?Titel boven het taakscherm?. Meervoudig formulier (wizard). Dit schermtemplate bevat zowel een opslaan (van ingevulde zaakdata) als een submit button.",
     "display": "wizard",
     "components": [

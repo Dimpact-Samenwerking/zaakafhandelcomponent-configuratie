@@ -4,10 +4,256 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
+    {
+  "type": "content",
+  "key": "HF_Samenvatting",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Vastleggen resultaat bezwaar - samenvatting verloop proces</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+      "html": "<p>Het bezwaar valt onder de categorie: <strong>{{CO_Categorie}}</strong><br>Uitkomst ontvankelijkheidstoets: <strong>{{RB_Ontvankelijk}}</strong><br>Aanvullende stukken n.a.v. hersteltermijn zijn aangeleverd en ontvankelijk: <strong>{{RB_Voortgangsbewaking}}</strong></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "content",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
     {},
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "HF_OverigeProcesInformatie",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Overige procesinformatie</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+{
+  "label": "De fatale datum van de zaak is overschreden, geef hier de reden voor het overschrijden van de termijn:",
+  "type": "textarea",
+  "key": "TA_RedenOverschrijdingTermijn",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "autoExpand": false
+},
+{
+  "label": "Bezwaarmaker heeft afgezien van de mogelijkheid om gehoord te worden:",
+  "type": "radio",
+  "key": "RB_NietHoren",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee",
+      "value": "nee"
+    }
+  ]
+},
+   {
+  "label": "Geef de reden waarom bezwaarmaker niet gehoord wilde worden:",
+  "type": "textarea",
+  "key": "TA_RedenNietGehoord",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "conditional": {
+      "show": true,
+      "when": "RB_NietHoren",
+      "eq": "ja"
+    },
+  "autoExpand": false
+},
+   {
+      "label": "Bezwaarmaker heeft tijdens of na het opstellen van de BOB alsnog een ingebrekestelling ingediend?: LET OP 2 CONDITIES",
+      "optionsLabelPosition": "right",
+      "inline": false,
+      "tableView": false,
+      "values": [
+        {
+          "label": "Ja",
+          "value": "ja",
+          "shortcut": ""
+        },
+        {
+          "label": "Nee",
+          "value": "nee",
+          "shortcut": ""
+        }
+      ],
+      "validateWhenHidden": false,
+      "key": "RB_IngebrekeLaterOntvangen",
+      "customConditional": "show = (data.RB_Ingebrekestelling == 'nee') || (data.RB_Ingebrekestelling == 'ja' & data.RB.Afhandelingingebrekestelling == 'prematuur');",
+      "type": "radio",
+      "input": true
+    },
+   {
+  "label": "Datum van ontvangst ingebrekestelling:",
+  "type": "datetime",
+  "key": "DF_DatumIngebrekeNaBOB",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "conditional": {
+      "show": true,
+      "when": "RB_IngebrekeLaterOntvangen",
+      "eq": "ja"
+    },
+  "useLocaleSettings": true,
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+   {
+  "label": "Bezwaarmaker heeft de gemeente ingebreke gesteld en de toekenning is in het BOB verwerkt, is er een dwangsom verbeurd?:",
+  "type": "radio",
+  "key": "RB_ToekenningIngebrekestelling",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Ja",
+      "value": "ja"
+    },
+    {
+      "label": "Nee",
+      "value": "nee"
+    }
+  ]
+},
+   {
+  "label": "Geef de hoogte van de verbeurde dwangsom (€):",
+  "type": "currency",
+  "key": "NF_BedragDwangsom",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "conditional": {
+      "show": true,
+      "when": "RB_ToekenningIngebrekestelling",
+      "eq": "ja"
+    },
+  "applyMaskOn": "change",
+  "mask": false,
+  "tableView": false,
+  "currency": "EUR",
+  "inputFormat": "plain",
+  "truncateMultipleSpaces": false,
+  "validateWhenHidden": false,
+  "delimiter": true,
+  "decimalLimit": 2,
+  "requireDecimal": true,
+  "decimalSymbol": ",",
+  "thousandsSeparator": "."
+},
+   {
+  "type": "content",
+  "key": "HF_OpstellenDocumenOverig",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen document - indien nodig</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+   {
+  "type": "smartDocumentsFieldset",
+  "key": "TD_DocumentenOverig",
+  "input": false,
+  "components": [
+    {
+      "label": "Selecteer de juiste brief in de lijst:",
+      "type": "select",
+      "key": "TD_DocumentenOverig_Template",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "properties": {
+    "SmartDocuments_Group": "Dimpact/OpenZaak"
+  },
+     "attributes": {
+    "ZAC_TYPE": "ZAC_smart_documents_template"
+  }
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "TD_DocumentenOverig_Create",
+      "input": true,
+      "size":"sm",
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "<Dimpact/OpenZaak>",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "<3e84c231-7ff8-43c8-a2a0-7e2601f1477a>",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "<cf145954-3eeb-4879-9547-e0541029fe01>"
+      }
+    }
+  ]
+},
+   {
+  "type": "content",
+  "key": "HF_VastleggenResultaat",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Vastleggen resultaat bezwaar</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+   {
+  "label": "Selecteer het resultaat van de zaak:",
+  "optionsLabelPosition": "right",
+  "key": "ZR_Zaakresultaat",
+  "widget": "html5",
+  "validate": {
+    "required": true,
+    "onlyAvailableItems": true
+  },
+  "type": "select",
+  "input": true,
+  "dataSrc": "custom",
+  "attributes": {
+    "ZAC_TYPE": "ZAC_resultaat"
+  }
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,8 +267,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,9 +282,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

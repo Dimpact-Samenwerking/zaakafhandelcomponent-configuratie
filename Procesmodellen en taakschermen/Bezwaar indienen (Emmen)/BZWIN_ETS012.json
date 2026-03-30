@@ -7,7 +7,7 @@
     {},
     {},
     {
-      "label": "Buttons",
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,8 +21,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,17 +36,11 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+    

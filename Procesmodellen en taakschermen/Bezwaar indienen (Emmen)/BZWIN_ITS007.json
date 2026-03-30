@@ -4,10 +4,124 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
-    {},
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "HF_IntrekkenBezwaar",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Intrekken bezwaar</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+   {
+  "label": "Datum van ontvangst intrekking:",
+  "type": "datetime",
+  "key": "DF_DatumOntvangstIntrekking",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "useLocaleSettings": true,
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+   {
+  "type": "content",
+  "key": "HF_DocumentIntrekken",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen document(en) intrekken bezwaar</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+{
+  "type": "smartDocumentsFieldset",
+  "key": "DC_intrekkenBezwaar",
+  "input": false,
+  "components": [
+    {
+      "label": "Selecteer de juiste brief in de lijst:",
+      "type": "select",
+      "key": "DC_intrekkenBezwaar_Template",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "properties": {
+    "SmartDocuments_Group": "Dimpact/OpenZaak"
+  },
+     "attributes": {
+    "ZAC_TYPE": "ZAC_smart_documents_template"
+  }
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "DC_intrekkenBezwaar_Create",
+      "input": true,
+      "size":"sm",
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "<Dimpact/OpenZaak>",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "<3e84c231-7ff8-43c8-a2a0-7e2601f1477a>",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "<cf145954-3eeb-4879-9547-e0541029fe01>"
+      }
+    }
+  ]
+},
+   {
+  "label": "Verzenddatum bevestiging intrekking bezwaar",
+  "type": "datetime",
+  "key": "DF_DatumBevestigingIntrekking",
+  "input": true,
+  "validate": {
+        "required": true
+      },
+  "useLocaleSettings": true,
+  "format": "dd-MM-yyyy",
+  "datePicker": {
+    "disableWeekends": false,
+    "disableWeekdays": false,
+    "minDate": "moment()"
+  },
+  "enableTime": false,
+  "enableMinDateInput": true,
+  "enableMaxDateInput": false,
+  "widget": {
+    "type": "calendar",
+    "displayInTimezone": "viewer",
+    "locale": "nl",
+    "useLocaleSettings": true,
+    "allowInput": true,
+    "mode": "single",
+    "enableTime": false,
+    "noCalendar": false,
+    "format": "dd-MM-yyyy",
+    "minDate": "moment()"
+  }
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,9 +135,10 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "action": "saveState",
                   "state": "draft",
                   "tableView": false
@@ -35,8 +150,9 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "disableOnInvalid": true,
                   "tableView": false

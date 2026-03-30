@@ -4,10 +4,24 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
-    {},
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "HF_ParallelleTaken",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Afronden Parallelle taken</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "type": "content",
+  "key": "PA_ParallelleTaken",
+  "html":  "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Beste Collega,</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">De taak voor het opstellen van het besluit op bezwaar (BOB) is afgerond. Voordat het resultaat van het bezwaar kan worden vastgelegd moeten eerst de nog openstaande parallelle taken worden afgerond.</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">De parallelle taken die mogelijk nog open staan zijn:</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">- Intrekken bezwaar;</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">- Verlengen beslistermijn BOB;</span><br><br><strong>Klik op \"Taak tussentijds opslaan\" en&nbsp;handel vervolgens eerst de nog openstaande parallele taken af.</strong><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Als dit is gedaan dan kun je deze taak weer opnieuw openen en afronden.</span></p>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,8 +35,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,9 +50,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

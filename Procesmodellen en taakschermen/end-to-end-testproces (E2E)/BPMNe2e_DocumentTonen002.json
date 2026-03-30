@@ -1,0 +1,121 @@
+{
+  "name": "BPMNe2e_DocumentTonen002",
+  "title": "Geselecteerde documenten",
+  "display": "form",
+  "type": "form",
+  "components": [
+    {
+      "html": "<p><strong>Geselecteerde documenten</strong></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "content",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+    {
+      "html": "<div class=\"alert alert-warning\" role=\"alert\"><strong>Let op:</strong> Het is momenteel nog niet mogelijk om dynamisch de geselecteerde documenten in onderstaand lijstobject te genereren.</div>",
+      "label": "Disclaimer_Ondertekenen",
+      "refreshOnChange": false,
+      "key": "Disclaimer_Ondertekenen",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
+    {
+      "label": "Geselecteerde documenten met opmerking",
+      "key": "documentenOutput",
+      "type": "datagrid",
+      "input": true,
+      "tableView": true,
+      "disableAddingRemovingRows": true,
+      "customDefaultValue": "value = (data.ZAAK_Documents_Select && Array.isArray(data.ZAAK_Documents_Select)) ? data.ZAAK_Documents_Select.map(function(doc) { return { document: doc, documentNaam: (doc.titel || doc.label || doc.name || doc.title || doc.naam || doc.bestandsnaam || doc.filename || '') }; }) : [];",
+      "components": [
+        {
+          "label": "Document",
+          "key": "documentNaam",
+          "type": "textfield",
+          "input": true,
+          "disabled": true,
+          "tableView": true,
+          "calculateValue": "value = row.documentNaam || (row.document && (row.document.titel || row.document.label || row.document.name || row.document.title || row.document.naam || row.document.bestandsnaam || row.document.filename)) || '';"
+        },
+        {
+          "label": "Opmerking",
+          "key": "opmerking",
+          "type": "textarea",
+          "input": true,
+          "rows": 2,
+          "tableView": true,
+          "placeholder": "Voeg hier een opmerking toe"
+        }
+      ]
+    },
+    {
+      "label": "Debug documentselectie",
+      "key": "debugDocs",
+      "type": "textarea",
+      "input": true,
+      "disabled": true,
+      "hidden": true,
+      "tableView": false,
+      "calculateValue": "value = JSON.stringify(data.ZAAK_Documents_Select || [], null, 2);"
+    },
+    {
+      "label": "Buttons",
+      "key": "buttons",
+      "type": "container",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "save",
+                  "label": "Opslaan",
+                  "type": "button",
+                  "theme": "secondary",
+                  "input": true,
+                  "action": "saveState",
+                  "state": "draft",
+                  "tableView": false
+                }
+              ],
+              "offset": 0,
+              "push": 0,
+              "pull": 0,
+              "size": "md",
+              "currentWidth": "auto"
+            },
+            {
+              "width": "auto",
+              "components": [
+                {
+                  "key": "submit",
+                  "label": "Afronden",
+                  "type": "button",
+                  "input": true,
+                  "disableOnInvalid": true,
+                  "tableView": false
+                }
+              ],
+              "offset": 0,
+              "push": 0,
+              "pull": 0,
+              "size": "md",
+              "currentWidth": "auto"
+            }
+          ],
+          "input": false,
+          "key": "columns",
+          "tableView": false,
+          "label": "Columns"
+        }
+      ]
+    }
+  ]
+}

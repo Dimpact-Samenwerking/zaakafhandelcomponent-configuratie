@@ -4,10 +4,54 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
-    {},
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "HF_BeoordelenConceptBOB",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Beoordelen concept besluit op bezwaar (BOB)</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "type": "content",
+  "key": "PA_ConceptBOB",
+  "html": "<p>Het bezwaar wordt door het CAB afgehandeld. Hierbij het verzoek om het concept besluit op bezwaar te beoordelen en eventuele opmerkingen in het concept BOB te verwerken. Indien nodig kunnen aanvullende opmerkingen in het tekstveld worden opgenomen.&nbsp;<br><br><strong>Graag de wijzigingen verwerken door gebruik te maken van ‘Wijzigingen bijhouden’ in het originele document. Je kunt het document vanuit het documentenoverzicht openen om te bewerken met de optie ‘Bewerk Bestand’.</strong></p>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "label": "Het concept besluit op bezwaar (BOB) is beoordeeld en is:",
+  "type": "radio",
+  "key": "RB_Adviesakkoord",
+  "input": true,
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Akkoord",
+      "value": "Akkoord"
+    },
+    {
+      "label": "Niet akkoord, er zijn opmerkingen",
+      "value": "Niet akkoord"
+    }
+  ]
+},
+    {
+  "label": "Opmerkingen nav beoordeling concept besluit op bezwaar (BOB):",
+  "type": "textarea",
+  "key": "TA_OpmerkingenConceptBOB",
+  "input": true,
+  "conditional": {
+      "show": true,
+      "when": "RB_Adviesakkoord",
+      "eq": "Niet akkoord"
+    },
+  "autoExpand": false
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,8 +65,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,9 +80,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

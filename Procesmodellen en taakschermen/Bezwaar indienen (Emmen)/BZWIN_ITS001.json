@@ -7,7 +7,7 @@
  {
   "type": "content",
   "key": "HF_AlgemeneGegevens",
-  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Algemene gegevens bezwaar</span></h3>",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Algemene gegevens bezwaar</span></h3>",
   "refreshOnChange": false,
   "input": false,
   "tableView": false
@@ -35,6 +35,7 @@
 },
     {
   "label": "Verzenddatum primair besluit:",
+  "labelPosition": "left-left",
   "type": "datetime",
   "key": "DF_VerzenddatumBesluit",
   "input": true,
@@ -71,6 +72,7 @@
 },
     {
   "label": "Dagtekening primair besluit:",
+  "labelPosition": "left-left",
   "type": "datetime",
   "key": "DF_Dagtekening",
   "input": true,
@@ -107,7 +109,10 @@
 },
         {
       "label": "Categorie",
-      "widget": "choicesjs",
+      "widget": "html5",
+      "validate": {
+    "required": true
+  },
       "tableView": true,
       "data": {
         "values": [
@@ -177,12 +182,12 @@
     {
   "type": "content",
   "key": "HF_teambehandelaar",
-  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Behandelend team / behandelaar</span></h3>",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Behandelend team / behandelaar</span></h3>",
   "refreshOnChange": false,
   "input": false,
   "tableView": false
 },
-    {
+{
   "type": "groepMedewerkerFieldset",
   "key": "GM_TeamMedewerker",
   "input": false,
@@ -192,9 +197,15 @@
       "type": "select",
       "key": "GM_TeamMedewerker_Groep",
       "input": true,
+      "validate": {
+                  "required": true
+                  },
       "widget": "html5",
       "dataSrc": "custom",
-      "clearOnRefresh": true
+      "clearOnRefresh": true,
+      "attributes": {
+    "ZAC_TYPE": "ZAC_groep"
+  }
     },
     {
       "label": "Medewerker",
@@ -202,9 +213,14 @@
       "key": "GM_TeamMedewerker_Medewerker",
       "widget": "html5",
       "input": true,
+      "validate": {
+                  "required": true
+                  },
       "dataSrc": "custom",
       "refreshOn": "GM_TeamMedewerker_Groep",
-      "clearOnRefresh": true
+      "clearOnRefresh": true,
+      "attributes": {
+    "ZAC_TYPE": "ZAC_medewerker"}
     }
   ]
 },
@@ -223,8 +239,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -237,9 +254,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

@@ -1,0 +1,21 @@
+{
+  "name": "BPMNe2e_zaakBehandelaar000",
+  "title": "Output Taak toewijzen aan",
+  "display": "form",
+  "type": "form",
+  "components": [
+       {
+      "type": "content",
+      "key": "info",
+      "input": false,
+      "html": "<p>Deze taak is toegewezen aan de behandelaar van de zaak.</p>"
+    },
+    {
+      "key": "submit",
+      "label": "Afronden",
+      "type": "button",
+      "input": true,
+      "disableOnInvalid": true
+    }
+  ]
+}

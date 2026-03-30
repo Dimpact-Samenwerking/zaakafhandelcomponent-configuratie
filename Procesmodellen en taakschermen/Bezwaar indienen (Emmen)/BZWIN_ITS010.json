@@ -4,10 +4,124 @@
   "display": "form",
   "type": "form",
   "components": [
-    {},
-    {},
+  {
+  "type": "content",
+  "key": "HF_DatumHoorzitting",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Datum hoorzitting</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},  
+     {
+      "html": "<p>Uitnodiging commissieleden voor de hoorzitting van: <strong>{{moment(data.DF_DatumHoorzitting).format(\"D-MM-YYYY\")}}</strong></p>",
+      "label": "Content",
+      "refreshOnChange": false,
+      "key": "LB_Datumhoorzitting",
+      "type": "content",
+      "input": false,
+      "tableView": false
+    },
     {
-      "label": "Buttons",
+  "type": "content",
+  "key": "HF_OpstellenDocumentenHoorziting",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Opstellen document(en) uitnodiging hoorzitting</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "type": "smartDocumentsFieldset",
+  "key": "DC_Hoorzitting",
+  "input": false,
+  "components": [
+    {
+      "label": "Selecteer de juiste brief in de lijst:",
+      "type": "select",
+      "key": "DC_Hoorzitting_Template",
+      "input": true,
+      "widget": "html5",
+      "dataSrc": "custom",
+      "clearOnRefresh": true,
+      "properties": {
+    "SmartDocuments_Group": "Dimpact/OpenZaak"
+  },
+     "attributes": {
+    "ZAC_TYPE": "ZAC_smart_documents_template"
+  }
+    },
+    {
+      "label": "Maak document",
+      "type": "button",
+      "key": "DC_Hoorzitting_Create",
+      "input": true,
+      "size":"sm",
+      "action": "event",
+      "showValidations": false,
+      "tableView": false,
+      "event": "createDocument",
+      "properties": {
+        "SmartDocuments_Group": "<Dimpact/OpenZaak>",
+        "SmartDocuments_<Data_Test>_InformatieobjecttypeUuid": "<3e84c231-7ff8-43c8-a2a0-7e2601f1477a>",
+        "SmartDocuments_<OpenZaakTest>_InformatieobjecttypeUuid": "<cf145954-3eeb-4879-9547-e0541029fe01>"
+      }
+    }
+  ]
+},
+    {
+  "type": "content",
+  "key": "HF_Commissieleden",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Uitnodiging commissieleden voor hoorzitting</span></h3>",
+  "refreshOnChange": false,
+  "input": false,
+  "tableView": false
+},
+    {
+  "label": "Selecteer de commissieleden die uitgenodigd moeten worden voor de hoorzitting:",
+  "type": "selectboxes",
+  "key": "CB_Commissieleden",
+  "input": true,
+  "tooltip": "Optionele tooltip",
+  "optionsLabelPosition": "right",
+  "inline": false,
+  "values": [
+    {
+      "label": "Commissielid 1",
+      "value": "lid1"
+    },
+    {
+      "label": "Commissielid 2",
+      "value": "lid2"
+    }
+  ]
+},
+    {
+  "label": "Selecteer de documenten die je naar de commissie wil meesturen",
+  "type": "select",
+  "key": "DS_DocumentSelecteren",
+  "input": true,
+  "widget": "choicesjs",
+  "multiple": true,
+  "defaultValue": [],
+  "clearOnRefresh": true,
+  "dataSrc": "custom",
+  "placeholder": "Selecteer een of meerdere documenten",
+  "customOptions": {
+    "choicesOptions": {
+      "removeItemButton": true,
+      "placeholder": true,
+      "searchEnabled": true,
+      "shouldSort": false
+    }
+  },
+  "validate": {
+    "required": false
+  },
+  "attributes": {
+    "ZAC_TYPE": "ZAC_documenten"
+  }
+},
+    {
+      "label": "",
       "key": "buttons",
       "type": "container",
       "input": false,
@@ -21,8 +135,9 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
+                  "size":"sm",
                   "input": true,
                   "action": "saveState",
                   "state": "draft",
@@ -35,9 +150,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }

@@ -4,10 +4,10 @@
   "display": "form",
   "type": "form",
   "components": [
-    {
+{
   "type": "content",
   "key": "HF_Procesdossier",
-  "html": "<h3><span style=\"color:hsl( 208, 56%, 46% );\">Samenstellen procesdossier</span></h3>",
+  "html": "<h5><span style=\"color:hsl( 223, 61%, 42% );\">Samenstellen procesdossier</span></h3>",
   "refreshOnChange": false,
   "input": false,
   "tableView": false
@@ -52,9 +52,10 @@
               "components": [
                 {
                   "key": "save",
-                  "label": "Opslaan",
+                  "label": "Taak tussentijds opslaan",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "action": "saveState",
                   "state": "draft",
                   "tableView": false
@@ -66,9 +67,10 @@
               "components": [
                 {
                   "key": "submit",
-                  "label": "Opslaan & afronden",
+                  "label": "Taak afronden",
                   "type": "button",
                   "input": true,
+                  "size":"sm",
                   "disableOnInvalid": true,
                   "tableView": false
                 }
